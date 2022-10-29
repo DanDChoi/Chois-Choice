@@ -1,4 +1,4 @@
-package choi.s.choice;
+package choi.choice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
