@@ -13,11 +13,16 @@ public class MbrController {
 
     @GetMapping("/join")
     public String joinForm(){
-        return "mbr/join";
+        return "/mbr/join";
     }
 
     @PostMapping("/join")
     public void mbrJoin(HttpServletRequest request) {
         return "redirct:/mbr/{id}";
+    }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "/mbr/login";
     }
 }
