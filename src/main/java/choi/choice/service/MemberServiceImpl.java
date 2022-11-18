@@ -12,4 +12,10 @@ public class MemberServiceImpl implements MemberService{
     public mbr login(mbr mbr) {
         return mbr;
     }
+
+    @Override
+    public int join(mbr mbr){
+        return 0;
+    }
 }
+
