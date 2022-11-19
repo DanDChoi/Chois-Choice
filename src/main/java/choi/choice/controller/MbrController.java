@@ -19,8 +19,6 @@ public class MbrController {
 
     @PostMapping("/join")
     public void mbrJoin(@ModelAttribute HttpServletRequest request) {
-
-        return "redirct:/mbr/{id}";
     }
 
     @GetMapping("/login")
