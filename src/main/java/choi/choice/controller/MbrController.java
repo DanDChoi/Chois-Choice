@@ -23,6 +23,6 @@ public class MbrController {
 
     @GetMapping("/login")
     public String loginForm(){
-        return "/mbr/login";
+        return "login";
     }
 }
