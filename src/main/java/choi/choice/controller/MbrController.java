@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.mbr;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class MbrController {
     }
 
     @GetMapping("/login")
-    public String loginForm(){
+    public String loginForm(@ModelAttribute mbr mbr, HttpServletRequest request){
         return "login";
     }
 }
