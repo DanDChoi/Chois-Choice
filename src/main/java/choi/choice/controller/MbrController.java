@@ -6,24 +6,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Controller
+@RequestMapping("/mbr")
 public class MbrController {
 
-    @GetMapping("/join")
+    @GetMapping("join")
     public String joinForm(){
         return "/mbr/join";
     }
 
-    @PostMapping("/join")
+    @PostMapping("join")
     public void mbrJoin(@ModelAttribute HttpServletRequest request) {
     }
 
-    @GetMapping("/login")
-    public String loginForm(@ModelAttribute mbr mbr, HttpServletRequest request){
-        return "login";
+    @GetMapping("login")
+    public String loginForm(){
+        return "theme/login";
+    }
+
+    @PostMapping("login")
+    public void login(@ModelAttribute mbr mbr, HttpServletRequest request) {
+        log.info("id={}", mbr.getMbr_id());
     }
 }
