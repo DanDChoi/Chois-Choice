@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/mbr")
 public class MbrController {
 
-    @GetMapping("join")
+    @GetMapping("register")
     public String joinForm(){
-        return "/mbr/join";
+        return "/theme/register";
     }
 
-    @PostMapping("join")
+    @PostMapping("register")
     public void mbrJoin(@ModelAttribute HttpServletRequest request) {
     }
 
