@@ -33,4 +33,8 @@ public class MbrController {
     public void login(@ModelAttribute mbr mbr, HttpServletRequest request) {
         log.info("id={}", mbr.getMbr_id());
     }
+    @GetMapping
+    public void findPw(){
+
+    }
 }
