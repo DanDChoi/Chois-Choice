@@ -21,7 +21,7 @@ public class MbrController {
     }
 
     @PostMapping("register")
-    public void mbrJoin(@ModelAttribute HttpServletRequest request) {
+    public void mbrJoin(@ModelAttribute mbr mbr, HttpServletRequest request) {
     }
 
     @GetMapping("login")
