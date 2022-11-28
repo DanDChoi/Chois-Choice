@@ -3,6 +3,7 @@ package choi.choice.controller;
 import choi.choice.domain.mbr;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,10 @@ public class MbrController {
     }
 
     @PostMapping("register")
-    public void mbrJoin(@ModelAttribute mbr mbr, HttpServletRequest request) {
+    public void mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
+        model.getAttribute(mbr.getMbr_email());
+        model.getAttribute(mbr.getMbr_pwd());
+
     }
 
     @GetMapping("login")
