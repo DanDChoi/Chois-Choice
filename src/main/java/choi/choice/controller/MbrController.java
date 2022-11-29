@@ -22,10 +22,11 @@ public class MbrController {
     }
 
     @PostMapping("register")
-    public void mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
+    public String mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
         model.getAttribute(mbr.getMbr_email());
         model.getAttribute(mbr.getMbr_pwd());
-
+        log.info("email={}", mbr.getMbr_email());
+        return "redirect:/";
     }
 
     @GetMapping("login")
