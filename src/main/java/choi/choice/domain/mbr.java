@@ -7,10 +7,10 @@ import javax.validation.constraints.NotNull;
 @Data
 public class mbr {
 
-    @NotNull
     private String mbr_id;
     private String mbr_nm;
     private String mbr_sex;
+    @NotNull
     private String mbr_email;
     private String mbr_pwd;
     private String mobil_no;
