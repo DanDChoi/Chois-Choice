@@ -17,5 +17,10 @@ public class MemberServiceImpl implements MemberService{
     public int join(mbr mbr){
         return 0;
     }
+
+    @Override
+    public mbr register(mbr mbr) {
+        return null;
+    }
 }
 
