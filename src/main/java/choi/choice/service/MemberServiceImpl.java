@@ -20,6 +20,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr register(mbr mbr) {
+        mbr mbr = mbr;
+        mbr.getMbr_pwd();
         return null;
     }
 }
