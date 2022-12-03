@@ -39,6 +39,11 @@ public class MbrController {
         log.info("id={}", mbr.getMbr_id());
         log.info("pw={}", mbr.getMbr_pwd());
     }
+
+    @GetMapping
+    public void findId(){
+
+    }
     @GetMapping
     public void findPw(){
 
