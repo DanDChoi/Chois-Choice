@@ -2,8 +2,14 @@ package choi.choice.domain;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Data
+@Entity
 public class ord {
+
+    @Id
     private String ord_no;
     private String ord_dt;
     private String mbr_no;

@@ -2,7 +2,10 @@ package choi.choice.domain;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+
 @Data
+@Entity
 public class mbr_grd {
 
     private String mbr_no; //회원번호

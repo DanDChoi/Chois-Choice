@@ -2,9 +2,14 @@ package choi.choice.domain;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Data
+@Entity
 public class evt {
 
+    @Id
     private String evt_no;
     private String eve_nm;
     private String evt_dscr;
