@@ -1,11 +1,15 @@
 package choi.choice.controller;
 
+import choi.choice.domain.mbr;
 import choi.choice.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @WebMvcTest(MbrController.class)
 public class MbrControllerTest {
@@ -17,7 +21,11 @@ public class MbrControllerTest {
     private MemberService memberService;
 
     @Test
-    public void join(){
-
+    public void join(mbr mbr){
+        mbr.setMbr_id("1");
+        mbr.setMbr_nm("홍길동");
+        mbr.setMbr_email("test@naver.com");
+        List<mbr> mbrs = new ArrayList<>();
+        mbrs.add(mbr);
     }
 }
