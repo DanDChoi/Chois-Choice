@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 public class mbr {
 
     @Id
+    private Long mbr_no;
     private String mbr_id;
     private String mbr_nm;
     private String mbr_sex;
