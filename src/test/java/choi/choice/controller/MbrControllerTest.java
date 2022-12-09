@@ -29,8 +29,6 @@ public class MbrControllerTest {
         mbr.setMbr_id("hi");
         mbr.setMbr_nm("홍길동");
         mbr.setMbr_email("test@naver.com");
-        List<mbr> mbrs = new ArrayList<>();
-        mbrs.add(mbr);
         mbrRepository.save(mbr);
     }
 }
