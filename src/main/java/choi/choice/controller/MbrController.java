@@ -1,7 +1,11 @@
 package choi.choice.controller;
 
 import choi.choice.domain.mbr;
+import choi.choice.service.MemberService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @Controller
 @RequestMapping("/mbr")
+@RequiredArgsConstructor
 public class MbrController {
+
+    @Autowired
+    private MemberService memberService;
 
     @GetMapping("register")
     public String joinForm(){
@@ -22,11 +30,8 @@ public class MbrController {
     }
 
     @PostMapping("register")
-    public String mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
-        model.getAttribute(mbr.getMbr_email());
-        model.getAttribute(mbr.getMbr_pwd());
-        log.info("email={}", mbr.getMbr_email());
-        return "redirect:/";
+    public void mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
+        memberService.register(mbr);
     }
 
     @GetMapping("login")
@@ -36,8 +41,7 @@ public class MbrController {
 
     @PostMapping("login")
     public void login(@ModelAttribute mbr mbr, HttpServletRequest request) {
-        log.info("id={}", mbr.getMbr_id());
-        log.info("pw={}", mbr.getMbr_pwd());
+
     }
 
     @GetMapping("findId")
