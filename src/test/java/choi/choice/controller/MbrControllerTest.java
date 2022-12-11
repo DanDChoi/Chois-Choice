@@ -25,10 +25,6 @@ public class MbrControllerTest {
 
     @Test
     public void join(mbr mbr){
-        mbr.setMbr_no(1L);
-        mbr.setMbr_id("hi");
-        mbr.setMbr_nm("홍길동");
-        mbr.setMbr_email("test@naver.com");
         mbrRepository.save(mbr);
     }
 }
