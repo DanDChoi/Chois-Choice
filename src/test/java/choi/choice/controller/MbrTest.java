@@ -18,9 +18,6 @@ public class MbrTest {
 
     @ParameterizedTest
     public void 가입(mbr mbr) {
-        mbr.setMbr_no(1L);
-        mbr.setMbr_nm("홍길동");
-        mbr.setMbr_email("abc@naver.com");
         mbrRepository.save(mbr);
     }
 
