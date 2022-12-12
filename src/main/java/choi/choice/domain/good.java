@@ -2,6 +2,7 @@ package choi.choice.domain;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,11 +11,17 @@ import javax.persistence.Id;
 public class good {
 
     @Id
-    private String good_no;
-    private String good_nm;
-    private String sale_beg_date;
-    private String sale_end_date;
-    private String color_nm;
-    private String color_cd;
+    @Column(name = "good_no", unique = true)
+    private String goodNo;
+    @Column(name = "good_nm")
+    private String goodNm;
+    @Column(name = "sale_beg_date")
+    private String saleBegDate;
+    @Column(name = "sale_end_date")
+    private String saleEndDate;
+    @Column(name = "color_nm")
+    private String colorNm;
+    @Column(name = "color_cd")
+    private String colorCd;
 
 }
