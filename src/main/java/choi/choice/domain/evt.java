@@ -11,11 +11,11 @@ import javax.persistence.Id;
 public class evt {
 
     @Id
-    private String evt_no;
-    private String eve_nm;
-    private String evt_dscr;
-    private java.util.Date evt_beg_dt;
-    private java.util.Date evt_end_dt;
-    private String reply_use_yn;
-    private String reply_config_sn;
+    private String evtNo;
+    private String eveNm;
+    private String evtDscr;
+    private java.util.Date evtBegDt;
+    private java.util.Date evtEndDt;
+    private String replyUseYn;
+    private String replyConfigSn;
 }
