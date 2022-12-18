@@ -17,9 +17,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr register(mbr mbr) {
-        mbr.getMbr_pwd();
-        String mbr_email = mbr.getMbr_email();
-        log.info(mbr_email);
         return null;
     }
 }

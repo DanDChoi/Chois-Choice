@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,14 +26,15 @@ public class MbrController {
     @Autowired
     private MemberService memberService;
 
+    //회원가입
     @GetMapping("register")
-    public String joinForm(){
-        return "/theme/register";
+    public ResponseEntity<mbr> register(mbr mbr){
+        return new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
     }
 
     @PostMapping("register")
-    public void mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
-        memberService.register(mbr);
+    public ResponseEntity<mbr> mbrJoin(@ModelAttribute mbr mbr, Model model, HttpServletRequest request) {
+        return new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
     }
 
     @GetMapping("login")
