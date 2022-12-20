@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 public class evt {
 
     @Id
+    @Column(name = "evt_no", unique = true)
     private String evtNo;
     private String eveNm;
     private String evtDscr;
