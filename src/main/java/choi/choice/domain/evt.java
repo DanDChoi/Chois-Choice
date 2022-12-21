@@ -15,7 +15,8 @@ public class evt {
     @Id
     @Column(name = "evt_no", unique = true)
     private String evtNo;
-    private String eveNm;
+    @Column(name = "evt_nm")
+    private String evtNm;
     private String evtDscr;
     private java.util.Date evtBegDt;
     private java.util.Date evtEndDt;
