@@ -28,8 +28,8 @@ public class MbrController {
 
     //회원가입
     @GetMapping("register")
-    public ResponseEntity<mbr> register(mbr mbr){
-        return new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+    public String register(mbr mbr){
+        return "theme/register";
     }
 
     @PostMapping("register")
