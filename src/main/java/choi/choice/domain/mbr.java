@@ -42,4 +42,8 @@ public class mbr {
     @Column(name = "mbr_stat_cd")
     private String mbrStatCd;
 
+    public mbr(final String mbrEmail){
+        this.mbrEmail = mbrEmail;
+    }
+
 }
