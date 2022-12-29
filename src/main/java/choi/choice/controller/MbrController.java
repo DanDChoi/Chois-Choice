@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.Session;
 
 @Slf4j
 @Controller
@@ -44,7 +45,7 @@ public class MbrController {
 
     @PostMapping("login")
     public void login(@ModelAttribute mbr mbr, HttpServletRequest request) {
-
+        request.getSession();
     }
 
     @GetMapping("findId")
