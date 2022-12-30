@@ -29,6 +29,7 @@ public class MbrTest {
 
     @ParameterizedTest
     @Transactional
+    @Test
     public void 가입() {
         mbr m = mbr.builder()
                 .mbrEmail("test@naver.com")
@@ -41,6 +42,21 @@ public class MbrTest {
         Assertions.assertEquals(m.getMbrNm(), savedMbr.getMbrNm());
 
     }
+
+    @Test
+    public void ID로검색테스트(){
+        mbr m = mbr.builder()
+                .mbrEmail("test@naver.com")
+                .mbrNm("홍길동")
+                .mbrNo(1L)
+                .mbrId("testId")
+                .build();
+        mbr savedMbr = mbrRepository.save(m);
+        mbr findMbr = mbrRepository.findById(savedMbr.getMbrId());
+
+        Assertions.assertEquals(findMbr.getMbrId(), savedMbr.getMbrId());
+    }
+
 
 }
 
