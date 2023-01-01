@@ -77,7 +77,7 @@ public class MbrRepository implements JpaRepository<mbr, Long> {
     }
 
     @Override
-    public Optional<mbr> findById(String aLong) {
+    public Optional<mbr> findById(Long aLong) {
         return Optional.empty();
     }
 

@@ -34,8 +34,9 @@ public class MbrController {
     }
 
     @PostMapping("register")
-    public ResponseEntity<mbr> mbrJoin(@ModelAttribute mbr mbr) {
-        return new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+    public String mbrJoin(@ModelAttribute mbr mbr) {
+        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+        return "theme/index";
     }
 
     @GetMapping("login")
