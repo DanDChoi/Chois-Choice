@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 @AllArgsConstructor
@@ -26,6 +28,11 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr register(@ModelAttribute mbr mbr) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date(System.currentTimeMillis());
+        String id = "M" + format + date;
+        log.info("id난수={}", id);
+        mbr.setMbrId(id);
         return mbrRepository.save(mbr);
     }
 }
