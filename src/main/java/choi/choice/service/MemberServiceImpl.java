@@ -29,8 +29,8 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public mbr register(@ModelAttribute mbr mbr) {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        Date date = new Date(System.currentTimeMillis());
-        String id = "M" + format + date;
+        Date date = new Date();
+        String id = "M" + format.format(date) + System.currentTimeMillis();
         log.info("id난수={}", id);
         mbr.setMbrId(id);
         return mbrRepository.save(mbr);
