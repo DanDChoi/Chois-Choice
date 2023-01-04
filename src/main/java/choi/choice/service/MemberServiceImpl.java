@@ -21,7 +21,8 @@ public class MemberServiceImpl implements MemberService{
     private MbrRepository mbrRepository;
 
     @Override
-    public mbr login(mbr mbr, HttpServletRequest request) {
+    public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request) {
+        mbrRepository.findById(mbr.getMbrId());
         request.getSession();
         return mbr;
     }
