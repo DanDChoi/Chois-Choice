@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request) {
-        mbrRepository.findById(mbr.getMbrId());
+        mbrRepository.findBy(mbr.getMbrId());
         request.getSession();
         return mbr;
     }
