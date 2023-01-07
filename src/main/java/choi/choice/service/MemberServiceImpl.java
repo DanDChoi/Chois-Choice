@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request) {
-        mbrRepository.findBy(mbr.getMbrId());
+        mbrRepository.findByStringId(mbr.getMbrId());
         request.getSession();
         return mbr;
     }
@@ -31,10 +32,16 @@ public class MemberServiceImpl implements MemberService{
     public mbr register(@ModelAttribute mbr mbr) {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
-        String id = "M" + format.format(date) + System.currentTimeMillis();
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0,8);
+        String id = "M" + format.format(date) + timeMillis;
         log.info("id난수={}", id);
         mbr.setMbrId(id);
         return mbrRepository.save(mbr);
+    }
+
+    @Override
+    public Optional<mbr> findStringId(@ModelAttribute mbr mbr){
+        return mbrRepository.findByStringId(mbr.getMbrId());
     }
 }
 
