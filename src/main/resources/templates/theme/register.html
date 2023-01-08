@@ -139,7 +139,7 @@
       <div class="col-lg-5 col-md-8 align-item-center">
         <div class="border border">
           <h3 class="bg-gray p-4">Register Now</h3>
-          <form action="/mbr/register" method="post">
+          <form id="register" action="/mbr/register" method="post">
             <fieldset class="p-4">
               <input class="form-control mb-3" type="email" id="email" name="mbrEmail" placeholder="Email*" required>
               <input class="form-control mb-3" type="name" id="name" name="mbrNm" placeholder="Name*" required>
@@ -275,6 +275,26 @@ Essential Scripts
 <script src="/plugins/google-map/map.js" defer></script>
 
 <script src="/js/script.js"></script>
+
+<script>
+    function submit(){
+        callAjax('mbr/register/add','post','register', '');
+    }
+
+    //TODO ajax 호출 공통
+    function callAjax(callUrl, callType, callFormName, successFunction){
+        blur();
+        $.ajax({
+            url      : callUrl,
+            type     : callType,
+            data     : $('#' + callFormName).serialize(),
+            dataType : 'json',
+            success  : function(data){
+            }
+        });
+    }
+</script>
+
 
 </body>
 
