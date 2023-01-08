@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.mbr;
+import choi.choice.repository.MbrRepository;
 import choi.choice.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,8 @@ public class MbrController {
 
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private MbrRepository mbrRepository;
 
     //회원가입
     @GetMapping("register")
@@ -33,9 +36,11 @@ public class MbrController {
         return "theme/register";
     }
 
-    @PostMapping("register")
+    @PostMapping(value ="register/add")
     public String mbrJoin(@ModelAttribute mbr mbr) {
-        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+//        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+//        memberService.register(mbr);
+        mbrRepository.save(mbr);
         return "theme/index";
     }
 
