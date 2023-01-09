@@ -24,7 +24,12 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request) {
         mbrRepository.findByStringId(mbr.getMbrId());
-        request.getSession();
+        try{
+            request.getSession();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return mbr;
     }
 
