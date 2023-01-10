@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
@@ -22,11 +23,14 @@ public class MemberServiceImpl implements MemberService{
     private MbrRepository mbrRepository;
 
     @Override
-    public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request) {
+    public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
         mbrRepository.findByStringId(mbr.getMbrId());
         try{
-            request.getSession();
-            
+            // 세션값 설정
+            session.setAttribute("user_id", mbr.getMbrId());
+            session.setAttribute("user_name", mbr.getMbrNm());
+            session.setMaxInactiveInterval(30*60);
+
         }catch(Exception e){
             e.printStackTrace();
         }
