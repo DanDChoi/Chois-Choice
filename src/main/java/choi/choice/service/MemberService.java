@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface MemberService {
 
-    mbr login(mbr mbr, HttpServletRequest request, HttpSession session);
+    String login(mbr mbr, HttpServletRequest request, HttpSession session);
     mbr register(mbr mbr);
     Optional<mbr> findStringId(mbr mbr);
 }

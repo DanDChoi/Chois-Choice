@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
     private MbrRepository mbrRepository;
 
     @Override
-    public mbr login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
+    public String login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
         mbrRepository.findByStringId(mbr.getMbrId());
         try{
             // 세션값 설정
@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
         }catch(Exception e){
             e.printStackTrace();
         }
-        return mbr;
+        return "ok";
     }
 
     @Override
