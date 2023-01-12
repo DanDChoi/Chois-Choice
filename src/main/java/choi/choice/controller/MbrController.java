@@ -55,11 +55,7 @@ public class MbrController {
     }
 
     @GetMapping("findId")
-    public void findId(){
-
-    }
-    @GetMapping("findPw")
-    public void findPw(){
-
+    public String findId(){
+        return "theme/findId";
     }
 }
