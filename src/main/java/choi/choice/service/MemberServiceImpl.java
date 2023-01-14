@@ -43,7 +43,6 @@ public class MemberServiceImpl implements MemberService{
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0,8);
         String id = "M" + format.format(date) + timeMillis;
-        log.info("id난수={}", id);
 
         mbr.setMbrId(id);
         mbr.setMbrEmail(mbr.getMbrEmail());
