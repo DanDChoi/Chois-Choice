@@ -38,9 +38,9 @@ public class MbrController {
 
     @PostMapping(value ="register/add")
     public String mbrJoin(@ModelAttribute mbr mbr) {
-//        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
-//        memberService.register(mbr);
-        mbrRepository.save(mbr);
+        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+        memberService.register(mbr);
+//        mbrRepository.save(mbr);
         return "theme/index";
     }
 
