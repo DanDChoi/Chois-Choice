@@ -10,31 +10,33 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.transaction.Transactional;
 
-@DataJpaTest
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class MbrTest {
 
+    @Autowired
+    private mbr mbr;
     @Autowired
     private MbrRepository mbrRepository;
     @Autowired
     private MemberService memberService;
 
-    public MbrTest(MbrRepository mbrRepository) {
+    public MbrTest(choi.choice.domain.mbr mbr, MbrRepository mbrRepository, MemberService memberService) {
+        this.mbr = mbr;
         this.mbrRepository = mbrRepository;
+        this.memberService = memberService;
     }
 
     @ParameterizedTest
-    @Transactional
-    @Test
     public void 가입() {
         mbr m = mbr.builder()
                 .mbrEmail("test@naver.com")
                 .mbrNm("홍길동")
-                .mbrNo(1L)
+                .mbrNo("M202301151234")
                 .build();
 
         mbr savedMbr = mbrRepository.save(m);
@@ -48,7 +50,7 @@ public class MbrTest {
         mbr m = mbr.builder()
                 .mbrEmail("test@naver.com")
                 .mbrNm("홍길동")
-                .mbrNo(1L)
+                .mbrNo("M202301151234")
                 .mbrId("testId")
                 .build();
         mbr savedMbr = mbrRepository.save(m);
