@@ -24,16 +24,21 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public String login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
-        mbrRepository.findByStringId(mbr.getMbrId());
-        try{
-            // 세션값 설정
-            session.setAttribute("user_id", mbr.getMbrId());
-            session.setAttribute("user_name", mbr.getMbrNm());
-            session.setMaxInactiveInterval(30*60);
+       Optional<mbr> m = mbrRepository.findByStringId(mbr.getMbrId());
+        if (m.isPresent()){
+            try{
+                // 세션값 설정
+                session.setAttribute("user_id", mbr.getMbrId());
+                session.setAttribute("user_name", mbr.getMbrNm());
+                session.setMaxInactiveInterval(30*60);
 
-        }catch(Exception e){
-            e.printStackTrace();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            return "redirect:/";
         }
+
         return "ok";
     }
 
