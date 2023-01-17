@@ -60,5 +60,9 @@ public class MemberServiceImpl implements MemberService{
     public Optional<mbr> findStringId(@ModelAttribute mbr mbr){
         return mbrRepository.findByStringId(mbr.getMbrId());
     }
+    @Override
+    public void withdraw(String id){
+
+    }
 }
 

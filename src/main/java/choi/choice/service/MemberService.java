@@ -12,4 +12,6 @@ public interface MemberService {
     String login(mbr mbr, HttpServletRequest request, HttpSession session);
     mbr register(mbr mbr);
     Optional<mbr> findStringId(mbr mbr);
+
+    void withdraw(String id);
 }
