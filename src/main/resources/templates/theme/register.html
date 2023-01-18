@@ -149,7 +149,7 @@
                 <input type="checkbox" id="registering" class="mt-1">
                 <label for="registering" class="px-2">By registering, you accept our <a class="text-primary font-weight-bold" href="terms-condition.html">Terms & Conditions</a></label>
               </div>
-              <button type="submit" class="btn btn-primary font-weight-bold mt-3">Register Now</button>
+              <button id="join" type="submit" class="btn btn-primary font-weight-bold mt-3" onclick="joinChk()">Register Now</button>
             </fieldset>
           </form>
         </div>
@@ -293,6 +293,14 @@ Essential Scripts
     //         }
     //     });
     // }
+    function joinChk(){
+        let agrChk = $('#registering').is(':checked');
+        if(!agrChk){
+            alert('이용약관에 동의해주세요');
+            return false;
+        }
+    }
+
 </script>
 
 
