@@ -41,7 +41,7 @@ public class MbrController {
         new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
         memberService.register(mbr);
 //        mbrRepository.save(mbr);
-        return "theme/index";
+        return "redirect:/";
     }
 
     @GetMapping("login")
