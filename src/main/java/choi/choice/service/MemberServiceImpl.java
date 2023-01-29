@@ -62,7 +62,7 @@ public class MemberServiceImpl implements MemberService{
     }
     @Override
     public void withdraw(String id){
-
+        mbrRepository.deleteById(Long.valueOf(id));
     }
 }
 
