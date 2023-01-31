@@ -47,7 +47,8 @@ public class MemberServiceImpl implements MemberService{
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0,8);
-        String id = "M" + format.format(date) + timeMillis;
+        String idStr = format.format(date) + timeMillis;
+        Long id = Long.parseLong(idStr);
 
         mbr.setMbrId(id);
         mbr.setMbrEmail(mbr.getMbrEmail());
@@ -63,7 +64,7 @@ public class MemberServiceImpl implements MemberService{
         return mbrRepository.findByStringId(mbr.getMbrId());
     }
     @Override
-    public void withdraw(String id){
+    public void withdraw(Long id){
         mbrRepository.deleteById(Long.valueOf(id));
     }
 }

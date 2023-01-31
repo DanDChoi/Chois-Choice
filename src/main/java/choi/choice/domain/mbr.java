@@ -17,7 +17,7 @@ public class mbr {
 
     @Id
     @Column(name = "mbr_no", unique = true)
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "mbr_id")
     private String mbrId;
     @Column(name = "mbr_Nm")
