@@ -13,5 +13,5 @@ public interface MemberService {
     mbr register(mbr mbr);
     Optional<mbr> findStringId(mbr mbr);
 
-    void withdraw(String id);
+    void withdraw(Long id);
 }

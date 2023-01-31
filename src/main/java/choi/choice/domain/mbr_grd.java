@@ -12,7 +12,7 @@ public class mbr_grd {
 
     @Id
     @Column(name = "mbr_no", unique = true)
-    private String mbrNo; //회원번호
+    private Long mbrNo; //회원번호
     @Column(name = "grd_beg_dt")
     private String grdBegDt; //등급시작일
     @Column(name = "grd_end_dt")
