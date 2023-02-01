@@ -48,9 +48,10 @@ public class MemberServiceImpl implements MemberService{
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0,8);
         String idStr = format.format(date) + timeMillis;
-        Long id = Long.parseLong(idStr);
+        Long no = Long.parseLong(idStr);
 
-        mbr.setMbrId(id);
+        mbr.setMbrId(mbr.getMbrId());
+        mbr.setMbrNo(no);
         mbr.setMbrEmail(mbr.getMbrEmail());
         mbr.setMbrPwd(mbr.getMbrPwd());
         mbr.setMbrBrthdy(mbr.getMbrBrthdy());
