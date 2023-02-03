@@ -57,6 +57,7 @@ public class MemberServiceImpl implements MemberService{
         mbr.setMbrBrthdy(mbr.getMbrBrthdy());
         mbr.setMbrSex(mbr.getMbrSex());
         mbr.setMbrStatCd("ACTIVE");
+        mbr.setMbrJoindate(System.currentTimeMillis());
         return mbrRepository.save(mbr);
     }
 
