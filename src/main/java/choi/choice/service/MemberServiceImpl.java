@@ -44,21 +44,25 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public mbr register(@ModelAttribute mbr mbr) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        Date date = new Date();
-        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0,8);
-        String idStr = format.format(date) + timeMillis;
-        Long no = Long.parseLong(idStr);
 
-        mbr.setMbrId(mbr.getMbrId());
-        mbr.setMbrNo(no);
-        mbr.setMbrEmail(mbr.getMbrEmail());
-        mbr.setMbrPwd(mbr.getMbrPwd());
-        mbr.setMbrBrthdy(mbr.getMbrBrthdy());
-        mbr.setMbrSex(mbr.getMbrSex());
-        mbr.setMbrStatCd("ACTIVE");
-        mbr.setMbrJoindate(System.currentTimeMillis());
-        return mbrRepository.save(mbr);
+        if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
+            return mbr;
+        }else {
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+            Date date = new Date();
+            String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 8);
+            String idStr = format.format(date) + timeMillis;
+            Long no = Long.parseLong(idStr);
+
+            mbr.setMbrId(mbr.getMbrId());
+            mbr.setMbrNo(no);
+            mbr.setMbrEmail(mbr.getMbrEmail());
+            mbr.setMbrPwd(mbr.getMbrPwd());
+            mbr.setMbrBrthdy(mbr.getMbrBrthdy());
+            mbr.setMbrSex(mbr.getMbrSex());
+            mbr.setMbrStatCd("ACTIVE");
+            return mbrRepository.save(mbr);
+        }
     }
 
     @Override
