@@ -16,7 +16,6 @@ import java.util.function.Function;
 @Repository
 public class MbrRepository implements JpaRepository<mbr, Long> {
 
-    public Optional<mbr> findByStringId(String id){return null;}
     @Override
     public List<mbr> findAll() {
         return null;
