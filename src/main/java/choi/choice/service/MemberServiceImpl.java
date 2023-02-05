@@ -66,8 +66,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Optional<mbr> findStringId(@ModelAttribute mbr mbr){
-        return mbrRepository.findByStringId(mbr.getMbrId());
+    public Optional<mbr> findById(Long id){
+        return mbrRepository.findById(id);
     }
 
 

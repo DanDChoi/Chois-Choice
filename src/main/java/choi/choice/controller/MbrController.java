@@ -52,6 +52,8 @@ public class MbrController {
     @PostMapping("login")
     public void login(@ModelAttribute mbr mbr, HttpServletRequest request) {
         request.getSession();
+        memberService.findById(mbr.getMbrNo());
+
     }
 
     @GetMapping("findId")
