@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public String login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
-       Optional<mbr> m = mbrRepository.findByStringId(mbr.getMbrId());
+       Optional<mbr> m = mbrRepository.findById(Long.parseLong(mbr.getMbrId()));
         if (m.isPresent()){
             try{
                 // 세션값 설정
