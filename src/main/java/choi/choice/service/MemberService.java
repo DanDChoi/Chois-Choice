@@ -15,4 +15,6 @@ public interface MemberService {
     Optional<mbr> findById(Long aLong);
 
     void withdraw(Long id);
+
+//    boolean existById(Long id);
 }
