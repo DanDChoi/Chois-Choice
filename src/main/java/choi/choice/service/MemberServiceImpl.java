@@ -30,7 +30,6 @@ public class MemberServiceImpl implements MemberService{
                 session.setAttribute("user_id", mbr.getMbrId());
                 session.setAttribute("user_name", mbr.getMbrNm());
                 session.setMaxInactiveInterval(30*60);
-
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -68,8 +67,6 @@ public class MemberServiceImpl implements MemberService{
     public Optional<mbr> findById(Long id){
         return mbrRepository.findById(id);
     }
-
-
 
     @Override
     public void withdraw(Long id){
