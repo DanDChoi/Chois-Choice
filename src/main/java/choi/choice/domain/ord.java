@@ -16,7 +16,7 @@ public class ord {
     @Column(name = "ord_dt")
     private String ordDt;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "cstm_nm")
     private String cstmNm;
     @Column(name = "cstm_email")

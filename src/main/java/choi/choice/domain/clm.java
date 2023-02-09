@@ -16,7 +16,7 @@ public class clm {
     @Column(name = "clm_no", unique = true)
     private String clmNo;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "ord_no")
     private String ordNo;
     @Column(name = "god_no")
