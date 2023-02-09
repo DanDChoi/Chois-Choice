@@ -17,7 +17,7 @@ public class bsk {
     private String bskNo;
 
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
 
     @Column(name = "session_id")
     private String sessionId;
