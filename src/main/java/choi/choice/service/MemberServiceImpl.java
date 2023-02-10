@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
@@ -41,7 +43,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public mbr register(@ModelAttribute mbr mbr) {
+    public mbr register(@ModelAttribute mbr mbr) throws NoSuchAlgorithmException {
 
         if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
             return mbr;
@@ -52,10 +54,14 @@ public class MemberServiceImpl implements MemberService{
             String idStr = format.format(date) + timeMillis;
             Long no = Long.parseLong(idStr);
 
+            String pwd = encrypt(mbr.getMbrPwd());
+
+
+
             mbr.setMbrId(mbr.getMbrId());
             mbr.setMbrNo(no);
             mbr.setMbrEmail(mbr.getMbrEmail());
-            mbr.setMbrPwd(mbr.getMbrPwd());
+            mbr.setMbrPwd(pwd);
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
             mbr.setMbrSex(mbr.getMbrSex());
             mbr.setMbrStatCd("ACTIVE");
@@ -71,6 +77,21 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void withdraw(Long id){
         mbrRepository.deleteById(id);
+    }
+
+    public String encrypt(String text) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(text.getBytes());
+
+        return bytesToHex(md.digest());
+    }
+
+    private String bytesToHex(byte[] bytes) {
+        StringBuilder builder = new StringBuilder();
+        for (byte b : bytes) {
+            builder.append(String.format("%02x", b));
+        }
+        return builder.toString();
     }
 }
 
