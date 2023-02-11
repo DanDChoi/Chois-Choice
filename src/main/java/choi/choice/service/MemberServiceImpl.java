@@ -48,15 +48,15 @@ public class MemberServiceImpl implements MemberService{
         if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
             return mbr;
         }else {
+            //회원번호 생성
             SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
             Date date = new Date();
             String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 8);
             String idStr = format.format(date) + timeMillis;
             Long no = Long.parseLong(idStr);
 
+            //비밀번호 암호화
             String pwd = encrypt(mbr.getMbrPwd());
-
-
 
             mbr.setMbrId(mbr.getMbrId());
             mbr.setMbrNo(no);
