@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.Session;
+import java.security.NoSuchAlgorithmException;
 
 @Slf4j
 @Controller
@@ -37,7 +38,7 @@ public class MbrController {
     }
 
     @PostMapping(value ="register/add")
-    public String mbrJoin(@ModelAttribute mbr mbr) {
+    public String mbrJoin(@ModelAttribute mbr mbr) throws NoSuchAlgorithmException {
         new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
         memberService.register(mbr);
 //        mbrRepository.save(mbr);
