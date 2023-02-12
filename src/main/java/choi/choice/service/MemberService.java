@@ -17,5 +17,7 @@ public interface MemberService {
 
     void withdraw(Long id);
 
+    long count(mbr mbr);
+
 //    boolean existById(Long id);
 }
