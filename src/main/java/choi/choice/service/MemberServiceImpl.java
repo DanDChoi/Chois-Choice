@@ -74,9 +74,10 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public long count(mbr mbr) {
         List mbrCount = new ArrayList<>();
-
-        mbrRepository.findAll(mbr);
-        return 0;
+        if(mbrRepository.existsById(mbr.getMbrNo())){
+            mbrCount.add(mbr);
+        }
+        return mbrCount.size();
     }
 
     @Override
