@@ -14,4 +14,19 @@ public class EventServiceImpl implements EventService {
     public List<evt> findAll() {
         return null;
     }
+
+    @Override
+    public <S extends evt> List<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public evt getById(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public void deleteAllById(Iterable<? extends Long> longs) {
+
+    }
 }
