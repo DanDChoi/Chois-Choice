@@ -1,4 +1,4 @@
---postgresql
+-- postgresql
 -- CREATE TABLE mbr
 -- (
 --     mbr_id SERIAL PRIMARY KEY,
@@ -17,7 +17,7 @@
 
 CREATE TABLE mbr
 (
-    mbr_no          int(10) NOT NULL PRIMARY KEY,
+    mbr_no          int NOT NULL PRIMARY KEY,
     mbr_id          VARCHAR(10),
     mbr_nm          VARCHAR(30),
     mbr_sex         VARCHAR(10),
@@ -31,3 +31,5 @@ CREATE TABLE mbr
     join_date       DATETIME DEFAULT NOW(),
     mbr_stat_cd     VARCHAR(30)
 );
+use choice;
+alter table mbr modify mbr_no int;
