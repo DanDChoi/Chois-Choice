@@ -47,9 +47,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public mbr register(@ModelAttribute mbr mbr) throws NoSuchAlgorithmException {
 
-        if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
-            return mbr;
-        }else {
+//        if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
+//            return mbr;
+//        }else {
             //회원번호 생성
             SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
             Date date = new Date();
@@ -67,8 +67,10 @@ public class MemberServiceImpl implements MemberService{
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
             mbr.setMbrSex(mbr.getMbrSex());
             mbr.setMbrStatCd("ACTIVE");
-            return mbrRepository.save(mbr);
-        }
+            mbrRepository.save(mbr);
+
+            return new mbr("success");
+//        }
     }
 
     @Override
