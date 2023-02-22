@@ -7,6 +7,8 @@ import java.util.List;
 public interface GoodService {
 
     public List<good> findAll();
-    good add(good good);
+    public void add(good good);
+
+    good findByNo(String id);
 
 }
