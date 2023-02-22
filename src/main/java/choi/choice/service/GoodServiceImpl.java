@@ -11,7 +11,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public good add(good good) {
+    public void add(good good)
+    {}
+
+    @Override
+    public good findByNo(String id) {
         return null;
     }
 }
