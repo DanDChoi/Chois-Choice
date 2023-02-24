@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface GoodService {
 
-    public List<good> findAll();
-    public void add(good good);
-
+    List<good> findAll();
+    void add(good good);
     good findByNo(String id);
-
+    void deleteByNo(String id);
 }

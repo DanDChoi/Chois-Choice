@@ -27,4 +27,9 @@ public class GoodServiceImpl implements GoodService{
     public good findByNo(String id) {
         return null;
     }
+
+    @Override
+    public void deleteByNo(String id){
+        goodRepository.deleteById(id);
+    }
 }
