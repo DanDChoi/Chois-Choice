@@ -15,7 +15,7 @@ public class GoodServiceImpl implements GoodService{
     private GoodRepository goodRepository;
     @Override
     public List<good> findAll() {
-        return null;
+        return goodRepository.findAll();
     }
 
     @Override
