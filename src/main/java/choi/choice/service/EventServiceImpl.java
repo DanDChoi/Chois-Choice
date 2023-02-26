@@ -1,6 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.evt;
+import choi.choice.domain.Evt;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,17 @@ import java.util.List;
 public class EventServiceImpl implements EventService {
 
     @Override
-    public List<evt> findAll() {
+    public List<Evt> findAll() {
         return null;
     }
 
     @Override
-    public <S extends evt> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Evt> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public evt getById(Long aLong) {
+    public Evt getById(Long aLong) {
         return null;
     }
 

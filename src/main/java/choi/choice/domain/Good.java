@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class good {
+public class Good {
 
     @Id
     @Column(name = "good_no", unique = true)

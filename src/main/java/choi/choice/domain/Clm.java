@@ -1,7 +1,6 @@
 package choi.choice.domain;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -10,7 +9,7 @@ import javax.persistence.Id;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class clm {
+public class Clm {
 
     @Id
     @Column(name = "clm_no", unique = true)

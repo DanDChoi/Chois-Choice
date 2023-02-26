@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @NoArgsConstructor
 @Entity
-public class mbr_grd {
+public class Mbr_grd {
 
     @Id
     @Column(name = "mbr_no", unique = true)

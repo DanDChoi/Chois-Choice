@@ -1,13 +1,13 @@
 package choi.choice.service;
 
-import choi.choice.domain.good;
+import choi.choice.domain.Good;
 
 import java.util.List;
 
 public interface GoodService {
 
-    List<good> findAll();
-    void add(good good);
-    good findByNo(String id);
+    List<Good> findAll();
+    void add(Good good);
+    Good findByNo(String id);
     void deleteByNo(String id);
 }

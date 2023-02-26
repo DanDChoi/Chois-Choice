@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class mbr {
+public class Mbr {
 
     @Id
     @Column(name = "mbr_no", unique = true)
@@ -47,7 +47,7 @@ public class mbr {
     @Column(name = "mbr_stat_cd")
     private String mbrStatCd;
 
-    public mbr(final String mbrEmail){
+    public Mbr(final String mbrEmail){
         this.mbrEmail = mbrEmail;
     }
 
