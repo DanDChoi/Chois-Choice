@@ -1,6 +1,6 @@
 package choi.choice.controller;
 
-import choi.choice.domain.mbr;
+import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.MemberService;
 import org.junit.jupiter.api.Test;
@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @WebMvcTest(MbrController.class)
 public class MbrControllerTest {
@@ -24,7 +21,7 @@ public class MbrControllerTest {
     private MemberService memberService;
 
     @Test
-    public void join(mbr mbr){
+    public void join(Mbr mbr){
         mbrRepository.save(mbr);
     }
 }

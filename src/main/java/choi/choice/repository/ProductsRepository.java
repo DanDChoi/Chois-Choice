@@ -1,6 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.good;
+import choi.choice.domain.Good;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,29 +14,29 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Repository
-public class ProductsRepository implements JpaRepository<good, Long> {
+public class ProductsRepository implements JpaRepository<Good, Long> {
     @Override
-    public void deleteInBatch(Iterable<good> entities) {
+    public void deleteInBatch(Iterable<Good> entities) {
         JpaRepository.super.deleteInBatch(entities);
     }
 
     @Override
-    public List<good> findAll() {
+    public List<Good> findAll() {
         return null;
     }
 
     @Override
-    public List<good> findAll(Sort sort) {
+    public List<Good> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<good> findAll(Pageable pageable) {
+    public Page<Good> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public List<good> findAllById(Iterable<Long> longs) {
+    public List<Good> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -51,7 +51,7 @@ public class ProductsRepository implements JpaRepository<good, Long> {
     }
 
     @Override
-    public void delete(good entity) {
+    public void delete(Good entity) {
 
     }
 
@@ -61,7 +61,7 @@ public class ProductsRepository implements JpaRepository<good, Long> {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends good> entities) {
+    public void deleteAll(Iterable<? extends Good> entities) {
 
     }
 
@@ -71,17 +71,17 @@ public class ProductsRepository implements JpaRepository<good, Long> {
     }
 
     @Override
-    public <S extends good> S save(S entity) {
+    public <S extends Good> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends good> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Good> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<good> findById(Long aLong) {
+    public Optional<Good> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -96,17 +96,17 @@ public class ProductsRepository implements JpaRepository<good, Long> {
     }
 
     @Override
-    public <S extends good> S saveAndFlush(S entity) {
+    public <S extends Good> S saveAndFlush(S entity) {
         return null;
     }
 
     @Override
-    public <S extends good> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends Good> List<S> saveAllAndFlush(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<good> entities) {
+    public void deleteAllInBatch(Iterable<Good> entities) {
 
     }
 
@@ -121,52 +121,52 @@ public class ProductsRepository implements JpaRepository<good, Long> {
     }
 
     @Override
-    public good getOne(Long aLong) {
+    public Good getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public good getById(Long aLong) {
+    public Good getById(Long aLong) {
         return null;
     }
 
     @Override
-    public good getReferenceById(Long aLong) {
+    public Good getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends good> Optional<S> findOne(Example<S> example) {
+    public <S extends Good> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends good> List<S> findAll(Example<S> example) {
+    public <S extends Good> List<S> findAll(Example<S> example) {
         return null;
     }
 
     @Override
-    public <S extends good> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends Good> List<S> findAll(Example<S> example, Sort sort) {
         return null;
     }
 
     @Override
-    public <S extends good> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends Good> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends good> long count(Example<S> example) {
+    public <S extends Good> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends good> boolean exists(Example<S> example) {
+    public <S extends Good> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends good, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends Good, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 }

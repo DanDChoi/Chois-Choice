@@ -1,6 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.evt;
+import choi.choice.domain.Evt;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,24 +14,24 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Repository
-public class EventRepository implements JpaRepository<evt, Long> {
+public class EventRepository implements JpaRepository<Evt, Long> {
     @Override
-    public List<evt> findAll() {
+    public List<Evt> findAll() {
         return null;
     }
 
     @Override
-    public List<evt> findAll(Sort sort) {
+    public List<Evt> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<evt> findAll(Pageable pageable) {
+    public Page<Evt> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public List<evt> findAllById(Iterable<Long> longs) {
+    public List<Evt> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -46,7 +46,7 @@ public class EventRepository implements JpaRepository<evt, Long> {
     }
 
     @Override
-    public void delete(evt entity) {
+    public void delete(Evt entity) {
 
     }
 
@@ -56,7 +56,7 @@ public class EventRepository implements JpaRepository<evt, Long> {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends evt> entities) {
+    public void deleteAll(Iterable<? extends Evt> entities) {
 
     }
 
@@ -66,17 +66,17 @@ public class EventRepository implements JpaRepository<evt, Long> {
     }
 
     @Override
-    public <S extends evt> S save(S entity) {
+    public <S extends Evt> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends evt> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Evt> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<evt> findById(Long aLong) {
+    public Optional<Evt> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -91,12 +91,12 @@ public class EventRepository implements JpaRepository<evt, Long> {
     }
 
     @Override
-    public <S extends evt> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends Evt> List<S> saveAllAndFlush(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<evt> entities) {
+    public void deleteAllInBatch(Iterable<Evt> entities) {
 
     }
 
@@ -111,57 +111,57 @@ public class EventRepository implements JpaRepository<evt, Long> {
     }
 
     @Override
-    public evt getOne(Long aLong) {
+    public Evt getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public evt getById(Long aLong) {
+    public Evt getById(Long aLong) {
         return null;
     }
 
     @Override
-    public evt getReferenceById(Long aLong) {
+    public Evt getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends evt> Optional<S> findOne(Example<S> example) {
+    public <S extends Evt> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends evt> List<S> findAll(Example<S> example) {
+    public <S extends Evt> List<S> findAll(Example<S> example) {
         return null;
     }
 
     @Override
-    public <S extends evt> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends Evt> List<S> findAll(Example<S> example, Sort sort) {
         return null;
     }
 
     @Override
-    public <S extends evt> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends Evt> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends evt> long count(Example<S> example) {
+    public <S extends Evt> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends evt> boolean exists(Example<S> example) {
+    public <S extends Evt> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends evt, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends Evt, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 
     @Override
-    public <S extends evt> S saveAndFlush(S entity) {
+    public <S extends Evt> S saveAndFlush(S entity) {
         return null;
     }
 }

@@ -1,6 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.mbr;
+import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,25 +27,7 @@ public class MemberServiceImpl implements MemberService{
     private MbrRepository mbrRepository;
 
     @Override
-    public String login(@ModelAttribute mbr mbr, HttpServletRequest request, HttpSession session) {
-        if (mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
-            try{
-                // 세션값 설정
-                session.setAttribute("user_id", mbr.getMbrId());
-                session.setAttribute("user_name", mbr.getMbrNm());
-                session.setMaxInactiveInterval(30*60);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }else{
-            return "redirect:/";
-        }
-
-        return "ok";
-    }
-
-    @Override
-    public mbr register(@ModelAttribute mbr mbr) throws NoSuchAlgorithmException {
+    public void register(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
 
 //        if(!mbrRepository.existsById(Long.parseLong(mbr.getMbrId()))){
 //            return mbr;
@@ -67,30 +49,12 @@ public class MemberServiceImpl implements MemberService{
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
             mbr.setMbrSex(mbr.getMbrSex());
             mbr.setMbrStatCd("ACTIVE");
+            log.info("mbrNo={}, mbrId={}, mbrEmail={}, mbrBrthdy={}", mbr.getMbrNo(), mbr.getMbrId(), mbr.getMbrEmail(), mbr.getMbrBrthdy());
             mbrRepository.save(mbr);
-
-            return new mbr("success");
 //        }
     }
 
-    @Override
-    public long count(mbr mbr) {
-        List mbrCount = new ArrayList<>();
-        if(mbrRepository.existsById(mbr.getMbrNo())){
-            mbrCount.add(mbr);
-        }
-        return mbrCount.size();
-    }
 
-    @Override
-    public Optional<mbr> findById(Long id){
-        return mbrRepository.findById(id);
-    }
-
-    @Override
-    public void withdraw(Long id){
-        mbrRepository.deleteById(id);
-    }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");

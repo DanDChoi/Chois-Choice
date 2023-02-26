@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class pay {
+public class Pay {
 
     @Id
     @Column(name = "pay_no", unique = true)
