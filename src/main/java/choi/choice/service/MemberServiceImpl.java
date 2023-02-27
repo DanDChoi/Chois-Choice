@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -26,6 +27,7 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private MbrRepository mbrRepository;
 
+    @Transactional
     @Override
     public void register(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
 
