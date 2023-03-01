@@ -49,7 +49,10 @@ public class MemberServiceImpl implements MemberService{
 //        }
     }
 
-
+    @Override
+    public Optional<Mbr> findById(String id) {
+        return mbrRepository.findById(id);
+    }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
