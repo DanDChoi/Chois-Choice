@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Mbr;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -27,4 +28,5 @@ public class JpaMbrRepository implements MbrRepository{
         Mbr mbr = em.find(Mbr.class, id);
         return Optional.ofNullable(mbr);
     }
+
 }

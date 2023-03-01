@@ -2,7 +2,9 @@ package choi.choice.controller;
 
 import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
+import choi.choice.service.LoginService;
 import choi.choice.service.MemberService;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,12 @@ import java.security.NoSuchAlgorithmException;
 @Controller
 @RequestMapping("/mbr")
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class MbrController {
 
-    @Autowired
     private MemberService memberService;
-    @Autowired
     private MbrRepository mbrRepository;
+    private LoginService loginService;
 
     //회원가입
     @GetMapping("register")
@@ -45,12 +47,13 @@ public class MbrController {
         return "theme/login";
     }
 
-//    @PostMapping("login")
-//    public void login(@ModelAttribute Mbr mbr, HttpServletRequest request) {
-//        request.getSession();
-//        memberService.findById(mbr.getMbrNo());
-//
-//    }
+    @PostMapping("login")
+    public String login(@ModelAttribute Mbr mbr) {
+        if(loginService.login(mbr)){
+            return "loginOK";
+        }
+        return "loginFail";
+    }
 //
 //    @GetMapping("findId")
 //    public String findId(){
