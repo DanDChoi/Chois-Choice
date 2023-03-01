@@ -3,15 +3,16 @@ package choi.choice.service;
 import choi.choice.domain.Good;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class GoodServiceImpl implements GoodService{
 
-    private GoodRepository goodRepository;
+    private final GoodRepository goodRepository;
     @Override
     public List<Good> findAll() {
         return goodRepository.findAll();
