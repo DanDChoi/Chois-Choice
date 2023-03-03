@@ -1,13 +1,20 @@
 package choi.choice.domain;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@NoArgsConstructor
 @Entity
+@Table(name = "mbr_grd")
+@Getter
+@Setter
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Mbr_grd {
 
     @Id
