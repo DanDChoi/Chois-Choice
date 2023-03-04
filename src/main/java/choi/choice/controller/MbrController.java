@@ -9,12 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.security.NoSuchAlgorithmException;
 
 @Slf4j
@@ -48,11 +51,18 @@ public class MbrController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr) {
-        if(loginService.login(mbr)){
-            return "loginOK";
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletResponse response) {
+        if (bindingResult.hasErrors()) {
+            return "theme/login";
         }
-        return "loginFail";
+        boolean loginMbr = loginService.login(mbr);
+        if (!loginMbr) {
+            bindingResult.reject("LoginFail", "아이디와 비밀번호가 맞지 않습니다");
+            return "theme/login";
+        }
+        Cookie cookie = new Cookie("mbrId", mbr.getMbrId());
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 //
 //    @GetMapping("findId")
