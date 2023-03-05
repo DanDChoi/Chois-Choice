@@ -19,12 +19,12 @@ public class HomeController {
     private final MbrRepository mbrRepository;
 
     @GetMapping("/")
-    public String home(@CookieValue(name = "mbrId", required = false) String mbrId, Model model){
-        if (mbrId == null) {
+    public String home(@CookieValue(name = "mbrEmail", required = false) String mbrEmail, Model model){
+        if (mbrEmail == null) {
             return "theme/index";
 
         }
-        Optional<Mbr> loginMbr = mbrRepository.findById(mbrId);
+        Optional<Mbr> loginMbr = mbrRepository.findById(mbrEmail);
         if (loginMbr == null) {
             return "theme/index";
         }

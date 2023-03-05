@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.naming.Binding;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,12 +25,11 @@ import java.security.NoSuchAlgorithmException;
 @Controller
 @RequestMapping("/mbr")
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class MbrController {
 
-    private MemberService memberService;
-    private MbrRepository mbrRepository;
-    private LoginService loginService;
+    private final MemberService memberService;
+    private final MbrRepository mbrRepository;
+    private final LoginService loginService;
 
     //회원가입
     @GetMapping("register")
@@ -38,10 +38,16 @@ public class MbrController {
     }
 
     @PostMapping(value ="register/add")
-    public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
-//        new ResponseEntity<mbr>(memberService.register(mbr), HttpStatus.OK);
+    public String mbrJoin(@ModelAttribute Mbr mbr, BindingResult bindingResult) throws NoSuchAlgorithmException {
+//        Mbr joinedMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
+//        if (joinedMbr != null) {
+//            bindingResult.reject("RegistFail", "이미 가입된 이메일입니다.");
+//            return "redirect:/register/add";
+//        }
+//
+//        Long tempNo = System.currentTimeMillis();
+//        mbr.setMbrNo(tempNo);
         memberService.register(mbr);
-//        mbrRepository.save(mbr);
         return "redirect:/";
     }
 
@@ -57,10 +63,10 @@ public class MbrController {
         }
         boolean loginMbr = loginService.login(mbr);
         if (!loginMbr) {
-            bindingResult.reject("LoginFail", "아이디와 비밀번호가 맞지 않습니다");
+            bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             return "theme/login";
         }
-        Cookie cookie = new Cookie("mbrId", mbr.getMbrId());
+        Cookie cookie = new Cookie("mbrEmail", mbr.getMbrEmail());
         response.addCookie(cookie);
         return "redirect:/";
     }

@@ -29,4 +29,9 @@ public class JpaMbrRepository implements MbrRepository{
         return Optional.ofNullable(mbr);
     }
 
+    @Override
+    public Mbr findByEmail(String email) {
+        Mbr mbr = em.find(Mbr.class, email);
+        return mbr;
+    }
 }
