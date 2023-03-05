@@ -38,8 +38,9 @@ public class MemberServiceImpl implements MemberService{
             //비밀번호 암호화
             String pwd = encrypt(mbr.getMbrPwd());
 
-            mbr.setMbrId(mbr.getMbrId());
+//            mbr.setMbrId(mbr.getMbrId());
             mbr.setMbrNo(no);
+            log.info("mbrNo={},mbrEmail={}", mbr.getMbrNo(),mbr.getMbrEmail());
             mbr.setMbrEmail(mbr.getMbrEmail());
             mbr.setMbrPwd(pwd);
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
@@ -53,6 +54,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Optional<Mbr> findById(String id) {
         return mbrRepository.findById(id);
+    }
+
+    @Override
+    public Mbr findByEmail(String email) {
+        return mbrRepository.findByEmail(email);
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {

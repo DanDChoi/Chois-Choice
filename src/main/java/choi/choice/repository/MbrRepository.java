@@ -10,5 +10,5 @@ public interface MbrRepository {
     void save(Mbr mbr);
     Optional<Mbr> findById(String id);
 
-
+    Mbr findByEmail(String email);
 }
