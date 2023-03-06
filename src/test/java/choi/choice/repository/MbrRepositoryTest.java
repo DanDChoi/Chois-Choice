@@ -21,11 +21,11 @@ public class MbrRepositoryTest {
         Mbr m = Mbr.builder()
                 .mbrEmail("test@naver.com")
                 .mbrNm("홍길동")
-                .mbrNo("M202301151234")
+                .mbrNo(202301151234L)
                 .build();
 
-        Mbr savedMbr = mbrRepository.save(m);
+        mbrRepository.save(m);
 
-        Assertions.assertEquals(m.getMbrNm(), savedMbr.getMbrNm());
+        Assertions.assertEquals(m.getMbrNm(), mbrRepository.findByEmail("test@naver.com"));
     }
 }
