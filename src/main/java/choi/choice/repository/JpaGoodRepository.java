@@ -20,4 +20,10 @@ public class JpaGoodRepository implements GoodRepository{
     public void save(Good good) {
         em.persist(good);
     }
+
+    @Override
+    public Good findByNo(String goodNo) {
+        Good good = em.find(Good.class, goodNo);
+        return good;
+    }
 }
