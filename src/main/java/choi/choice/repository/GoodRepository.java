@@ -5,4 +5,6 @@ import choi.choice.domain.Good;
 public interface GoodRepository{
 
     void save(Good good);
+
+    Good findByNo(String goodNo);
 }
