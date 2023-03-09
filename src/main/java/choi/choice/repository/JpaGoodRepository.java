@@ -26,4 +26,8 @@ public class JpaGoodRepository implements GoodRepository{
         Good good = em.find(Good.class, goodNo);
         return good;
     }
+
+    @Override
+    public void deleteByNo(String goodNo) {
+    }
 }

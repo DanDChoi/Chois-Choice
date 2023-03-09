@@ -13,10 +13,6 @@ import java.util.List;
 public class GoodServiceImpl implements GoodService{
 
     private final GoodRepository goodRepository;
-    @Override
-    public List<Good> findAll() {
-        return goodRepository.findAll();
-    }
 
     @Override
     public void add(Good good) {
@@ -29,7 +25,7 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public void deleteByNo(String id){
-        goodRepository.deleteById(id);
+    public void deleteByNo(String goodNo){
+        goodRepository.deleteByNo(goodNo);
     }
 }
