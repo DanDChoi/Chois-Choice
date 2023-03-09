@@ -7,4 +7,6 @@ public interface GoodRepository{
     void save(Good good);
 
     Good findByNo(String goodNo);
+
+    void deleteByNo(String goodNo);
 }
