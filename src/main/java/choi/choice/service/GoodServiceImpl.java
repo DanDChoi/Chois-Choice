@@ -20,8 +20,8 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public Good findByNo(String id) {
-        return null;
+    public Good findByNo(String goodNo) {
+        return goodRepository.findByNo(goodNo);
     }
 
     @Override
