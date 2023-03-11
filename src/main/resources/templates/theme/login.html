@@ -139,10 +139,10 @@
       <div class="col-lg-5 col-md-8 align-item-center">
         <div class="border">
           <h3 class="bg-gray p-4">Login Now</h3>
-          <form action="login">
+          <form action="/mbr/login" method="post">
             <fieldset class="p-4">
-              <input class="form-control mb-3" type="text" placeholder="Username" required>
-              <input class="form-control mb-3" type="password" placeholder="Password" required>
+              <input class="form-control mb-3" type="text" name="mbrEmail" placeholder="Username" required>
+              <input class="form-control mb-3" type="password" name="mbrPwd" placeholder="Password" required>
               <div class="loggedin-forgot">
                 <input type="checkbox" id="keep-me-logged-in">
                 <label for="keep-me-logged-in" class="pt-3 pb-2">Keep me logged in</label>

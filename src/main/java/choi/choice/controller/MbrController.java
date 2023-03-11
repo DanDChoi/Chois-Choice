@@ -51,23 +51,27 @@ public class MbrController {
         return "redirect:/";
     }
 
-    @GetMapping("login")
+    @GetMapping("loginForm")
     public String loginForm(){
-        return "theme/login";
+        log.info("login form entered");return "theme/login";
     }
 
     @PostMapping("login")
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletResponse response) {
+        log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "theme/login";
         }
         boolean loginMbr = loginService.login(mbr);
+        log.info("login 성공여부={}", loginMbr);
         if (!loginMbr) {
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
+            log.info("로그인실패");
             return "theme/login";
         }
         Cookie cookie = new Cookie("mbrEmail", mbr.getMbrEmail());
         response.addCookie(cookie);
+        log.info("로그인성공, 쿠키={}", cookie.getName());
         return "redirect:/";
     }
 //

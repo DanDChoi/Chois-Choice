@@ -13,12 +13,12 @@ public class LoginServiceImpl implements LoginService{
     private final MbrRepository mbrRepository;
     @Override
     public boolean login(Mbr mbr){
-        Optional<Mbr> findMbr = mbrRepository.findById(mbr.getMbrId());
+        Mbr findMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
 
         if (findMbr == null) {
             return false;
         }
-        if (!findMbr.get().getMbrPwd().equals(mbr.getMbrPwd())) {
+        if (!findMbr.getMbrPwd().equals(mbr.getMbrPwd())) {
             return false;
         }
         return true;
