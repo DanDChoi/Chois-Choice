@@ -19,6 +19,7 @@ import javax.naming.Binding;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 
 @Slf4j
@@ -33,11 +34,11 @@ public class MbrController {
 
     //회원가입
     @GetMapping("register")
-    public String register(){
+    public String register() {
         return "theme/register";
     }
 
-    @PostMapping(value ="register/add")
+    @PostMapping(value = "register/add")
     public String mbrJoin(@ModelAttribute Mbr mbr, BindingResult bindingResult) throws NoSuchAlgorithmException {
 //        Mbr joinedMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
 //        if (joinedMbr != null) {
@@ -52,26 +53,40 @@ public class MbrController {
     }
 
     @GetMapping("loginForm")
-    public String loginForm(){
-        log.info("login form entered");return "theme/login";
+    public String loginForm() {
+        log.info("login form entered");
+        return "theme/login";
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletResponse response) {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "theme/login";
         }
+
         boolean loginMbr = loginService.login(mbr);
         log.info("login 성공여부={}", loginMbr);
+
         if (!loginMbr) {
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
             return "theme/login";
         }
-        Cookie cookie = new Cookie("mbrEmail", mbr.getMbrEmail());
-        response.addCookie(cookie);
-        log.info("로그인성공, 쿠키={}", cookie.getName());
+
+        HttpSession session = request.getSession();
+        session.setAttribute("loginMbr", mbr);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+
         return "redirect:/";
     }
 //
