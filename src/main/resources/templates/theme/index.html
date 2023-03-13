@@ -123,6 +123,7 @@
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
+								<span th:if="${mbr}">${mbr.mbrNm}님</span>
 								<a th:if="${mbr}" sec:authorize="isAuthenticated()">Log out</a>
 								<a th:if="!${mbr}" sec:authorize="!isAutenticated()" class="nav-link login-button" href="mbr/loginForm">Login</a>
 							</li>
