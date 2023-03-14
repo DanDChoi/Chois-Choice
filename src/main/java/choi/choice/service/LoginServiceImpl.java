@@ -5,21 +5,40 @@ import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 @Service
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService{
 
     private final MbrRepository mbrRepository;
     @Override
-    public boolean login(Mbr mbr){
+    public boolean login(Mbr mbr) throws NoSuchAlgorithmException {
         Mbr findMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
 
         if (findMbr == null) {
             return false;
         }
-        if (!findMbr.getMbrPwd().equals(mbr.getMbrPwd())) {
+        String pwd = encrypt(mbr.getMbrPwd());
+        if (!findMbr.getMbrPwd().equals(pwd)) {
             return false;
         }
         return true;
     }
+
+    public String encrypt(String text) throws NoSuchAlgorithmException {
+           MessageDigest md = MessageDigest.getInstance("SHA-256");
+           md.update(text.getBytes());
+
+           return bytesToHex(md.digest());
+       }
+
+       private String bytesToHex(byte[] bytes) {
+           StringBuilder builder = new StringBuilder();
+           for (byte b : bytes) {
+               builder.append(String.format("%02x", b));
+           }
+           return builder.toString();
+       }
 }
