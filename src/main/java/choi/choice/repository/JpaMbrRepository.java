@@ -24,9 +24,9 @@ public class JpaMbrRepository implements MbrRepository{
     }
 
     @Override
-    public Optional<Mbr> findById(String id) {
+    public Mbr findById(String id) {
         Mbr mbr = em.find(Mbr.class, id);
-        return Optional.ofNullable(mbr);
+        return mbr;
     }
 
     @Override

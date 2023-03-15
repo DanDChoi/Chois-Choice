@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface MemberService {
 
     void register(Mbr mbr) throws NoSuchAlgorithmException;
-    Optional<Mbr> findById (String id);
+    Mbr findById (String id);
 
     Mbr findByEmail(String email);
 

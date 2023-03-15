@@ -25,7 +25,7 @@ public class HomeController {
             return "theme/index";
 
         }
-        Optional<Mbr> loginMbr = mbrRepository.findById(mbrEmail);
+        Mbr loginMbr = mbrRepository.findById(mbrEmail);
         if (loginMbr == null) {
             return "theme/index";
         }
