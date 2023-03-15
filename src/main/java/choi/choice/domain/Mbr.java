@@ -18,8 +18,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Mbr {
 
-    @Id
-    @Column(name = "mbr_no", unique = true)
+
+    @Column(name = "mbr_no")
     private Long mbrNo;
     @Column(name = "mbr_id")
     private String mbrId;
@@ -27,8 +27,9 @@ public class Mbr {
     private String mbrNm;
     @Column(name = "mbr_sex")
     private String mbrSex;
+    @Id
     @NotNull
-    @Column(name = "mbr_email")
+    @Column(name = "mbr_email", unique = true)
     private String mbrEmail;
     @Column(name = "mbr_pwd")
     private String mbrPwd;

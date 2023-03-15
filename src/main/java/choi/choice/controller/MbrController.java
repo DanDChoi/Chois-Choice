@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,7 +60,7 @@ public class MbrController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, Model model, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "theme/login";
@@ -76,6 +77,7 @@ public class MbrController {
 
         HttpSession session = request.getSession();
         session.setAttribute("loginMbr", mbr);
+//        model.addAttribute("mbr", mbr);
 
         return "redirect:/";
     }

@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Optional<Mbr> findById(String id) {
+    public Mbr findById(String id) {
         return mbrRepository.findById(id);
     }
 
