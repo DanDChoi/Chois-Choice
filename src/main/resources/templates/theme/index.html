@@ -6,7 +6,7 @@
  // FACEBOOK: https://www.facebook.com/themefisher
  // GITHUB: https://github.com/themefisher/
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
 
@@ -123,7 +123,7 @@
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li th:if="${mbr}" class="nav-item">
-								<span th:text="${mbr.mbrNm}">님</span>
+								<span th:text="${mbrNm}">님</span>
 								<a sec:authorize="isAuthenticated()">Log out</a>
 							</li>
 							<li th:if="!${mbr}" class="nav-item">
@@ -673,6 +673,7 @@ Essential Scripts
 <script src="/plugins/google-map/map.js" defer></script>
 
 <script src="/js/script.js"></script>
+
 
 </body>
 
