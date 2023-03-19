@@ -35,9 +35,6 @@ public class HomeController {
             return "theme/index";
         }
         log.info("5");
-
-        model.addAttribute("mbr", loginMbr);
-        model.addAttribute("mbrNm", loginMbr.getMbrNm());
         return "theme/index";
     }
 }
