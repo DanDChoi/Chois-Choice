@@ -4,6 +4,8 @@ import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.LoginService;
 import choi.choice.service.MemberService;
+import choi.choice.service.SessionManager;
+import com.mysql.cj.Session;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,8 @@ public class MbrController {
     private final MemberService memberService;
     private final MbrRepository mbrRepository;
     private final LoginService loginService;
+
+    private final SessionManager sessionManager;
 
     //회원가입
     @GetMapping("register")
@@ -75,8 +79,12 @@ public class MbrController {
             return "theme/login";
         }
 
+        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
+        response.addCookie(idCookie);
+
         HttpSession session = request.getSession();
         session.setAttribute("loginMbr", mbr);
+        sessionManager.createSession("loginMbr", response);
 //        model.addAttribute("mbr", mbr);
 
         return "redirect:/";

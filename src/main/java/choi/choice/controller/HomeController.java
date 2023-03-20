@@ -2,6 +2,7 @@ package choi.choice.controller;
 
 import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Slf4j
@@ -18,15 +20,16 @@ import java.util.Optional;
 public class HomeController {
 
     private final MbrRepository mbrRepository;
+    private final SessionManager sessionManager;
 
     @GetMapping("/")
-    public String home(@SessionAttribute(value = "loginMbr", required = false) String mbrEmail, Model model, Mbr mbr){
+    public String home(@SessionAttribute(value = "loginMbr", required = false) String mbrEmail, Model model, Mbr mbr, HttpServletRequest request){
         log.info("1");
         if (mbrEmail == null) {
             log.info("2");
             return "theme/index";
         }
-        Mbr loginMbr = mbrRepository.findById(mbr.getMbrEmail());
+        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
         log.info("3");
 
         if (loginMbr == null) {
@@ -34,6 +37,7 @@ public class HomeController {
 
             return "theme/index";
         }
+        model.addAttribute("loginMbr", loginMbr);
         log.info("5");
         return "theme/index";
     }
