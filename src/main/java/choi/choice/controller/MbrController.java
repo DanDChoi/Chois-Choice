@@ -82,8 +82,8 @@ public class MbrController {
         Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
         response.addCookie(idCookie);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("loginMbr", mbr);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("loginMbr", mbr);
         sessionManager.createSession("loginMbr", response);
 //        model.addAttribute("mbr", mbr);
 
