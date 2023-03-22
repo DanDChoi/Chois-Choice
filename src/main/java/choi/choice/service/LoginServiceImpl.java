@@ -5,6 +5,7 @@ import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -13,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 public class LoginServiceImpl implements LoginService{
 
     private final MbrRepository mbrRepository;
+    private final SessionManager sessionManager;
     @Override
     public boolean login(Mbr mbr) throws NoSuchAlgorithmException {
         Mbr findMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
@@ -25,6 +27,11 @@ public class LoginServiceImpl implements LoginService{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void logout(HttpServletRequest request){
+        sessionManager.expire(request);
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {
