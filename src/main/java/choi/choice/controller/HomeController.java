@@ -25,18 +25,13 @@ public class HomeController {
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMbr", required = false) String mbrEmail, Model model, Mbr mbr, HttpServletRequest request){
         log.info("1");
-        if (mbrEmail == null) {
+        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
+        if (loginMbr == null) {
             log.info("2");
             return "theme/index";
         }
-        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
         log.info("3");
 
-        if (loginMbr == null) {
-            log.info("4");
-
-            return "theme/index";
-        }
         model.addAttribute("loginMbr", loginMbr);
         log.info("5");
         return "theme/index";
