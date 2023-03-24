@@ -32,11 +32,6 @@ public class HomeController {
         Mbr loginMbr = (Mbr)sessionManager.getSession(request);
         log.info("3");
 
-        if (loginMbr == null) {
-            log.info("4");
-
-            return "theme/index";
-        }
         model.addAttribute("loginMbr", loginMbr);
         log.info("5");
         return "theme/index";
