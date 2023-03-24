@@ -90,7 +90,7 @@ public class MbrController {
         return "redirect:/";
     }
 
-    @PostMapping("logout")
+    @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session != null) {

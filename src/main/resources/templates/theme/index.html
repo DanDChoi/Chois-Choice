@@ -122,11 +122,10 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-							<li th:if="${mbr}" class="nav-item">
-								<li th:text="안녕하세요"></li>
-								<a sec:authorize="isAuthenticated()" class="nav-link login-button" href="mbr/logout">Log out</a>
-							</li>
-							<li th:if="!${mbr}" class="nav-item">
+<!--							<li th:if="${mbr}" class="nav-item">-->
+<!--								<a sec:authorize="isAuthenticated()" class="nav-link login-button" href="mbr/logout">Log out</a>-->
+<!--							</li>-->
+							<li  class="nav-item">
 								<a sec:authorize="!isAutenticated()" class="nav-link login-button" href="mbr/loginForm">Login</a>
 							</li>
 							<li class="nav-item">
