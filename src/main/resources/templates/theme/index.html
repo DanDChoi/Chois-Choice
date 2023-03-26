@@ -122,11 +122,11 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-<!--							<li th:if="${mbr}" class="nav-item">-->
-<!--								<a sec:authorize="isAuthenticated()" class="nav-link login-button" href="mbr/logout">Log out</a>-->
-<!--							</li>-->
-							<li  class="nav-item">
-								<a sec:authorize="!isAutenticated()" class="nav-link login-button" href="mbr/loginForm">Login</a>
+							<li th:if="${loginMbr}" class="nav-item">
+								<a class="nav-link login-button" href="mbr/logout">Log out</a>
+							</li>
+							<li th:if="!${loginMbr}" class="nav-item">
+								<a class="nav-link login-button" href="mbr/loginForm">Login</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>

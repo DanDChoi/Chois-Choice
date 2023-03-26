@@ -29,6 +29,11 @@ public class HomeController {
 //            log.info("2");
 //            return "theme/index";
 //        }
+        if (sessionManager.getSession(request) == null) {
+            log.info("session={}", sessionManager.getSession(request));
+            return "theme/index";
+        }
+
         Mbr loginMbr = (Mbr)sessionManager.getSession(request);
         log.info("3");
 
