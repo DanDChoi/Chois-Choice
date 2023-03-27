@@ -24,21 +24,14 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMbr", required = false) String mbrEmail, Model model, Mbr mbr, HttpServletRequest request){
-        log.info("1");
-//        if (mbrEmail == null) {
-//            log.info("2");
-//            return "theme/index";
-//        }
-        if (sessionManager.getSession(request) == null) {
-            log.info("session={}", sessionManager.getSession(request));
+
+        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
+
+        if (loginMbr == null) {
             return "theme/index";
         }
 
-        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
-        log.info("3");
-
         model.addAttribute("loginMbr", loginMbr);
-        log.info("5");
         return "theme/index";
     }
 }
