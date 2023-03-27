@@ -64,7 +64,7 @@ public class MbrController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, Model model, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletResponse response) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "theme/login";
