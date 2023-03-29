@@ -23,7 +23,7 @@ public class HomeController {
     private final SessionManager sessionManager;
 
     @GetMapping("/")
-    public String home(@SessionAttribute(value = "loginMbr", required = false) String mbrEmail, Model model, Mbr mbr, HttpServletRequest request){
+    public String home(@SessionAttribute(value = "loginMbr", required = false)Model model, HttpServletRequest request){
 
         Mbr loginMbr = (Mbr)sessionManager.getSession(request);
 
