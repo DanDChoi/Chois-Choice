@@ -64,7 +64,7 @@ public class MbrController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletResponse response) throws NoSuchAlgorithmException {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "theme/login";
@@ -79,10 +79,15 @@ public class MbrController {
             return "theme/login";
         }
 
-        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
-        response.addCookie(idCookie);
+        Mbr findMbr = mbrRepository.findById(mbr.getMbrId());
 
-        sessionManager.createSession("loginMbr", response);
+        HttpSession session = request.getSession();
+        session.setAttribute("loginMember", findMbr);
+
+//        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
+//        response.addCookie(idCookie);
+//
+//        sessionManager.createSession("loginMbr", response);
 
         return "redirect:/";
     }

@@ -23,15 +23,15 @@ public class HomeController {
     private final SessionManager sessionManager;
 
     @GetMapping("/")
-    public String home(@SessionAttribute(value = "loginMbr", required = false)Model model, HttpServletRequest request){
+    public String home(@SessionAttribute(value = "loginMember", required = false)Mbr loginMember, Model model, HttpServletRequest request){
 
-        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
+//        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
 
-        if (loginMbr == null) {
+        if (loginMember == null) {
             return "theme/index";
         }
 
-        model.addAttribute("loginMbr", loginMbr);
+        model.addAttribute("member", loginMember);
         return "theme/index";
     }
 }
