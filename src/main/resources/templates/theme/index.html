@@ -122,10 +122,10 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-							<li th:if="${loginMbr}" class="nav-item">
+							<li th:if="${member}" class="nav-item">
 								<a class="nav-link login-button" href="mbr/logout">Log out</a>
 							</li>
-							<li th:if="!${loginMbr}" class="nav-item">
+							<li th:if="!${member}" class="nav-item">
 								<a class="nav-link login-button" href="mbr/loginForm">Login</a>
 							</li>
 							<li class="nav-item">
