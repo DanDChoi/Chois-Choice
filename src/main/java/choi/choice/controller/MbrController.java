@@ -70,10 +70,7 @@ public class MbrController {
             return "theme/login";
         }
 
-        boolean loginMbr = loginService.login(mbr);
-        log.info("login 성공여부={}", loginMbr);
-
-        if (!loginMbr) {
+        if (!loginService.login(mbr)) {
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
             return "theme/login";
