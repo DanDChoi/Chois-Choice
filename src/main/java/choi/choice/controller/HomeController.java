@@ -25,12 +25,12 @@ public class HomeController {
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMember", required = false)Mbr loginMember, Model model, HttpServletRequest request){
 
-//        Mbr loginMbr = (Mbr)sessionManager.getSession(request);
-
+        log.info("homecontroller 진입");
         if (loginMember == null) {
+            log.info("loginMember If 진입 ={} ", loginMember);
             return "theme/index";
         }
-
+        log.info("loginMember if 미진입 ={}", loginMember);
         model.addAttribute("member", loginMember);
         return "theme/index";
     }

@@ -69,15 +69,16 @@ public class MbrController {
         if (bindingResult.hasErrors()) {
             return "theme/login";
         }
-
+        log.info("loginService login ={}", loginService.login(mbr));
         if (!loginService.login(mbr)) {
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
             return "theme/login";
         }
 
-        Mbr findMbr = mbrRepository.findById(mbr.getMbrId());
+        Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
 
+        log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
         session.setAttribute("loginMember", findMbr);
 
