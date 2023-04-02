@@ -6,8 +6,11 @@
  // FACEBOOK: https://www.facebook.com/themefisher
  // GITHUB: https://github.com/themefisher/
 -->
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.w3.org/1999/xhtml"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  lang="en"
+>
 <head>
 
   <!-- ** Basic Page Needs ** -->
@@ -554,15 +557,11 @@
 	<!-- Container End -->
 </section>
 
+<!--<footer th:replace="fragment/footer :: footerFragment"></footer>-->
 
 <!-- 
 Essential Scripts
 =====================================-->
-<script>
-	$(document).ready(function(){
-		document.getElementById("footer").innerHTML='<object type="text/html" data="footer.html"></object>';
-	})
-</script>
 
 <script src="/plugins/jquery/jquery.min.js"></script>
 <script src="/plugins/bootstrap/popper.min.js"></script>
