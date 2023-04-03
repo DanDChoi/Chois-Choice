@@ -38,7 +38,6 @@ public class MemberServiceImpl implements MemberService{
             //비밀번호 암호화
             String pwd = encrypt(mbr.getMbrPwd());
 
-//            mbr.setMbrId(mbr.getMbrId());
             mbr.setMbrNo(no);
             log.info("mbrNo={},mbrEmail={}", mbr.getMbrNo(),mbr.getMbrEmail());
             mbr.setMbrEmail(mbr.getMbrEmail());

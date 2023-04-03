@@ -44,15 +44,7 @@ public class MbrController {
     }
 
     @PostMapping(value = "register/add")
-    public String mbrJoin(@ModelAttribute Mbr mbr, BindingResult bindingResult) throws NoSuchAlgorithmException {
-//        Mbr joinedMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
-//        if (joinedMbr != null) {
-//            bindingResult.reject("RegistFail", "이미 가입된 이메일입니다.");
-//            return "redirect:/register/add";
-//        }
-//
-//        Long tempNo = System.currentTimeMillis();
-//        mbr.setMbrNo(tempNo);
+    public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
         memberService.register(mbr);
         return "redirect:/";
     }
