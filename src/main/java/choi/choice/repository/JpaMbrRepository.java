@@ -26,6 +26,7 @@ public class JpaMbrRepository implements MbrRepository{
     @Override
     public Mbr findById(String id) {
         Mbr mbr = em.find(Mbr.class, id);
+        em.persist(mbr);
         return mbr;
     }
 
