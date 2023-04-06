@@ -30,4 +30,9 @@ public class ProductsController {
 //        goodService.
         return "";
     }
+
+    @GetMapping("delete")
+    public void deleteGood(String godNo){
+
+    }
 }
