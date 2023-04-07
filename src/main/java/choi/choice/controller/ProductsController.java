@@ -27,12 +27,18 @@ public class ProductsController {
 
     @PostMapping("create/add")
     public String createGood(@ModelAttribute Good good) {
-//        goodService.
-        return "";
+        goodService.add(good);
+        return "ok";
+    }
+
+    @GetMapping("search")
+    public String searchGood(String goodNo) {
+        goodService.findByNo(goodNo);
+        return "ok";
     }
 
     @GetMapping("delete")
-    public void deleteGood(String godNo){
-
+    public void deleteGood(String goodNo){
+        goodService.deleteByNo(goodNo);
     }
 }
