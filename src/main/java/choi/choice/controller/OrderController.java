@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/evt")
+@RequestMapping("/ord")
 @RequiredArgsConstructor
-public class EventController {
+public class OrderController {
 }
