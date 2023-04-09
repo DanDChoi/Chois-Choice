@@ -28,10 +28,10 @@ public class HomeController {
         log.info("homecontroller 진입");
         if (loginMember == null) {
             log.info("loginMember If 진입 ={} ", loginMember);
-            return "theme/index";
+            return "index";
         }
         log.info("loginMember if 미진입 ={}", loginMember);
         model.addAttribute("member", loginMember);
-        return "theme/index";
+        return "index";
     }
 }

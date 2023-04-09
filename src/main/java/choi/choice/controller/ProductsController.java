@@ -22,7 +22,7 @@ public class ProductsController {
 
     @GetMapping("create")
     public String createGoodForm() {
-        return "theme/good/createForm";
+        return "good/createForm";
     }
 
     @PostMapping("create/add")
