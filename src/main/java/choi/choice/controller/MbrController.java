@@ -40,7 +40,7 @@ public class MbrController {
     //회원가입
     @GetMapping("register")
     public String register() {
-        return "theme/register";
+        return "register";
     }
 
     @PostMapping(value = "register/add")
@@ -52,20 +52,20 @@ public class MbrController {
     @GetMapping("loginForm")
     public String loginForm() {
         log.info("login form entered");
-        return "theme/login";
+        return "login";
     }
 
     @PostMapping("login")
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
-            return "theme/login";
+            return "login";
         }
         log.info("loginService login ={}", loginService.login(mbr));
         if (!loginService.login(mbr)) {
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
-            return "theme/login";
+            return "login";
         }
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
