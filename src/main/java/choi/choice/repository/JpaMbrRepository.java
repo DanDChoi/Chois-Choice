@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrGrd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,11 @@ public class JpaMbrRepository implements MbrRepository{
     @Override
     public void save(Mbr mbr) {
         em.persist(mbr);
+    }
+
+    @Override
+    public void saveGrd(MbrGrd mbrGrd) {
+        em.persist(mbrGrd);
     }
 
     @Override
