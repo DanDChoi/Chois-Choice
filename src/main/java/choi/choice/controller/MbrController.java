@@ -56,7 +56,7 @@ public class MbrController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, Model model) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
             return "login";
@@ -70,9 +70,11 @@ public class MbrController {
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
 
+
         log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
         session.setAttribute("loginMember", findMbr);
+        model.addAttribute("member", findMbr);
 
 //        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
 //        response.addCookie(idCookie);

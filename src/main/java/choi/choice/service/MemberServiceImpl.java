@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrGrd;
 import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,8 +46,10 @@ public class MemberServiceImpl implements MemberService{
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
             mbr.setMbrSex(mbr.getMbrSex());
             mbr.setMbrStatCd("ACTIVE");
+            MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN");
             log.info("mbrNo={}, mbrId={}, mbrEmail={}, mbrBrthdy={}", mbr.getMbrNo(), mbr.getMbrId(), mbr.getMbrEmail(), mbr.getMbrBrthdy());
             mbrRepository.save(mbr);
+            mbrRepository.saveGrd(mbrGrd);
 //        }
     }
 
