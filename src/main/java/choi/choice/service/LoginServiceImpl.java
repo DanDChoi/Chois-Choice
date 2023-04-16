@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -16,6 +17,7 @@ public class LoginServiceImpl implements LoginService{
     private final MbrRepository mbrRepository;
     private final SessionManager sessionManager;
     @Override
+    @Transactional
     public boolean login(Mbr mbr) throws NoSuchAlgorithmException {
         Mbr findMbr = mbrRepository.findByEmail(mbr.getMbrEmail());
 

@@ -2,10 +2,7 @@ package choi.choice.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -51,5 +48,11 @@ public class Mbr {
     public Mbr(final String mbrEmail){
         this.mbrEmail = mbrEmail;
     }
+
+//    @OneToOne
+//    @JoinTable(name = "MBR_GRD",
+//        joinColumns = @JoinColumn(name = "mbr_no")
+//    )
+//    private MbrGrd mbrGrd;
 
 }

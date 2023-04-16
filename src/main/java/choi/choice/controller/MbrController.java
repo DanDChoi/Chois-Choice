@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrGrd;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.LoginService;
 import choi.choice.service.MemberService;
@@ -23,6 +24,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.InvocationTargetException;
 import java.security.NoSuchAlgorithmException;
 
 @Slf4j
@@ -70,11 +72,12 @@ public class MbrController {
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
 
-
         log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
+
         session.setAttribute("loginMember", findMbr);
-        model.addAttribute("member", findMbr);
+        model.addAttribute("mbr", findMbr);
+
 
 //        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
 //        response.addCookie(idCookie);

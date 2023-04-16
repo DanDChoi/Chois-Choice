@@ -3,13 +3,12 @@ package choi.choice.repository;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.MbrGrd;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
-import java.util.Optional;
+import javax.transaction.Transactional;
 
 @Repository
+@Transactional
 public class JpaMbrRepository implements MbrRepository{
 
     private final EntityManager em;
@@ -40,5 +39,13 @@ public class JpaMbrRepository implements MbrRepository{
     public Mbr findByEmail(String email) {
         Mbr mbr = em.find(Mbr.class, email);
         return mbr;
+    }
+
+    @Override
+    @Transactional
+    public MbrGrd findGrdByNo(Long mbrNo) {
+        MbrGrd mbrGrd = em.find(MbrGrd.class, mbrNo);
+        em.persist(mbrGrd);
+        return mbrGrd;
     }
 }
