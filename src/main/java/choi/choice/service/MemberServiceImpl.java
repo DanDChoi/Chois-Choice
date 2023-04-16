@@ -54,6 +54,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    @Transactional
     public Mbr findById(String id) {
         return mbrRepository.findById(id);
     }
@@ -61,6 +62,12 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Mbr findByEmail(String email) {
         return mbrRepository.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public MbrGrd findGrdByNo(Long mbrNo) {
+        return mbrRepository.findGrdByNo(mbrNo);
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {

@@ -12,4 +12,6 @@ public interface MbrRepository {
     Mbr findById(String id);
 
     Mbr findByEmail(String email);
+
+    MbrGrd findGrdByNo(Long mbrNo);
 }
