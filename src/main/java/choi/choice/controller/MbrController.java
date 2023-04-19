@@ -40,24 +40,24 @@ public class MbrController {
     private final SessionManager sessionManager;
 
     //회원가입
-    @GetMapping("register")
+    @GetMapping("/register")
     public String register() {
         return "register";
     }
 
-    @PostMapping(value = "register/add")
+    @PostMapping(value = "/register/add")
     public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
         memberService.register(mbr);
         return "redirect:/";
     }
 
-    @GetMapping("loginForm")
+    @GetMapping("/loginForm")
     public String loginForm() {
         log.info("login form entered");
         return "login";
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, Model model) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
