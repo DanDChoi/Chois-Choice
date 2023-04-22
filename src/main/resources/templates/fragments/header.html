@@ -85,7 +85,7 @@
             <ul class="navbar-nav ml-auto mt-10">
               <li th:if="${member}" class="nav-item">
                 <a class="nav-link login-button" href="mbr/logout">Log out</a>
-                <a th:if="${mbr.mbrGrd} == 'admin'" class="nav-link login-button" href="mbr/adminPage" >Admin Menu</a>
+<!--                <a th:if="${member.mbrGrd} == 'admin'" class="nav-link login-button" href="mbr/adminPage" >Admin Menu</a>-->
               </li>
               <li th:if="!${member}" class="nav-item">
                 <a class="nav-link login-button" href="mbr/loginForm">Login</a>
