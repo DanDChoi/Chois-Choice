@@ -96,6 +96,11 @@ public class MbrController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/adminPage")
+    public String adminPage(){
+        return "admin-page";
+    }
 //
 //    @GetMapping("findId")
 //    public String findId(){
