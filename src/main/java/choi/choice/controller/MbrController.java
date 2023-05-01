@@ -98,7 +98,7 @@ public class MbrController {
     }
 
     @GetMapping("/adminPage")
-    public String adminPage(){
+    public String adminPage() {
         return "admin-page";
     }
 //
@@ -106,4 +106,8 @@ public class MbrController {
 //    public String findId(){
 //        return "theme/findId";
 //    }
+    @GetMapping("/userProfile")
+    public String profile(){
+        return "user-profile";
+    }
 }
