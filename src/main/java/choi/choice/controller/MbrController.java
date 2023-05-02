@@ -107,7 +107,9 @@ public class MbrController {
 //        return "theme/findId";
 //    }
     @GetMapping("/userProfile")
-    public String profile(){
+    public String profile(Model model, String id){
+        Mbr mbr = mbrRepository.findById(id);
+        model.addAttribute("profile", mbr);
         return "user-profile";
     }
 }
