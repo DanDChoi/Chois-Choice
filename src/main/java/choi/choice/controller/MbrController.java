@@ -48,7 +48,6 @@ public class MbrController {
     @PostMapping(value = "/register/add")
     public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
         memberService.register(mbr);
-        log.info();
         return "redirect:/";
     }
 

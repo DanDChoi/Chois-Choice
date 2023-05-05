@@ -38,7 +38,12 @@ public class ProductsController {
     }
 
     @GetMapping("delete")
-    public void deleteGood(String goodNo){
+    public void deleteGood(String goodNo) {
         goodService.deleteByNo(goodNo);
+    }
+
+    @GetMapping("detail")
+    public String detailGood(String goodNo) {
+        return "good/detail";
     }
 }
