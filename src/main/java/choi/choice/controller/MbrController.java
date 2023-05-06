@@ -107,7 +107,13 @@ public class MbrController {
 //        return "theme/findId";
 //    }
     @GetMapping("/userProfile")
-    public String profile(Model model, String id){
+    public String profile(Model model, String id, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("loginMbr") == null) {
+            return "redirect:/";
+        }
+
         Mbr mbr = mbrRepository.findById(id);
         model.addAttribute("profile", mbr);
         return "user-profile";
