@@ -26,6 +26,8 @@ public class GoodServiceImpl implements GoodService{
         String godNo = "G" + format.format(date) + timeMillis;
 
         good.setGoodNo(godNo);
+        good.setSaleEndDate(format.format(date));
+        good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
     }
