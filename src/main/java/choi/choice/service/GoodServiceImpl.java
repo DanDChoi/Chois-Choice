@@ -22,11 +22,11 @@ public class GoodServiceImpl implements GoodService{
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
-        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 8);
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String godNo = "G" + format.format(date) + timeMillis;
 
         good.setGoodNo(godNo);
-        good.setSaleEndDate(format.format(date));
+        good.setSaleBegDate(format.format(date));
         good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
