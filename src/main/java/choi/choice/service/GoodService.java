@@ -8,5 +8,7 @@ public interface GoodService {
 
     void add(Good good);
     Good findByNo(String id);
+
+    List<Good> findAll();
     void deleteByNo(String id);
 }

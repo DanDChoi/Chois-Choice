@@ -38,6 +38,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public List<Good> findAll(){
+        return goodRepository.findAll();
+    }
+
+    @Override
     public void deleteByNo(String goodNo){
         goodRepository.deleteByNo(goodNo);
     }
