@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class JpaGoodRepository implements GoodRepository{
@@ -27,6 +29,12 @@ public class JpaGoodRepository implements GoodRepository{
         return good;
     }
 
+    @Override
+    public List<Good> findAll(){
+        List<Good> goods = new ArrayList<>();
+//        goods.add(em.find());
+        return goods;
+    }
     @Override
     public void deleteByNo(String goodNo) {
     }
