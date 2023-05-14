@@ -71,12 +71,14 @@ public class MbrController {
         }
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
+        MbrGrd findMbrGrd = memberService.findGrdByNo(mbr.getMbrNo());
 
         log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
 
         session.setAttribute("loginMember", findMbr);
         model.addAttribute("mbr", findMbr);
+        model.addAttribute("mbrGrd", findMbrGrd);
 
 
 //        Cookie idCookie = new Cookie("mbrId", mbr.getMbrId());
