@@ -44,6 +44,14 @@ public class Mbr {
     private String joinDate;
     @Column(name = "mbr_stat_cd")
     private String mbrStatCd;
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 
     public Mbr(final String mbrEmail){
         this.mbrEmail = mbrEmail;
