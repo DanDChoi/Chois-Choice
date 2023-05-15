@@ -27,6 +27,12 @@ public class Bsk {
     @Column(name = "session_id")
     private String sessionId;
 
+    @Column(name = "regtr_id")
+    private String regtrId;
     @Column(name = "reg_dt")
     private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }
