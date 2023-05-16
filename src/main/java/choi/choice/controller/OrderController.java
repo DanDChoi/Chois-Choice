@@ -16,4 +16,9 @@ public class OrderController {
     public String ordForm(){
         return "store";
     }
+
+    @GetMapping("/add")
+    public void createOrd(){
+        ordRepository.add();
+    }
 }
