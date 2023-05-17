@@ -34,4 +34,12 @@ public class Ord {
     private String baseAddr;
     @Column(name = "detail_addr")
     private String detailAddr;
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }

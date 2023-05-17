@@ -30,5 +30,12 @@ public class Good {
     private String colorNm;
     @Column(name = "color_cd")
     private String colorCd;
-
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }

@@ -30,4 +30,12 @@ public class Pay {
     private String dealTpCd;
     @Column(name = "dlv_cst_yn")
     private String dlvCstYn;
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }
