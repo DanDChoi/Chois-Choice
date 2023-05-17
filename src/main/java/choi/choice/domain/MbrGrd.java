@@ -26,6 +26,12 @@ public class MbrGrd {
     private String grdBegDt; //등급시작일
     @Column(name = "grd_end_dt")
     private String grdEndDt; //등급종료일
-    @Column(name = "reg_id")
-    private String regId; //등록자
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }

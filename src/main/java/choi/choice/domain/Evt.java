@@ -32,4 +32,12 @@ public class Evt {
     private String replyUseYn;
     @Column(name = "reply_config_sn")
     private String replyConfigSn;
+    @Column(name = "regtr_id")
+    private String regtrId;
+    @Column(name = "reg_dt")
+    private java.util.Date regDt;
+    @Column(name = "udter_id")
+    private String udterId;
+    @Column(name = "udt_dt")
+    private java.util.Date udtDt;
 }
