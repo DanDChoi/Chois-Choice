@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService{
             log.info("mbrNo={}, mbrId={}, mbrEmail={}, mbrBrthdy={}", mbr.getMbrNo(), mbr.getMbrId(), mbr.getMbrEmail(), mbr.getMbrBrthdy());
             mbrRepository.save(mbr);
 
-            MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN");
+            MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
             mbrRepository.saveGrd(mbrGrd);
 //        }
     }
