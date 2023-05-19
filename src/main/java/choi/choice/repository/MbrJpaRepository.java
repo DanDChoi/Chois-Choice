@@ -9,12 +9,12 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public class JpaMbrRepository implements MbrRepository{
+public class MbrJpaRepository implements MbrRepository{
 
     private final EntityManager em;
 
     @Autowired
-    public JpaMbrRepository(EntityManager em) {
+    public MbrJpaRepository(EntityManager em) {
         this.em = em;
     }
 

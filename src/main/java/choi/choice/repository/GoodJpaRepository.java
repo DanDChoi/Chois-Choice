@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class JpaGoodRepository implements GoodRepository{
+public class GoodJpaRepository implements GoodRepository{
 
     private final EntityManager em;
 
     @Autowired
-    public JpaGoodRepository(EntityManager em) {
+    public GoodJpaRepository(EntityManager em) {
         this.em = em;
     }
 
