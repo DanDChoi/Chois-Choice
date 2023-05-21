@@ -38,6 +38,7 @@ public class MbrJpaRepository implements MbrRepository{
     @Override
     public Mbr findByEmail(String email) {
         Mbr mbr = em.find(Mbr.class, email);
+        em.persist(mbr);
         return mbr;
     }
 
