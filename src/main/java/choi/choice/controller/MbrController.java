@@ -71,7 +71,7 @@ public class MbrController {
         }
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
-        MbrGrd findMbrGrd = memberService.findGrdByNo(mbr.getMbrNo());
+        MbrGrd findMbrGrd = memberService.findGrdByNo(findMbr.getMbrNo());
 
         log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
