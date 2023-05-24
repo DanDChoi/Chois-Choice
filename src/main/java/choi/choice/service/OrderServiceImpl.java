@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public void deleteOrd(Ord ord) {
+    public void deleteOrd(String ordNo) {
 
     }
 }
