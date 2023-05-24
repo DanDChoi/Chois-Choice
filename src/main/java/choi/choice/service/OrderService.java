@@ -11,5 +11,5 @@ public interface OrderService {
     Ord findOne(String ordNo);
     List<Ord> findAll();
 
-    void deleteOrd(Ord ord);
+    void deleteOrd(String ordNo);
 }
