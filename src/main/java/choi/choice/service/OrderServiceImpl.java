@@ -4,6 +4,7 @@ import choi.choice.domain.Ord;
 import choi.choice.repository.OrderRepository;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,12 +29,14 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Ord findOne(String ordNo) {
-        orderRepository.findOne(ordNo);
-        return null;
+        Ord ord = orderRepository.findOne(ordNo);
+        return ord;
     }
 
     @Override
     public List<Ord> findAll() {
+        List<Ord> ords = new ArrayList<>();
+
         return null;
     }
 
