@@ -2,6 +2,7 @@ package choi.choice.service;
 
 import choi.choice.domain.Ord;
 import choi.choice.repository.OrderRepository;
+import org.springframework.data.domain.Sort;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,9 +36,8 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Ord> findAll() {
-        List<Ord> ords = new ArrayList<>();
-
-        return null;
+        List<Ord> ords = orderRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return ords;
     }
 
     @Override
