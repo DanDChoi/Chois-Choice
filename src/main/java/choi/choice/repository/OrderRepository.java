@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Ord;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ public interface OrderRepository {
 
     Ord findOne(String ordNo);
 
-    List<Ord> findAll();
+    List<Ord> findAll(Sort regDt);
 }
