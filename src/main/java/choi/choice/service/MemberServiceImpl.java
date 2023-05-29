@@ -5,6 +5,7 @@ import choi.choice.domain.MbrGrd;
 import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -13,6 +14,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -70,6 +72,12 @@ public class MemberServiceImpl implements MemberService{
     @Transactional
     public MbrGrd findGrdByNo(Long mbrNo) {
         return mbrRepository.findGrdByNo(mbrNo);
+    }
+
+    @Override
+    public List<Mbr> findAll() {
+        List<Mbr> mbr = mbrRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return null;
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {

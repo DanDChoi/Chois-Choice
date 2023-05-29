@@ -3,9 +3,11 @@ package choi.choice.repository;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.MbrGrd;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -48,5 +50,10 @@ public class MbrJpaRepository implements MbrRepository{
         MbrGrd mbrGrd = em.find(MbrGrd.class, mbrNo);
         em.persist(mbrGrd);
         return mbrGrd;
+    }
+
+    @Override
+    public List<Mbr> findAll(Sort regDt) {
+        return null;
     }
 }
