@@ -1,18 +1,23 @@
 package choi.choice.service;
 
 import choi.choice.domain.Evt;
+import choi.choice.repository.EventRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventServiceImpl implements EventService {
 
+    @Autowired
+    private final EventRepository eventRepository;
     @Override
     public List<Evt> findAll() {
-        return null;
+        return eventRepository.findAll();
     }
 
     @Override
