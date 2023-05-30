@@ -1,6 +1,10 @@
 package choi.choice.repository;
 
 
-public interface EventRepository{
+import choi.choice.domain.Evt;
 
+import java.util.List;
+
+public interface EventRepository{
+    List<Evt> findAll();
 }
