@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface EventRepository{
     List<Evt> findAll();
+
+    void createEvt(Evt evt);
 }
