@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Evt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ public class EventJpaRepository implements EventRepository{
     }
 
     @Override
-    public List<Evt> findAll() {
+    public List<Evt> findAll(Sort regDt) {
         return null;
     }
 
