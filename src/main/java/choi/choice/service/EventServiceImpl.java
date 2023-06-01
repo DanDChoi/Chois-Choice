@@ -5,6 +5,7 @@ import choi.choice.repository.EventRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Evt> findAll() {
-        return eventRepository.findAll();
+        List<Evt> evt = eventRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return evt;
     }
 
     @Override

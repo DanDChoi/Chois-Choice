@@ -77,7 +77,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<Mbr> findAll() {
         List<Mbr> mbr = mbrRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
-        return null;
+        return mbr;
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException {
