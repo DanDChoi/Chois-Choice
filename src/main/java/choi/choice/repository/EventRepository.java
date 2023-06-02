@@ -10,4 +10,6 @@ public interface EventRepository{
     List<Evt> findAll(Sort regDt);
 
     void createEvt(Evt evt);
+
+    Evt findById(String evtId);
 }
