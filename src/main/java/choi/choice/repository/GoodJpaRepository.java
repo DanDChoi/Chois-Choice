@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Good;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -30,7 +31,7 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
-    public List<Good> findAll(){
+    public List<Good> findAll(Sort regDt){
         List<Good> goods = new ArrayList<>();
 //        goods.add(em.find());
         return goods;
