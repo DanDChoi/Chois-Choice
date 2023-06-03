@@ -21,6 +21,11 @@ public class EventJpaRepository implements EventRepository{
     }
 
     @Override
+    public Evt findById(String evtId) {
+        return null;
+    }
+
+    @Override
     public List<Evt> findAll(Sort regDt) {
         return null;
     }

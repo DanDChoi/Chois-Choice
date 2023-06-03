@@ -4,6 +4,7 @@ import choi.choice.domain.Good;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -39,7 +40,8 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public List<Good> findAll(){
-        return goodRepository.findAll();
+        List<Good> goods = goodRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return goods;
     }
 
     @Override
