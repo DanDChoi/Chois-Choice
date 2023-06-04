@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.Ord;
 import choi.choice.repository.OrderRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,10 +16,11 @@ public class OrderServiceImpl implements OrderService{
     private OrderRepository orderRepository;
 
     @Override
-    public void createOrd(Ord ord) {
+    public void createOrd(@ModelAttribute Ord ord) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
         Date date = new Date();
+
 
 
         ord.setOrdDt(format.format(date));
@@ -26,6 +28,7 @@ public class OrderServiceImpl implements OrderService{
         ord.setRegDt(date);
         ord.setUdtDt(date);
 
+        orderRepository.add(ord);
     }
 
     @Override

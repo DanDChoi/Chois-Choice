@@ -11,5 +11,7 @@ public interface EventRepository{
 
     void createEvt(Evt evt);
 
-    Evt findById(String evtId);
+    Evt findEvtByNo(String evtNo);
+
+    void deleteEvt(String evtNo);
 }
