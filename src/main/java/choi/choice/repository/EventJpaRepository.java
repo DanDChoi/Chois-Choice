@@ -21,7 +21,7 @@ public class EventJpaRepository implements EventRepository{
     }
 
     @Override
-    public Evt findById(String evtId) {
+    public Evt findEvtByNo(String evtNo) {
         return null;
     }
 
@@ -32,6 +32,11 @@ public class EventJpaRepository implements EventRepository{
 
     @Override
     public void createEvt(Evt evt) {
+
+    }
+
+    @Override
+    public void deleteEvt(String evtNo) {
 
     }
 }
