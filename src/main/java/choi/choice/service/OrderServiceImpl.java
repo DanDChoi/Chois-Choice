@@ -21,8 +21,10 @@ public class OrderServiceImpl implements OrderService{
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
         Date date = new Date();
 
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
+        String ordNo = "O" + format.format(date) + timeMillis;
 
-
+        ord.setOrdNo(ordNo);
         ord.setOrdDt(format.format(date));
         ord.setRegtrId("");
         ord.setRegDt(date);
