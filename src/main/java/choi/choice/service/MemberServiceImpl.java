@@ -48,6 +48,8 @@ public class MemberServiceImpl implements MemberService{
             mbr.setMbrBrthdy(mbr.getMbrBrthdy());
             mbr.setMbrSex(mbr.getMbrSex());
             mbr.setMbrStatCd("ACTIVE");
+            mbr.setRegDt(date);
+            mbr.setUdtDt(date);
             mbr.setJoinDate(format.format(date));
             log.info("mbrNo={}, mbrId={}, mbrEmail={}, mbrBrthdy={}", mbr.getMbrNo(), mbr.getMbrId(), mbr.getMbrEmail(), mbr.getMbrBrthdy());
             mbrRepository.save(mbr);
