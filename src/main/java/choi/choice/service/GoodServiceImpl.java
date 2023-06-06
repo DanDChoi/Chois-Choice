@@ -28,6 +28,8 @@ public class GoodServiceImpl implements GoodService{
 
         good.setGoodNo(godNo);
         good.setSaleBegDate(format.format(date));
+        good.setRegDt(date);
+        good.setUdtDt(date);
         good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
