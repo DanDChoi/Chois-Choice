@@ -27,19 +27,9 @@ public class EventServiceImpl implements EventService {
         List<Evt> evt = eventRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
         return evt;
     }
-
-    @Override
-    public <S extends Evt> List<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
     @Override
     public Evt getById(Long aLong) {
         return null;
     }
 
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
     }
-}
