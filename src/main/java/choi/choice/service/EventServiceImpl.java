@@ -28,8 +28,13 @@ public class EventServiceImpl implements EventService {
         return evt;
     }
     @Override
-    public Evt getById(Long aLong) {
+    public Evt findEvtByNo(String evtNo) {
         return null;
     }
 
+    @Override
+    public void deleteEvt(String evtNo) {
+
     }
+}
+
