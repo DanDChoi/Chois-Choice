@@ -8,5 +8,7 @@ public interface EventService {
 
     void createEvt(Evt evt);
     List<Evt> findAll();
-    Evt getById(Long aLong);
+    Evt findEvtByNo(String evtNo);
+
+    void deleteEvt(String evtNo);
 }
