@@ -5,6 +5,8 @@ import choi.choice.repository.OrderRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +18,10 @@ public class OrderServiceImpl implements OrderService{
     private OrderRepository orderRepository;
 
     @Override
-    public void createOrd(@ModelAttribute Ord ord) {
+    public void createOrd(@ModelAttribute Ord ord, HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+        String id = session.getId();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
         Date date = new Date();
@@ -26,8 +31,9 @@ public class OrderServiceImpl implements OrderService{
 
         ord.setOrdNo(ordNo);
         ord.setOrdDt(format.format(date));
-        ord.setRegtrId("");
+        ord.setRegtrId(id);
         ord.setRegDt(date);
+        ord.setUdterId(id);
         ord.setUdtDt(date);
 
         orderRepository.add(ord);
