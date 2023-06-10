@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,7 +21,16 @@ public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
 
     @Override
-    public void createEvt(Evt evt) {
+    public void createEvt(@ModelAttribute Evt evt) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
+        String evtNo = "E" + format.format(date) + timeMillis;
+
+        evt.setEvtNo(evtNo);
+        evt.setRegDt(date);
+        evt.setUdtDt(date);
+
         eventRepository.createEvt(evt);
     }
 
