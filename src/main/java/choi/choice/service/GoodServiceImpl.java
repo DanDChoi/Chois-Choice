@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -18,18 +19,24 @@ public class GoodServiceImpl implements GoodService{
 
     private final GoodRepository goodRepository;
 
+    private final SessionManager sessionManager;
+
     @Override
-    public void add(@ModelAttribute Good good) {
+    public void add(@ModelAttribute Good good, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String godNo = "G" + format.format(date) + timeMillis;
 
+        String regtr = sessionManager.getSession(request).getMbrId();
+
         good.setGoodNo(godNo);
         good.setSaleBegDate(format.format(date));
         good.setRegDt(date);
+        good.setRegtrId(regtr);
         good.setUdtDt(date);
+        good.setUdterId(regtr);
         good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
