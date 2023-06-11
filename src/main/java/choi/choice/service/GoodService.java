@@ -2,11 +2,12 @@ package choi.choice.service;
 
 import choi.choice.domain.Good;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface GoodService {
 
-    void add(Good good);
+    void add(Good good, HttpServletRequest request);
     Good findByNo(String id);
 
     List<Good> findAll();

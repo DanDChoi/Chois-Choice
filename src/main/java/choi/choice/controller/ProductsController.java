@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Slf4j
 @Controller
 @RequestMapping("/good")
@@ -26,8 +28,8 @@ public class ProductsController {
     }
 
     @PostMapping("create/add")
-    public String createGood(@ModelAttribute Good good) {
-        goodService.add(good);
+    public String createGood(@ModelAttribute Good good, HttpServletRequest request) {
+        goodService.add(good, request);
         return "ok";
     }
 
