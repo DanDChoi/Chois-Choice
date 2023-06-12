@@ -2,26 +2,27 @@ package choi.choice.service;
 
 import choi.choice.domain.Ord;
 import choi.choice.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
-    private MemberService memberService;
-    private OrderRepository orderRepository;
+    private final MemberService memberService;
+    private final OrderRepository orderRepository;
+    private final SessionManager sessionManager;
 
     @Override
     public void createOrd(@ModelAttribute Ord ord, HttpServletRequest request) {
-
-        HttpSession session = request.getSession();
-        String id = session.getId();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
         Date date = new Date();
@@ -29,11 +30,13 @@ public class OrderServiceImpl implements OrderService{
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String ordNo = "O" + format.format(date) + timeMillis;
 
+        String regtr = sessionManager.getSession(request).getMbrId();
+
         ord.setOrdNo(ordNo);
         ord.setOrdDt(format.format(date));
-        ord.setRegtrId(id);
+        ord.setRegtrId(regtr);
         ord.setRegDt(date);
-        ord.setUdterId(id);
+        ord.setUdterId(regtr);
         ord.setUdtDt(date);
 
         orderRepository.add(ord);
