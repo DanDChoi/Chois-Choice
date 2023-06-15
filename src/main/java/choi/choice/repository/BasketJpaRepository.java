@@ -12,4 +12,14 @@ public class BasketJpaRepository implements BasketRepository{
     public void add(Bsk bsk) {
 
     }
+
+    @Override
+    public void delete(String bskNo) {
+
+    }
+
+    @Override
+    public Bsk findByNo(String bskNo) {
+        return null;
+    }
 }

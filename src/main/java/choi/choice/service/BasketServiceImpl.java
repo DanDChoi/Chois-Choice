@@ -20,4 +20,14 @@ public class BasketServiceImpl implements BasketService{
     public void add(Bsk bsk, HttpServletRequest request) {
         basketRepository.add(bsk);
     }
+
+    @Override
+    public void delete(String bskNo) {
+        basketRepository.delete(bskNo);
+    }
+
+    @Override
+    public Bsk findByNo(String bskNo) {
+        return basketRepository.findByNo(bskNo);
+    }
 }
