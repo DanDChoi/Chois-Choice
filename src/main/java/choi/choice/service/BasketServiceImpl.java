@@ -27,7 +27,8 @@ public class BasketServiceImpl implements BasketService{
     }
 
     @Override
-    public Bsk findByNo(String bskNo) {
-        return basketRepository.findByNo(bskNo);
+    public Bsk findAll(HttpServletRequest request) {
+        Long mbrNo = sessionManager.getSession(request).getMbrNo();
+        return basketRepository.findAll(mbrNo);
     }
 }

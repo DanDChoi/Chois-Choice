@@ -28,7 +28,7 @@ public class BasketJpaRepository implements BasketRepository{
     }
 
     @Override
-    public Bsk findByNo(String bskNo) {
+    public Bsk findAll(Long mbrNo) {
         return null;
     }
 }
