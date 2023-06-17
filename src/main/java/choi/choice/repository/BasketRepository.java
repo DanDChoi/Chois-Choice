@@ -8,5 +8,5 @@ public interface BasketRepository {
 
     void delete(String bskNo);
 
-    Bsk findByNo(String bskNo);
+    Bsk findAll(Long mbrNo);
 }

@@ -10,5 +10,5 @@ public interface BasketService {
 
     void delete(String bskNo);
 
-    Bsk findByNo(String bskNo);
+    Bsk findAll(HttpServletRequest request);
 }
