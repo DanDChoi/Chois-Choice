@@ -38,5 +38,7 @@ public class GoodJpaRepository implements GoodRepository{
     }
     @Override
     public void deleteByNo(String goodNo) {
+        Good good = em.find(Good.class, goodNo);
+        em.remove(good);
     }
 }
