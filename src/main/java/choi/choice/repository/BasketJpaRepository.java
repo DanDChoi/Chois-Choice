@@ -24,7 +24,8 @@ public class BasketJpaRepository implements BasketRepository{
 
     @Override
     public void delete(String bskNo) {
-
+        Bsk bsk = em.find(Bsk.class, bskNo);
+        em.remove(bsk);
     }
 
     @Override
