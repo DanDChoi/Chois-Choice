@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Slf4j
 @Service
@@ -18,6 +20,15 @@ public class BasketServiceImpl implements BasketService{
 
     @Override
     public void add(Bsk bsk, HttpServletRequest request) {
+        Long mbrNo = sessionManager.getSession(request).getMbrNo();
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
+        String bskNo = "B" + format.format(date) + timeMillis;
+
+        bsk.setBskNo(bskNo);
+        bsk.setMbrNo(mbrNo);
         basketRepository.add(bsk);
     }
 
