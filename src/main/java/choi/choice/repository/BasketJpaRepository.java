@@ -2,10 +2,12 @@ package choi.choice.repository;
 
 import choi.choice.domain.Bsk;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -29,7 +31,7 @@ public class BasketJpaRepository implements BasketRepository{
     }
 
     @Override
-    public Bsk findAll(Long mbrNo) {
+    public List<Bsk> findAll(Sort regDt) {
         return null;
     }
 }
