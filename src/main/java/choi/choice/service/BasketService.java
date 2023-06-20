@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.Bsk;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface BasketService {
 
@@ -10,5 +11,5 @@ public interface BasketService {
 
     void delete(String bskNo);
 
-    Bsk findAll(HttpServletRequest request);
+    List<Bsk> findAll(HttpServletRequest request);
 }

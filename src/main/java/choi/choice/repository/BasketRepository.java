@@ -1,6 +1,9 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Bsk;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
 
 public interface BasketRepository {
 
@@ -8,5 +11,5 @@ public interface BasketRepository {
 
     void delete(String bskNo);
 
-    Bsk findAll(Long mbrNo);
+    List<Bsk> findAll(Sort regDt);
 }

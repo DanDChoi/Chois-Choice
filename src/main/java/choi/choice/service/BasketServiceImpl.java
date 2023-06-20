@@ -4,11 +4,13 @@ import choi.choice.domain.Bsk;
 import choi.choice.repository.BasketRepository;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -38,8 +40,9 @@ public class BasketServiceImpl implements BasketService{
     }
 
     @Override
-    public Bsk findAll(HttpServletRequest request) {
+    public List<Bsk> findAll(HttpServletRequest request) {
         Long mbrNo = sessionManager.getSession(request).getMbrNo();
-        return basketRepository.findAll(mbrNo);
+        List<Bsk> bsk = basketRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return bsk;
     }
 }
