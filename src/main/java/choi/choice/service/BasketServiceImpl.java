@@ -23,6 +23,7 @@ public class BasketServiceImpl implements BasketService{
     @Override
     public void add(Bsk bsk, HttpServletRequest request) {
         Long mbrNo = sessionManager.getSession(request).getMbrNo();
+        String regtr = sessionManager.getSession(request).getMbrId();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
@@ -31,6 +32,10 @@ public class BasketServiceImpl implements BasketService{
 
         bsk.setBskNo(bskNo);
         bsk.setMbrNo(mbrNo);
+        bsk.setRegtrId(regtr);
+        bsk.setRegDt(date);
+        bsk.setUdterId(regtr);
+        bsk.setUdtDt(date);
         basketRepository.add(bsk);
     }
 
