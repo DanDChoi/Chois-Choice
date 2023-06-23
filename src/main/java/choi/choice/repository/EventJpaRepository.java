@@ -33,11 +33,12 @@ public class EventJpaRepository implements EventRepository{
 
     @Override
     public void createEvt(Evt evt) {
-
+        em.persist(evt);
     }
 
     @Override
     public void deleteEvt(String evtNo) {
-
+        Evt evt = em.find(Evt.class, evtNo);
+        em.remove(evt);
     }
 }
