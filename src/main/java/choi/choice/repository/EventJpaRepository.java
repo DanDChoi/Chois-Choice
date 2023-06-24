@@ -33,7 +33,7 @@ public class EventJpaRepository implements EventRepository{
 
     @Override
     public void createEvt(Evt evt) {
-        em.persist(evt);
+//        em.persist(evt);
     }
 
     @Override
