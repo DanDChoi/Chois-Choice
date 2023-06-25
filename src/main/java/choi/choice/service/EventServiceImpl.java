@@ -52,7 +52,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEvt(String evtNo) {
-
+        eventRepository.deleteEvt(evtNo);
     }
 }
 
