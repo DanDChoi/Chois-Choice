@@ -18,4 +18,6 @@ public interface MbrRepository {
     List<Mbr> findAll(Sort regDt);
 
     MbrGrd findGrdByNo(Long mbrNo);
+
+    void deleteById(String id);
 }
