@@ -56,4 +56,9 @@ public class MbrJpaRepository implements MbrRepository{
     public List<Mbr> findAll(Sort regDt) {
         return null;
     }
+
+    @Override
+    public void deleteById(String id) {
+
+    }
 }
