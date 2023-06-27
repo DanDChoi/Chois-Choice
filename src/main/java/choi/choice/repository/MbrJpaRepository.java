@@ -59,6 +59,7 @@ public class MbrJpaRepository implements MbrRepository{
 
     @Override
     public void deleteById(String id) {
-
+        Mbr mbr = em.find(Mbr.class, id);
+        em.remove(mbr);
     }
 }
