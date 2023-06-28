@@ -35,5 +35,11 @@ public class OrderJpaRepository implements OrderRepository{
     public List<Ord> findAll(Sort regDt) {
         return null;
     }
+
+    @Override
+    public void deleteByOrdNo(String ordNo) {
+        Ord ord = em.find(Ord.class, ordNo);
+        em.remove(ord);
+    }
 }
 
