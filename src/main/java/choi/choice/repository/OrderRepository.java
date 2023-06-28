@@ -12,4 +12,6 @@ public interface OrderRepository {
     Ord findOne(String ordNo);
 
     List<Ord> findAll(Sort regDt);
+
+    void deleteByOrdNo(String ordNo);
 }
