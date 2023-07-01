@@ -1,6 +1,8 @@
 package choi.choice.controller;
 
+import choi.choice.domain.Good;
 import choi.choice.domain.Ord;
+import choi.choice.domain.OrdGod;
 import choi.choice.repository.OrderRepository;
 import choi.choice.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +30,7 @@ public class OrderController {
     }
 
     @GetMapping("/add")
-    public void createOrd(@ModelAttribute Ord ord, HttpServletRequest request){
-        orderService.createOrd(ord, request);
+    public void createOrd(@ModelAttribute Ord ord, OrdGod ordGod, Good good, HttpServletRequest request){
+        orderService.createOrd(ord, ordGod, good, request);
     }
 }

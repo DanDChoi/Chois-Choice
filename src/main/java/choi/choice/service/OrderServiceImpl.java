@@ -1,6 +1,8 @@
 package choi.choice.service;
 
+import choi.choice.domain.Good;
 import choi.choice.domain.Ord;
+import choi.choice.domain.OrdGod;
 import choi.choice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class OrderServiceImpl implements OrderService{
     private final SessionManager sessionManager;
 
     @Override
-    public void createOrd(@ModelAttribute Ord ord, HttpServletRequest request) {
+    public void createOrd(@ModelAttribute Ord ord, OrdGod ordGod, Good good, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
         Date date = new Date();
@@ -39,7 +41,10 @@ public class OrderServiceImpl implements OrderService{
         ord.setUdterId(regtr);
         ord.setUdtDt(date);
 
-        orderRepository.add(ord);
+        ordGod.setOrdNo(ordNo);
+        ordGod.setGodNo(good.getGoodNo());
+
+        orderRepository.add(ord, ordGod);
     }
 
     @Override
