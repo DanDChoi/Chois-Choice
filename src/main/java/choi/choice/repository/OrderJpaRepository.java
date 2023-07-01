@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Ord;
+import choi.choice.domain.OrdGod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,7 @@ public class OrderJpaRepository implements OrderRepository{
         this.em = em;
     }
     @Override
-    public void add(Ord ord) {
+    public void add(Ord ord, OrdGod ordGod) {
         em.persist(ord);
     }
 

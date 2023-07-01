@@ -1,13 +1,14 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Ord;
+import choi.choice.domain.OrdGod;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
 public interface OrderRepository {
 
-    void add(Ord ord);
+    void add(Ord ord, OrdGod ordGod);
 
     Ord findOne(String ordNo);
 

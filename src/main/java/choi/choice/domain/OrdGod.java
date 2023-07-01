@@ -21,7 +21,7 @@ public class OrdGod {
     @Column(name = "ord_no", unique = true)
     private String ordNo;
     @Column(name = "god_no")
-    private Long godNo;
+    private String godNo;
     @Column(name = "god_nm")
     private String godNm;
     @Column(name = "regtr_id")
