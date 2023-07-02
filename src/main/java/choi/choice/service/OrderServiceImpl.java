@@ -43,6 +43,11 @@ public class OrderServiceImpl implements OrderService{
 
         ordGod.setOrdNo(ordNo);
         ordGod.setGodNo(good.getGoodNo());
+        ordGod.setGodNm(good.getGoodNm());
+        ordGod.setRegtrId(regtr);
+        ordGod.setRegDt(date);
+        ordGod.setUdterId(regtr);
+        ordGod.setUdtDt(date);
 
         orderRepository.add(ord, ordGod);
     }
