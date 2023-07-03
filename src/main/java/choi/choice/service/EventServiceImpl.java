@@ -37,6 +37,10 @@ public class EventServiceImpl implements EventService {
         evt.setUdtDt(date);
         evt.setUdterId(regtr);
 
+        if (evt.getReplyUseYn().equals('Y')) {
+            //create reply table, insert data
+        }
+
         eventRepository.createEvt(evt);
     }
 
