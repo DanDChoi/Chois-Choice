@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class OrderServiceImpl implements OrderService{
         ord.setRegDt(date);
         ord.setUdterId(regtr);
         ord.setUdtDt(date);
+
+        List<OrdGod> ordGods = new ArrayList<>();
 
         ordGod.setOrdNo(ordNo);
         ordGod.setGodNo(good.getGoodNo());
