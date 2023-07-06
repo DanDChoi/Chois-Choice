@@ -46,7 +46,6 @@ public class BasketServiceImpl implements BasketService{
 
     @Override
     public List<Bsk> findAll(HttpServletRequest request) {
-        Long mbrNo = sessionManager.getSession(request).getMbrNo();
         List<Bsk> bsk = basketRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
         return bsk;
     }
