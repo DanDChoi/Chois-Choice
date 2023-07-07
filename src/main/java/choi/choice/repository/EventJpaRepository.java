@@ -23,6 +23,7 @@ public class EventJpaRepository implements EventRepository{
     @Override
     public Evt findEvtByNo(String evtNo) {
         Evt evt = em.find(Evt.class, evtNo);
+        em.persist(evt);
         return evt;
     }
 
