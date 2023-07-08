@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Evt;
+import choi.choice.domain.EvtReply;
 import choi.choice.repository.EventRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,13 @@ public class EventServiceImpl implements EventService {
         evt.setUdterId(regtr);
 
         if (evt.getReplyUseYn().equals('Y')) {
-            //create reply table, insert data
+            EvtReply evtReply = new EvtReply();
+            evtReply.setEvtNo(evtNo);
+            evtReply.setReplySn(evtNo + date);
+            evtReply.setRegDt(date);
+            evtReply.setRegtrId(regtr);
+            evtReply.setUdtDt(date);
+            evtReply.setUdterId(regtr);
         }
 
         eventRepository.createEvt(evt);
