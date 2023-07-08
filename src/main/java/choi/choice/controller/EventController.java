@@ -30,7 +30,7 @@ public class EventController {
 
    @PostMapping("evt/add")
    public String createEvt(@ModelAttribute Evt evt, HttpServletRequest request) {
-       eventService.add(evt, request);
+       eventService.createEvt(evt, request);
        return "ok";
    }
 }

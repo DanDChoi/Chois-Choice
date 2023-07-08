@@ -1,12 +1,25 @@
 package choi.choice.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
+@Getter
+@Setter
+@Data
+@Builder
+@AllArgsConstructor
+@Table(name = "evt_reply")
 public class EvtReply {
 
     @Column(name = "evt_no")
     private String evtNo;
+    @Id
     @Column(name = "reply_sn")
     private String replySn;
     @Column(name = "reply_cont")
