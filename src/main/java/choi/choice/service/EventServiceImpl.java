@@ -39,13 +39,8 @@ public class EventServiceImpl implements EventService {
         evt.setUdterId(regtr);
 
         if (evt.getReplyUseYn().equals('Y')) {
-            EvtReply evtReply = new EvtReply();
-            evtReply.setEvtNo(evtNo);
-            evtReply.setReplySn(evtNo + date);
-            evtReply.setRegDt(date);
-            evtReply.setRegtrId(regtr);
-            evtReply.setUdtDt(date);
-            evtReply.setUdterId(regtr);
+            EvtReply evtReply = new EvtReply(evtNo, evtNo+date, "", regtr, date, regtr, date);
+            eventRepository.createEvtReply(evtReply);
         }
 
         eventRepository.createEvt(evt);
