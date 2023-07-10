@@ -53,7 +53,7 @@ public class EventServiceImpl implements EventService {
     }
     @Override
     public Evt findEvtByNo(String evtNo) {
-        return null;
+        return eventRepository.findEvtByNo(evtNo);
     }
 
     @Override
