@@ -44,15 +44,18 @@ public class OrderServiceImpl implements OrderService{
 
         List<OrdGod> ordGods = new ArrayList<>();
 
-        ordGod.setOrdNo(ordNo);
-        ordGod.setGodNo(good.getGoodNo());
-        ordGod.setGodNm(good.getGoodNm());
-        ordGod.setRegtrId(regtr);
-        ordGod.setRegDt(date);
-        ordGod.setUdterId(regtr);
-        ordGod.setUdtDt(date);
+        for (int i = 0; i < ordGods.size(); i++) {
+            ordGod.setOrdNo(ordNo);
+            ordGod.setGodNo(good.getGoodNo());
+            ordGod.setGodNm(good.getGoodNm());
+            ordGod.setRegtrId(regtr);
+            ordGod.setRegDt(date);
+            ordGod.setUdterId(regtr);
+            ordGod.setUdtDt(date);
 
-        orderRepository.add(ord, ordGod);
+            orderRepository.add(ord, ordGod);
+        }
+
     }
 
     @Override
