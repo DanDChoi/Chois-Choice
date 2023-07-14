@@ -23,7 +23,7 @@ public class Pay {
     @Column(name = "pay_mn_cd")
     private String payMnCd;
     @Column(name = "pay_dt")
-    private String payDt;
+    private java.util.Date payDt;
     @Column(name = "ord_no")
     private String ordNo;
     @Column(name = "deal_tp_cd")
