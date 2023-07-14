@@ -5,6 +5,9 @@ import choi.choice.repository.PayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -13,9 +16,19 @@ public class PayServiceImpl implements PayService{
 
     private final PayRepository payRepository;
 
-    @Override
-    public void createPay(Pay pay) {
+    private final SessionManager sessionManager;
 
+    @Override
+    public void createPay(Pay pay, HttpServletRequest request) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        pay.setPayDt(date);
+        pay.setRegDt(date);
+        pay.setRegtrId(loginId);
+        pay.setUdtDt(date);
+        pay.setUdterId(loginId);
     }
 
     @Override
