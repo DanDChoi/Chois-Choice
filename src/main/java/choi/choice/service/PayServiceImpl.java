@@ -33,11 +33,13 @@ public class PayServiceImpl implements PayService{
         pay.setRegtrId(loginId);
         pay.setUdtDt(date);
         pay.setUdterId(loginId);
+
+        payRepository.create(pay);
     }
 
     @Override
-    public Pay findPayByMbrId(String MbrId) {
-        return null;
+    public Pay findPayByPayNo(String payNo) {
+        return payRepository.findByNo(payNo);
     }
 
     @Override

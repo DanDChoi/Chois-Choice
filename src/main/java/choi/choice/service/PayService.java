@@ -9,7 +9,7 @@ public interface PayService {
 
     void createPay(Pay pay, HttpServletRequest request);
 
-    Pay findPayByMbrId(String MbrId);
+    Pay findPayByPayNo(String payNo);
 
     List<Pay> findPays();
 }
