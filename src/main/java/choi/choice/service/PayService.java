@@ -12,4 +12,6 @@ public interface PayService {
     Pay findPayByPayNo(String payNo);
 
     List<Pay> findPays();
+
+    void deletePay(String payNo);
 }
