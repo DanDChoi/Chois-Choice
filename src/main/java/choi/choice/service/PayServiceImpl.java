@@ -46,4 +46,9 @@ public class PayServiceImpl implements PayService{
     public List<Pay> findPays() {
         return null;
     }
+
+    @Override
+    public void deletePay(String payNo) {
+
+    }
 }
