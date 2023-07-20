@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Pay;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -23,7 +24,7 @@ public class PayJpaRepository implements PayRepository {
     }
 
     @Override
-    public List<Pay> findPays(String ordNo) {
+    public List<Pay> findPays(Sort regDt) {
         return null;
     }
 

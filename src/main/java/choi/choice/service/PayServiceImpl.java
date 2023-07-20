@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.Pay;
 import choi.choice.repository.PayRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,8 @@ public class PayServiceImpl implements PayService{
 
     @Override
     public List<Pay> findPays() {
-        return null;
+        List<Pay> pays = payRepository.findPays(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return pays;
     }
 
     @Override
