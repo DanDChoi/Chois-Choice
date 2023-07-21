@@ -30,7 +30,8 @@ public class PayJpaRepository implements PayRepository {
 
     @Override
     public void deletePay(String payNo) {
-
+        Pay pay = em.find(Pay.class, payNo);
+        em.remove(pay);
     }
 
     @Override
