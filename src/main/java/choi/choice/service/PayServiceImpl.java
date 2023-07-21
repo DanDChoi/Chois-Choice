@@ -51,6 +51,6 @@ public class PayServiceImpl implements PayService{
 
     @Override
     public void deletePay(String payNo) {
-
+        payRepository.deletePay(payNo);
     }
 }
