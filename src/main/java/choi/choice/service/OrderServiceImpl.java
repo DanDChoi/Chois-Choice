@@ -72,6 +72,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public void deleteOrd(String ordNo) {
-
+        orderRepository.deleteByOrdNo(ordNo);
     }
 }
