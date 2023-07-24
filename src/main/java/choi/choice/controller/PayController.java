@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.Pay;
 import choi.choice.repository.PayRepository;
 import choi.choice.service.PayService;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +19,8 @@ public class PayController {
     private final PayService payService;
     private final PayRepository payRepository;
 
-    @GetMapping("add")
-    public String addPay() {
-        return 'pay/addForm';
-    }
-
     @PostMapping("add")
-    public String addPayPost(){
-        return 'ok';
+    public String addPayPost(Pay pay){
+        return "ok";
     }
 }
