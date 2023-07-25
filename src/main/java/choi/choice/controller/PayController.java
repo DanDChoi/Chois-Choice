@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Slf4j
 @Controller
 @RequestMapping("/pay")
@@ -20,7 +22,8 @@ public class PayController {
     private final PayRepository payRepository;
 
     @PostMapping("add")
-    public String addPayPost(Pay pay){
+    public String addPayPost(Pay pay, HttpServletRequest request){
+        payService.createPay(pay, request);
         return "ok";
     }
 }
