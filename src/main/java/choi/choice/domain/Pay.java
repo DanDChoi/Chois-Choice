@@ -24,6 +24,8 @@ public class Pay {
     private String payMnCd;
     @Column(name = "pay_dt")
     private java.util.Date payDt;
+    @Column(name = "sale_amt")
+    private String payAmt;
     @Column(name = "ord_no")
     private String ordNo;
     @Column(name = "deal_tp_cd")
