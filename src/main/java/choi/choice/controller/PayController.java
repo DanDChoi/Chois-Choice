@@ -22,8 +22,13 @@ public class PayController {
     private final PayRepository payRepository;
 
     @PostMapping("add")
-    public String addPayPost(Pay pay, HttpServletRequest request){
+    public String addPayPost(Pay pay, HttpServletRequest request) {
         payService.createPay(pay, request);
         return "ok";
+    }
+
+    @GetMapping("eliminate")
+    public void eliminatePay(String payNo) {
+        payService.deletePay(payNo);
     }
 }
