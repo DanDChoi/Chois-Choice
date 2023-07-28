@@ -31,4 +31,10 @@ public class PayController {
     public void eliminatePay(String payNo) {
         payService.deletePay(payNo);
     }
+
+    @GetMapping("detail")
+    public Pay detailPay(String payNo){
+        Pay pay = new Pay();
+        return pay;
+    }
 }
