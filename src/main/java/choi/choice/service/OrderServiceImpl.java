@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodHist;
 import choi.choice.domain.Ord;
 import choi.choice.domain.OrdGod;
 import choi.choice.repository.OrderRepository;
@@ -46,8 +47,9 @@ public class OrderServiceImpl implements OrderService{
 
         for (int i = 0; i < ordGods.size(); i++) {
             ordGod.setOrdNo(ordNo);
-            ordGod.setGodNo(good.getGoodNo());
-            ordGod.setGodNm(good.getGoodNm());
+            ordGod.setGoodNo(good.getGoodNo());
+            ordGod.setGoodNm(good.getGoodNm());
+            ordGod.setGoodHistNo(ordGod.getGoodHistNo());
             ordGod.setRegtrId(regtr);
             ordGod.setRegDt(date);
             ordGod.setUdterId(regtr);

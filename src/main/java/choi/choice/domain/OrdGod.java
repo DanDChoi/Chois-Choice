@@ -20,10 +20,14 @@ public class OrdGod {
     @Id
     @Column(name = "ord_no", unique = true)
     private String ordNo;
-    @Column(name = "god_no")
-    private String godNo;
-    @Column(name = "god_nm")
-    private String godNm;
+    @Column(name = "good_no")
+    private String goodNo;
+    @Column(name = "good_hist_no")
+    private String goodHistNo;
+    @Column(name = "good_nm")
+    private String goodNm;
+    @Column(name = "sale_prc")
+    private String salePrc;
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")
