@@ -6,6 +6,7 @@ import choi.choice.service.PayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,9 @@ public class PayController {
     }
 
     @GetMapping("detail")
-    public Pay detailPay(String payNo){
-        Pay pay = new Pay();
-        return pay;
+    public String detailPay(String payNo, Model model){
+        Pay pay = payService.findPayByPayNo(payNo);
+        model.addAttribute("pay", pay);
+        return "/detail";
     }
 }
