@@ -47,6 +47,7 @@ public class OrderServiceImpl implements OrderService{
 
         for (int i = 0; i < ordGods.size(); i++) {
             ordGod.setOrdNo(ordNo);
+            ordGod.setOrdGoodTurn(i+1);
             ordGod.setGoodNo(good.getGoodNo());
             ordGod.setGoodNm(good.getGoodNm());
             ordGod.setGoodHistNo(ordGod.getGoodHistNo());

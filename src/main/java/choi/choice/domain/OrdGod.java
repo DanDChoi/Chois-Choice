@@ -22,6 +22,8 @@ public class OrdGod {
     private String ordNo;
     @Column(name = "good_no")
     private String goodNo;
+    @Column(name = "ord_good_turn")
+    private int ordGoodTurn;
     @Column(name = "good_hist_no")
     private String goodHistNo;
     @Column(name = "good_nm")
