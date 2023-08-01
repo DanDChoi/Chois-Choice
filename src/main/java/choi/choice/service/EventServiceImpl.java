@@ -25,7 +25,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void createEvt(@ModelAttribute Evt evt, HttpServletRequest request) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String evtNo = "E" + format.format(date) + timeMillis;

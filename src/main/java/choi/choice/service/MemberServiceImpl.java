@@ -32,7 +32,7 @@ public class MemberServiceImpl implements MemberService{
 //            return mbr;
 //        }else {
             //회원번호 생성
-            SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
             String idStr = format.format(date) + timeMillis;
