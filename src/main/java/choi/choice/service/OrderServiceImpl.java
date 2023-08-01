@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void createOrd(@ModelAttribute Ord ord, OrdGod ordGod, Good good, HttpServletRequest request) {
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
 
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);

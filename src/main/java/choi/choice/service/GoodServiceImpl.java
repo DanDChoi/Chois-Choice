@@ -24,7 +24,7 @@ public class GoodServiceImpl implements GoodService{
     @Override
     public void add(@ModelAttribute Good good, HttpServletRequest request) {
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String godNo = "G" + format.format(date) + timeMillis;

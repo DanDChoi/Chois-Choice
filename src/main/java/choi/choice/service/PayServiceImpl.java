@@ -21,7 +21,7 @@ public class PayServiceImpl implements PayService{
 
     @Override
     public void createPay(Pay pay, HttpServletRequest request) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String payNo = "P" + format.format(date) + timeMillis;
