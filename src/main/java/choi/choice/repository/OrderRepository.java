@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface OrderRepository {
 
-    void add(Ord ord, OrdGod ordGod);
+    void addOrd(Ord ord);
+
+    void addOrdGod(OrdGod ordGod);
 
     Ord findOne(String ordNo);
 

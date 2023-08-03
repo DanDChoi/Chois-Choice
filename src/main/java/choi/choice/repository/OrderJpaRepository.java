@@ -21,8 +21,12 @@ public class OrderJpaRepository implements OrderRepository{
         this.em = em;
     }
     @Override
-    public void add(Ord ord, OrdGod ordGod) {
+    public void addOrd(Ord ord) {
         em.persist(ord);
+    }
+
+    @Override
+    public void addOrdGod(OrdGod ordGod) {
         em.persist(ordGod);
     }
 
