@@ -56,7 +56,7 @@ public class OrderServiceImpl implements OrderService{
             ordGod.setUdterId(regtr);
             ordGod.setUdtDt(date);
 
-            orderRepository.add(ord, ordGod);
+            orderRepository.addOrdGod(ordGod);
         }
 
     }
