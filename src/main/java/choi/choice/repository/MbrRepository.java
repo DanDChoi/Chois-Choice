@@ -20,4 +20,6 @@ public interface MbrRepository {
     MbrGrd findGrdByNo(Long mbrNo);
 
     void deleteById(String id);
+
+    Boolean existMbr(String id);
 }

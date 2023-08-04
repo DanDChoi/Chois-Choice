@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class MbrJpaRepository implements MbrRepository{
+public class MbrJpaRepository implements MbrRepository {
 
     private final EntityManager em;
 
@@ -61,5 +61,10 @@ public class MbrJpaRepository implements MbrRepository{
     public void deleteById(String id) {
         Mbr mbr = em.find(Mbr.class, id);
         em.remove(mbr);
+    }
+
+    @Override
+    public Boolean existMbr(String id) {
+        return null;
     }
 }
