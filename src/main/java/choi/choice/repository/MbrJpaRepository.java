@@ -65,6 +65,11 @@ public class MbrJpaRepository implements MbrRepository {
 
     @Override
     public Boolean existMbr(String id) {
-        return null;
+        Mbr mbr = em.find(Mbr.class, id);
+
+        if (mbr == null) {
+            return false;
+        }
+        return true;
     }
 }
