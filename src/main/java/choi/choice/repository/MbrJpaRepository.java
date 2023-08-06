@@ -69,7 +69,8 @@ public class MbrJpaRepository implements MbrRepository {
 
         if (mbr == null) {
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 }

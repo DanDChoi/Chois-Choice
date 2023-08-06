@@ -41,4 +41,14 @@ public class GoodJpaRepository implements GoodRepository{
         Good good = em.find(Good.class, goodNo);
         em.remove(good);
     }
+
+    @Override
+    public Boolean existGood(String goodNo) {
+        Good good = em.find(Good.class, goodNo);
+        if (good == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
