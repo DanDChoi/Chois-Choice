@@ -14,4 +14,6 @@ public interface GoodRepository{
     List<Good> findAll(Sort regDt);
 
     void deleteByNo(String goodNo);
+
+    Boolean existGood(String goodNo);
 }
