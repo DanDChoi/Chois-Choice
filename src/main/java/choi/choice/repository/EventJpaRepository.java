@@ -48,4 +48,14 @@ public class EventJpaRepository implements EventRepository{
         Evt evt = em.find(Evt.class, evtNo);
         em.remove(evt);
     }
+
+    @Override
+    public Boolean existEvt(String evtNo) {
+        Evt evt = em.find(Evt.class, evtNo);
+        if (evt == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
