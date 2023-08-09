@@ -17,4 +17,5 @@ public interface OrderRepository {
     List<Ord> findAll(Sort regDt);
 
     void deleteByOrdNo(String ordNo);
+    Boolean existOrd(String ordNo);
 }
