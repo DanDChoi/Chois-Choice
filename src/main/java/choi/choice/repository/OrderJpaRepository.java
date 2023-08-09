@@ -47,5 +47,16 @@ public class OrderJpaRepository implements OrderRepository{
         Ord ord = em.find(Ord.class, ordNo);
         em.remove(ord);
     }
+
+    @Override
+    public Boolean existOrd(String ordNo) {
+        Ord ord = em.find(Ord.class, ordNo);
+        if (ord == null) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
 }
 
