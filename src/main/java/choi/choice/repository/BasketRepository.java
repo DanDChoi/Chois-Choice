@@ -11,5 +11,7 @@ public interface BasketRepository {
 
     void delete(String bskNo);
 
+    void deleteAll(String mbrNo);
+
     List<Bsk> findAll(Sort regDt);
 }
