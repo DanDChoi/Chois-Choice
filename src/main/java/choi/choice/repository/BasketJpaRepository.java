@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Bsk;
+import choi.choice.domain.Mbr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,15 @@ public class BasketJpaRepository implements BasketRepository{
     public void delete(String bskNo) {
         Bsk bsk = em.find(Bsk.class, bskNo);
         em.remove(bsk);
+    }
+
+    @Override
+    public void deleteAll(String mbrNo) {
+        String deleteQuery = "delete from bsk where mbr_no = :mbrNo";
+
+        em.createQuery(deleteQuery, Bsk.class)
+                .setParameter("mbrNo", mbrNo)
+                .getResultList();
     }
 
     @Override

@@ -8,13 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class MbrRepositoryTest {
 
-    @Autowired
     MbrRepository mbrRepository;
 
-    @AfterAll
-    public void clean_up(){
-        mbrRepository.deleteAll();
-    }
+
 
     @Test
     public void 가입(){
