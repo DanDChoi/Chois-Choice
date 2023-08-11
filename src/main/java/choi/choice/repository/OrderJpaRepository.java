@@ -1,5 +1,6 @@
 package choi.choice.repository;
 
+import choi.choice.domain.Bsk;
 import choi.choice.domain.Ord;
 import choi.choice.domain.OrdGod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,15 @@ public class OrderJpaRepository implements OrderRepository{
             return true;
         }
 
+    }
+
+    @Override
+    public Ord findDrctOrd(String status) {
+        String query = "select o from ord o where o.ord_stats = :status";
+
+        em.createQuery(query, Bsk.class)
+                .setParameter("status", status)
+                .getResultList();
     }
 }
 

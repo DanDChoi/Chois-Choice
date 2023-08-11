@@ -22,6 +22,8 @@ public class Ord {
     private String ordNo;
     @Column(name = "ord_dt")
     private String ordDt;
+    @Column(name = "ord_status")
+    private String ordStatus;
     @Column(name = "mbr_no")
     private Long mbrNo;
     @Column(name = "cstm_nm")
