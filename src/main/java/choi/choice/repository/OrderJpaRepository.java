@@ -61,12 +61,14 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public Ord findDrctOrd(String status) {
+    public List<Ord> findDrctOrd(String status) {
         String query = "select o from Ord o where o.ordStatus = :status";
 
-        em.createQuery(query, Bsk.class)
-                .setParameter("status", status)
-                .getResultList();
+        List<Ord> ords = em.createQuery(query, Ord.class)
+                        .setParameter("status", status)
+                        .getResultList();
+        return ords;
+
     }
 }
 

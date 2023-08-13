@@ -19,5 +19,5 @@ public interface OrderRepository {
     void deleteByOrdNo(String ordNo);
     Boolean existOrd(String ordNo);
 
-    Ord findDrctOrd(String status);
+    List<Ord> findDrctOrd(String status);
 }
