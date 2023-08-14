@@ -22,4 +22,6 @@ public interface MbrRepository {
     void deleteById(String id);
 
     Boolean existMbr(String id);
+
+    List<Mbr> findMbrByGrd(String grd);
 }

@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Mbr;
 import choi.choice.domain.MbrGrd;
+import choi.choice.domain.Ord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -72,5 +73,15 @@ public class MbrJpaRepository implements MbrRepository {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public List<Mbr> findMbrByGrd(String grd) {
+        String query = "select m from Mbr m join MbrGrd mg on m.mbrNo = mg.mbrNo where mg.mbrGrd = :grd";
+
+        List<Mbr> mbrs = em.createQuery(query, Mbr.class)
+                .setParameter("grd", grd)
+                .getResultList();
+        return mbrs;
     }
 }
