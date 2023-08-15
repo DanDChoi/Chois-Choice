@@ -77,7 +77,7 @@ public class MbrJpaRepository implements MbrRepository {
 
     @Override
     public List<Mbr> findMbrByGrd(String grd) {
-        String query = "select m from Mbr m join MbrGrd mg on m.mbrNo = mg.mbrNo where mg.mbrGrd = :grd";
+        String query = "SELECT m FROM Mbr m JOIN MbrGrd mg ON m.mbrNo = mg.mbrNo WHERE mg.mbrGrd = :grd";
 
         List<Mbr> mbrs = em.createQuery(query, Mbr.class)
                 .setParameter("grd", grd)
