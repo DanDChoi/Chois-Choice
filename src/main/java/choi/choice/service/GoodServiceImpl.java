@@ -44,7 +44,14 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public Good findByNo(String goodNo) {
-        return goodRepository.findByNo(goodNo);
+        try{
+            if(goodRepository.existGood(goodNo)){
+                return goodRepository.findByNo(goodNo);
+            }
+        } catch (Exception e){
+            throw new NullPointerException();
+        }
+        return null;
     }
 
     @Override
