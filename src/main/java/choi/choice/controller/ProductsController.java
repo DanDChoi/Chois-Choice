@@ -1,11 +1,13 @@
 package choi.choice.controller;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
 import choi.choice.service.GoodService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +47,9 @@ public class ProductsController {
     }
 
     @GetMapping("detail")
-    public String detailGood(String goodNo) {
-        return "good/detail";
+    public String detailGood(String goodNo, Model model) {
+        GoodReview review = goodService.findRvByNo(goodNo);
+        model.addAttribute("review", review);
+        return "good/detail?goodNo=" + goodNo ;
     }
 }

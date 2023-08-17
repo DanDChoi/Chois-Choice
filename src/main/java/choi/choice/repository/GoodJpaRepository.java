@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -50,5 +51,11 @@ public class GoodJpaRepository implements GoodRepository{
         } else {
             return true;
         }
+    }
+
+    @Override
+    public GoodReview findRvByNo(String goodNo) {
+        GoodReview goodReview = em.find(GoodReview.class, goodNo);
+        return goodReview;
     }
 }
