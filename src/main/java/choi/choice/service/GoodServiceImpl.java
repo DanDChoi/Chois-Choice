@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -63,5 +64,11 @@ public class GoodServiceImpl implements GoodService{
     @Override
     public void deleteByNo(String goodNo){
         goodRepository.deleteByNo(goodNo);
+    }
+
+    @Override
+    public GoodReview findRvByNo(String goodNo) {
+        GoodReview review = goodRepository.findRvByNo(goodNo);
+        return review;
     }
 }

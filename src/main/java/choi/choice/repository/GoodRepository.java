@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodReview;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface GoodRepository{
     void deleteByNo(String goodNo);
 
     Boolean existGood(String goodNo);
+
+    GoodReview findRvByNo(String goodNo);
 }
