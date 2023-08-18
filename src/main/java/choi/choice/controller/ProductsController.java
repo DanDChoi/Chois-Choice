@@ -48,7 +48,10 @@ public class ProductsController {
 
     @GetMapping("detail")
     public String detailGood(String goodNo, Model model) {
+        Good good = goodService.findByNo(goodNo);
         GoodReview review = goodService.findRvByNo(goodNo);
+
+        model.addAttribute("good", good);
         model.addAttribute("review", review);
         return "good/detail?goodNo=" + goodNo ;
     }
