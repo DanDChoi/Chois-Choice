@@ -1,10 +1,13 @@
 package choi.choice.controller;
 
 import choi.choice.domain.Good;
+import choi.choice.domain.Mbr;
 import choi.choice.domain.Ord;
 import choi.choice.domain.OrdGod;
 import choi.choice.repository.OrderRepository;
+import choi.choice.service.MemberService;
 import choi.choice.service.OrderService;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,8 +28,16 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    private final SessionManager sessionManager;
+
+    private final MemberService memberService;
+
+
     @GetMapping("")
-    public String ordForm(){
+    public String ordForm(HttpServletRequest request){
+        String mbrId = sessionManager.getSession(request).getMbrId();
+        Mbr mbr = memberService.findById(mbrId);
+        orderService.findAllCpn(mbr.getMbrId());
         return "store";
     }
 

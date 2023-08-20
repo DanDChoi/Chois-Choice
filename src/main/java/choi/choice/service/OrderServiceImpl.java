@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodHist;
-import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.*;
 import choi.choice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +73,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void deleteOrd(String ordNo) {
         orderRepository.deleteByOrdNo(ordNo);
+    }
+
+    @Override
+    public List<Cpn> findAllCpn(String mbrNo) {
+        return null;
     }
 }

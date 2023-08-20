@@ -1,5 +1,6 @@
 package choi.choice.service;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.Ord;
 import choi.choice.domain.OrdGod;
@@ -13,6 +14,7 @@ public interface OrderService {
 
     Ord findOne(String ordNo);
     List<Ord> findAll();
-
     void deleteOrd(String ordNo);
+
+    List<Cpn> findAllCpn(String mbrNo);
 }
