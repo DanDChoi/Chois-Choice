@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -50,6 +52,9 @@ public class ProductsController {
     public String detailGood(String goodNo, Model model) {
         Good good = goodService.findByNo(goodNo);
         GoodReview review = goodService.findRvByNo(goodNo);
+        List<Cpn> cpns = goodService.validCpns();
+
+        //TODO cpn중 가장 높은 할인가 계산 적용
 
         model.addAttribute("good", good);
         model.addAttribute("review", review);

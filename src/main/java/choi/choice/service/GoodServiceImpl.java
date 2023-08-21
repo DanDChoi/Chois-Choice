@@ -1,5 +1,6 @@
 package choi.choice.service;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
@@ -70,5 +71,10 @@ public class GoodServiceImpl implements GoodService{
     public GoodReview findRvByNo(String goodNo) {
         GoodReview review = goodRepository.findRvByNo(goodNo);
         return review;
+    }
+
+    @Override
+    public List<Cpn> validCpns() {
+        List<Cpn> cpns = goodRepository.
     }
 }

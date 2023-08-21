@@ -1,13 +1,17 @@
 package choi.choice.repository;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
+import choi.choice.domain.Ord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -51,6 +55,19 @@ public class GoodJpaRepository implements GoodRepository{
         } else {
             return true;
         }
+    }
+
+    @Override
+    public List<Cpn> cpns() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String today = format.format(date);
+        String query = "select c from Cpn c where 1=1 and c.cpnBegDt >= :today and c.cpnEndDt < :today";
+
+        List<Cpn> cpns = em.createQuery(query, Cpn.class)
+                .setParameter("today", today)
+                .getResultList();
+        return cpns;
     }
 
     @Override
