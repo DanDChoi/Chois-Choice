@@ -1,5 +1,6 @@
 package choi.choice.service;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
 
@@ -15,4 +16,6 @@ public interface GoodService {
     void deleteByNo(String id);
 
     GoodReview findRvByNo(String goodNo);
+
+    List<Cpn> validCpns();
 }
