@@ -22,6 +22,8 @@ public class Good {
     private String goodNo;
     @Column(name = "good_nm")
     private String goodNm;
+    @Column(name = "good_prc")
+    private String goodPrc;
     @Column(name = "sale_beg_date")
     private String saleBegDate;
     @Column(name = "sale_end_date")

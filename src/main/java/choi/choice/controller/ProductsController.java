@@ -55,6 +55,30 @@ public class ProductsController {
         List<Cpn> cpns = goodService.validCpns();
 
         //TODO cpn중 가장 높은 할인가 계산 적용
+        int highestSaleRate = 0;
+        int highestSaleAmt = 0;
+        for (int i = 0; i < cpns.size(); i++) {
+            if (cpns.get(i).getCpnTpCd().equals("RATE")) {
+                if (cpns.get(i).getCpnDcRate() > highestSaleRate) {
+                    highestSaleRate = cpns.get(i).getCpnDcRate();
+                }
+            } else if (cpns.get(i).getCpnTpCd().equals("AMT")) {
+                if (cpns.get(i).getCpnDcAmt() > highestSaleAmt) {
+                    highestSaleAmt = cpns.get(i).getCpnDcAmt();
+                }
+            }
+        }
+
+        if (highestSaleRate > 0) {
+            int lastRatePrc = (100-highestSaleRate)/100 * Integer.parseInt(good.getGoodPrc());
+        }
+        if (highestSaleAmt > 0){
+            int lastAmtPrc = Integer.parseInt(good.getGoodPrc()) - highestSaleAmt;
+        }
+
+        int lastPrc = highestSaleAmt > highestSaleRate ? highestSaleAmt : highestSaleRate;
+
+        good.setGoodPrc(String.valueOf(lastPrc));
 
         model.addAttribute("good", good);
         model.addAttribute("review", review);
