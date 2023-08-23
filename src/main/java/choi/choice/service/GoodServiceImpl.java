@@ -75,6 +75,7 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public List<Cpn> validCpns() {
-        List<Cpn> cpns = goodRepository.
+        List<Cpn> cpns = goodRepository.cpns();
+        return cpns;
     }
 }
