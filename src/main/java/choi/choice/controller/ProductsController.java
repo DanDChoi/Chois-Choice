@@ -82,6 +82,7 @@ public class ProductsController {
 
         model.addAttribute("good", good);
         model.addAttribute("review", review);
+        model.addAttribute("cpn", cpns);
         return "good/detail?goodNo=" + goodNo ;
     }
 }
