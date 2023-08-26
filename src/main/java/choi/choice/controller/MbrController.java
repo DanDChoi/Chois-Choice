@@ -120,4 +120,10 @@ public class MbrController {
         model.addAttribute("profile", mbr);
         return "user-profile";
     }
+
+    @GetMapping("/cpnList")
+    public String cpnList(Model model, Mbr mbr){
+
+        return "user-cpnList";
+    }
 }
