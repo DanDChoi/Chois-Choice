@@ -1,13 +1,13 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Mbr;
-import choi.choice.domain.MbrGrd;
-import choi.choice.domain.Ord;
+import choi.choice.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -83,5 +83,19 @@ public class MbrJpaRepository implements MbrRepository {
                 .setParameter("grd", grd)
                 .getResultList();
         return mbrs;
+    }
+
+    @Override
+    public List<MbrCpn> mbrIsuCpn(Long mbrNo) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String today = format.format(date);
+        String query = "select mc from MbrCpn mc where 1=1 and mc.mbrNo = :mbrNo and mc.cpnBegDt >= :today and mc.cpnEndDt < :today";
+
+        List<MbrCpn> cpns = em.createQuery(query, MbrCpn.class)
+                .setParameter("mbrNo", mbrNo)
+                .setParameter("today", today)
+                .getResultList();
+        return cpns;
     }
 }

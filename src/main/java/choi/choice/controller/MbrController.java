@@ -1,6 +1,8 @@
 package choi.choice.controller;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.LoginService;
@@ -26,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -123,7 +126,8 @@ public class MbrController {
 
     @GetMapping("/cpnList")
     public String cpnList(Model model, Mbr mbr){
-
+        List<MbrCpn> cpns = mbrRepository.mbrIsuCpn(mbr.getMbrNo());
+        model.addAttribute("cpns", cpns);
         return "user-cpnList";
     }
 }

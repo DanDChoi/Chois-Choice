@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
 import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
@@ -95,6 +96,11 @@ public class MemberServiceImpl implements MemberService{
             builder.append(String.format("%02x", b));
         }
         return builder.toString();
+    }
+
+    @Override
+    public List<MbrCpn> findMbrCpns(Long mbrNo) {
+        return mbrRepository.mbrIsuCpn(mbrNo);
     }
 }
 
