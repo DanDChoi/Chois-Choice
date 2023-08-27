@@ -1,6 +1,8 @@
 package choi.choice.repository;
 
+import choi.choice.domain.Cpn;
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
 import org.springframework.data.domain.Sort;
 
@@ -24,4 +26,6 @@ public interface MbrRepository {
     Boolean existMbr(String id);
 
     List<Mbr> findMbrByGrd(String grd);
+
+    List<MbrCpn> mbrIsuCpn(Long mbrNo);
 }

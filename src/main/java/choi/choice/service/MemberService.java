@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
 
 import java.security.NoSuchAlgorithmException;
@@ -14,5 +15,7 @@ public interface MemberService {
     Mbr findByEmail(String email);
     MbrGrd findGrdByNo(Long mbrNo);
     List<Mbr> findAll();
+
+    List<MbrCpn> findMbrCpns(Long mbrNo);
 
 }
