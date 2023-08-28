@@ -1,9 +1,6 @@
 package choi.choice.controller;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.MbrCpn;
-import choi.choice.domain.MbrGrd;
+import choi.choice.domain.*;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.LoginService;
 import choi.choice.service.MemberService;
@@ -129,5 +126,12 @@ public class MbrController {
         List<MbrCpn> cpns = mbrRepository.mbrIsuCpn(mbr.getMbrNo());
         model.addAttribute("cpns", cpns);
         return "user-cpnList";
+    }
+
+    @GetMapping("/reviewList")
+    public String reviewList(Model model, Mbr mbr) {
+        //TODO getting review list
+//        List<GoodReview> reviews
+        return "";
     }
 }
