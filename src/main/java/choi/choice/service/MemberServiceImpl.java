@@ -106,8 +106,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public List<GoodReview> findAllReviews(Long mbrNo) {
-        //TODO
-        return null;
+        return mbrRepository.findAllReviews(mbrNo);
     }
 }
 
