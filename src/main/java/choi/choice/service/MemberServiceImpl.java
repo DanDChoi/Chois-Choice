@@ -1,5 +1,6 @@
 package choi.choice.service;
 
+import choi.choice.domain.GoodReview;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
@@ -101,6 +102,12 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<MbrCpn> findMbrCpns(Long mbrNo) {
         return mbrRepository.mbrIsuCpn(mbrNo);
+    }
+
+    @Override
+    public List<GoodReview> findAllReviews(Long mbrNo) {
+        //TODO
+        return null;
     }
 }
 

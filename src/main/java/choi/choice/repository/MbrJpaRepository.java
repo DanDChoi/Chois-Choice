@@ -98,4 +98,10 @@ public class MbrJpaRepository implements MbrRepository {
                 .getResultList();
         return cpns;
     }
+
+    @Override
+    public List<GoodReview> findAllReviews(Long mbrNo) {
+        //TODO
+        return null;
+    }
 }

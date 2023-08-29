@@ -1,9 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.MbrCpn;
-import choi.choice.domain.MbrGrd;
+import choi.choice.domain.*;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -28,4 +25,6 @@ public interface MbrRepository {
     List<Mbr> findMbrByGrd(String grd);
 
     List<MbrCpn> mbrIsuCpn(Long mbrNo);
+
+    List<GoodReview> findAllReviews(Long mbrNo);
 }
