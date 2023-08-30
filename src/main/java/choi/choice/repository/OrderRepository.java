@@ -20,4 +20,6 @@ public interface OrderRepository {
     Boolean existOrd(String ordNo);
 
     List<Ord> findDrctOrd(String status);
+
+    List<Ord> findOrdsByMbrNo(String mbrNo);
 }
