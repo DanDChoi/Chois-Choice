@@ -17,4 +17,5 @@ public interface OrderService {
     void deleteOrd(String ordNo);
 
     List<Cpn> findAllCpn(String mbrNo);
+    List<Ord> findOrdsByMbrNo(String mbrNo);
 }

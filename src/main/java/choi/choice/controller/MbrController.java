@@ -2,8 +2,10 @@ package choi.choice.controller;
 
 import choi.choice.domain.*;
 import choi.choice.repository.MbrRepository;
+import choi.choice.repository.OrderRepository;
 import choi.choice.service.LoginService;
 import choi.choice.service.MemberService;
+import choi.choice.service.OrderService;
 import choi.choice.service.SessionManager;
 import com.mysql.cj.Session;
 import lombok.AllArgsConstructor;
@@ -36,6 +38,7 @@ public class MbrController {
     private final MemberService memberService;
     private final MbrRepository mbrRepository;
     private final LoginService loginService;
+    private final OrderService orderService;
 
     private final SessionManager sessionManager;
 
@@ -117,6 +120,7 @@ public class MbrController {
         }
 
         Mbr mbr = mbrRepository.findById(id);
+        List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrNm());
         model.addAttribute("profile", mbr);
         return "user-profile";
     }

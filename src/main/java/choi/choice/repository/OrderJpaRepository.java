@@ -70,5 +70,11 @@ public class OrderJpaRepository implements OrderRepository{
         return ords;
 
     }
+
+    @Override
+    public List<Ord> findOrdsByMbrNo(String mbrNo) {
+        //TODO
+        return null;
+    }
 }
 
