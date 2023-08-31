@@ -73,8 +73,12 @@ public class OrderJpaRepository implements OrderRepository{
 
     @Override
     public List<Ord> findOrdsByMbrNo(String mbrNo) {
-        //TODO
-        return null;
+        String query = "select o from Ord o where o.mbrNo = :mbrNo";
+
+        List<Ord> ords = em.createQuery(query, Ord.class)
+                        .setParameter("mbrNo", mbrNo)
+                        .getResultList();
+        return ords;
     }
 }
 
