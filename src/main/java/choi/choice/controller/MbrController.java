@@ -135,7 +135,8 @@ public class MbrController {
     @GetMapping("/reviewList")
     public String reviewList(Model model, Mbr mbr) {
         //TODO getting review list
-//        List<GoodReview> reviews
-        return "";
+        List<GoodReview> reviews = memberService.findAllReviews(mbr.getMbrNo());
+        model.addAttribute("reviews", reviews);
+        return "user-reviews";
     }
 }
