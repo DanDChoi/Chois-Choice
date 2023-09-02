@@ -11,6 +11,7 @@ import com.mysql.cj.Session;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -120,9 +121,17 @@ public class MbrController {
         }
 
         Mbr mbr = mbrRepository.findById(id);
-        List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrNm());
+        List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrId());
         model.addAttribute("profile", mbr);
         return "user-profile";
+    }
+
+    @GetMapping("/ordList")
+    public String ordList(Model model, Mbr mbr) {
+        List<Ord> allOrds = orderService.findOrdsByMbrNo(mbr.getMbrId());
+
+        model.addAttribute("allOrds", allOrds);
+        return "ord-list";
     }
 
     @GetMapping("/cpnList")
@@ -134,7 +143,6 @@ public class MbrController {
 
     @GetMapping("/reviewList")
     public String reviewList(Model model, Mbr mbr) {
-        //TODO getting review list
         List<GoodReview> reviews = memberService.findAllReviews(mbr.getMbrNo());
         model.addAttribute("reviews", reviews);
         return "user-reviews";
