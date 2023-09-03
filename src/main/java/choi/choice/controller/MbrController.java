@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -129,8 +130,16 @@ public class MbrController {
     @GetMapping("/ordList")
     public String ordList(Model model, Mbr mbr) {
         List<Ord> allOrds = orderService.findOrdsByMbrNo(mbr.getMbrId());
+        List<Ord> cnclOrds = new ArrayList<>();
+
+        for (int i = 0; i < allOrds.size(); i++) {
+            if (allOrds.get(i).getOrdStatus().equals("CNCL")) {
+                cnclOrds.add(allOrds.get(i));
+            }
+        }
 
         model.addAttribute("allOrds", allOrds);
+        model.addAttribute("cncleOrds", cnclOrds);
         return "ord-list";
     }
 
