@@ -124,6 +124,7 @@ public class MbrController {
         Mbr mbr = mbrRepository.findById(id);
         List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrId());
         model.addAttribute("profile", mbr);
+        model.addAttribute("ords", ords);
         return "user-profile";
     }
 
