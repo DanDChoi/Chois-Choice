@@ -35,4 +35,17 @@ public class HomeController {
         model.addAttribute("member", loginMember);
         return "index";
     }
+
+    @GetMapping("/men")
+    public String menCate(){
+        return "menList";
+    }
+    @GetMapping("/women")
+    public String womenCate(){
+        return "womenList";
+    }
+    @GetMapping("/life")
+    public String lifeCate(){
+        return "lifeList";
+    }
 }
