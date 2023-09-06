@@ -1,7 +1,9 @@
 package choi.choice.controller;
 
+import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
 import choi.choice.repository.MbrRepository;
+import choi.choice.service.GoodService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -22,6 +25,7 @@ public class HomeController {
 
     private final MbrRepository mbrRepository;
     private final SessionManager sessionManager;
+    private final GoodService goodService;
 
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMember", required = false)Mbr loginMember, Model model, HttpServletRequest request){
@@ -37,15 +41,21 @@ public class HomeController {
     }
 
     @GetMapping("/men")
-    public String menCate(){
+    public String menCate(Model model, HttpServletRequest request) {
+        List<Good> menGoods = goodService.findGoodsByCate;
+        model.addAttribute("menGoods", menGoods);
         return "menList";
     }
     @GetMapping("/women")
-    public String womenCate(){
+    public String womenCate(Model model, HttpServletRequest request){
+        List<Good> womenGoods = goodService.findGoodsByCate;
+        model.addAttribute("menGoods", womenGoods);
         return "womenList";
     }
     @GetMapping("/life")
-    public String lifeCate(){
+    public String lifeCate(Model model, HttpServletRequest request){
+        List<Good> lifeGoods = goodService.findGoodsByCate;
+        model.addAttribute("menGoods", lifeGoods);
         return "lifeList";
     }
 }
