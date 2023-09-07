@@ -22,4 +22,6 @@ public interface GoodRepository{
     GoodReview findRvByNo(String goodNo);
 
     List<Cpn> cpns();
+
+    List<Good> findGoodsByCate(String cate);
 }

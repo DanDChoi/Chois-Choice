@@ -18,4 +18,6 @@ public interface GoodService {
     GoodReview findRvByNo(String goodNo);
 
     List<Cpn> validCpns();
+
+    List<Good> findGoodsByCate(String cate);
 }

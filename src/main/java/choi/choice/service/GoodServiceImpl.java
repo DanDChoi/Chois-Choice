@@ -78,4 +78,9 @@ public class GoodServiceImpl implements GoodService{
         List<Cpn> cpns = goodRepository.cpns();
         return cpns;
     }
+
+    @Override
+    public List<Good> findGoodsByCate(String cate) {
+        return goodRepository.findGoodsByCate(cate);
+    }
 }
