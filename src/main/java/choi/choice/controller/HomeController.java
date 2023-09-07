@@ -42,19 +42,19 @@ public class HomeController {
 
     @GetMapping("/men")
     public String menCate(Model model, HttpServletRequest request) {
-        List<Good> menGoods = goodService.findGoodsByCate;
+        List<Good> menGoods = goodService.findGoodsByCate("men");
         model.addAttribute("menGoods", menGoods);
         return "menList";
     }
     @GetMapping("/women")
     public String womenCate(Model model, HttpServletRequest request){
-        List<Good> womenGoods = goodService.findGoodsByCate;
+        List<Good> womenGoods = goodService.findGoodsByCate("women");
         model.addAttribute("menGoods", womenGoods);
         return "womenList";
     }
     @GetMapping("/life")
     public String lifeCate(Model model, HttpServletRequest request){
-        List<Good> lifeGoods = goodService.findGoodsByCate;
+        List<Good> lifeGoods = goodService.findGoodsByCate("life");
         model.addAttribute("menGoods", lifeGoods);
         return "lifeList";
     }

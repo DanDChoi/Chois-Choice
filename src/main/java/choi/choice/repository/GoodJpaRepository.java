@@ -75,4 +75,13 @@ public class GoodJpaRepository implements GoodRepository{
         GoodReview goodReview = em.find(GoodReview.class, goodNo);
         return goodReview;
     }
+
+    @Override
+    public List<Good> findGoodsByCate(String cate) {
+        String query = "select g from Good g where 1=1 and g.category = :cate";
+        List<Good> goods = em.createQuery(query, Good.class)
+                .setParameter("cate", cate)
+                .getResultList();
+        return goods;
+    }
 }
