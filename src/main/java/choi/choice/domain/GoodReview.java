@@ -24,6 +24,8 @@ public class GoodReview {
     private String goodNo;
     @Column(name = "good_review_turn")
     private String goodReviewTurn;
+    @Column(name = "review_cont")
+    private String reviewCont;
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")
