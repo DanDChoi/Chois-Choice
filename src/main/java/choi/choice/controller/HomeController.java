@@ -28,7 +28,7 @@ public class HomeController {
     private final GoodService goodService;
 
     @GetMapping("/")
-    public String home(@SessionAttribute(value = "loginMember", required = false)Mbr loginMember, Model model, HttpServletRequest request){
+    public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
 
         log.info("homecontroller 진입");
         if (loginMember == null) {
@@ -46,16 +46,25 @@ public class HomeController {
         model.addAttribute("menGoods", menGoods);
         return "menList";
     }
+
     @GetMapping("/women")
-    public String womenCate(Model model, HttpServletRequest request){
+    public String womenCate(Model model, HttpServletRequest request) {
         List<Good> womenGoods = goodService.findGoodsByCate("women");
         model.addAttribute("menGoods", womenGoods);
         return "womenList";
     }
+
     @GetMapping("/life")
-    public String lifeCate(Model model, HttpServletRequest request){
+    public String lifeCate(Model model, HttpServletRequest request) {
         List<Good> lifeGoods = goodService.findGoodsByCate("life");
         model.addAttribute("menGoods", lifeGoods);
         return "lifeList";
+    }
+
+    @GetMapping("/best")
+    public String best(Model model, HttpServletRequest request) {
+        List<Good> bestGoods = goodService.findGoodsByCate("best");
+        model.addAttribute("bestGoods", bestGoods);
+        return "bestList";
     }
 }
