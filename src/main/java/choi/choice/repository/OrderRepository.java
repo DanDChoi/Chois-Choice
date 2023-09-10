@@ -17,9 +17,12 @@ public interface OrderRepository {
     List<Ord> findAll(Sort regDt);
 
     void deleteByOrdNo(String ordNo);
+
     Boolean existOrd(String ordNo);
 
     List<Ord> findDrctOrd(String status);
 
     List<Ord> findOrdsByMbrNo(String mbrNo);
+
+    List<OrdGod> findBestGoods();
 }

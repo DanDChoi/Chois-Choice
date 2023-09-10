@@ -80,5 +80,13 @@ public class OrderJpaRepository implements OrderRepository{
                         .getResultList();
         return ords;
     }
+
+    @Override
+    public List<OrdGod> findBestGoods() {
+        String query = "select og.goodNo, count(1) from OrdGod og group by og.goodNo order by count(1) desc limit 10";
+        List<OrdGod> bestGoods = em.createQuery(query, OrdGod.class)
+                .getResultList();
+        return bestGoods;
+    }
 }
 
