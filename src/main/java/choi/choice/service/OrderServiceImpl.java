@@ -84,4 +84,9 @@ public class OrderServiceImpl implements OrderService{
     public List<Ord> findOrdsByMbrNo(String mbrNo) {
         return orderRepository.findOrdsByMbrNo(mbrNo);
     }
+
+    @Override
+    public List<OrdGod> findBestGoods() {
+        return orderRepository.findBestGoods();
+    }
 }

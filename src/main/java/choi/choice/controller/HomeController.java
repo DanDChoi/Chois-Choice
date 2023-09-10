@@ -2,8 +2,10 @@ package choi.choice.controller;
 
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
+import choi.choice.domain.OrdGod;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.GoodService;
+import choi.choice.service.OrderService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,7 @@ public class HomeController {
     private final MbrRepository mbrRepository;
     private final SessionManager sessionManager;
     private final GoodService goodService;
+    private final OrderService orderService;
 
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
@@ -63,7 +66,7 @@ public class HomeController {
 
     @GetMapping("/best")
     public String best(Model model, HttpServletRequest request) {
-        List<Good> bestGoods = goodService.findGoodsByCate("best");
+        List<OrdGod> bestGoods = orderService.findBestGoods();
         model.addAttribute("bestGoods", bestGoods);
         return "bestList";
     }

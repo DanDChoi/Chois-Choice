@@ -18,4 +18,6 @@ public interface OrderService {
 
     List<Cpn> findAllCpn(String mbrNo);
     List<Ord> findOrdsByMbrNo(String mbrNo);
+
+    List<OrdGod> findBestGoods();
 }
