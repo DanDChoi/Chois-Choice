@@ -102,6 +102,11 @@ public class MbrJpaRepository implements MbrRepository {
     @Override
     public List<GoodReview> findAllReviews(Long mbrNo) {
         //TODO
-        return null;
+        String query = "select gr from GoodReview gr where 1=1 and gr.mbrNo = :mbrNo";
+
+        List<GoodReview> reviews = em.createQuery(query, GoodReview.class)
+                .setParameter("mbrNo", mbrNo)
+                .getResultList();
+        return reviews;
     }
 }
