@@ -20,6 +20,8 @@ public class GoodReview {
     @Id
     @Column(name = "review_sn", unique = true)
     private String reviewSn;
+    @Column(name = "mbr_no")
+    private String mbrNo;
     @Column(name = "good_no")
     private String goodNo;
     @Column(name = "good_review_turn")
