@@ -16,10 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.naming.Binding;
 import javax.servlet.http.Cookie;
@@ -156,5 +154,10 @@ public class MbrController {
         List<GoodReview> reviews = memberService.findAllReviews(mbr.getMbrNo());
         model.addAttribute("reviews", reviews);
         return "user-reviews";
+    }
+
+    @RequestMapping(value = "/addGoodReview.popup", method = RequestMethod.GET)
+    public String addGoodReviewPop (MultipartHttpServletRequest request, Model model, GoodReview review) throws Exception{
+        return "/addGoodReviewForm";
     }
 }
