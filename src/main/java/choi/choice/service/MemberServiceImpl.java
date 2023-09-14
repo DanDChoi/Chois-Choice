@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -107,6 +108,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<GoodReview> findAllReviews(Long mbrNo) {
         return mbrRepository.findAllReviews(mbrNo);
+    }
+
+    @Override
+    public void addMtm(Mbr mbr, HttpServletRequest request) {
+        //TODO
     }
 }
 
