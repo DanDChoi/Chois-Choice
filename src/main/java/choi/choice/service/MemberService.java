@@ -5,6 +5,7 @@ import choi.choice.domain.Mbr;
 import choi.choice.domain.MbrCpn;
 import choi.choice.domain.MbrGrd;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
@@ -18,5 +19,7 @@ public interface MemberService {
     List<Mbr> findAll();
     List<MbrCpn> findMbrCpns(Long mbrNo);
     List<GoodReview> findAllReviews(Long mbrNo);
+
+    void addMtm(Mbr mbr, HttpServletRequest request);
 
 }

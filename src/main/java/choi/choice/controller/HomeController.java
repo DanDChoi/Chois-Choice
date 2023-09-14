@@ -5,6 +5,7 @@ import choi.choice.domain.Mbr;
 import choi.choice.domain.OrdGod;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.GoodService;
+import choi.choice.service.MemberService;
 import choi.choice.service.OrderService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class HomeController {
     private final SessionManager sessionManager;
     private final GoodService goodService;
     private final OrderService orderService;
+    private final MemberService memberService;
 
     @GetMapping("/")
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
@@ -74,7 +76,7 @@ public class HomeController {
     }
 
     @PostMapping("/mtm")
-    public void addMtm(Model model, HttpServletRequest request){
-
+    public void addMtm(Mbr mbr, Model model, HttpServletRequest request){
+        memberService.addMtm(mbr, request);
     }
 }
