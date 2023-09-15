@@ -27,4 +27,6 @@ public interface MbrRepository {
     List<MbrCpn> mbrIsuCpn(Long mbrNo);
 
     List<GoodReview> findAllReviews(Long mbrNo);
+
+    void addMtm(Mbr mbr);
 }

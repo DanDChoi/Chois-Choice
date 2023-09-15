@@ -109,4 +109,9 @@ public class MbrJpaRepository implements MbrRepository {
                 .getResultList();
         return reviews;
     }
+
+    @Override
+    public void addMtm(Mbr mbr) {
+        //TODO
+    }
 }
