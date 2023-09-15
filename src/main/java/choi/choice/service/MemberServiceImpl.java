@@ -112,7 +112,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void addMtm(Mbr mbr, HttpServletRequest request) {
-        //TODO
+        mbrRepository.addMtm(mbr);
     }
 }
 
