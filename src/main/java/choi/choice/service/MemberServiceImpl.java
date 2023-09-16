@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.GoodReview;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.MbrCpn;
-import choi.choice.domain.MbrGrd;
+import choi.choice.domain.*;
 import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -111,8 +108,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void addMtm(Mbr mbr, HttpServletRequest request) {
-        mbrRepository.addMtm(mbr);
+    public void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request) {
+        mbrRepository.addMtm(mbr, csoMtmInquiry);
     }
 }
 

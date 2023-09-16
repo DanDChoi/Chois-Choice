@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.GoodReview;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.MbrCpn;
-import choi.choice.domain.MbrGrd;
+import choi.choice.domain.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.NoSuchAlgorithmException;
@@ -20,6 +17,6 @@ public interface MemberService {
     List<MbrCpn> findMbrCpns(Long mbrNo);
     List<GoodReview> findAllReviews(Long mbrNo);
 
-    void addMtm(Mbr mbr, HttpServletRequest request);
+    void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request);
 
 }
