@@ -101,7 +101,6 @@ public class MbrJpaRepository implements MbrRepository {
 
     @Override
     public List<GoodReview> findAllReviews(Long mbrNo) {
-        //TODO
         String query = "select gr from GoodReview gr where 1=1 and gr.mbrNo = :mbrNo";
 
         List<GoodReview> reviews = em.createQuery(query, GoodReview.class)
@@ -111,7 +110,7 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
-    public void addMtm(Mbr mbr) {
-        //TODO
+    public void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry) {
+       em.persist(CsoMtmInquiry.class);
     }
 }

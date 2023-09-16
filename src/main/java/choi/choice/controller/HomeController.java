@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.CsoMtmInquiry;
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.OrdGod;
@@ -76,7 +77,7 @@ public class HomeController {
     }
 
     @PostMapping("/mtm")
-    public void addMtm(Mbr mbr, Model model, HttpServletRequest request){
-        memberService.addMtm(mbr, request);
+    public void addMtm(Mbr mbr, Model model, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request){
+        memberService.addMtm(mbr, csoMtmInquiry, request);
     }
 }
