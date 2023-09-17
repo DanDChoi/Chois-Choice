@@ -23,7 +23,7 @@ public class CsoMtmInquiry {
     @Column(name = "good_no")
     private String good_no;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "inquiry_add_dt")
     private java.util.Date inquiryAddDt;
     @Column(name = "mtm_cont")
