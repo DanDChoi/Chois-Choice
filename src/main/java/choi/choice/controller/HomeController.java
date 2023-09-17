@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,7 +79,15 @@ public class HomeController {
     }
 
     @PostMapping("/mtm")
-    public void addMtm(Mbr mbr, Model model, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request){
+    public void addMtm(Mbr mbr, Model model, @ModelAttribute CsoMtmInquiry csoMtmInquiry, HttpServletRequest request){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
+        String csoSn = format.format(date) + timeMillis;
+
+        csoMtmInquiry.setMbrNo(mbr.getMbrNo());
+        csoMtmInquiry.setMtmSn(csoSn);
+
         memberService.addMtm(mbr, csoMtmInquiry, request);
     }
 }
