@@ -84,9 +84,15 @@ public class HomeController {
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String csoSn = format.format(date) + timeMillis;
+        String loginId = sessionManager.getSession(request).getMbrId();
 
         csoMtmInquiry.setMbrNo(mbr.getMbrNo());
         csoMtmInquiry.setMtmSn(csoSn);
+        csoMtmInquiry.setMtmAnswerYn("N");
+        csoMtmInquiry.setRegtrId(loginId);
+        csoMtmInquiry.setRegDt(date);
+        csoMtmInquiry.setUdterId(loginId);
+        csoMtmInquiry.setUdtDt(date);
 
         memberService.addMtm(mbr, csoMtmInquiry, request);
     }
