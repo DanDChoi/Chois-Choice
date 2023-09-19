@@ -89,6 +89,7 @@ public class HomeController {
         csoMtmInquiry.setMbrNo(mbr.getMbrNo());
         csoMtmInquiry.setMtmSn(csoSn);
         csoMtmInquiry.setMtmAnswerYn("N");
+        csoMtmInquiry.setInquiryAddDt(date);
         csoMtmInquiry.setRegtrId(loginId);
         csoMtmInquiry.setRegDt(date);
         csoMtmInquiry.setUdterId(loginId);
