@@ -54,7 +54,6 @@ public class ProductsController {
         GoodReview review = goodService.findRvByNo(goodNo);
         List<Cpn> cpns = goodService.validCpns();
 
-        //TODO cpn중 가장 높은 할인가 계산 적용
         int highestSaleRate = 0;
         int highestSaleAmt = 0;
         for (int i = 0; i < cpns.size(); i++) {
