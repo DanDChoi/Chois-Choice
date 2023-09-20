@@ -160,4 +160,9 @@ public class MbrController {
     public String addGoodReviewPop (MultipartHttpServletRequest request, Model model, GoodReview review) throws Exception{
         return "/addGoodReviewForm";
     }
+
+    @RequestMapping(value = "/bsk", method = RequestMethod.GET)
+    public String bsk(Mbr mbr, Bsk bsk, Model model){
+        return "/bsk";
+    }
 }
