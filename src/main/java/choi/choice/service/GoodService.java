@@ -20,4 +20,6 @@ public interface GoodService {
     List<Cpn> validCpns();
 
     List<Good> findGoodsByCate(String cate);
+
+    List<Good> findBskGoods(Long mbrNo);
 }

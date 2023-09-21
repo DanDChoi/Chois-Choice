@@ -24,4 +24,6 @@ public interface GoodRepository{
     List<Cpn> cpns();
 
     List<Good> findGoodsByCate(String cate);
+
+    List<Good> findBskGoods(Long mbrNo);
 }

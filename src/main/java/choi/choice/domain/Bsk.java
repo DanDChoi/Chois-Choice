@@ -23,7 +23,8 @@ public class Bsk {
 
     @Column(name = "mbr_no")
     private Long mbrNo;
-
+    @Column(name = "good_no")
+    private String goodNo;
     @Column(name = "session_id")
     private String sessionId;
 
