@@ -84,4 +84,13 @@ public class GoodJpaRepository implements GoodRepository{
                 .getResultList();
         return goods;
     }
+
+    @Override
+    public List<Good> findBskGoods(Long mbrNo) {
+        String query = "select g from Bsk b join Good g on b.goodNo = g.goodNo where 1=1 and b.mbrNo = :mbrNo";
+        List<Good> bskGoods = em.createQuery(query, Good.class)
+                .setParameter("mbrNo", mbrNo)
+                .getResultList();
+        return bskGoods;
+    }
 }

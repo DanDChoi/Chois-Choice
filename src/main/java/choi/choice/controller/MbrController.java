@@ -3,10 +3,7 @@ package choi.choice.controller;
 import choi.choice.domain.*;
 import choi.choice.repository.MbrRepository;
 import choi.choice.repository.OrderRepository;
-import choi.choice.service.LoginService;
-import choi.choice.service.MemberService;
-import choi.choice.service.OrderService;
-import choi.choice.service.SessionManager;
+import choi.choice.service.*;
 import com.mysql.cj.Session;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +36,7 @@ public class MbrController {
     private final MbrRepository mbrRepository;
     private final LoginService loginService;
     private final OrderService orderService;
+    private final GoodService goodService;
 
     private final SessionManager sessionManager;
 
@@ -163,6 +161,7 @@ public class MbrController {
 
     @RequestMapping(value = "/bsk", method = RequestMethod.GET)
     public String bsk(Mbr mbr, Bsk bsk, Model model){
+        List<Good> bskGoods = goodService.findBskGoods(mbr.getMbrNo());
         return "/bsk";
     }
 }

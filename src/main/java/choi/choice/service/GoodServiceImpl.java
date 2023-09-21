@@ -83,4 +83,9 @@ public class GoodServiceImpl implements GoodService{
     public List<Good> findGoodsByCate(String cate) {
         return goodRepository.findGoodsByCate(cate);
     }
+
+    @Override
+    public List<Good> findBskGoods(Long mbrNo) {
+        return goodRepository.findBskGoods(mbrNo);
+    }
 }
