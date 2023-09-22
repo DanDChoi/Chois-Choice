@@ -15,7 +15,7 @@ public interface GoodService {
     List<Good> findAll();
     void deleteByNo(String id);
 
-    GoodReview findRvByNo(String goodNo);
+    List<GoodReview> findRvByNo(String goodNo);
 
     List<Cpn> validCpns();
 

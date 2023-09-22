@@ -19,7 +19,7 @@ public interface GoodRepository{
 
     Boolean existGood(String goodNo);
 
-    GoodReview findRvByNo(String goodNo);
+    List<GoodReview> findRvByNo(String goodNo);
 
     List<Cpn> cpns();
 

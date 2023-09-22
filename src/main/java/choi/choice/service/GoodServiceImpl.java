@@ -68,8 +68,8 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public GoodReview findRvByNo(String goodNo) {
-        GoodReview review = goodRepository.findRvByNo(goodNo);
+    public List<GoodReview> findRvByNo(String goodNo) {
+        List<GoodReview> review = goodRepository.findRvByNo(goodNo);
         return review;
     }
 
