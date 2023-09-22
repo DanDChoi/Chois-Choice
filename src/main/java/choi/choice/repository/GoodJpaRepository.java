@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -71,8 +72,8 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
-    public GoodReview findRvByNo(String goodNo) {
-        GoodReview goodReview = em.find(GoodReview.class, goodNo);
+    public List<GoodReview> findRvByNo(String goodNo) {
+        List<GoodReview> goodReview = Collections.singletonList(em.find(GoodReview.class, goodNo));
         return goodReview;
     }
 

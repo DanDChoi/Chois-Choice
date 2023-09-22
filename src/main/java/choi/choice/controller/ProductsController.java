@@ -51,9 +51,9 @@ public class ProductsController {
     @GetMapping("detail")
     public String detailGood(String goodNo, Model model) {
         Good good = goodService.findByNo(goodNo);
-        GoodReview review = goodService.findRvByNo(goodNo);
         List<Cpn> cpns = goodService.validCpns();
 
+        //쿠폰가
         int highestSaleRate = 0;
         int highestSaleAmt = 0;
         for (int i = 0; i < cpns.size(); i++) {
@@ -79,8 +79,11 @@ public class ProductsController {
 
         good.setGoodPrc(String.valueOf(lastPrc));
 
+        //상품리뷰
+        List<GoodReview> reviews = goodService.findRvByNo(goodNo);
+
         model.addAttribute("good", good);
-        model.addAttribute("review", review);
+        model.addAttribute("review", reviews);
         model.addAttribute("cpn", cpns);
         return "good/detail?goodNo=" + goodNo ;
     }
