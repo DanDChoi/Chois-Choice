@@ -26,4 +26,6 @@ public interface GoodRepository{
     List<Good> findGoodsByCate(String cate);
 
     List<Good> findBskGoods(Long mbrNo);
+
+    void deleteBskGood(String godoNo);
 }

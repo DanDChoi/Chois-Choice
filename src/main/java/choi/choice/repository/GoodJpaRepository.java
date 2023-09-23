@@ -1,9 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodReview;
-import choi.choice.domain.Ord;
+import choi.choice.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -93,5 +90,13 @@ public class GoodJpaRepository implements GoodRepository{
                 .setParameter("mbrNo", mbrNo)
                 .getResultList();
         return bskGoods;
+    }
+
+    @Override
+    public void deleteBskGood(String goodNo) {
+        String query = "delete Bsk b where b.goodNo = :goodNo";
+        Bsk bsk = em.createQuery(query, Bsk.class)
+                .setParameter("goodNo", goodNo)
+                .getSingleResult();
     }
 }
