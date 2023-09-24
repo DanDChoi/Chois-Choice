@@ -87,4 +87,9 @@ public class ProductsController {
         model.addAttribute("cpn", cpns);
         return "good/detail?goodNo=" + goodNo ;
     }
+
+    @PostMapping(value = "/update")
+    public void updateGood(@ModelAttribute Good good, HttpServletRequest request){
+
+    }
 }
