@@ -88,6 +88,10 @@ public class ProductsController {
         return "good/detail?goodNo=" + goodNo ;
     }
 
+    @GetMapping(value = "/update")
+    public String updateGoodForm(@ModelAttribute Good good, HttpServletRequest request, Model model) {
+        return "good/detail?goodNo=" + good.getGoodNo() + "&mode=edit";
+    }
     @PostMapping(value = "/update")
     public void updateGood(@ModelAttribute Good good, HttpServletRequest request){
 
