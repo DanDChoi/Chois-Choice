@@ -5,6 +5,7 @@ import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
 import choi.choice.service.GoodService;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class ProductsController {
 
     private final GoodService goodService;
     private final GoodRepository goodRepository;
+    private final SessionManager sessionManager;
 
     @GetMapping("create")
     public String createGoodForm() {
@@ -94,6 +96,10 @@ public class ProductsController {
     }
     @PostMapping(value = "/update")
     public void updateGood(@ModelAttribute Good good, HttpServletRequest request){
+        String loginId = sessionManager.getSession(request).getMbrId();
 
+        good.setUdterId(loginId);
+
+        goodService.updateGood(good);
     }
 }
