@@ -88,4 +88,9 @@ public class GoodServiceImpl implements GoodService{
     public List<Good> findBskGoods(Long mbrNo) {
         return goodRepository.findBskGoods(mbrNo);
     }
+
+    @Override
+    public void updateGood(Good good) {
+
+    }
 }

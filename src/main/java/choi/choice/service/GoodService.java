@@ -22,4 +22,6 @@ public interface GoodService {
     List<Good> findGoodsByCate(String cate);
 
     List<Good> findBskGoods(Long mbrNo);
+
+    void updateGood(Good good);
 }
