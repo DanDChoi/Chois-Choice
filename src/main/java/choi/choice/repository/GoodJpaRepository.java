@@ -99,4 +99,24 @@ public class GoodJpaRepository implements GoodRepository{
                 .setParameter("goodNo", goodNo)
                 .getSingleResult();
     }
+
+    @Override
+    public void updateGood(Good good) {
+        String query = "update Good g " +
+                        "set g.goodNm = :goodNm " +
+                            ",g.goodPrc = :goodPrc " +
+                            ",g.saleBegDate = :saleBegDate " +
+                            ",g.saleEndDate = :saleEndDate " +
+                            ",g.udterId = :udterId " +
+                            ",g.udtDt = now() " +
+                        "where g.goodNo = :goodNo";
+        Good updateGood = em.createQuery(query, Good.class)
+                .setParameter("goodNm", good.getGoodNm())
+                .setParameter("goodPrc", good.getGoodPrc())
+                .setParameter("saleBegDate", good.getSaleBegDate())
+                .setParameter("saleEndDate", good.getSaleEndDate())
+                .setParameter("udterId", good.getUdterId())
+                .setParameter("goodNo", good.getGoodNo())
+                .getSingleResult();
+    }
 }
