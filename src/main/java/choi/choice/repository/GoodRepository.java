@@ -28,4 +28,6 @@ public interface GoodRepository{
     List<Good> findBskGoods(Long mbrNo);
 
     void deleteBskGood(String godoNo);
+
+    void updateGood(Good good);
 }

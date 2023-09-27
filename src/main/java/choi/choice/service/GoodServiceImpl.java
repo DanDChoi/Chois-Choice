@@ -91,6 +91,6 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void updateGood(Good good) {
-
+        goodRepository.updateGood(good);
     }
 }
