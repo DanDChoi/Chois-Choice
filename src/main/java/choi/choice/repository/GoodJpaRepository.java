@@ -101,6 +101,42 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void insertGoodHist(Good good) {
+        String query = "insert into GoodHist gh" +
+                "(" +
+                "gh.goodNo" +
+                ",gh.goodNm" +
+                ",gh.goodHistNo" +
+                ",gh.histDt" +
+                ",gh.saleBegDt" +
+                ",gh.saleEndDt" +
+                ",gh.colorNm" +
+                ",gh.colorCd" +
+                ",gh.regtrId" +
+                ",gh.regDt" +
+                ",gh.udterId" +
+                ",gh.udtDt" +
+                ")" +
+                "values" +
+                "(" +
+                ":goodNo, :goodNm, :goodHistNo, :histDt, :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
+        GoodHist goodHist = em.createQuery(query, GoodHist.class)
+                .setParameter("goodNo", good.getGoodNo())
+                .setParameter("goodNm", good.getGoodNm())
+//                .setParameter("goodHistNo", )
+//                .setParameter("histDt",)
+                .setParameter("saleBegDt", good.getSaleBegDate())
+                .setParameter("saleEndDt", good.getSaleEndDate())
+                .setParameter("colorNm", good.getColorNm())
+                .setParameter("colorCd", good.getColorCd())
+                .setParameter("regtrId", good.getRegtrId())
+                .setParameter("regDt", good.getRegDt())
+                .setParameter("udterId", good.getUdterId())
+                .setParameter("udtDt", good.getUdtDt())
+                .getSingleResult();
+    }
+
+    @Override
     public void updateGood(Good good) {
         String query = "update Good g " +
                         "set g.goodNm = :goodNm " +
