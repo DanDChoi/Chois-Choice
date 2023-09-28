@@ -30,4 +30,6 @@ public interface GoodRepository{
     void deleteBskGood(String godoNo);
 
     void updateGood(Good good);
+
+    void insertGoodHist(Good good);
 }

@@ -91,6 +91,7 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void updateGood(Good good) {
+        goodRepository.insertGoodHist(good);
         goodRepository.updateGood(good);
     }
 }
