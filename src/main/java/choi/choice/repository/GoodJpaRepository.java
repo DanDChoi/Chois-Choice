@@ -101,7 +101,7 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
-    public void insertGoodHist(Good good) {
+    public void insertGoodHist(GoodHist goodHist) {
         String query = "insert into GoodHist gh" +
                 "(" +
                 "gh.goodNo" +
@@ -120,19 +120,19 @@ public class GoodJpaRepository implements GoodRepository{
                 "values" +
                 "(" +
                 ":goodNo, :goodNm, :goodHistNo, :histDt, :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
-        GoodHist goodHist = em.createQuery(query, GoodHist.class)
-                .setParameter("goodNo", good.getGoodNo())
-                .setParameter("goodNm", good.getGoodNm())
+        GoodHist goodHist1 = em.createQuery(query, GoodHist.class)
+                .setParameter("goodNo", goodHist.getGoodNo())
+                .setParameter("goodNm", goodHist.getGoodNm())
 //                .setParameter("goodHistNo", )
 //                .setParameter("histDt",)
-                .setParameter("saleBegDt", good.getSaleBegDate())
-                .setParameter("saleEndDt", good.getSaleEndDate())
-                .setParameter("colorNm", good.getColorNm())
-                .setParameter("colorCd", good.getColorCd())
-                .setParameter("regtrId", good.getRegtrId())
-                .setParameter("regDt", good.getRegDt())
-                .setParameter("udterId", good.getUdterId())
-                .setParameter("udtDt", good.getUdtDt())
+                .setParameter("saleBegDt", goodHist.getSaleBegDate())
+                .setParameter("saleEndDt", goodHist.getSaleEndDate())
+                .setParameter("colorNm", goodHist.getColorNm())
+                .setParameter("colorCd", goodHist.getColorCd())
+                .setParameter("regtrId", goodHist.getRegtrId())
+                .setParameter("regDt", goodHist.getRegDt())
+                .setParameter("udterId", goodHist.getUdterId())
+                .setParameter("udtDt", goodHist.getUdtDt())
                 .getSingleResult();
     }
 
@@ -154,5 +154,14 @@ public class GoodJpaRepository implements GoodRepository{
                 .setParameter("udterId", good.getUdterId())
                 .setParameter("goodNo", good.getGoodNo())
                 .getSingleResult();
+    }
+
+    @Override
+    public String getGoodHistSeq(String goodNo) {
+        String query = "select max(gh.goodHistNo) from GoodHist gh where gh.goodNo = :goodNo order by gh.goodHistNo desc limit 1";
+        String goodHistSeq = String.valueOf(em.createQuery(query, Good.class)
+                .setParameter("goodNo", goodNo)
+                .getSingleResult());
+        return goodHistSeq;
     }
 }
