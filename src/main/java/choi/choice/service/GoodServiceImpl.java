@@ -2,6 +2,7 @@ package choi.choice.service;
 
 import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodHist;
 import choi.choice.domain.GoodReview;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
@@ -91,7 +92,16 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void updateGood(Good good) {
-        goodRepository.insertGoodHist(good);
+        int maxSeq = Integer.parseInt(goodRepository.getGoodHistSeq(good.getGoodNo()));
+        String nextSeq = String.valueOf(maxSeq + 1);
+        GoodHist goodHist = null;
+        goodHist.setGoodHistNo(nextSeq);
+        goodHist.setGoodNm(good.getGoodNm());
+        goodHist.setGoodNo(good.getGoodNo());
+        //TODO set goodHist from good
+
+        goodRepository.insertGoodHist(goodHist);
+
         goodRepository.updateGood(good);
     }
 }

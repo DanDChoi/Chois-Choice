@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
+import choi.choice.domain.GoodHist;
 import choi.choice.domain.GoodReview;
 import org.springframework.data.domain.Sort;
 
@@ -27,9 +28,11 @@ public interface GoodRepository{
 
     List<Good> findBskGoods(Long mbrNo);
 
-    void deleteBskGood(String godoNo);
+    void deleteBskGood(String goodNo);
 
     void updateGood(Good good);
 
-    void insertGoodHist(Good good);
+    void insertGoodHist(GoodHist goodHist);
+
+    String getGoodHistSeq(String goodNo);
 }
