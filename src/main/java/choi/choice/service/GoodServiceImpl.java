@@ -98,7 +98,14 @@ public class GoodServiceImpl implements GoodService{
         goodHist.setGoodHistNo(nextSeq);
         goodHist.setGoodNm(good.getGoodNm());
         goodHist.setGoodNo(good.getGoodNo());
-        //TODO set goodHist from good
+        goodHist.setSaleBegDate(good.getSaleBegDate());
+        goodHist.setSaleEndDate(good.getSaleEndDate());
+        goodHist.setColorNm(good.getColorNm());
+        goodHist.setColorCd(good.getColorCd());
+        goodHist.setRegtrId(good.getRegtrId());
+        goodHist.setRegDt(good.getRegDt());
+        goodHist.setUdterId(good.getUdterId());
+        goodHist.setUdtDt(good.getUdtDt());
 
         goodRepository.insertGoodHist(goodHist);
 
