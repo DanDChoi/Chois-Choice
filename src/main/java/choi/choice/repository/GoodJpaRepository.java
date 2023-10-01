@@ -28,6 +28,27 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void saveGoodHist(Good good, String histNo) {
+        String query = "insert into GoodHist gh " +
+                "values (" +
+                ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt" +
+                ")";
+        GoodHist goodHist = em.createQuery(query, GoodHist.class)
+                .setParameter("goodNo", good.getGoodNo())
+                .setParameter("goodNm", good.getGoodNm())
+                .setParameter("goodHistNo", histNo)
+                .setParameter("saleBegDt", good.getSaleBegDate())
+                .setParameter("saleEndDt", good.getSaleEndDate())
+                .setParameter("colorNm", good.getColorNm())
+                .setParameter("colorCd", good.getColorCd())
+                .setParameter("regtrId", good.getRegtrId())
+                .setParameter("regDt", good.getRegDt())
+                .setParameter("udterId", good.getUdterId())
+                .setParameter("udtDt", good.getUdtDt())
+                .getSingleResult();
+    }
+
+    @Override
     public Good findByNo(String goodNo) {
         Good good = em.find(Good.class, goodNo);
         return good;

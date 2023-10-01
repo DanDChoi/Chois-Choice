@@ -12,6 +12,8 @@ public interface GoodRepository{
 
     void save(Good good);
 
+    void saveGoodHist(Good good, String histNo);
+
     Good findByNo(String goodNo);
 
     List<Good> findAll(Sort regDt);

@@ -43,6 +43,9 @@ public class GoodServiceImpl implements GoodService{
         good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
+
+        String histNo = "1";
+        goodRepository.saveGoodHist(good, histNo);
     }
 
     @Override
