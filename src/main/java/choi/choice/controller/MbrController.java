@@ -151,6 +151,7 @@ public class MbrController {
     public String reviewList(Model model, Mbr mbr) {
         List<GoodReview> reviews = memberService.findAllReviews(mbr.getMbrNo());
         model.addAttribute("reviews", reviews);
+        model.addAttribute("mbr", mbr);
         return "user-reviews";
     }
 
@@ -162,6 +163,8 @@ public class MbrController {
     @RequestMapping(value = "/bsk", method = RequestMethod.GET)
     public String bsk(Mbr mbr, Bsk bsk, Model model){
         List<Good> bskGoods = goodService.findBskGoods(mbr.getMbrNo());
+        model.addAttribute("mbr", mbr);
+        model.addAttribute("bskGoods", bskGoods);
         return "/bsk";
     }
 }
