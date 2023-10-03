@@ -119,7 +119,7 @@ public class MbrController {
 
         Mbr mbr = mbrRepository.findById(id);
         List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrId());
-        model.addAttribute("profile", mbr);
+        model.addAttribute("mbr", mbr);
         model.addAttribute("ords", ords);
         return "user-profile";
     }
@@ -134,7 +134,7 @@ public class MbrController {
                 cnclOrds.add(allOrds.get(i));
             }
         }
-
+        model.addAttribute("mbr", mbr);
         model.addAttribute("allOrds", allOrds);
         model.addAttribute("cncleOrds", cnclOrds);
         return "ord-list";
@@ -143,6 +143,7 @@ public class MbrController {
     @GetMapping("/cpnList")
     public String cpnList(Model model, Mbr mbr){
         List<MbrCpn> cpns = mbrRepository.mbrIsuCpn(mbr.getMbrNo());
+        model.addAttribute("mbr", mbr);
         model.addAttribute("cpns", cpns);
         return "user-cpnList";
     }
