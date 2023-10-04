@@ -24,6 +24,10 @@ public class Evt {
     private String evtNm;
     @Column(name = "evt_dscr")
     private String evtDscr;
+    @Column(name = "evt_stat_cd")
+    private String evtStatCd;
+    @Column(name = "evt_tp_cd")
+    private String evtTpCd;
     @Column(name = "evt_beg_dt")
     private java.util.Date evtBegDt;
     @Column(name = "evt_end_dt")
