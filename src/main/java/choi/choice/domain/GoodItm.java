@@ -18,7 +18,9 @@ import javax.persistence.Table;
 public class GoodItm {
 
     @Id
-    @Column(name = "good_no", unique = true)
+    @Column(name = "good_itm_no", unique = true)
+    private String goodItmNo;
+    @Column(name = "good_no")
     private String goodNo;
     @Column(name = "good_nm")
     private String goodNm;

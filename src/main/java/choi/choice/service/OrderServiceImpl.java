@@ -55,6 +55,8 @@ public class OrderServiceImpl implements OrderService{
 
             orderRepository.addOrdGod(ordGod);
         }
+        Pay pay = null;
+        //TODO pay set
 
     }
 
