@@ -102,4 +102,10 @@ public class ProductsController {
 
         goodService.updateGood(good);
     }
+
+    @PostMapping(value = "/addBukmk")
+    public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
+        Good good = goodService.findByNo(goodNo);
+        goodService.addBukmk(good);
+    }
 }
