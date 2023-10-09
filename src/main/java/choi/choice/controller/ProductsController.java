@@ -106,6 +106,6 @@ public class ProductsController {
     @PostMapping(value = "/addBukmk")
     public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
         Good good = goodService.findByNo(goodNo);
-        goodService.addBukmk(good);
+        int bukmkCnt = goodService.addBukmk(good);
     }
 }

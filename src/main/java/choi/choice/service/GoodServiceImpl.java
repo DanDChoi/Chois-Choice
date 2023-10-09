@@ -114,4 +114,10 @@ public class GoodServiceImpl implements GoodService{
 
         goodRepository.updateGood(good);
     }
+
+    @Override
+    public int addBukmk(Good good) {
+        //TODO repo query
+        return 0;
+    }
 }
