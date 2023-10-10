@@ -118,6 +118,7 @@ public class GoodServiceImpl implements GoodService{
     @Override
     public int addBukmk(Good good) {
         //TODO repo query
-        return 0;
+        int bukmkCnt = goodRepository.addBukmk(good);
+        return bukmkCnt;
     }
 }

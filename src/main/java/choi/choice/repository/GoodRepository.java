@@ -37,4 +37,6 @@ public interface GoodRepository{
     void insertGoodHist(GoodHist goodHist);
 
     String getGoodHistSeq(String goodNo);
+
+    int addBukmk(Good good);
 }
