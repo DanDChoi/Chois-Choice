@@ -185,4 +185,9 @@ public class GoodJpaRepository implements GoodRepository{
                 .getSingleResult());
         return goodHistSeq;
     }
+
+    @Override
+    public int addBukmk(Good good) {
+        return 0;
+    }
 }
