@@ -188,6 +188,11 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public int addBukmk(Good good) {
+        String query = "insert into MbrBukmk mb values (:bukmkSn, :mbrNo, :goodNo, :regtrId, now(), :udterId, now())";
+        MbrBukmk mbrBukmk = em.createQuery(query, MbrBukmk.class)
+                //TODO parameter set
+//                .setParameter("bukmkSn", )
+
         return 0;
     }
 }
