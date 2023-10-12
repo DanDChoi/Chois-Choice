@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodHist;
-import choi.choice.domain.GoodReview;
+import choi.choice.domain.*;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -116,7 +113,8 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public int addBukmk(Good good) {
+    public int addBukmk(Good good, Mbr mbr) {
+        int bukmkSn = goodRepository.getBukmkSn(mbr);
         int bukmkCnt = goodRepository.addBukmk(good);
         return bukmkCnt;
     }

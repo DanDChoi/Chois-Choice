@@ -106,6 +106,8 @@ public class ProductsController {
     @PostMapping(value = "/addBukmk")
     public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
         Good good = goodService.findByNo(goodNo);
-        int bukmkCnt = goodService.addBukmk(good);
+        String loginId = sessionManager.getSession(request).getMbrId();
+        //TODO mbr 가져오기
+        int bukmkCnt = goodService.addBukmk(good, mbr);
     }
 }
