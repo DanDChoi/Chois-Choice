@@ -1,9 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodHist;
-import choi.choice.domain.GoodReview;
+import choi.choice.domain.*;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -39,4 +36,6 @@ public interface GoodRepository{
     String getGoodHistSeq(String goodNo);
 
     int addBukmk(Good good);
+
+    int getBukmkSn(Mbr mbr);
 }

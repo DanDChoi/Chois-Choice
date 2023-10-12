@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
+import choi.choice.domain.Mbr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -25,5 +26,5 @@ public interface GoodService {
 
     void updateGood(Good good);
 
-    int addBukmk(Good good);
+    int addBukmk(Good good, Mbr mbr);
 }
