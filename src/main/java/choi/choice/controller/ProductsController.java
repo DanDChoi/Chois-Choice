@@ -3,8 +3,10 @@ package choi.choice.controller;
 import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.GoodReview;
+import choi.choice.domain.Mbr;
 import choi.choice.repository.GoodRepository;
 import choi.choice.service.GoodService;
+import choi.choice.service.MemberService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ public class ProductsController {
     private final GoodService goodService;
     private final GoodRepository goodRepository;
     private final SessionManager sessionManager;
+    private final MemberService memberService;
 
     @GetMapping("create")
     public String createGoodForm() {
@@ -108,6 +111,7 @@ public class ProductsController {
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
         //TODO mbr 가져오기
+        Mbr mbr = memberService.findById(loginId);
         int bukmkCnt = goodService.addBukmk(good, mbr);
     }
 }
