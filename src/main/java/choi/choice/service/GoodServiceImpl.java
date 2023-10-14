@@ -115,7 +115,7 @@ public class GoodServiceImpl implements GoodService{
     @Override
     public int addBukmk(Good good, Mbr mbr) {
         int bukmkSn = goodRepository.getBukmkSn(mbr);
-        int bukmkCnt = goodRepository.addBukmk(good, bukmkSn);
+        int bukmkCnt = goodRepository.addBukmk(good, mbr, bukmkSn);
         return bukmkCnt;
     }
 }

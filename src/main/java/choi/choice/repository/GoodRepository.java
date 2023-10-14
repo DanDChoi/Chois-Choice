@@ -35,7 +35,7 @@ public interface GoodRepository{
 
     String getGoodHistSeq(String goodNo);
 
-    int addBukmk(Good good, int bukmkSn);
+    int addBukmk(Good good, Mbr mbr, int bukmkSn);
 
     int getBukmkSn(Mbr mbr);
 }
