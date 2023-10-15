@@ -189,9 +189,9 @@ public class GoodJpaRepository implements GoodRepository{
     @Override
     public int getBukmkSn(Mbr mbr) {
         String query = "select max(mb.bukmkSn) from MbrBukmk mb where mb.mbrNo = :mbrNo order by mb.bukmkSn desc limit 1";
-        int bukmkSn = em.createQuery(query, Good.class)
+        int bukmkSn = em.createQuery(query, int.class)
                 .setParameter("mbrNo", mbr.getMbrNo())
-                .getSingleResult());
+                .getSingleResult();
         return bukmkSn;
     }
 
@@ -207,7 +207,7 @@ public class GoodJpaRepository implements GoodRepository{
                 .getSingleResult();
 
         String query2 = "select count(1) from MbrBukmk mb where mb.mbrNo = :mbrNo";
-        int mbrBukmkCnt = em.createQuery(query, int.class)
+        int mbrBukmkCnt = em.createQuery(query2, int.class)
                 .setParameter("mbrNo", mbr.getMbrNo())
                 .getSingleResult();
         return mbrBukmkCnt;
