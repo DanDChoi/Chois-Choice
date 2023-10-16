@@ -206,10 +206,7 @@ public class GoodJpaRepository implements GoodRepository{
                 .setParameter("udterId",mbr.getMbrId())
                 .getSingleResult();
 
-        String query2 = "select count(1) from MbrBukmk mb where mb.mbrNo = :mbrNo";
-        int mbrBukmkCnt = em.createQuery(query2, int.class)
-                .setParameter("mbrNo", mbr.getMbrNo())
-                .getSingleResult();
+        int mbrBukmkCnt = getBukmkSn(mbr);
         return mbrBukmkCnt;
     }
 }
