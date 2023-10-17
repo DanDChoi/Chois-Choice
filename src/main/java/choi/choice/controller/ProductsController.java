@@ -74,9 +74,9 @@ public class ProductsController {
         }
 
         if (highestSaleRate > 0) {
-            int lastRatePrc = (100-highestSaleRate)/100 * Integer.parseInt(good.getGoodPrc());
+            int lastRatePrc = (100 - highestSaleRate) / 100 * Integer.parseInt(good.getGoodPrc());
         }
-        if (highestSaleAmt > 0){
+        if (highestSaleAmt > 0) {
             int lastAmtPrc = Integer.parseInt(good.getGoodPrc()) - highestSaleAmt;
         }
 
@@ -90,15 +90,16 @@ public class ProductsController {
         model.addAttribute("good", good);
         model.addAttribute("review", reviews);
         model.addAttribute("cpn", cpns);
-        return "good/detail?goodNo=" + goodNo ;
+        return "good/detail?goodNo=" + goodNo;
     }
 
     @GetMapping(value = "/update")
     public String updateGoodForm(@ModelAttribute Good good, HttpServletRequest request, Model model) {
         return "good/detail?goodNo=" + good.getGoodNo() + "&mode=edit";
     }
+
     @PostMapping(value = "/update")
-    public void updateGood(@ModelAttribute Good good, HttpServletRequest request){
+    public void updateGood(@ModelAttribute Good good, HttpServletRequest request) {
         String loginId = sessionManager.getSession(request).getMbrId();
 
         good.setUdterId(loginId);
@@ -113,5 +114,13 @@ public class ProductsController {
         //TODO mbr 가져오기
         Mbr mbr = memberService.findById(loginId);
         int bukmkCnt = goodService.addBukmk(good, mbr);
+    }
+
+    @GetMapping(value = "/bukmkList")
+    public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
+        int bukmkCnt = goodRepository.getBukmkCnt(mbr);
+
+        model.addAttribute("bukmkCnt", bukmkCnt);
+        return "bukmkList";
     }
 }
