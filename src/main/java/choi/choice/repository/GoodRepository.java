@@ -38,4 +38,6 @@ public interface GoodRepository{
     int addBukmk(Good good, Mbr mbr, int bukmkSn);
 
     int getBukmkSn(Mbr mbr);
+
+    int getBukmkCnt(Mbr mbr);
 }
