@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.*;
+import choi.choice.repository.GoodRepository;
 import choi.choice.repository.MbrRepository;
 import choi.choice.repository.OrderRepository;
 import choi.choice.service.*;
@@ -37,6 +38,7 @@ public class MbrController {
     private final LoginService loginService;
     private final OrderService orderService;
     private final GoodService goodService;
+    private final GoodRepository goodRepository;
 
     private final SessionManager sessionManager;
 
@@ -167,5 +169,13 @@ public class MbrController {
         model.addAttribute("mbr", mbr);
         model.addAttribute("bskGoods", bskGoods);
         return "/bsk";
+    }
+
+    @GetMapping(value = "/bukmkList")
+    public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
+        int bukmkCnt = goodRepository.getBukmkCnt(mbr);
+
+        model.addAttribute("bukmkCnt", bukmkCnt);
+        return "bukmkList";
     }
 }

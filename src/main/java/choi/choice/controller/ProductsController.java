@@ -116,11 +116,4 @@ public class ProductsController {
         int bukmkCnt = goodService.addBukmk(good, mbr);
     }
 
-    @GetMapping(value = "/bukmkList")
-    public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
-        int bukmkCnt = goodRepository.getBukmkCnt(mbr);
-
-        model.addAttribute("bukmkCnt", bukmkCnt);
-        return "bukmkList";
-    }
 }
