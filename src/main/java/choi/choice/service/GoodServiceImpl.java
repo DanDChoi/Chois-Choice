@@ -118,4 +118,10 @@ public class GoodServiceImpl implements GoodService{
         int bukmkCnt = goodRepository.addBukmk(good, mbr, bukmkSn);
         return bukmkCnt;
     }
+
+    @Override
+    public List<Good> findMbrBukmkGoods(Long mbrNo) {
+        //TODO goodService
+        return null;
+    }
 }

@@ -111,7 +111,6 @@ public class ProductsController {
     public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
-        //TODO mbr 가져오기
         Mbr mbr = memberService.findById(loginId);
         int bukmkCnt = goodService.addBukmk(good, mbr);
     }
