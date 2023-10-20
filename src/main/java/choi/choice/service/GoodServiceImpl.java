@@ -21,6 +21,8 @@ public class GoodServiceImpl implements GoodService{
 
     private final SessionManager sessionManager;
 
+    private final MemberService memberService;
+
     @Override
     public void add(@ModelAttribute Good good, HttpServletRequest request) {
 
@@ -120,8 +122,9 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public List<Good> findMbrBukmkGoods(Long mbrNo) {
-        //TODO goodService
-        return null;
+    public List<Good> findMbrBukmkGoods(Mbr mbr) {
+        int bukmkCnt = goodRepository.getBukmkCnt(mbr);
+        List<Good> bukmkGoods = goodRepository.bukmkGoods(mbr);
+        return bukmkGoods;
     }
 }
