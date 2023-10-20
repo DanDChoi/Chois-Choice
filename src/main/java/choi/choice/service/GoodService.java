@@ -28,5 +28,5 @@ public interface GoodService {
 
     int addBukmk(Good good, Mbr mbr);
 
-    List<Good> findMbrBukmkGoods(Long mbrNo);
+    List<Good> findMbrBukmkGoods(Mbr mbr);
 }

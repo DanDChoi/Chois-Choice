@@ -174,7 +174,7 @@ public class MbrController {
     @GetMapping(value = "/bukmkList")
     public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
         int bukmkCnt = goodRepository.getBukmkCnt(mbr);
-        List<Good> bukmkGoods = goodService.findMbrBukmkGoods(mbr.getMbrNo());
+        List<Good> bukmkGoods = goodService.findMbrBukmkGoods(mbr);
 
         model.addAttribute("mbr", mbr);
         model.addAttribute("bukmkCnt", bukmkCnt);

@@ -217,4 +217,10 @@ public class GoodJpaRepository implements GoodRepository{
                 .getSingleResult();
         return mbrBukmkCnt;
     }
+
+    @Override
+    public List<Good> bukmkGoods(Mbr mbr) {
+        //TODO getMbrBukmkGoodsQuery
+        return null;
+    }
 }
