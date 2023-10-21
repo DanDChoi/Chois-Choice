@@ -220,7 +220,10 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public List<Good> bukmkGoods(Mbr mbr) {
-        //TODO getMbrBukmkGoodsQuery
-        return null;
+        String query = "select g.* from Good g join MbrBukmk mb on g.good_no = mb.good_no where mb.mbr_no = :mbrNo";
+        List<Good> bukmkGoods = em.createQuery(query, Good.class)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getResultList();
+        return bukmkGoods;
     }
 }
