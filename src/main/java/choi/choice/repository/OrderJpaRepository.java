@@ -3,6 +3,7 @@ package choi.choice.repository;
 import choi.choice.domain.Bsk;
 import choi.choice.domain.Ord;
 import choi.choice.domain.OrdGod;
+import choi.choice.domain.Pay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,11 @@ public class OrderJpaRepository implements OrderRepository{
     @Override
     public void addOrdGod(OrdGod ordGod) {
         em.persist(ordGod);
+    }
+
+    @Override
+    public void addPay(Pay pay) {
+        em.persist(pay);
     }
 
     @Override

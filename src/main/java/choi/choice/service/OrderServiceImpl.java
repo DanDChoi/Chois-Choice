@@ -55,6 +55,9 @@ public class OrderServiceImpl implements OrderService{
 
             orderRepository.addOrdGod(ordGod);
         }
+
+        orderRepository.addOrd(ord);
+
         Pay pay = null;
 
         //TODO paySet
@@ -64,6 +67,8 @@ public class OrderServiceImpl implements OrderService{
         pay.setRegDt(date);
         pay.setUdterId(regtr);
         pay.setUdtDt(date);
+
+        orderRepository.addPay(pay);
 
     }
 
