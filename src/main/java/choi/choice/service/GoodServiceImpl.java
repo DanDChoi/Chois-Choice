@@ -66,7 +66,8 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public void deleteByNo(String goodNo){
+    public void deleteByNo(String goodNo, GoodHist goodHist){
+        goodRepository.insertGoodHist(goodHist);
         goodRepository.deleteByNo(goodNo);
     }
 

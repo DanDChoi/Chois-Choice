@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodReview;
-import choi.choice.domain.Mbr;
+import choi.choice.domain.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -14,7 +11,7 @@ public interface GoodService {
     Good findByNo(String id);
 
     List<Good> findAll();
-    void deleteByNo(String id);
+    void deleteByNo(String id, GoodHist goodHist);
 
     List<GoodReview> findRvByNo(String goodNo);
 
