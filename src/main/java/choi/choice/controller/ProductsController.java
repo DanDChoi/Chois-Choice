@@ -1,9 +1,6 @@
 package choi.choice.controller;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.GoodReview;
-import choi.choice.domain.Mbr;
+import choi.choice.domain.*;
 import choi.choice.repository.GoodRepository;
 import choi.choice.service.GoodService;
 import choi.choice.service.MemberService;
@@ -50,7 +47,21 @@ public class ProductsController {
 
     @GetMapping("delete")
     public void deleteGood(String goodNo) {
-        goodService.deleteByNo(goodNo);
+        GoodHist goodHist = null;
+        Good good = goodService.findByNo(goodNo);
+        goodHist.setGoodNm(good.getGoodNm());
+//        goodHist.setGoodHistNo();
+//        goodHist.setHistDt();
+        goodHist.setGoodNm(good.getGoodNm());
+        goodHist.setColorNm(good.getColorNm());
+        goodHist.setColorCd(good.getColorCd());
+        goodHist.setSaleBegDate(good.getSaleBegDate());
+        goodHist.setSaleEndDate(good.getSaleEndDate());
+        goodHist.setRegtrId(good.getRegtrId());
+        goodHist.setRegDt(good.getRegDt());
+        goodHist.setUdterId(good.getUdterId());
+        goodHist.setUdtDt(good.getUdtDt());
+        goodService.deleteByNo(goodNo, goodHist);
     }
 
     @GetMapping("detail")
