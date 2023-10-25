@@ -67,6 +67,10 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void deleteByNo(String goodNo, GoodHist goodHist){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date = new Date();
+
+        goodHist.setHistDt(date);
         goodRepository.insertGoodHist(goodHist);
         goodRepository.deleteByNo(goodNo);
     }
