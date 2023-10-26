@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -67,10 +69,11 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void deleteByNo(String goodNo, GoodHist goodHist){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        goodHist.setHistDt(date);
+//TODO Date 객체로 변경필
+//        goodHist.setHistDt(formatter.format(date));
         goodRepository.insertGoodHist(goodHist);
         goodRepository.deleteByNo(goodNo);
     }
