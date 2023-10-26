@@ -72,8 +72,10 @@ public class GoodServiceImpl implements GoodService{
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-//TODO Date 객체로 변경필
+//TODO Date 객체로 변경
 //        goodHist.setHistDt(formatter.format(date));
+//        GET HIST SEQ
+//        goodHist.setGoodHistNo();
         goodRepository.insertGoodHist(goodHist);
         goodRepository.deleteByNo(goodNo);
     }
