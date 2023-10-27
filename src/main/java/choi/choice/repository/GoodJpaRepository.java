@@ -140,12 +140,11 @@ public class GoodJpaRepository implements GoodRepository{
                 ")" +
                 "values" +
                 "(" +
-                ":goodNo, :goodNm, :goodHistNo, :histDt, :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
+                ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
         GoodHist goodHist1 = em.createQuery(query, GoodHist.class)
                 .setParameter("goodNo", goodHist.getGoodNo())
                 .setParameter("goodNm", goodHist.getGoodNm())
-//                .setParameter("goodHistNo", )
-//                .setParameter("histDt",)
+                .setParameter("goodHistNo", goodHist.getGoodHistNo())
                 .setParameter("saleBegDt", goodHist.getSaleBegDate())
                 .setParameter("saleEndDt", goodHist.getSaleEndDate())
                 .setParameter("colorNm", goodHist.getColorNm())
