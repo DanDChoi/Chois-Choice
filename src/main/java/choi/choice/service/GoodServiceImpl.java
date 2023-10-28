@@ -77,6 +77,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public void deleteGoodItmByNo(String goodNo) {
+        goodRepository.deleteGoodItmByNo(goodNo);
+    }
+
+    @Override
     public List<GoodReview> findRvByNo(String goodNo) {
         List<GoodReview> review = goodRepository.findRvByNo(goodNo);
         return review;

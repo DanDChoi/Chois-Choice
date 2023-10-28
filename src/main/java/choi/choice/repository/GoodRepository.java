@@ -17,6 +17,8 @@ public interface GoodRepository{
 
     void deleteByNo(String goodNo);
 
+    void deleteGoodItmByNo(String goodNo);
+
     Boolean existGood(String goodNo);
 
     List<GoodReview> findRvByNo(String goodNo);

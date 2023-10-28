@@ -50,8 +50,6 @@ public class ProductsController {
         GoodHist goodHist = null;
         Good good = goodService.findByNo(goodNo);
         goodHist.setGoodNm(good.getGoodNm());
-//        goodHist.setGoodHistNo();
-//        goodHist.setHistDt();
         goodHist.setGoodNm(good.getGoodNm());
         goodHist.setColorNm(good.getColorNm());
         goodHist.setColorCd(good.getColorCd());
@@ -62,6 +60,7 @@ public class ProductsController {
         goodHist.setUdterId(good.getUdterId());
         goodHist.setUdtDt(good.getUdtDt());
         goodService.deleteByNo(goodNo, goodHist);
+        goodService.deleteGoodItmByNo(goodNo);
     }
 
     @GetMapping("detail")

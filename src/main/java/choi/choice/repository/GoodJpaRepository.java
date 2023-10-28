@@ -67,6 +67,12 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void deleteGoodItmByNo(String goodNo) {
+        GoodItm goodItm = em.find(GoodItm.class, goodNo);
+        em.remove(goodItm);
+    }
+
+    @Override
     public Boolean existGood(String goodNo) {
         Good good = em.find(Good.class, goodNo);
         if (good == null) {
