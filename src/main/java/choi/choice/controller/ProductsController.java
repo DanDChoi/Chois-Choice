@@ -36,6 +36,18 @@ public class ProductsController {
     @PostMapping("create/add")
     public String createGood(@ModelAttribute Good good, HttpServletRequest request) {
         goodService.add(good, request);
+        GoodHist goodHist = null;
+        goodHist.setGoodNm(good.getGoodNm());
+        goodHist.setGoodNm(good.getGoodNm());
+        goodHist.setColorNm(good.getColorNm());
+        goodHist.setColorCd(good.getColorCd());
+        goodHist.setSaleBegDate(good.getSaleBegDate());
+        goodHist.setSaleEndDate(good.getSaleEndDate());
+        goodHist.setRegtrId(good.getRegtrId());
+        goodHist.setRegDt(good.getRegDt());
+        goodHist.setUdterId(good.getUdterId());
+        goodHist.setUdtDt(good.getUdtDt());
+        goodRepository.insertGoodHist(goodHist);
         return "ok";
     }
 
