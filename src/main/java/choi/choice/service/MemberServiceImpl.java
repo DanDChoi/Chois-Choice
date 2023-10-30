@@ -42,6 +42,7 @@ public class MemberServiceImpl implements MemberService{
             String pwd = encrypt(mbr.getMbrPwd());
 
             mbr.setMbrNo(no);
+            mbr.setMbrId(mbr.getMbrId());
             log.info("mbrNo={},mbrEmail={}", mbr.getMbrNo(),mbr.getMbrEmail());
             mbr.setMbrEmail(mbr.getMbrEmail());
             mbr.setMbrPwd(pwd);
@@ -53,6 +54,21 @@ public class MemberServiceImpl implements MemberService{
             mbr.setJoinDate(format.format(date));
             log.info("mbrNo={}, mbrId={}, mbrEmail={}, mbrBrthdy={}", mbr.getMbrNo(), mbr.getMbrId(), mbr.getMbrEmail(), mbr.getMbrBrthdy());
             mbrRepository.save(mbr);
+
+            MbrHist mbrHist = null;
+
+            mbrHist.setHistDt(date);
+            mbrHist.setMbrId(mbr.getMbrId());
+            mbrHist.setMbrNo(no);
+            mbrHist.setMbrPwd(pwd);
+            mbrHist.setMbrBrthdy(mbr.getMbrBrthdy());
+            mbrHist.setMbrSex(mbr.getMbrSex());
+            mbrHist.setMbrStatCd("ACTIVE");
+            mbrHist.setRegDt(date);
+            mbrHist.setUdtDt(date);
+            mbrHist.setJoinDate(format.format(date));
+            mbrHist.setMbrEmail(mbr.getMbrEmail());
+            mbrRepository.saveMbrHist(mbrHist);
 
             MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
             mbrRepository.saveGrd(mbrGrd);
