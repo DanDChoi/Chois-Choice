@@ -37,6 +37,11 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
+    public void saveGrdHist(MbrGrdHist mbrGrdHist) {
+        em.persist(mbrGrdHist);
+    }
+
+    @Override
     public Mbr findById(String id) {
         Mbr mbr = em.find(Mbr.class, id);
         em.persist(mbr);
