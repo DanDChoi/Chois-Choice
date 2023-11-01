@@ -72,7 +72,7 @@ public class MemberServiceImpl implements MemberService{
 
             MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
             mbrRepository.saveGrd(mbrGrd);
-            MbrGrdHist mbrGrdHist = new MbrGrdHist(no, format.format(date), "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
+            MbrGrdHist mbrGrdHist = new MbrGrdHist(no, date, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
             mbrRepository.saveGrdHist(mbrGrdHist);
 //        }
     }

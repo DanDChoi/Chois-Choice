@@ -1,5 +1,9 @@
 package choi.choice.domain;
 
+import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "mbr_grd_hist")
 @Getter
@@ -10,9 +14,9 @@ package choi.choice.domain;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MbrGrdHist {
 
+    @Id
     @Column(name = "mbr_no")
     private Long mbrNo; //회원번호
-
     @Column(name = "hist_dt")
     private java.util.Date histDt;
     @Column(name = "mbr_grd")
