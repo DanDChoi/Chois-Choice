@@ -134,7 +134,6 @@ public class ProductsController {
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(loginId);
-        int bukmkCnt = goodService.addBukmk(good, mbr);
     }
 
 }
