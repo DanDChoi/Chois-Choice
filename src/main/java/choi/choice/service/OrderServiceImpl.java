@@ -61,6 +61,9 @@ public class OrderServiceImpl implements OrderService{
         Pay pay = null;
 
         //TODO paySet
+        String payNo = "P" + format.format(date) + timeMillis;
+        pay.setPayNo(payNo);
+        pay.setPayAmt(good.getGoodPrc());
         pay.setOrdNo(ordNo);
         pay.setPayDt(date);
         pay.setRegtrId(regtr);
