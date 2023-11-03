@@ -64,6 +64,8 @@ public class OrderServiceImpl implements OrderService{
         String payNo = "P" + format.format(date) + timeMillis;
         pay.setPayNo(payNo);
         pay.setPayAmt(good.getGoodPrc());
+        //일단은 무료배송만
+        pay.setDlvCstYn("N");
         pay.setOrdNo(ordNo);
         pay.setPayDt(date);
         pay.setRegtrId(regtr);
