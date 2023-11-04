@@ -23,6 +23,7 @@ public class SessionManager {
 
         //쿠키 생성 후 저장
         Cookie cookie = new Cookie(SESSION_COOKIE_NAME, sessionId);
+        cookie.setPath("/");
         response.addCookie(cookie);
     }
 
