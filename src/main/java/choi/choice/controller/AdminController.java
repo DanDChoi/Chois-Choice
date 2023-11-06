@@ -1,13 +1,19 @@
 package choi.choice.controller;
 
-import choi.choice.service.SessionManager;
+import choi.choice.domain.Evt;
+import choi.choice.domain.Good;
+import choi.choice.domain.Mbr;
+import choi.choice.domain.Pay;
+import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -15,12 +21,25 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class AdminController {
 
-    SessionManager sessionManager;
+    private final SessionManager sessionManager;
+    private final MemberService memberService;
+    private final GoodService goodService;
+    private final EventService eventService;
+    private final PayService payService;
 
     @GetMapping("/page")
-    public String adminPage(HttpServletRequest request){
+    public String adminPage(HttpServletRequest request, Model model){
         String mbrId = sessionManager.getSession(request).getMbrId();
         if (mbrId.equals("admin")){
+            List<Mbr> mbrs = memberService.findAll();
+            List<Good> goods = goodService.findAll();
+            List<Evt> evts = eventService.findAll();
+            List<Pay> pays = payService.findPays();
+
+            model.addAttribute("mbrs", mbrs);
+            model.addAttribute("goods", goods);
+            model.addAttribute("evts", evts);
+            model.addAttribute("pays", pays);
             return "adminPage";
         } else {
             return "redirect:/";
