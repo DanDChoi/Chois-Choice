@@ -31,12 +31,10 @@ public class AdminController {
     public String adminPage(HttpServletRequest request, Model model){
         String mbrId = sessionManager.getSession(request).getMbrId();
         if (mbrId.equals("admin")){
-            List<Mbr> mbrs = memberService.findAll();
             List<Good> goods = goodService.findAll();
             List<Evt> evts = eventService.findAll();
             List<Pay> pays = payService.findPays();
 
-            model.addAttribute("mbrs", mbrs);
             model.addAttribute("goods", goods);
             model.addAttribute("evts", evts);
             model.addAttribute("pays", pays);
@@ -44,5 +42,14 @@ public class AdminController {
         } else {
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/mbrList")
+    public String adminMbrList(HttpServletRequest request, Model model){
+        List<Mbr> mbrs = memberService.findAll();
+
+        model.addAttribute("mbrs", mbrs);
+
+        return "mbrList";
     }
 }
