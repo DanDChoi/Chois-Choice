@@ -28,14 +28,12 @@ public class AdminController {
     private final PayService payService;
 
     @GetMapping("/page")
-    public String adminPage(HttpServletRequest request, Model model){
+    public String adminPage(HttpServletRequest request, Model model) {
         String mbrId = sessionManager.getSession(request).getMbrId();
-        if (mbrId.equals("admin")){
-            List<Good> goods = goodService.findAll();
+        if (mbrId.equals("admin")) {
             List<Evt> evts = eventService.findAll();
             List<Pay> pays = payService.findPays();
 
-            model.addAttribute("goods", goods);
             model.addAttribute("evts", evts);
             model.addAttribute("pays", pays);
             return "adminPage";
@@ -45,11 +43,20 @@ public class AdminController {
     }
 
     @GetMapping("/mbrList")
-    public String adminMbrList(HttpServletRequest request, Model model){
+    public String adminMbrList(HttpServletRequest request, Model model) {
         List<Mbr> mbrs = memberService.findAll();
 
         model.addAttribute("mbrs", mbrs);
 
         return "mbrList";
+    }
+
+    @GetMapping("/goodsList")
+    public String adminGoodsList(HttpServletRequest request, Model model) {
+        List<Good> goods = goodService.findAll();
+
+        model.addAttribute("goods", goods);
+
+        return "goodsList";
     }
 }
