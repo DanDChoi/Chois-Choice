@@ -31,10 +31,8 @@ public class AdminController {
     public String adminPage(HttpServletRequest request, Model model) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         if (mbrId.equals("admin")) {
-            List<Evt> evts = eventService.findAll();
             List<Pay> pays = payService.findPays();
 
-            model.addAttribute("evts", evts);
             model.addAttribute("pays", pays);
             return "adminPage";
         } else {
@@ -58,5 +56,14 @@ public class AdminController {
         model.addAttribute("goods", goods);
 
         return "goodsList";
+    }
+
+    @GetMapping("/evtList")
+    public String adminEvtList(HttpServletRequest request, Model model) {
+        List<Evt> evts = eventService.findAll();
+
+        model.addAttribute("evts", evts);
+
+        return "evtList";
     }
 }
