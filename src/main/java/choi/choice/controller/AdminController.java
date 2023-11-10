@@ -31,9 +31,6 @@ public class AdminController {
     public String adminPage(HttpServletRequest request, Model model) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         if (mbrId.equals("admin")) {
-            List<Pay> pays = payService.findPays();
-
-            model.addAttribute("pays", pays);
             return "adminPage";
         } else {
             return "redirect:/";
@@ -65,5 +62,14 @@ public class AdminController {
         model.addAttribute("evts", evts);
 
         return "evtList";
+    }
+
+    @GetMapping("/payList")
+    public String adminPayList(HttpServletRequest request, Model model) {
+        List<Pay> pays = payService.findPays();
+
+        model.addAttribute("pays", pays);
+
+        return "payList";
     }
 }
