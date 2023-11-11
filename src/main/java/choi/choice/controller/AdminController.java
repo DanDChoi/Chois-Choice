@@ -1,9 +1,6 @@
 package choi.choice.controller;
 
-import choi.choice.domain.Evt;
-import choi.choice.domain.Good;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.Pay;
+import choi.choice.domain.*;
 import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -40,9 +38,14 @@ public class AdminController {
     @GetMapping("/mbrList")
     public String adminMbrList(HttpServletRequest request, Model model) {
         List<Mbr> mbrs = memberService.findAll();
+        List<MbrGrd> mbrGrds = new ArrayList<>();
+
+        for (int i = 0; i < mbrs.size(); i++) {
+            mbrGrds.add(memberService.findGrdByNo(mbrs.get(i).getMbrNo()));
+        }
 
         model.addAttribute("mbrs", mbrs);
-
+        model.addAttribute("mbrGrds", mbrGrds);
         return "mbrList";
     }
 
@@ -71,5 +74,10 @@ public class AdminController {
         model.addAttribute("pays", pays);
 
         return "payList";
+    }
+
+    @GetMapping("/reviews")
+    public String adminReviews(HttpServletRequest request, Model model) {
+        //TODO find all reviews
     }
 }
