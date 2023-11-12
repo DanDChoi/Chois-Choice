@@ -11,6 +11,8 @@ public interface GoodService {
     Good findByNo(String id);
 
     List<Good> findAll();
+
+    List<GoodReview> findAllReviews();
     void deleteByNo(String id, GoodHist goodHist);
 
     void deleteGoodItmByNo(String goodNo);

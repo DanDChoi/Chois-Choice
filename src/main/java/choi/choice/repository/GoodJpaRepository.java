@@ -57,9 +57,18 @@ public class GoodJpaRepository implements GoodRepository{
     @Override
     public List<Good> findAll(Sort regDt){
         List<Good> goods = new ArrayList<>();
+        //TODO find all goods
 //        goods.add(em.find());
         return goods;
     }
+
+    @Override
+    public List<GoodReview> findAllReviews(Sort regDt) {
+        List<GoodReview> reviews = new ArrayList<>();
+        //TODO find all reviews
+        return reviews;
+    }
+
     @Override
     public void deleteByNo(String goodNo) {
         Good good = em.find(Good.class, goodNo);
