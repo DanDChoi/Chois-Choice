@@ -15,6 +15,8 @@ public interface GoodRepository{
 
     List<Good> findAll(Sort regDt);
 
+    List<GoodReview> findAllReviews(Sort regDt);
+
     void deleteByNo(String goodNo);
 
     void deleteGoodItmByNo(String goodNo);

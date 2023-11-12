@@ -68,6 +68,12 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public List<GoodReview> findAllReviews() {
+        List<GoodReview> reviews = goodRepository.findAllReviews(Sort.by(Sort.Direction.DESC, "reg_dt"));
+        return reviews;
+    }
+
+    @Override
     public void deleteByNo(String goodNo, GoodHist goodHist){
 
         String histNo = goodRepository.getGoodHistSeq(goodNo);

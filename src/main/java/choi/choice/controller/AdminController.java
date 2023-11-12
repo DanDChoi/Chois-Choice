@@ -78,6 +78,10 @@ public class AdminController {
 
     @GetMapping("/reviews")
     public String adminReviews(HttpServletRequest request, Model model) {
-        //TODO find all reviews
+        List<GoodReview> reviews = goodService.findAllReviews();
+
+        model.addAttribute("reviews", reviews);
+
+        return "reviews";
     }
 }
