@@ -76,6 +76,14 @@ public class AdminController {
         return "payList";
     }
 
+    @GetMapping("/cpnList")
+    public String adminCpnList(HttpServletRequest request, Model model) {
+        List<Cpn> cpns = goodService.validCpns();
+
+        model.addAttribute("cpns", cpns);
+
+        return "cpnList";
+    }
     @GetMapping("/reviews")
     public String adminReviews(HttpServletRequest request, Model model) {
         List<GoodReview> reviews = goodService.findAllReviews();
