@@ -58,6 +58,13 @@ public class AdminController {
         return "goodsList";
     }
 
+    @GetMapping("/goodDetail")
+    public String adminGoodDetail(HttpServletRequest request, Model model, String goodNo) {
+        Good good = goodService.findByNo(goodNo);
+        model.addAttribute("good", good);
+        return "goodDetail/" + goodNo;
+    }
+
     @GetMapping("/evtList")
     public String adminEvtList(HttpServletRequest request, Model model) {
         List<Evt> evts = eventService.findAll();
