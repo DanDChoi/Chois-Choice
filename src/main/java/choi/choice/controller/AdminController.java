@@ -74,6 +74,15 @@ public class AdminController {
         return "evtList";
     }
 
+    @GetMapping("/evtDetail")
+    public String adminEvtDetail(HttpServletRequest request, Model model, String evtNo) {
+        Evt evt = eventService.findEvtByNo(evtNo);
+
+        model.addAttribute("evt", evt);
+
+        return "evtDetail/" + evtNo;
+    }
+
     @GetMapping("/payList")
     public String adminPayList(HttpServletRequest request, Model model) {
         List<Pay> pays = payService.findPays();
