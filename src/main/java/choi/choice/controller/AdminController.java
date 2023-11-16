@@ -92,6 +92,15 @@ public class AdminController {
         return "payList";
     }
 
+    @GetMapping("/payDetail")
+    public String adminPayDetail(HttpServletRequest request, Model model, String payNo) {
+        Pay pay = payService.findPayByPayNo(payNo);
+
+        model.addAttribute("pay", pay);
+
+        return "payDetail/" + payNo;
+    }
+
     @GetMapping("/cpnList")
     public String adminCpnList(HttpServletRequest request, Model model) {
         List<Cpn> cpns = goodService.validCpns();
