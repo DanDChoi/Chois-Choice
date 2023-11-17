@@ -100,6 +100,12 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public Cpn findCpnByNo(String cpnNo) {
+        Cpn cpn = goodRepository.findCpnByNo(cpnNo);
+        return cpn;
+    }
+
+    @Override
     public List<Good> findGoodsByCate(String cate) {
         return goodRepository.findGoodsByCate(cate);
     }

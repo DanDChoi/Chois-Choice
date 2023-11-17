@@ -27,6 +27,8 @@ public interface GoodRepository{
 
     List<Cpn> cpns();
 
+    Cpn findCpnByNo(String cpnNo);
+
     List<Good> findGoodsByCate(String cate);
 
     List<Good> findBskGoods(Long mbrNo);
