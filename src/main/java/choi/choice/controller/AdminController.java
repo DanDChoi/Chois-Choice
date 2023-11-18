@@ -126,4 +126,13 @@ public class AdminController {
 
         return "reviews";
     }
+
+    @GetMapping("/reviewDetail")
+    public String adminReviewDetail(HttpServletRequest request, Model model, String goodNo) {
+        List<GoodReview> reviews = goodService.findRvByNo(goodNo);
+
+        model.addAttribute("review", reviews);
+
+        return "reviewDetail/" + goodNo;
+    }
 }
