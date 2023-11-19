@@ -49,6 +49,15 @@ public class AdminController {
         return "mbrList";
     }
 
+    @GetMapping("/mbrDetail")
+    public String adminMbrDetail(HttpServletRequest request, Model model, String mbrId) {
+        Mbr mbr = memberService.findById(mbrId);
+
+        model.addAttribute("mbr", mbr);
+
+        return "mbrDetail/" + mbrId;
+    }
+
     @GetMapping("/goodsList")
     public String adminGoodsList(HttpServletRequest request, Model model) {
         List<Good> goods = goodService.findAll();
