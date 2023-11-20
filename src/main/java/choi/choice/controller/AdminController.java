@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +60,11 @@ public class AdminController {
         return "mbrDetail/" + mbrId;
     }
 
+    @PostMapping("/mbrUpdate")
+    public void adminMbrUpdate(HttpServletRequest request, String mbrId) {
+        //TODO mbrUpdate
+    }
+
     @GetMapping("/goodsList")
     public String adminGoodsList(HttpServletRequest request, Model model) {
         List<Good> goods = goodService.findAll();
@@ -72,6 +79,11 @@ public class AdminController {
         Good good = goodService.findByNo(goodNo);
         model.addAttribute("good", good);
         return "goodDetail/" + goodNo;
+    }
+
+    @PostMapping("/goodUpdate")
+    public void adminGoodUpdate(@RequestBody Good good, HttpServletRequest request) {
+        goodService.updateGood(good);
     }
 
     @GetMapping("/evtList")
