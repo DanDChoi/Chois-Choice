@@ -12,5 +12,6 @@ public interface EventService {
     List<Evt> findAll();
     Evt findEvtByNo(String evtNo);
 
+    void updateEvt(Evt evt);
     void deleteEvt(String evtNo);
 }

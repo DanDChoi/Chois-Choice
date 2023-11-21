@@ -44,6 +44,11 @@ public class EventJpaRepository implements EventRepository{
     }
 
     @Override
+    public void UpdateEvt(Evt evt) {
+        //TODO UDT EVT REPO
+    }
+
+    @Override
     public void deleteEvt(String evtNo) {
         Evt evt = em.find(Evt.class, evtNo);
         em.remove(evt);
