@@ -104,6 +104,11 @@ public class AdminController {
         return "evtDetail/" + evtNo;
     }
 
+    @PostMapping("/evtUpdate")
+    public void adminEvtUpdate(@RequestBody Evt evt, HttpServletRequest request) {
+        eventService.updateEvt(evt);
+    }
+
     @GetMapping("/payList")
     public String adminPayList(HttpServletRequest request, Model model) {
         List<Pay> pays = payService.findPays();
