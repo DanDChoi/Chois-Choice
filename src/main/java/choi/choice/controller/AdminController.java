@@ -144,6 +144,11 @@ public class AdminController {
 
         return "cpnDetail/" + cpnNo;
     }
+
+    @PostMapping("/cpnUpdate")
+    public void adminCpnUpdate(HttpServletRequest request, Cpn cpn) {
+        goodService.updateCpn(cpn);
+    }
     @GetMapping("/reviews")
     public String adminReviews(HttpServletRequest request, Model model) {
         List<GoodReview> reviews = goodService.findAllReviews();
