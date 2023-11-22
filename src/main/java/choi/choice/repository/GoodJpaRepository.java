@@ -111,6 +111,11 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void updateCpn(Cpn cpn) {
+        //TODO update Cpn logic
+    }
+
+    @Override
     public List<GoodReview> findRvByNo(String goodNo) {
         List<GoodReview> goodReview = Collections.singletonList(em.find(GoodReview.class, goodNo));
         return goodReview;
