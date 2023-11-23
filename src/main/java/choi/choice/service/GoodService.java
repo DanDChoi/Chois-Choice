@@ -13,6 +13,8 @@ public interface GoodService {
     List<Good> findAll();
 
     List<GoodReview> findAllReviews();
+
+    void updateReveiw(GoodReview review);
     void deleteByNo(String id, GoodHist goodHist);
 
     void deleteGoodItmByNo(String goodNo);

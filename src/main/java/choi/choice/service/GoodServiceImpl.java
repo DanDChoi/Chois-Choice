@@ -74,6 +74,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public void updateReveiw(GoodReview review) {
+        goodRepository.updateReview(review);
+    }
+
+    @Override
     public void deleteByNo(String goodNo, GoodHist goodHist){
 
         String histNo = goodRepository.getGoodHistSeq(goodNo);
