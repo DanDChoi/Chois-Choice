@@ -169,6 +169,6 @@ public class AdminController {
 
     @PostMapping("/reviewUpdate")
     public void adminReviewUpdate(HttpServletRequest request, GoodReview review) {
-        goodService.reviewUpdate();
+        goodService.updateReview(review);
     }
 }
