@@ -74,7 +74,7 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
-    public void updateReveiw(GoodReview review) {
+    public void updateReview(GoodReview review) {
         goodRepository.updateReview(review);
     }
 

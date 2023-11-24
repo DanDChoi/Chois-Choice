@@ -28,6 +28,10 @@ public class GoodReview {
     private String goodReviewTurn;
     @Column(name = "review_cont")
     private String reviewCont;
+    @Column(name = "best_yn")
+    private String bestYn;
+    @Column(name = "dsp_yn")
+    private String dspYn;
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")

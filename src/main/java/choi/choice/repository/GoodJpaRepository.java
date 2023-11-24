@@ -71,7 +71,20 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void updateReview(GoodReview review) {
-        //TODO updateReview
+        String query = "update GoodReview gr " +
+                "set gr.reviewCont = :reviewCont " +
+                ",gr.bestYn = :bestYn " +
+                ",gr.dspYn = :dspYn " +
+                ",g.udterId = :udterId " +
+                ",g.udtDt = now() " +
+                "where gr.reviewSn = :reviewSn";
+        GoodReview updateGoodReview = em.createQuery(query, GoodReview.class)
+                .setParameter("reviewCont", review.getReviewCont())
+                .setParameter("bestYn", review.getBestYn())
+                .setParameter("dspYn", review.getDspYn())
+                .setParameter("udterId", review.getUdterId())
+                .setParameter("reviewSn", review.getReviewSn())
+                .getSingleResult();
     }
 
     @Override

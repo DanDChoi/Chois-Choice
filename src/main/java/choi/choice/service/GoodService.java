@@ -14,7 +14,7 @@ public interface GoodService {
 
     List<GoodReview> findAllReviews();
 
-    void updateReveiw(GoodReview review);
+    void updateReview(GoodReview review);
     void deleteByNo(String id, GoodHist goodHist);
 
     void deleteGoodItmByNo(String goodNo);
