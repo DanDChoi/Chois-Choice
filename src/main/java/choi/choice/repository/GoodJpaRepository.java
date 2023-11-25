@@ -29,7 +29,8 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void saveGoodHist(Good good, String histNo) {
-        String query = "insert into GoodHist gh " +
+        String query = "insert into GoodHist" +
+                "(goodNo, goodNm, goodHistNo, histDt, saleBegDt, saleEndDt, colorNm, colorCd, regtrId, regDt, udterID, udtDt)"+
                 "values (" +
                 ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt" +
                 ")";
@@ -75,8 +76,8 @@ public class GoodJpaRepository implements GoodRepository{
                 "set gr.reviewCont = :reviewCont " +
                 ",gr.bestYn = :bestYn " +
                 ",gr.dspYn = :dspYn " +
-                ",g.udterId = :udterId " +
-                ",g.udtDt = now() " +
+                ",gr.udterId = :udterId " +
+                ",gr.udtDt = now() " +
                 "where gr.reviewSn = :reviewSn";
         GoodReview updateGoodReview = em.createQuery(query, GoodReview.class)
                 .setParameter("reviewCont", review.getReviewCont())
