@@ -171,4 +171,10 @@ public class AdminController {
     public void adminReviewUpdate(HttpServletRequest request, GoodReview review) {
         goodService.updateReview(review);
     }
+
+    @GetMapping("/reviewDelete")
+    public String admindReviewDelete(HttpServletRequest request, Model model, String goodNo) {
+        goodService.deleteReview(goodNo);
+        return "reviews";
+    }
 }
