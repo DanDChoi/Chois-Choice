@@ -80,7 +80,7 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void deleteReview(String goodNo) {
-
+        goodRepository.deleteReview(goodNo);
     }
 
     @Override

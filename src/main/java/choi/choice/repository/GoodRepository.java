@@ -19,6 +19,8 @@ public interface GoodRepository{
 
     void updateReview(GoodReview review);
 
+    void deleteReview(String goodNo);
+
     void deleteByNo(String goodNo);
 
     void deleteGoodItmByNo(String goodNo);

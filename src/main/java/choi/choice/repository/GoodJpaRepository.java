@@ -89,6 +89,12 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void deleteReview(String goodNo) {
+        GoodReview goodReview = em.find(GoodReview.class, goodNo);
+        em.remove(goodReview);
+    }
+
+    @Override
     public void deleteByNo(String goodNo) {
         Good good = em.find(Good.class, goodNo);
         em.remove(good);
