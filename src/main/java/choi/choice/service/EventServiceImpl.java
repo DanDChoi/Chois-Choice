@@ -58,7 +58,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void updateEvt(Evt evt) {
-        //TODO UDT EVT
+        eventRepository.updateEvt(evt);
     }
 
     @Override

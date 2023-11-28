@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.Evt;
 import choi.choice.domain.EvtReply;
+import choi.choice.domain.GoodReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -44,8 +45,26 @@ public class EventJpaRepository implements EventRepository{
     }
 
     @Override
-    public void UpdateEvt(Evt evt) {
-        //TODO UDT EVT REPO
+    public void updateEvt(Evt evt) {
+        String query = "update Evt e " +
+                "set e.evtNm = :evtNm " +
+                ",e.evtDscr = :evtDscr " +
+                ",e.evtBegDt = :evtBegDt " +
+                ",e.evtEndDt = :evtEndDt " +
+                ",e.replyUseYn = replyUseYn " +
+                ",e.evtStatCd = evtStatCd " +
+                "where e.evtNo = :evtNo";
+
+        Evt updateEvt = em.createQuery(query, Evt.class)
+                .setParameter("evtNm", evt.getEvtNm())
+                .setParameter("evtDscr", evt.getEvtDscr())
+                .setParameter("evtBegDt", evt.getEvtBegDt())
+                .setParameter("evtEndDt", evt.getEvtEndDt())
+                .setParameter("replyUseYn", evt.getReplyUseYn())
+                .setParameter("evtStatCd", evt.getEvtStatCd())
+                .setParameter("evtNo", evt.getEvtNo())
+                .getSingleResult();
+        }
     }
 
     @Override
