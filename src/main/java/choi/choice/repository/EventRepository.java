@@ -16,7 +16,7 @@ public interface EventRepository{
 
     Evt findEvtByNo(String evtNo);
 
-    void UpdateEvt(Evt evt);
+    void updateEvt(Evt evt);
     void deleteEvt(String evtNo);
 
     Boolean existEvt(String evtNo);
