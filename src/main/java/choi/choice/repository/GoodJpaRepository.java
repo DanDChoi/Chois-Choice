@@ -57,16 +57,18 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public List<Good> findAll(Sort regDt){
-        List<Good> goods = new ArrayList<>();
-        //TODO find all goods
-//        goods.add(em.find());
+        String query = "SELECT g FROM Good g";
+
+        List<Good> goods = em.createQuery(query, Good.class)
+                .getResultList();
         return goods;
     }
 
     @Override
     public List<GoodReview> findAllReviews(Sort regDt) {
-        List<GoodReview> reviews = new ArrayList<>();
-        //TODO find all reviews
+        String query = "SELECT r FROM GoodReview r";
+        List<GoodReview> reviews = em.createQuery(query, GoodReview.class)
+                .getResultList();
         return reviews;
     }
 
