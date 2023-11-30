@@ -139,7 +139,8 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void updateCpn(Cpn cpn) {
-        //TODO update Cpn logic
+        String query = "update Cpn c " +
+                "set cpn.cpn"
     }
 
     @Override
