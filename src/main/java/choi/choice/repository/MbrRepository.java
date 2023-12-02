@@ -14,6 +14,8 @@ public interface MbrRepository {
     void saveGrd(MbrGrd mbrGrd);
 
     void saveGrdHist(MbrGrdHist mbrGrdHist);
+
+    void updateMbr(Mbr mbr);
     Mbr findById(String id);
 
     Mbr findByEmail(String email);

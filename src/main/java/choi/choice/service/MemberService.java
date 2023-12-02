@@ -17,6 +17,8 @@ public interface MemberService {
     List<MbrCpn> findMbrCpns(Long mbrNo);
     List<GoodReview> findAllReviews(Long mbrNo);
 
+    void updateMbr(Mbr mbr);
+
     void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request);
 
 }
