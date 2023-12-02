@@ -42,6 +42,19 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
+    public void updateMbr(Mbr mbr) {
+        String query = "UPDATE Mbr m " +
+                "SET m.mbrPwd = :mbrPwd" +
+                ", m.mobilNo = :mobilNo" +
+                "WHERE m.mbrNo = :mbrNo";
+        Mbr updateMbr = em.createQuery(query, Mbr.class)
+                .setParameter("mbrPwd", mbr.getMbrPwd())
+                .setParameter("mobilNo", mbr.getMobilNo())
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getSingleResult();
+    }
+
+    @Override
     public Mbr findById(String id) {
         Mbr mbr = em.find(Mbr.class, id);
         em.persist(mbr);

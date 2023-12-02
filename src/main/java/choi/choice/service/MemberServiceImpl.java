@@ -100,6 +100,11 @@ public class MemberServiceImpl implements MemberService{
         return mbr;
     }
 
+    @Override
+    public void updateMbr(Mbr mbr) {
+        mbrRepository.updateMbr(mbr);
+    }
+
     public String encrypt(String text) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(text.getBytes());
