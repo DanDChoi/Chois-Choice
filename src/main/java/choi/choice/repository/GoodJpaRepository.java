@@ -275,6 +275,11 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void addReview(GoodReview review, Mbr mbr) {
+        //TODO review add
+    }
+
+    @Override
     public int getBukmkCnt(Mbr mbr) {
         String query2 = "select count(1) from MbrBukmk mb where mb.mbrNo = :mbrNo";
         int mbrBukmkCnt = em.createQuery(query2, int.class)

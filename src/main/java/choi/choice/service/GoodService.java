@@ -36,5 +36,7 @@ public interface GoodService {
 
     int addBukmk(Good good, Mbr mbr);
 
+    void addReview(GoodReview review, Mbr mbr);
+
     List<Good> findMbrBukmkGoods(Mbr mbr);
 }

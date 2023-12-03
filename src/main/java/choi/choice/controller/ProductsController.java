@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -134,6 +131,12 @@ public class ProductsController {
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(loginId);
+    }
+
+    @PostMapping(value = "/addReview")
+    public void addReview(@ModelAttribute GoodReview review, String mbrNo, HttpServletRequest request) {
+        Mbr regtrMbr = memberService.findById(mbrNo);
+        goodService.addReview(review, regtrMbr);
     }
 
 }

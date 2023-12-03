@@ -160,6 +160,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public void addReview(GoodReview review, Mbr mbr) {
+        goodRepository.addReview(review, mbr);
+    }
+
+    @Override
     public List<Good> findMbrBukmkGoods(Mbr mbr) {
         int bukmkCnt = goodRepository.getBukmkCnt(mbr);
         List<Good> bukmkGoods = goodRepository.bukmkGoods(mbr);

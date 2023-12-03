@@ -49,6 +49,8 @@ public interface GoodRepository{
 
     int addBukmk(Good good, Mbr mbr, int bukmkSn);
 
+    void addReview(GoodReview review, Mbr mbr);
+
     int getBukmkSn(Mbr mbr);
 
     int getBukmkCnt(Mbr mbr);
