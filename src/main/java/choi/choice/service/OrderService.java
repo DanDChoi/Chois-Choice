@@ -3,14 +3,14 @@ package choi.choice.service;
 import choi.choice.domain.Cpn;
 import choi.choice.domain.Good;
 import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.OrdGood;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface OrderService {
 
-    void createOrd(Ord ord, OrdGod ordGod, Good good, HttpServletRequest request);
+    void createOrd(Ord ord, OrdGood ordGood, Good good, HttpServletRequest request);
 
     Ord findOne(String ordNo);
     List<Ord> findAll();
@@ -19,5 +19,5 @@ public interface OrderService {
     List<Cpn> findAllCpn(String mbrNo);
     List<Ord> findOrdsByMbrNo(String mbrNo);
 
-    List<OrdGod> findBestGoods();
+    List<OrdGood> findBestGoods();
 }

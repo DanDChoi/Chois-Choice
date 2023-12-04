@@ -1,7 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.OrdGood;
 import choi.choice.domain.Pay;
 import org.springframework.data.domain.Sort;
 
@@ -11,7 +11,7 @@ public interface OrderRepository {
 
     void addOrd(Ord ord);
 
-    void addOrdGod(OrdGod ordGod);
+    void addOrdGod(OrdGood ordGood);
 
     void addPay(Pay pay);
 
@@ -27,5 +27,5 @@ public interface OrderRepository {
 
     List<Ord> findOrdsByMbrNo(String mbrNo);
 
-    List<OrdGod> findBestGoods();
+    List<OrdGood> findBestGoods();
 }

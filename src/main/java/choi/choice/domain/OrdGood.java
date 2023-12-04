@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ord_god")
+@Table(name = "ord_good")
 @Getter
 @Setter
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrdGod {
+public class OrdGood {
 
     @Id
     @Column(name = "ord_no", unique = true)

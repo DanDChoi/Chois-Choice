@@ -3,7 +3,7 @@ package choi.choice.controller;
 import choi.choice.domain.CsoMtmInquiry;
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.OrdGood;
 import choi.choice.repository.MbrRepository;
 import choi.choice.service.GoodService;
 import choi.choice.service.MemberService;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -68,7 +67,7 @@ public class HomeController {
 
     @GetMapping("/best")
     public String best(Model model, HttpServletRequest request) {
-        List<OrdGod> bestGoods = orderService.findBestGoods();
+        List<OrdGood> bestGoods = orderService.findBestGoods();
         model.addAttribute("bestGoods", bestGoods);
         return "bestList";
     }

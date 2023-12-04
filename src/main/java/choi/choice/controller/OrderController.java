@@ -3,7 +3,7 @@ package choi.choice.controller;
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.OrdGood;
 import choi.choice.repository.OrderRepository;
 import choi.choice.service.MemberService;
 import choi.choice.service.OrderService;
@@ -42,8 +42,8 @@ public class OrderController {
     }
 
     @PostMapping("/add")
-    public void createOrd(@ModelAttribute Ord ord, OrdGod ordGod, Good good, HttpServletRequest request){
-        orderService.createOrd(ord, ordGod, good, request);
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request){
+        orderService.createOrd(ord, ordGood, good, request);
     }
 
     @GetMapping("/find")
