@@ -3,7 +3,6 @@ package choi.choice.service;
 import choi.choice.domain.*;
 import choi.choice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +22,7 @@ public class OrderServiceImpl implements OrderService{
     private final SessionManager sessionManager;
 
     @Override
-    public void createOrd(@ModelAttribute Ord ord, OrdGod ordGod, Good good, HttpServletRequest request) {
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
@@ -40,20 +39,20 @@ public class OrderServiceImpl implements OrderService{
         ord.setUdterId(regtr);
         ord.setUdtDt(date);
 
-        List<OrdGod> ordGods = new ArrayList<>();
+        List<OrdGood> ordGoods = new ArrayList<>();
 
-        for (int i = 0; i < ordGods.size(); i++) {
-            ordGod.setOrdNo(ordNo);
-            ordGod.setOrdGoodTurn(i+1);
-            ordGod.setGoodNo(good.getGoodNo());
-            ordGod.setGoodNm(good.getGoodNm());
-            ordGod.setGoodHistNo(ordGod.getGoodHistNo());
-            ordGod.setRegtrId(regtr);
-            ordGod.setRegDt(date);
-            ordGod.setUdterId(regtr);
-            ordGod.setUdtDt(date);
+        for (int i = 0; i < ordGoods.size(); i++) {
+            ordGood.setOrdNo(ordNo);
+            ordGood.setOrdGoodTurn(i+1);
+            ordGood.setGoodNo(good.getGoodNo());
+            ordGood.setGoodNm(good.getGoodNm());
+            ordGood.setGoodHistNo(ordGood.getGoodHistNo());
+            ordGood.setRegtrId(regtr);
+            ordGood.setRegDt(date);
+            ordGood.setUdterId(regtr);
+            ordGood.setUdtDt(date);
 
-            orderRepository.addOrdGod(ordGod);
+            orderRepository.addOrdGod(ordGood);
         }
 
         orderRepository.addOrd(ord);
@@ -104,7 +103,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<OrdGod> findBestGoods() {
+    public List<OrdGood> findBestGoods() {
         return orderRepository.findBestGoods();
     }
 }

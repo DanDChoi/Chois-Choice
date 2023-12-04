@@ -1,8 +1,7 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Bsk;
 import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGod;
+import choi.choice.domain.OrdGood;
 import choi.choice.domain.Pay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -28,8 +27,8 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public void addOrdGod(OrdGod ordGod) {
-        em.persist(ordGod);
+    public void addOrdGod(OrdGood ordGood) {
+        em.persist(ordGood);
     }
 
     @Override
@@ -88,9 +87,9 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public List<OrdGod> findBestGoods() {
-        String query = "select og.goodNo, count(1) from OrdGod og group by og.goodNo order by count(1) desc limit 10";
-        List<OrdGod> bestGoods = em.createQuery(query, OrdGod.class)
+    public List<OrdGood> findBestGoods() {
+        String query = "select og.goodNo, count(1) from OrdGood og group by og.goodNo order by count(1) desc limit 10";
+        List<OrdGood> bestGoods = em.createQuery(query, OrdGood.class)
                 .getResultList();
         return bestGoods;
     }
