@@ -106,4 +106,18 @@ public class OrderServiceImpl implements OrderService{
     public List<OrdGood> findBestGoods() {
         return orderRepository.findBestGoods();
     }
+
+    @Override
+    public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+        String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
+        String clmNo = "C" + format.format(date) + timeMillis;
+
+        String regtr = sessionManager.getSession(request).getMbrId();
+
+//        orderRepository.createClm()
+    }
 }

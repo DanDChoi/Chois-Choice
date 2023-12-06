@@ -1,9 +1,6 @@
 package choi.choice.service;
 
-import choi.choice.domain.Cpn;
-import choi.choice.domain.Good;
-import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGood;
+import choi.choice.domain.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,4 +17,6 @@ public interface OrderService {
     List<Ord> findOrdsByMbrNo(String mbrNo);
 
     List<OrdGood> findBestGoods();
+
+    void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request);
 }
