@@ -57,7 +57,7 @@ public class OrderController {
     }
 
     @PostMapping("/addClm")
-    public void createClm(Ord ord, Clm clm, OrdGood ordGood) {
-        //TODO createClm
+    public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
+        orderService.createClm(ord, clm, ordGood, request);
     }
 }
