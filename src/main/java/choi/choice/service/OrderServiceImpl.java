@@ -118,6 +118,11 @@ public class OrderServiceImpl implements OrderService{
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
+        clm.setClmNo(clmNo);
+        clm.setGodNo(ordGood.getGoodNo());
+        clm.setOrdNo(ord.getOrdNo());
+        clm.setMbrNo(ord.getMbrNo());
+
 //        orderRepository.createClm()
     }
 }
