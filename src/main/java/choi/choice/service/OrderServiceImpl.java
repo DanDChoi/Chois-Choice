@@ -122,6 +122,10 @@ public class OrderServiceImpl implements OrderService{
         clm.setGodNo(ordGood.getGoodNo());
         clm.setOrdNo(ord.getOrdNo());
         clm.setMbrNo(ord.getMbrNo());
+        clm.setRegtrId(regtr);
+        clm.setRegDt(date);
+        clm.setUdterId(regtr);
+        clm.setUdtDt(date);
 
 //        orderRepository.createClm()
     }
