@@ -127,6 +127,17 @@ public class OrderServiceImpl implements OrderService{
         clm.setUdterId(regtr);
         clm.setUdtDt(date);
 
+        ClmGood clmGood = null;
+
+        clmGood.setClmGoodTurn(ordGood.getOrdGoodTurn());
+        clmGood.setClmNo(clmNo);
+        clmGood.setGoodNm(ordGood.getGoodNm());
+        clmGood.setGoodHistNo(ordGood.getGoodHistNo());
+        clmGood.setRegtrId(regtr);
+        clmGood.setRegDt(date);
+        clmGood.setUdterId(regtr);
+        clmGood.setUdtDt(date);
+
 //        orderRepository.createClm()
     }
 }
