@@ -1,8 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGood;
-import choi.choice.domain.Pay;
+import choi.choice.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
@@ -92,6 +90,12 @@ public class OrderJpaRepository implements OrderRepository{
         List<OrdGood> bestGoods = em.createQuery(query, OrdGood.class)
                 .getResultList();
         return bestGoods;
+    }
+
+    @Override
+    public void addClm(Clm clm, ClmGood clmGood) {
+        em.persist(clm);
+        em.persist(clmGood);
     }
 }
 

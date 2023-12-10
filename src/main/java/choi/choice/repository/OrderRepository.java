@@ -1,8 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGood;
-import choi.choice.domain.Pay;
+import choi.choice.domain.*;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -28,4 +26,6 @@ public interface OrderRepository {
     List<Ord> findOrdsByMbrNo(String mbrNo);
 
     List<OrdGood> findBestGoods();
+
+    void addClm(Clm clm, ClmGood clmGood);
 }

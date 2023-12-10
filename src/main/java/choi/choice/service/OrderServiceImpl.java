@@ -138,6 +138,6 @@ public class OrderServiceImpl implements OrderService{
         clmGood.setUdterId(regtr);
         clmGood.setUdtDt(date);
 
-//        orderRepository.createClm()
+        orderRepository.addClm(clm, clmGood);
     }
 }
