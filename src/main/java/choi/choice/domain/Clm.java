@@ -20,6 +20,13 @@ public class Clm {
     @Id
     @Column(name = "clm_no", unique = true)
     private String clmNo;
+    /**
+     * 클레임 유형 코드
+     * EXCHG
+     * REFND
+     */
+    @Column(name = "clm_tp_cd")
+    private String clmTpCd;
     @Column(name = "mbr_no")
     private Long mbrNo;
     @Column(name = "ord_no")

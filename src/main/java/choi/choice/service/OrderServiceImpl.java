@@ -118,6 +118,13 @@ public class OrderServiceImpl implements OrderService{
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
+        //TODO clmTpCd
+        if(clm.getClmTpCd().equals("EXCHG")){
+
+        } else if (clm.getClmTpCd().equals("REFND")) {
+
+        }
+
         clm.setClmNo(clmNo);
         clm.setGodNo(ordGood.getGoodNo());
         clm.setOrdNo(ord.getOrdNo());
