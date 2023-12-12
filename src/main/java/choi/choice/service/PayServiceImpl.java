@@ -44,6 +44,11 @@ public class PayServiceImpl implements PayService{
     }
 
     @Override
+    public Pay findPayByOrdNo(String ordNo) {
+        return payRepository.findByOrdNo(ordNo);
+    }
+
+    @Override
     public List<Pay> findPays() {
         List<Pay> pays = payRepository.findPays(Sort.by(Sort.Direction.DESC, "reg_dt"));
         return pays;

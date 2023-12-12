@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
     private final MemberService memberService;
     private final OrderRepository orderRepository;
     private final SessionManager sessionManager;
+    private final PayService payService;
 
     @Override
     public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
@@ -122,6 +123,9 @@ public class OrderServiceImpl implements OrderService{
         if(clm.getClmTpCd().equals("EXCHG")){
 
         } else if (clm.getClmTpCd().equals("REFND")) {
+            Pay refndPay = null;
+            Pay OriginPay = payService.findPayByOrdNo(ord.getOrdNo());
+            //TODO refund Pay
 
         }
 
