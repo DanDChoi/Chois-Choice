@@ -39,4 +39,10 @@ public class PayJpaRepository implements PayRepository {
         Pay pay = em.find(Pay.class, payNo);
         return pay;
     }
+
+    @Override
+    public Pay findByOrdNo(String ordNo) {
+        Pay pay = em.find(Pay.class, ordNo);
+        return pay;
+    }
 }

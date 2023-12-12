@@ -11,6 +11,8 @@ public interface PayRepository {
 
     Pay findByNo(String payNo);
 
+    Pay findByOrdNo(String ordNo);
+
     List<Pay> findPays(Sort regDt);
 
     void deletePay(String payNo);
