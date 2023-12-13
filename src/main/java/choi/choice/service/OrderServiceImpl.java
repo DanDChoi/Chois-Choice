@@ -116,6 +116,7 @@ public class OrderServiceImpl implements OrderService{
 
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String clmNo = "C" + format.format(date) + timeMillis;
+        String clmPayNo = "P" + format.format(date) + timeMillis;
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
@@ -126,7 +127,13 @@ public class OrderServiceImpl implements OrderService{
             Pay refndPay = null;
             Pay OriginPay = payService.findPayByOrdNo(ord.getOrdNo());
             //TODO refund Pay
-
+            refndPay.setPayNo(clmPayNo);
+            refndPay.setPayAmt(ordGood.getSalePrc());
+            refndPay.setDealTpCd("REFND");
+//            refndPay.setRegtrId();
+//            refndPay.setUdterId();
+            refndPay.setRegDt(date);
+            refndPay.setUdtDt(date);
         }
 
         clm.setClmNo(clmNo);
