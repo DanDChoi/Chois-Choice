@@ -141,11 +141,11 @@ public class GoodJpaRepository implements GoodRepository{
     public void updateCpn(Cpn cpn) {
         String query = "update Cpn c " +
                 "set c.cpnDcRate = :cpnDcRate" +
-                "c.cpnDcAmt = :cpnDcAmt" +
-                "c.cpnBegDt = :cpnBegDt" +
-                "c.cpnEndDt = :cpnEndDt" +
-                "c.udterId = :udterId" +
-                "c.udtDt = NOW()" +
+                ",c.cpnDcAmt = :cpnDcAmt" +
+                ",c.cpnBegDt = :cpnBegDt" +
+                ",c.cpnEndDt = :cpnEndDt" +
+                ",c.udterId = :udterId" +
+                ",c.udtDt = NOW()" +
                 "where c.cpnNo = :cpnNo";
         Cpn updateCpn = em.createQuery(query, Cpn.class)
                 .setParameter("cpnDcRate", cpn.getCpnDcRate())
