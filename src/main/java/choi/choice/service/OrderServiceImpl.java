@@ -120,20 +120,19 @@ public class OrderServiceImpl implements OrderService{
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
-        //TODO clmTpCd
+        Pay refndPay = null;
+        Pay OriginPay = payService.findPayByOrdNo(ord.getOrdNo());
+        //TODO refund Pay
+        refndPay.setPayNo(clmPayNo);
+        refndPay.setPayAmt(ordGood.getSalePrc());
+        refndPay.setRegtrId(regtr);
+        refndPay.setUdterId(regtr);
+        refndPay.setRegDt(date);
+        refndPay.setUdtDt(date);
         if(clm.getClmTpCd().equals("EXCHG")){
-
+            refndPay.setDealTpCd("EXCHG");
         } else if (clm.getClmTpCd().equals("REFND")) {
-            Pay refndPay = null;
-            Pay OriginPay = payService.findPayByOrdNo(ord.getOrdNo());
-            //TODO refund Pay
-            refndPay.setPayNo(clmPayNo);
-            refndPay.setPayAmt(ordGood.getSalePrc());
             refndPay.setDealTpCd("REFND");
-//            refndPay.setRegtrId();
-//            refndPay.setUdterId();
-            refndPay.setRegDt(date);
-            refndPay.setUdtDt(date);
         }
 
         clm.setClmNo(clmNo);
