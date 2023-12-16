@@ -45,4 +45,11 @@ public class PayJpaRepository implements PayRepository {
         Pay pay = em.find(Pay.class, ordNo);
         return pay;
     }
+
+    @Override
+    public void addClmPay(Pay pay, String originPayNo) {
+        //TODO clmPay set
+//        String query = "INSERT INTO Pay" +
+//                "(payNo = :payNo, "
+    }
 }

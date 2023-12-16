@@ -58,4 +58,9 @@ public class PayServiceImpl implements PayService{
     public void deletePay(String payNo) {
         payRepository.deletePay(payNo);
     }
+
+    @Override
+    public void addClmPay(Pay pay, String originPayNo) {
+        payRepository.addClmPay(pay, originPayNo);
+    }
 }

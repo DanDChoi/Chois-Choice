@@ -16,4 +16,6 @@ public interface PayRepository {
     List<Pay> findPays(Sort regDt);
 
     void deletePay(String payNo);
+
+    void addClmPay(Pay pay, String originPayNo);
 }
