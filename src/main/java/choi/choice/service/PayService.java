@@ -16,4 +16,6 @@ public interface PayService {
     List<Pay> findPays();
 
     void deletePay(String payNo);
+
+    void addClmPay(Pay pay, String originPayNo);
 }

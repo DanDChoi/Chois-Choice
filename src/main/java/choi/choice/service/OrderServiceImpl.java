@@ -135,6 +135,8 @@ public class OrderServiceImpl implements OrderService{
             refndPay.setDealTpCd("REFND");
         }
 
+        payService.addClmPay(refndPay, OriginPay.getPayNo());
+
         clm.setClmNo(clmNo);
         clm.setGodNo(ordGood.getGoodNo());
         clm.setOrdNo(ord.getOrdNo());
