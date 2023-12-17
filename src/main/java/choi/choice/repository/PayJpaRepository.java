@@ -49,7 +49,19 @@ public class PayJpaRepository implements PayRepository {
     @Override
     public void addClmPay(Pay pay, String originPayNo) {
         //TODO clmPay set
-//        String query = "INSERT INTO Pay" +
-//                "(payNo = :payNo, "
+        String query = "INSERT INTO Pay" +
+                "(payNo, payMnCd, payDt, payAmt, ordNo, regtrId, regDt udterId, udtDt) " +
+                "values" +
+                "(:payNo, :payMnCd, :payDt, :payAmt, :ordNo, :regtrId, :regDt, :udterId, :udtDt)" ;
+        Pay clmPay = em.createQuery(query, Pay.class)
+                .setParameter("payNo", pay.getPayNo())
+                .setParameter("payMnCd", pay.getPayMnCd())
+                .setParameter("payDt", pay.getPayDt())
+                .setParameter("ordNo", pay.getOrdNo())
+                .setParameter("regtrId", pay.getRegtrId())
+                .setParameter("regDt", pay.getRegDt())
+                .setParameter("udterId", pay.getUdterId())
+                .setParameter("udtDt", pay.getUdtDt())
+                .getSingleResult();
     }
 }
