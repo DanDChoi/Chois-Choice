@@ -103,7 +103,14 @@ public class MbrController {
     }
 
     @GetMapping("/adminPage")
-    public String adminPage() {
+    public String adminPage(HttpServletRequest request) {
+        String mbrId = sessionManager.getSession(request).getMbrId();
+        Mbr mbr = memberService.findById(mbrId);
+
+        //admin mbrId 확인
+        if (mbr.getMbrId() != 'admin') {
+            return "redirect:/";
+        }
         return "admin-page";
     }
 //
