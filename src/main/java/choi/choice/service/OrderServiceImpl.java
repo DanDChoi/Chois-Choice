@@ -122,7 +122,7 @@ public class OrderServiceImpl implements OrderService{
 
         Pay refndPay = null;
         Pay OriginPay = payService.findPayByOrdNo(ord.getOrdNo());
-        //TODO refund Pay
+
         refndPay.setPayNo(clmPayNo);
         refndPay.setPayAmt(ordGood.getSalePrc());
         refndPay.setRegtrId(regtr);
