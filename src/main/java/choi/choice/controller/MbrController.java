@@ -108,9 +108,10 @@ public class MbrController {
         Mbr mbr = memberService.findById(mbrId);
 
         //admin mbrId 확인
-        if (mbr.getMbrId() != 'admin') {
+        if (mbr.getMbrId() != "admin") {
             return "redirect:/";
         }
+
         return "admin-page";
     }
 //

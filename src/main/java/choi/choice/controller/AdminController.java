@@ -63,7 +63,7 @@ public class AdminController {
     @PostMapping("/mbrUpdate")
     public void adminMbrUpdate(HttpServletRequest request, String mbrId) {
         Mbr mbr = memberService.findById(mbrId);
-//        memberService.
+        memberService.updateMbr(mbr);
     }
 
     @GetMapping("/goodsList")
