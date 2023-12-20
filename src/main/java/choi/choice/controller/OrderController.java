@@ -32,7 +32,7 @@ public class OrderController {
 
 
     @GetMapping("")
-    public String ordForm(HttpServletRequest request){
+    public String ordForm(HttpServletRequest request) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
         orderService.findAllCpn(mbr.getMbrId());
@@ -40,12 +40,12 @@ public class OrderController {
     }
 
     @PostMapping("/add")
-    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request){
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
         orderService.createOrd(ord, ordGood, good, request);
     }
 
     @GetMapping("/find")
-    public Ord findOrdByOrdNo (String ordNo){
+    public Ord findOrdByOrdNo(String ordNo) {
         return orderService.findOne(ordNo);
     }
 
@@ -59,5 +59,11 @@ public class OrderController {
     @PostMapping("/addClm")
     public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
         orderService.createClm(ord, clm, ordGood, request);
+    }
+
+    @PostMapping("/clmDetail")
+    public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request) {
+
+        return "clmDetail/" + clm.getClmNo();
     }
 }
