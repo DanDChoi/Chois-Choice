@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -52,7 +53,10 @@ public class OrderController {
     @GetMapping("/clmForm")
     public String createClm(Ord ord, OrdGood ordGood, Model model) {
         Ord findOrd = orderService.findOne(ord.getOrdNo());
+        List<OrdGood> findOrdGoods = orderService.findOrdGoods(ord.getOrdNo());
+
         model.addAttribute("ord", findOrd);
+        model.addAttribute("ordGoods", findOrdGoods);
         return "clmForm";
     }
 
