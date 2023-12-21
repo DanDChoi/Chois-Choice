@@ -97,5 +97,16 @@ public class OrderJpaRepository implements OrderRepository{
         em.persist(clm);
         em.persist(clmGood);
     }
+
+    @Override
+    public List<OrdGood> findOrdGoods(String ordNo) {
+        String query = "select og from OrdGood og where og.ordNo = :ordNo";
+
+        List<OrdGood> ordGoods = em.createQuery(query, OrdGood.class)
+                .setParameter("ordNo", ordNo)
+                .getResultList();
+
+        return ordGoods;
+    }
 }
 

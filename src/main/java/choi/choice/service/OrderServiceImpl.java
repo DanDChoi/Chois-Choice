@@ -159,4 +159,9 @@ public class OrderServiceImpl implements OrderService{
 
         orderRepository.addClm(clm, clmGood);
     }
+
+    @Override
+    public List<OrdGood> findOrdGoods(String ordNo) {
+        List<OrdGood> ordGoods = orderRepository.findOrdGoods(ordNo);
+    }
 }
