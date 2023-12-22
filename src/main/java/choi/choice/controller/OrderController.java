@@ -2,6 +2,7 @@ package choi.choice.controller;
 
 import choi.choice.domain.*;
 import choi.choice.repository.OrderRepository;
+import choi.choice.service.ClaimService;
 import choi.choice.service.MemberService;
 import choi.choice.service.OrderService;
 import choi.choice.service.SessionManager;
@@ -30,6 +31,8 @@ public class OrderController {
     private final SessionManager sessionManager;
 
     private final MemberService memberService;
+
+    private final ClaimService claimService;
 
 
     @GetMapping("")
@@ -65,9 +68,10 @@ public class OrderController {
         orderService.createClm(ord, clm, ordGood, request);
     }
 
-    @PostMapping("/clmDetail")
-    public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request) {
-
+    @GetMapping("/clmDetail")
+    public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request, Model model) {
+        Clm clm = claimService.findClm(clm.getClmNo());
+        model.addAttribute("clm", clm);
         return "clmDetail/" + clm.getClmNo();
     }
 }
