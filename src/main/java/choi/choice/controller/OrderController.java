@@ -70,8 +70,8 @@ public class OrderController {
 
     @GetMapping("/clmDetail")
     public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request, Model model) {
-        Clm clm = claimService.findClm(clm.getClmNo());
-        model.addAttribute("clm", clm);
+        Clm clmDetail = claimService.findClm(clm.getClmNo());
+        model.addAttribute("clm", clmDetail);
         return "clmDetail/" + clm.getClmNo();
     }
 }
