@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Clm;
+import choi.choice.domain.ClmGood;
 
 import javax.persistence.EntityManager;
 
@@ -15,5 +16,10 @@ public class ClaimJpaRepository implements ClaimRepository {
                 .getSingleResult();
 
         return findClm;
+    }
+
+    @Override
+    public void editClm(Clm clm, ClmGood clmGood) {
+        //TODO edtiClm
     }
 }

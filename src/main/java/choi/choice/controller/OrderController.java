@@ -74,4 +74,9 @@ public class OrderController {
         model.addAttribute("clm", clmDetail);
         return "clmDetail/" + clm.getClmNo();
     }
+
+    @PostMapping("/editClm")
+    public void editClm(Clm clm, ClmGood clmGood, Model model) {
+        claimService.editClm(clm, clmGood);
+    }
 }
