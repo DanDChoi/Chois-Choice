@@ -8,6 +8,13 @@ import javax.persistence.EntityManager;
 public class ClaimJpaRepository implements ClaimRepository {
 
     private EntityManager em;
+
+    @Override
+    public void addClm(Clm clm, ClmGood clmGood) {
+      em.persist(clm);
+      em.persist(clmGood);
+    }
+
     @Override
     public Clm findClm(String clmNo) {
         String query = "select c from Clm c where c.clmNo = :clmNo";

@@ -93,12 +93,6 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public void addClm(Clm clm, ClmGood clmGood) {
-        em.persist(clm);
-        em.persist(clmGood);
-    }
-
-    @Override
     public List<OrdGood> findOrdGoods(String ordNo) {
         String query = "select og from OrdGood og where og.ordNo = :ordNo";
 
