@@ -27,7 +27,6 @@ public interface OrderRepository {
 
     List<OrdGood> findBestGoods();
 
-    void addClm(Clm clm, ClmGood clmGood);
 
     List<OrdGood> findOrdGoods(String ordNo);
 }

@@ -18,7 +18,6 @@ public interface OrderService {
 
     List<OrdGood> findBestGoods();
 
-    void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request);
 
     List<OrdGood> findOrdGoods(String ordNo);
 }
