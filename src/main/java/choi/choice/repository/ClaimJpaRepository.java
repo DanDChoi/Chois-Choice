@@ -29,10 +29,14 @@ public class ClaimJpaRepository implements ClaimRepository {
     public void editClm(Clm clm, ClmGood clmGood) {
         //TODO edtiClm
         String clmQuery = "update Clm c " +
-                "set c.clmNo = :clmNo"
-                ;
+                "set c.clmNo = :clmNo" +
+                ", mbrNo = :mbrNo" +
+                ", udterId = :udterId" +
+                ", udtDt = NOW()";
         String clmGoodQuery = "update ClmGood cg" +
-                "set cg.clmNo = :clmNo"
-                ;
+                "set cg.clmNo = :clmNo" +
+                ", udterId = :udterId" +
+                ", udtDt = NOW()";
+
     }
 }
