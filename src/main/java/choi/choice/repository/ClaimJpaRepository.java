@@ -33,10 +33,20 @@ public class ClaimJpaRepository implements ClaimRepository {
                 ", mbrNo = :mbrNo" +
                 ", udterId = :udterId" +
                 ", udtDt = NOW()";
-        String clmGoodQuery = "update ClmGood cg" +
+        String clmGoodQuery = "update ClmGood cg " +
                 "set cg.clmNo = :clmNo" +
                 ", udterId = :udterId" +
                 ", udtDt = NOW()";
 
+        Clm editClm = em.createQuery(clmQuery, Clm.class)
+                .setParameter("clmNo", clm.getClmNo())
+                .setParameter("mbrNo", clm.getMbrNo())
+                .setParameter("udterId", "admin")
+                .getSingleResult();
+
+        ClmGood editClmGood = em.createQuery(clmGoodQuery, ClmGood.class)
+                .setParameter("clmNo", clmGood.getClmNo())
+                .setParameter("udterId", "admin")
+                .getSingleResult();
     }
 }
