@@ -27,7 +27,7 @@ public class ClaimJpaRepository implements ClaimRepository {
 
     @Override
     public void editClm(Clm clm, ClmGood clmGood) {
-        //TODO edtiClm
+
         String clmQuery = "update Clm c " +
                 "set c.clmNo = :clmNo" +
                 ", mbrNo = :mbrNo" +
