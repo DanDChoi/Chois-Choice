@@ -21,6 +21,9 @@ public class CpnHist {
     @Column(name = "cpn_no", unique = true)
     private String cpnNo;
     @Id
+    @Column(name = "cpn_hist_turn", unique = true)
+    private String cpnHistTurn;
+    @Id
     @Column(name = "hist_end_dt", unique = true)
     private java.util.Date histEndDt;
     @Column(name = "hist_beg_dt")
