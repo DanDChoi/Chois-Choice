@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Cpn;
+import choi.choice.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +9,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CouponServiceImpl implements CouponService{
 
+    private final CouponRepository couponRepository;
     @Override
     public Cpn couponDetail(String cpnNo) {
-        //TODO
-        return null;
+        return couponRepository.cpnDetail(cpnNo);
     }
 }
