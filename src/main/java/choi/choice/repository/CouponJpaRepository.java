@@ -1,9 +1,13 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Cpn;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
+@Repository
+@Transactional
 public class CouponJpaRepository implements CouponRepository{
 
     private EntityManager em;
