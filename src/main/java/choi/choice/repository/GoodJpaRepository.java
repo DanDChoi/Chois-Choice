@@ -119,43 +119,6 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
-    public List<Cpn> cpns() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String today = format.format(date);
-        String query = "select c from Cpn c where 1=1 and c.cpnBegDt >= :today and c.cpnEndDt < :today";
-
-        List<Cpn> cpns = em.createQuery(query, Cpn.class)
-                .setParameter("today", today)
-                .getResultList();
-        return cpns;
-    }
-
-    @Override
-    public Cpn findCpnByNo(String cpnNo) {
-        Cpn cpn = em.find(Cpn.class, cpnNo);
-        return cpn;
-    }
-
-    @Override
-    public void updateCpn(Cpn cpn) {
-        String query = "update Cpn c " +
-                "set c.cpnDcRate = :cpnDcRate" +
-                ",c.cpnDcAmt = :cpnDcAmt" +
-                ",c.cpnBegDt = :cpnBegDt" +
-                ",c.cpnEndDt = :cpnEndDt" +
-                ",c.udterId = :udterId" +
-                ",c.udtDt = NOW()" +
-                "where c.cpnNo = :cpnNo";
-        Cpn updateCpn = em.createQuery(query, Cpn.class)
-                .setParameter("cpnDcRate", cpn.getCpnDcRate())
-                .setParameter("cpnBegDt", cpn.getCpnBegDt())
-                .setParameter("cpnEndDt", cpn.getCpnEndDt())
-                .setParameter("udterId", cpn.getUdterId())
-                .getSingleResult();
-    }
-
-    @Override
     public List<GoodReview> findRvByNo(String goodNo) {
         List<GoodReview> goodReview = Collections.singletonList(em.find(GoodReview.class, goodNo));
         return goodReview;

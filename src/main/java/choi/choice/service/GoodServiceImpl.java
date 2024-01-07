@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.*;
+import choi.choice.repository.CouponRepository;
 import choi.choice.repository.GoodRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,8 @@ import java.util.List;
 public class GoodServiceImpl implements GoodService{
 
     private final GoodRepository goodRepository;
+
+    private final CouponRepository couponRepository;
 
     private final SessionManager sessionManager;
 
@@ -110,13 +113,13 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public List<Cpn> validCpns() {
-        List<Cpn> cpns = goodRepository.cpns();
+        List<Cpn> cpns = couponRepository.cpns();
         return cpns;
     }
 
     @Override
     public Cpn findCpnByNo(String cpnNo) {
-        Cpn cpn = goodRepository.findCpnByNo(cpnNo);
+        Cpn cpn = couponRepository.findCpnByNo(cpnNo);
         return cpn;
     }
 

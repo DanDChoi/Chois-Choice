@@ -29,11 +29,7 @@ public interface GoodRepository{
 
     List<GoodReview> findRvByNo(String goodNo);
 
-    List<Cpn> cpns();
 
-    Cpn findCpnByNo(String cpnNo);
-
-    void updateCpn(Cpn cpn);
 
     List<Good> findGoodsByCate(String cate);
 
