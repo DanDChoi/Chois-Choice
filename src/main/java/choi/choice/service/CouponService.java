@@ -6,4 +6,6 @@ public interface CouponService {
 
     Cpn couponDetail(String cpnNo);
 
+    List<Cpn> cpnList();
+
 }

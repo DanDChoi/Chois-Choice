@@ -14,4 +14,8 @@ public class CouponServiceImpl implements CouponService{
     public Cpn couponDetail(String cpnNo) {
         return couponRepository.cpnDetail(cpnNo);
     }
+
+    @Override
+    public List<Cpn> cpnList(){
+        return couponRepository.cpns();}
 }
