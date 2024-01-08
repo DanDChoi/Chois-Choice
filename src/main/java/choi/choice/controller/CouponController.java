@@ -28,12 +28,17 @@ public class CouponController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void cpnCreat(Cpn cpn, HttpServletRequest request) {
-
+//        couponService.
     }
 
     @RequestMapping(value = "/detail")
     public Cpn cpnDetail(@RequestParam("cpnNo") String cpnNo,  Cpn cpn, Model model, HttpServletRequest request) {
         Cpn cpn = couponService.couponDetail(cpnNo);
         return Cpn;
+    }
+
+    @RequestMapping(value = "/list")
+    public List<Cpn> cpns() {
+        return couponService.cpnList();
     }
 }
