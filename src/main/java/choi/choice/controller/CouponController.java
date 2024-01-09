@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,9 +33,9 @@ public class CouponController {
     }
 
     @RequestMapping(value = "/detail")
-    public Cpn cpnDetail(@RequestParam("cpnNo") String cpnNo,  Cpn cpn, Model model, HttpServletRequest request) {
+    public Cpn cpnDetail(@RequestParam("cpnNo") String cpnNo, Model model, HttpServletRequest request) {
         Cpn cpn = couponService.couponDetail(cpnNo);
-        return Cpn;
+        return cpn;
     }
 
     @RequestMapping(value = "/list")
