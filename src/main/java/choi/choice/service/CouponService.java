@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Cpn;
+import java.util.List;
 
 public interface CouponService {
 

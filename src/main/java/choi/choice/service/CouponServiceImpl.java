@@ -4,6 +4,7 @@ import choi.choice.domain.Cpn;
 import choi.choice.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
