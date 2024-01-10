@@ -13,4 +13,6 @@ public interface CouponRepository {
     Cpn findCpnByNo(String cpnNo);
 
     void updateCpn(Cpn cpn);
+
+    void createCoupon(Cpn cpn);
 }

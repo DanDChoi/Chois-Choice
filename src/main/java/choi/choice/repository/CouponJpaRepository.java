@@ -60,4 +60,9 @@ public class CouponJpaRepository implements CouponRepository{
                 .setParameter("udterId", cpn.getUdterId())
                 .getSingleResult();
     }
+
+    @Override
+    public void createCoupon(Cpn cpn) {
+        em.persist(cpn);
+    }
 }
