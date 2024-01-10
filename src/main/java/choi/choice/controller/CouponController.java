@@ -29,7 +29,7 @@ public class CouponController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void cpnCreat(Cpn cpn, HttpServletRequest request) {
-//        couponService.
+        couponService.createCoupon(cpn);
     }
 
     @RequestMapping(value = "/detail")

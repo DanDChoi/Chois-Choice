@@ -9,4 +9,6 @@ public interface CouponService {
 
     List<Cpn> cpnList();
 
+    void createCoupon(Cpn cpn);
+
 }
