@@ -23,11 +23,6 @@ public interface GoodService {
 
     List<GoodReview> findRvByNo(String goodNo);
 
-    List<Cpn> validCpns();
-
-    Cpn findCpnByNo(String cpnNo);
-
-    void updateCpn(Cpn cpn);
     List<Good> findGoodsByCate(String cate);
 
     List<Good> findBskGoods(Long mbrNo);

@@ -2,6 +2,7 @@ package choi.choice.controller;
 
 import choi.choice.domain.*;
 import choi.choice.repository.GoodRepository;
+import choi.choice.service.CouponService;
 import choi.choice.service.GoodService;
 import choi.choice.service.MemberService;
 import choi.choice.service.SessionManager;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ProductsController {
 
     private final GoodService goodService;
+    private final CouponService couponService;
     private final GoodRepository goodRepository;
     private final SessionManager sessionManager;
     private final MemberService memberService;
@@ -78,7 +80,7 @@ public class ProductsController {
     @GetMapping("detail")
     public String detailGood(String goodNo, Model model) {
         Good good = goodService.findByNo(goodNo);
-        List<Cpn> cpns = goodService.validCpns();
+        List<Cpn> cpns = couponService.validCpns();
 
         //쿠폰가
         int highestSaleRate = 0;
