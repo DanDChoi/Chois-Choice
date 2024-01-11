@@ -86,10 +86,6 @@ public class GoodServiceImpl implements GoodService{
         goodRepository.deleteReview(goodNo);
     }
 
-    @Override
-    public void updateCpn(Cpn cpn) {
-
-    }
 
     @Override
     public void deleteByNo(String goodNo, GoodHist goodHist){
@@ -111,17 +107,6 @@ public class GoodServiceImpl implements GoodService{
         return review;
     }
 
-    @Override
-    public List<Cpn> validCpns() {
-        List<Cpn> cpns = couponRepository.cpns();
-        return cpns;
-    }
-
-    @Override
-    public Cpn findCpnByNo(String cpnNo) {
-        Cpn cpn = couponRepository.findCpnByNo(cpnNo);
-        return cpn;
-    }
 
     @Override
     public List<Good> findGoodsByCate(String cate) {

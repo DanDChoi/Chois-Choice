@@ -11,4 +11,10 @@ public interface CouponService {
 
     void createCoupon(Cpn cpn);
 
+    List<Cpn> validCpns();
+
+    Cpn findCpnByNo(String cpnNo);
+
+    void updateCpn(Cpn cpn);
+
 }

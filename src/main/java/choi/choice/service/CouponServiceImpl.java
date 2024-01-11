@@ -24,4 +24,21 @@ public class CouponServiceImpl implements CouponService{
     public void createCoupon(Cpn cpn) {
         couponRepository.createCoupon(cpn);
     }
+
+    @Override
+    public List<Cpn> validCpns() {
+        List<Cpn> cpns = couponRepository.cpns();
+        return cpns;
+    }
+
+    @Override
+    public Cpn findCpnByNo(String cpnNo) {
+        Cpn cpn = couponRepository.findCpnByNo(cpnNo);
+        return cpn;
+    }
+
+    @Override
+    public void updateCpn(Cpn cpn) {
+
+    }
 }

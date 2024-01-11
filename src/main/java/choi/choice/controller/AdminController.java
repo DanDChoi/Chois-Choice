@@ -26,6 +26,7 @@ public class AdminController {
     private final GoodService goodService;
     private final EventService eventService;
     private final PayService payService;
+    private final CouponService couponService;
 
     @GetMapping("/page")
     public String adminPage(HttpServletRequest request, Model model) {
@@ -130,7 +131,7 @@ public class AdminController {
 
     @GetMapping("/cpnList")
     public String adminCpnList(HttpServletRequest request, Model model) {
-        List<Cpn> cpns = goodService.validCpns();
+        List<Cpn> cpns = couponService.validCpns();
 
         model.addAttribute("cpns", cpns);
 
@@ -139,7 +140,7 @@ public class AdminController {
 
     @GetMapping("/cpnDetail")
     public String adminCpnDetail(HttpServletRequest request, Model model, String cpnNo) {
-        Cpn cpn = goodService.findCpnByNo(cpnNo);
+        Cpn cpn = couponService.findCpnByNo(cpnNo);
 
         model.addAttribute("cpn", cpn);
 
@@ -148,7 +149,7 @@ public class AdminController {
 
     @PostMapping("/cpnUpdate")
     public void adminCpnUpdate(HttpServletRequest request, Cpn cpn) {
-        goodService.updateCpn(cpn);
+        couponService.updateCpn(cpn);
     }
     @GetMapping("/reviews")
     public String adminReviews(HttpServletRequest request, Model model) {
