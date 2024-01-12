@@ -39,6 +39,6 @@ public class CouponServiceImpl implements CouponService{
 
     @Override
     public void updateCpn(Cpn cpn) {
-
+        couponRepository.updateCpn(cpn);
     }
 }

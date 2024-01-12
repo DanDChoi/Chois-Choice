@@ -149,6 +149,10 @@ public class AdminController {
 
     @PostMapping("/cpnUpdate")
     public void adminCpnUpdate(HttpServletRequest request, Cpn cpn) {
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        cpn.setUdterId(loginId);
+
         couponService.updateCpn(cpn);
     }
     @GetMapping("/reviews")
