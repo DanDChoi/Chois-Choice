@@ -22,7 +22,7 @@ public class CouponController {
 
     @Autowired
     private final CouponService couponService;
-    @RequestMapping("/create")
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String cpnCreatForm() {
         return "cpn/creat";
     }
@@ -32,13 +32,13 @@ public class CouponController {
         couponService.createCoupon(cpn);
     }
 
-    @RequestMapping(value = "/detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public Cpn cpnDetail(@RequestParam("cpnNo") String cpnNo, Model model, HttpServletRequest request) {
         Cpn cpn = couponService.couponDetail(cpnNo);
         return cpn;
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Cpn> cpns() {
         return couponService.cpnList();
     }
