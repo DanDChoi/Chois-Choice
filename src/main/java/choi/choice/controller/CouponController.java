@@ -33,13 +33,16 @@ public class CouponController {
     }
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public Cpn cpnDetail(@RequestParam("cpnNo") String cpnNo, Model model, HttpServletRequest request) {
+    public String cpnDetail(@RequestParam("cpnNo") String cpnNo, Model model, HttpServletRequest request) {
         Cpn cpn = couponService.couponDetail(cpnNo);
-        return cpn;
+        model.addAttribute("cpn", cpn);
+        return "detail/" + cpnNo;
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Cpn> cpns() {
-        return couponService.cpnList();
+    public String cpns(Model model) {
+        List<Cpn> cpns = couponService.cpnList();
+        model.addAttribute("cpns", cpns);
+        return "/list";
     }
 }
