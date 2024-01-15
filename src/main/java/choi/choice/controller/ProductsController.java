@@ -80,7 +80,8 @@ public class ProductsController {
     @GetMapping("detail")
     public String detailGood(String goodNo, Model model) {
         Good good = goodService.findByNo(goodNo);
-        List<Cpn> cpns = couponService.validCpns();
+        String period = "0";
+        List<Cpn> cpns = couponService.validCpns(period);
 
         //쿠폰가
         int highestSaleRate = 0;

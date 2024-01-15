@@ -40,8 +40,8 @@ public class CouponController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String cpns(Model model) {
-        List<Cpn> cpns = couponService.cpnList();
+    public String cpns(@RequestParam("period") String period, Model model) {
+        List<Cpn> cpns = couponService.cpnList(period);
         model.addAttribute("cpns", cpns);
         return "/list";
     }

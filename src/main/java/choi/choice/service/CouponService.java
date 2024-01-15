@@ -7,11 +7,11 @@ public interface CouponService {
 
     Cpn couponDetail(String cpnNo);
 
-    List<Cpn> cpnList();
+    List<Cpn> cpnList(String period);
 
     void createCoupon(Cpn cpn);
 
-    List<Cpn> validCpns();
+    List<Cpn> validCpns(String period);
 
     Cpn findCpnByNo(String cpnNo);
 
