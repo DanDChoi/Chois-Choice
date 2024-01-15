@@ -131,7 +131,8 @@ public class AdminController {
 
     @GetMapping("/cpnList")
     public String adminCpnList(HttpServletRequest request, Model model) {
-        List<Cpn> cpns = couponService.validCpns();
+        String period = "0";
+        List<Cpn> cpns = couponService.validCpns(period);
 
         model.addAttribute("cpns", cpns);
 

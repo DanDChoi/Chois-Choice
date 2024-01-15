@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,9 +26,12 @@ public class CouponJpaRepository implements CouponRepository{
     }
 
     @Override
-    public List<Cpn> cpns() {
+    public List<Cpn> cpns(String period) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
+        int searchPeriod = Integer.parseInt(period);
+        LocalDate date = LocalDate.now();
+        date.minusDays(searchPeriod);
+
         String today = format.format(date);
         String query = "select c from Cpn c where 1=1 and c.cpnBegDt >= :today and c.cpnEndDt < :today";
 

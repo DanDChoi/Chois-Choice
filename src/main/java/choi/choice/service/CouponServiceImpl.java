@@ -17,8 +17,8 @@ public class CouponServiceImpl implements CouponService{
     }
 
     @Override
-    public List<Cpn> cpnList(){
-        return couponRepository.cpns();}
+    public List<Cpn> cpnList(String period){
+        return couponRepository.cpns(period);}
 
     @Override
     public void createCoupon(Cpn cpn) {
@@ -26,8 +26,8 @@ public class CouponServiceImpl implements CouponService{
     }
 
     @Override
-    public List<Cpn> validCpns() {
-        List<Cpn> cpns = couponRepository.cpns();
+    public List<Cpn> validCpns(String period) {
+        List<Cpn> cpns = couponRepository.cpns(period);
         return cpns;
     }
 

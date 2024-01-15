@@ -8,7 +8,7 @@ public interface CouponRepository {
 
     Cpn cpnDetail(String cpnNo);
 
-    List<Cpn> cpns();
+    List<Cpn> cpns(String period);
 
     Cpn findCpnByNo(String cpnNo);
 
