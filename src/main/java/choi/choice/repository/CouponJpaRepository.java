@@ -28,15 +28,20 @@ public class CouponJpaRepository implements CouponRepository{
     @Override
     public List<Cpn> cpns(String period) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        //period = 1, 7, 30 등등
         int searchPeriod = Integer.parseInt(period);
-        LocalDate date = LocalDate.now();
-        date.minusDays(searchPeriod);
+
+        LocalDate date = LocalDate.now(); //현재날짜
+        LocalDate periodDate = LocalDate.now(); //현재날짜 - 파라미터 값
+        periodDate.minusDays(searchPeriod);
 
         String today = format.format(date);
-        String query = "select c from Cpn c where 1=1 and c.cpnBegDt >= :today and c.cpnEndDt < :today";
+        String periodDt = format.format(periodDate);
+        String query = "select c from Cpn c where 1=1 and c.cpnBegDt >= :periodDate and c.cpnEndDt < :today";
 
         List<Cpn> cpns = em.createQuery(query, Cpn.class)
                 .setParameter("today", today)
+                .setParameter("periodDate", periodDt)
                 .getResultList();
         return cpns;
     }
