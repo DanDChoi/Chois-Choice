@@ -39,8 +39,19 @@ public class CouponController {
         return "detail/" + cpnNo;
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String cpnUpdate(Cpn cpn, Model model, HttpServletRequest request) {
+        couponService.updateCpn(cpn);
+
+        return "dateil/" + cpn.getCpnNo();
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String cpns(@RequestParam("period") String period, Model model) {
+
+        if (period == null || period.isEmpty()) {
+            period = "0";
+        }
         List<Cpn> cpns = couponService.cpnList(period);
         model.addAttribute("cpns", cpns);
         return "/list";
