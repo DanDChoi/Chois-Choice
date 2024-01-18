@@ -18,6 +18,9 @@ public class CouponServiceImpl implements CouponService{
 
     @Override
     public List<Cpn> cpnList(String period){
+        if (period == null || period.isEmpty()) {
+            period = "0";
+        }
         return couponRepository.cpns(period);}
 
     @Override

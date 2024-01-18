@@ -31,12 +31,14 @@ public class MbrTest {
         Mbr m = mbr.builder()
                 .mbrEmail("test@naver.com")
                 .mbrNm("홍길동")
-                .mbrNo("M202301151234")
+                .mbrNo(202301151234L)
                 .build();
 
-        Mbr savedMbr = mbrRepository.save(m);
+        mbrRepository.save(m);
 
-        Assertions.assertEquals(m.getMbrNm(), savedMbr.getMbrNm());
+        Mbr savedMbr = mbrRepository.findByEmail("test@naver.com");
+
+        Assertions.assertEquals(m.getMbrNm(), savedMbr);
 
     }
 
@@ -45,10 +47,10 @@ public class MbrTest {
         Mbr m = mbr.builder()
                 .mbrEmail("test@naver.com")
                 .mbrNm("홍길동")
-                .mbrNo("M202301151234")
+                .mbrNo(202301151234L)
                 .mbrId("testId")
                 .build();
-        Mbr savedMbr = mbrRepository.save(m);
+        mbrRepository.save(m);
 //        mbr findMbr = mbrRepository.findById(savedMbr.getMbrId());
 
 //        Assertions.assertEquals(findMbr.getMbrId(), savedMbr.getMbrId());
