@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Cpn;
+import choi.choice.domain.CpnHist;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface CouponRepository {
     void updateCpn(Cpn cpn);
 
     void createCoupon(Cpn cpn);
+
+    void addCpnHist(CpnHist cpnHist);
 }

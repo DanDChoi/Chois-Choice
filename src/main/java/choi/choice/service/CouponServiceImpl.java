@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Cpn;
+import choi.choice.domain.CpnHist;
 import choi.choice.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,11 @@ public class CouponServiceImpl implements CouponService{
     @Override
     public void createCoupon(Cpn cpn) {
         couponRepository.createCoupon(cpn);
+
+        //TODO cpnHist set
+        CpnHist cpnHist = null;
+        cpnHist.setCpnNo(cpn.getCpnNo());
+        couponRepository.addCpnHist(cpnHist);
     }
 
     @Override
