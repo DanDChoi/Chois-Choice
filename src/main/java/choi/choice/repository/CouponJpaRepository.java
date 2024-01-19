@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Cpn;
+import choi.choice.domain.CpnHist;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -73,5 +74,10 @@ public class CouponJpaRepository implements CouponRepository{
     @Override
     public void createCoupon(Cpn cpn) {
         em.persist(cpn);
+    }
+
+    @Override
+    public void addCpnHist(CpnHist cpnHist) {
+        em.persist(cpnHist);
     }
 }
