@@ -80,4 +80,13 @@ public class CouponJpaRepository implements CouponRepository{
     public void addCpnHist(CpnHist cpnHist) {
         em.persist(cpnHist);
     }
+
+    @Override
+    public int cpnHistTurn(String cpnNo) {
+        String query = "select max(ch.hist_turn) from cpnHist ch where ch.cpnNo = :cpnNo";
+        int maxTurn = em.createQuery(query, int.class)
+                .setParameter("cpnNo", cpnNo)
+                .getSingleResult();
+        return maxTurn;
+    }
 }
