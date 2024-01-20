@@ -28,9 +28,12 @@ public class CouponServiceImpl implements CouponService{
     public void createCoupon(Cpn cpn) {
         couponRepository.createCoupon(cpn);
 
-        //TODO cpnHist set
         CpnHist cpnHist = null;
         cpnHist.setCpnNo(cpn.getCpnNo());
+
+        int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo());
+        cpnHist.setCpnHistTurn(String.valueOf(histTurn));
+
         couponRepository.addCpnHist(cpnHist);
     }
 
