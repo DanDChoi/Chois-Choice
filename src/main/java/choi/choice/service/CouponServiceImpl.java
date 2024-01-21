@@ -5,6 +5,10 @@ import choi.choice.domain.CpnHist;
 import choi.choice.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,7 +36,7 @@ public class CouponServiceImpl implements CouponService{
         cpnHist.setCpnNo(cpn.getCpnNo());
 
         int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo());
-        cpnHist.setCpnHistTurn(String.valueOf(histTurn));
+        cpnHist.setCpnHistTurn(histTurn);
 
         couponRepository.addCpnHist(cpnHist);
     }
@@ -52,5 +56,13 @@ public class CouponServiceImpl implements CouponService{
     @Override
     public void updateCpn(Cpn cpn) {
         couponRepository.updateCpn(cpn);
+
+        int newHistTurn = couponRepository.cpnHistTurn(cpn.getCpnNo()) + 1;
+        Date now = new Date();
+
+        CpnHist cpnHist = null;
+        cpnHist.setCpnHistTurn(newHistTurn);
+//        cpnHist.setHistBegDt(now);
+        couponRepository.addCpnHist(cpnHist);
     }
 }
