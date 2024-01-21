@@ -22,7 +22,7 @@ public class CpnHist {
     private String cpnNo;
     @Id
     @Column(name = "cpn_hist_turn", unique = true)
-    private String cpnHistTurn;
+    private int cpnHistTurn;
     @Id
     @Column(name = "hist_end_dt", unique = true)
     private java.util.Date histEndDt;
