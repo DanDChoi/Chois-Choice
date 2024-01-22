@@ -23,9 +23,6 @@ public class CouponServiceImpl implements CouponService{
 
     @Override
     public List<Cpn> cpnList(String period){
-        if (period == null || period.isEmpty()) {
-            period = "0";
-        }
         return couponRepository.cpns(period);}
 
     @Override
@@ -33,10 +30,18 @@ public class CouponServiceImpl implements CouponService{
         couponRepository.createCoupon(cpn);
 
         CpnHist cpnHist = null;
-        cpnHist.setCpnNo(cpn.getCpnNo());
-
         int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo());
         cpnHist.setCpnHistTurn(histTurn);
+        cpnHist.setCpnNo(cpn.getCpnNo());
+        cpnHist.setCpnBegDt(cpn.getCpnBegDt());
+        cpnHist.setCpnEndDt(cpn.getCpnEndDt());
+        cpnHist.setCpnDcAmt(cpn.getCpnDcAmt());
+        cpnHist.setCpnDcRate(cpn.getCpnDcRate());
+        cpnHist.setCpnTpCd(cpn.getCpnTpCd());
+        cpnHist.setRegtrId(cpn.getRegtrId());
+        cpnHist.setRegDt(cpn.getRegDt());
+        cpnHist.setUdterId(cpn.getUdterId());
+        cpnHist.setUdtDt(cpn.getUdtDt());
 
         couponRepository.addCpnHist(cpnHist);
     }
