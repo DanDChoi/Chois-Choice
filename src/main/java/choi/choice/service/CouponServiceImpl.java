@@ -30,7 +30,7 @@ public class CouponServiceImpl implements CouponService{
         couponRepository.createCoupon(cpn);
 
         CpnHist cpnHist = null;
-        int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo());
+        int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo()) + 1;
         cpnHist.setCpnHistTurn(histTurn);
         cpnHist.setCpnNo(cpn.getCpnNo());
         cpnHist.setCpnBegDt(cpn.getCpnBegDt());
@@ -42,6 +42,9 @@ public class CouponServiceImpl implements CouponService{
         cpnHist.setRegDt(cpn.getRegDt());
         cpnHist.setUdterId(cpn.getUdterId());
         cpnHist.setUdtDt(cpn.getUdtDt());
+
+        Date date = new Date();
+        //TODO HIST DT 선분데이터
 
         couponRepository.addCpnHist(cpnHist);
     }

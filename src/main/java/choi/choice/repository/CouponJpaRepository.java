@@ -83,7 +83,7 @@ public class CouponJpaRepository implements CouponRepository{
 
     @Override
     public int cpnHistTurn(String cpnNo) {
-        String query = "select max(ch.hist_turn) from cpnHist ch where ch.cpnNo = :cpnNo";
+        String query = "select max(ch.cpnHistTurn) from CpnHist ch where ch.cpnNo = :cpnNo";
         int maxTurn = em.createQuery(query, int.class)
                 .setParameter("cpnNo", cpnNo)
                 .getSingleResult();
