@@ -30,8 +30,8 @@ public class CouponServiceImpl implements CouponService{
         couponRepository.createCoupon(cpn);
 
         CpnHist cpnHist = null;
-        int histTurn = couponRepository.cpnHistTurn(cpn.getCpnNo()) + 1;
-        cpnHist.setCpnHistTurn(histTurn);
+
+        cpnHist.setCpnHistTurn(1);
         cpnHist.setCpnNo(cpn.getCpnNo());
         cpnHist.setCpnBegDt(cpn.getCpnBegDt());
         cpnHist.setCpnEndDt(cpn.getCpnEndDt());
@@ -69,8 +69,22 @@ public class CouponServiceImpl implements CouponService{
         Date now = new Date();
 
         CpnHist cpnHist = null;
+
         cpnHist.setCpnHistTurn(newHistTurn);
-//        cpnHist.setHistBegDt(now);
+        cpnHist.setCpnNo(cpn.getCpnNo());
+        cpnHist.setCpnBegDt(cpn.getCpnBegDt());
+        cpnHist.setCpnEndDt(cpn.getCpnEndDt());
+        cpnHist.setCpnDcAmt(cpn.getCpnDcAmt());
+        cpnHist.setCpnDcRate(cpn.getCpnDcRate());
+        cpnHist.setCpnTpCd(cpn.getCpnTpCd());
+        cpnHist.setRegtrId(cpn.getRegtrId());
+        cpnHist.setRegDt(cpn.getRegDt());
+        cpnHist.setUdterId(cpn.getUdterId());
+        cpnHist.setUdtDt(cpn.getUdtDt());
+
+        cpnHist.setHistBegDt(now);
+//        cpnHist.setHistEndDt();
+
         couponRepository.addCpnHist(cpnHist);
     }
 }
