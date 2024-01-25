@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,8 +44,16 @@ public class CouponServiceImpl implements CouponService{
         cpnHist.setUdterId(cpn.getUdterId());
         cpnHist.setUdtDt(cpn.getUdtDt());
 
-        Date date = new Date();
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.YEAR, 9999);
+        c1.set(Calendar.MONTH, 12);
+        c1.set(Calendar.DATE, 31);
+        c1.set(Calendar.HOUR, 23);
+        c1.set(Calendar.MINUTE, 59);
+
+        Date endDt = c1.getTime();
         //TODO HIST DT 선분데이터
+        cpnHist.setHistEndDt(endDt);
 
         couponRepository.addCpnHist(cpnHist);
     }
