@@ -41,7 +41,7 @@ public class CouponController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String cpnUpdate(Cpn cpn, Model model, HttpServletRequest request) {
-        couponService.updateCpn(cpn);
+        couponService.updateCpn(cpn, request);
 
         return "dateil/" + cpn.getCpnNo();
     }

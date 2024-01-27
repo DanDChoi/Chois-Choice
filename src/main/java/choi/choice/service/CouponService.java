@@ -1,6 +1,8 @@
 package choi.choice.service;
 
 import choi.choice.domain.Cpn;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface CouponService {
@@ -15,6 +17,6 @@ public interface CouponService {
 
     Cpn findCpnByNo(String cpnNo);
 
-    void updateCpn(Cpn cpn);
+    void updateCpn(Cpn cpn, HttpServletRequest request);
 
 }

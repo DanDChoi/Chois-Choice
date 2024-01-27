@@ -6,6 +6,7 @@ import choi.choice.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -17,6 +18,7 @@ import java.util.List;
 public class CouponServiceImpl implements CouponService{
 
     private final CouponRepository couponRepository;
+    private final SessionManager sessionManager;
     @Override
     public Cpn couponDetail(String cpnNo) {
         return couponRepository.cpnDetail(cpnNo);
@@ -71,11 +73,16 @@ public class CouponServiceImpl implements CouponService{
     }
 
     @Override
-    public void updateCpn(Cpn cpn) {
+    public void updateCpn(Cpn cpn, HttpServletRequest request) {
+
+        Date now = new Date();
+
+        String loginId = sessionManager.getSession(request).getMbrId();
+        cpn.setUdterId(loginId);
+        cpn.setUdtDt(now);
         couponRepository.updateCpn(cpn);
 
         int newHistTurn = couponRepository.cpnHistTurn(cpn.getCpnNo()) + 1;
-        Date now = new Date();
 
         CpnHist cpnHist = null;
 
