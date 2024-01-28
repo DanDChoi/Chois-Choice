@@ -32,6 +32,8 @@ public class CouponServiceImpl implements CouponService{
     public void createCoupon(Cpn cpn) {
         couponRepository.createCoupon(cpn);
 
+        Date now = new Date();
+
         CpnHist cpnHist = null;
 
         cpnHist.setCpnHistTurn(1);
@@ -55,6 +57,7 @@ public class CouponServiceImpl implements CouponService{
 
         Date endDt = c1.getTime();
         //TODO HIST DT 선분데이터
+        cpnHist.setHistBegDt(now);
         cpnHist.setHistEndDt(endDt);
 
         couponRepository.addCpnHist(cpnHist);

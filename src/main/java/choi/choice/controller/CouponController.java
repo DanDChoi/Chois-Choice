@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class CouponController {
 
-    @Autowired
     private final CouponService couponService;
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String cpnCreatForm() {
