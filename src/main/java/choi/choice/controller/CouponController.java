@@ -55,4 +55,9 @@ public class CouponController {
         model.addAttribute("cpns", cpns);
         return "/list";
     }
+
+    @RequestMapping(value = "/execute", method = RequestMethod.POST)
+    public void executeCpn(String cpnNo) {
+        couponService.executeCpn(cpnNo);
+    }
 }

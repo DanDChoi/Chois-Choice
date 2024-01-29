@@ -114,4 +114,9 @@ public class CouponServiceImpl implements CouponService{
 
         couponRepository.addCpnHist(cpnHist);
     }
+
+    @Override
+    public void executeCpn(String cpnNo) {
+        couponRepository.executeCpn(cpnNo);
+    }
 }

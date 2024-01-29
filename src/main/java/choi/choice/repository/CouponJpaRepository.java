@@ -89,4 +89,10 @@ public class CouponJpaRepository implements CouponRepository{
                 .getSingleResult();
         return maxTurn;
     }
+
+    @Override
+    public void executeCpn(String cpnNo) {
+        Cpn cpn = em.find(Cpn.class, cpnNo);
+        em.remove(cpn);
+    }
 }

@@ -19,4 +19,6 @@ public interface CouponService {
 
     void updateCpn(Cpn cpn, HttpServletRequest request);
 
+    void executeCpn(String cpnNo);
+
 }

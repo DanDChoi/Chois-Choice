@@ -20,4 +20,6 @@ public interface CouponRepository {
     void addCpnHist(CpnHist cpnHist);
 
     int cpnHistTurn(String cpnNO);
+
+    void executeCpn(String cpnNo);
 }
