@@ -56,6 +56,13 @@ public class CouponServiceImpl implements CouponService{
         c1.set(Calendar.MINUTE, 59);
 
         Date endDt = c1.getTime();
+
+        //이전 히스토리용 EndDt
+        Calendar c2 = Calendar.getInstance();
+        c2.set(Calendar.SECOND, -1);
+
+        Date prevEndDt = c2.getTime();
+
         //TODO HIST DT 선분데이터
         cpnHist.setHistBegDt(now);
         cpnHist.setHistEndDt(endDt);
