@@ -62,6 +62,9 @@ public class CouponServiceImpl implements CouponService{
         c2.set(Calendar.SECOND, -1);
 
         Date prevEndDt = c2.getTime();
+        CpnHist prevCpnHist = couponRepository.findMaxCpnTurnHistCpn(cpn.getCpnNo());
+        prevCpnHist.setHistEndDt(prevEndDt);
+        //TODO prevCpnHist 저장
 
         //TODO HIST DT 선분데이터
         cpnHist.setHistBegDt(now);

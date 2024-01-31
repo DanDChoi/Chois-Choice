@@ -95,4 +95,13 @@ public class CouponJpaRepository implements CouponRepository{
         Cpn cpn = em.find(Cpn.class, cpnNo);
         em.remove(cpn);
     }
+
+    @Override
+    public CpnHist findMaxCpnTurnHistCpn(String cpnNo) {
+        String query = "select ch from CpnHist cp where cp.cpnNo = :cpnNo order by cp.cpnHistTurn desc limit 1";
+        CpnHist cpnHist = em.createQuery(query, CpnHist.class)
+                .setParameter("cpnNo", cpnNo)
+                .getSingleResult();
+        return cpnHist;
+    }
 }
