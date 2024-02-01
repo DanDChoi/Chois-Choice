@@ -98,10 +98,23 @@ public class CouponJpaRepository implements CouponRepository{
 
     @Override
     public CpnHist findMaxCpnTurnHistCpn(String cpnNo) {
-        String query = "select ch from CpnHist cp where cp.cpnNo = :cpnNo order by cp.cpnHistTurn desc limit 1";
+        String query = "select ch from CpnHist ch where ch.cpnNo = :cpnNo order by ch.cpnHistTurn desc limit 1";
         CpnHist cpnHist = em.createQuery(query, CpnHist.class)
                 .setParameter("cpnNo", cpnNo)
                 .getSingleResult();
         return cpnHist;
+    }
+
+    @Override
+    public void updateCpnHist(CpnHist cpnHist) {
+        String query = "update CpnHist ch " +
+                "set ch.histEndDt = :histEndDt " +
+                "where ch.cpnNo = :cpnNo " +
+                "and ch.cpnHistTurn = :cpnHistTurn";
+        CpnHist cpnHistUpdate = em.createQuery(query, CpnHist.class)
+                .setParameter("cpnNo", cpnHist.getCpnNo())
+                .setParameter("cpnHistTurn", cpnHist.getCpnHistTurn())
+                .setParameter("histEndDt", cpnHist.getHistEndDt())
+                .getSingleResult();
     }
 }

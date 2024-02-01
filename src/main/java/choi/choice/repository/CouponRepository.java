@@ -24,4 +24,6 @@ public interface CouponRepository {
     void executeCpn(String cpnNo);
 
     CpnHist findMaxCpnTurnHistCpn(String cpnNo);
+
+    void updateCpnHist(CpnHist cpnHist);
 }
