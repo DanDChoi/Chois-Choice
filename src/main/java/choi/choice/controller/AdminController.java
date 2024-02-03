@@ -154,7 +154,7 @@ public class AdminController {
 
         cpn.setUdterId(loginId);
 
-        couponService.updateCpn(cpn);
+        couponService.updateCpn(cpn, request);
     }
     @GetMapping("/reviews")
     public String adminReviews(HttpServletRequest request, Model model) {
