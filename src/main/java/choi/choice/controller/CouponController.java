@@ -2,6 +2,7 @@ package choi.choice.controller;
 
 import choi.choice.domain.Cpn;
 import choi.choice.service.CouponService;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 public class CouponController {
 
     private final CouponService couponService;
+    private final SessionManager sessionManager;
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String cpnCreatForm() {
         return "cpn/creat";
@@ -33,13 +36,19 @@ public class CouponController {
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String cpnDetail(@RequestParam("cpnNo") String cpnNo, Model model, HttpServletRequest request) {
+        String loginId = sessionManager.getSession(request).getMbrId();
+
         Cpn cpn = couponService.couponDetail(cpnNo);
         model.addAttribute("cpn", cpn);
+        model.addAttribute("loginId", loginId);
         return "detail/" + cpnNo;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String cpnUpdate(Cpn cpn, Model model, HttpServletRequest request) {
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        cpn.setUdterId(loginId);
         couponService.updateCpn(cpn, request);
 
         return "dateil/" + cpn.getCpnNo();
