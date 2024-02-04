@@ -68,6 +68,7 @@ public class CouponServiceImpl implements CouponService{
 
         c2.set(Calendar.SECOND, 1);
         Date newBegDt = c2.getTime();
+        cpnHist.setCpnHistTurn(1);
         cpnHist.setHistBegDt(newBegDt);
         cpnHist.setHistEndDt(endDt);
 
@@ -91,14 +92,21 @@ public class CouponServiceImpl implements CouponService{
 
         Date now = new Date();
 
-        String loginId = sessionManager.getSession(request).getMbrId();
-        cpn.setUdterId(loginId);
         cpn.setUdtDt(now);
         couponRepository.updateCpn(cpn);
 
         int newHistTurn = couponRepository.cpnHistTurn(cpn.getCpnNo()) + 1;
 
         CpnHist cpnHist = null;
+
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.YEAR, 9999);
+        c1.set(Calendar.MONTH, 12);
+        c1.set(Calendar.DATE, 31);
+        c1.set(Calendar.HOUR, 23);
+        c1.set(Calendar.MINUTE, 59);
+
+        Date endDt = c1.getTime();
 
         cpnHist.setCpnHistTurn(newHistTurn);
         cpnHist.setCpnNo(cpn.getCpnNo());
@@ -111,15 +119,6 @@ public class CouponServiceImpl implements CouponService{
         cpnHist.setRegDt(cpn.getRegDt());
         cpnHist.setUdterId(cpn.getUdterId());
         cpnHist.setUdtDt(cpn.getUdtDt());
-
-        Calendar c1 = Calendar.getInstance();
-        c1.set(Calendar.YEAR, 9999);
-        c1.set(Calendar.MONTH, 12);
-        c1.set(Calendar.DATE, 31);
-        c1.set(Calendar.HOUR, 23);
-        c1.set(Calendar.MINUTE, 59);
-
-        Date endDt = c1.getTime();
         cpnHist.setHistBegDt(now);
         cpnHist.setHistEndDt(endDt);
 
