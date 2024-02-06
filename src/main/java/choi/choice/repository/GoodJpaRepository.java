@@ -28,6 +28,11 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public void saveItm(GoodItm goodItm) {
+        em.persist(goodItm);
+    }
+
+    @Override
     public void saveGoodHist(Good good, String histNo) {
         String query = "insert into GoodHist" +
                 "(goodNo, goodNm, goodHistNo, histDt, saleBegDt, saleEndDt, colorNm, colorCd, regtrId, regDt, udterID, udtDt)"+

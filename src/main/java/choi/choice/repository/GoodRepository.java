@@ -9,6 +9,8 @@ public interface GoodRepository{
 
     void save(Good good);
 
+    void saveItm(GoodItm goodItm);
+
     void saveGoodHist(Good good, String histNo);
 
     Good findByNo(String goodNo);
