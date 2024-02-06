@@ -34,11 +34,12 @@ public class GoodServiceImpl implements GoodService{
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
-        String godNo = "G" + format.format(date) + timeMillis;
+        String goodNo = "G" + format.format(date) + timeMillis;
+        String goodItmNo = "I" + format.format(date) + timeMillis;
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
-        good.setGoodNo(godNo);
+        good.setGoodNo(goodNo);
         good.setSaleBegDate(format.format(date));
         good.setRegDt(date);
         good.setRegtrId(regtr);
@@ -47,6 +48,20 @@ public class GoodServiceImpl implements GoodService{
         good.setSaleEndDate("2999-12-31");
 
         goodRepository.save(good);
+
+        GoodItm goodItm = null;
+
+        goodItm.setGoodNo(goodNo);
+        goodItm.setGoodItmNo(goodItmNo);
+        goodItm.setGoodNm(good.getGoodNm());
+        goodItm.setSaleBegDate(good.getSaleBegDate());
+        goodItm.setSaleEndDate(good.getSaleEndDate());
+        goodItm.setRegDt(good.getRegDt());
+        goodItm.setRegtrId(good.getRegtrId());
+        goodItm.setUdtDt(good.getUdtDt());
+        goodItm.setUdterId(good.getUdterId());
+
+        goodRepository.saveItm(goodItm);
 
         String histNo = "1";
         goodRepository.saveGoodHist(good, histNo);

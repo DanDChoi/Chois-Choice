@@ -24,6 +24,10 @@ public class GoodItm {
     private String goodNo;
     @Column(name = "good_nm")
     private String goodNm;
+    @Column(name = "tot_sale_qty")
+    private String totSaleQty;
+    @Column(name = "itm_price")
+    private String itmPrice;
     @Column(name = "sale_beg_date")
     private String saleBegDate;
     @Column(name = "sale_end_date")
