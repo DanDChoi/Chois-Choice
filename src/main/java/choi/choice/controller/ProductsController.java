@@ -44,6 +44,7 @@ public class ProductsController {
     @GetMapping("search")
     public String searchGood(String goodNo) {
         goodService.findByNo(goodNo);
+        goodService.findGoodItmByNo(goodNo);
         return "ok";
     }
 

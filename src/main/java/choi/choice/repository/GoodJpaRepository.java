@@ -61,6 +61,12 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
+    public GoodItm findGoodItmByNo(String goodNo) {
+        GoodItm goodItm = em.find(GoodItm.class, goodNo);
+        return goodItm;
+    }
+
+    @Override
     public List<Good> findAll(Sort regDt){
         String query = "SELECT g FROM Good g";
 
@@ -122,6 +128,17 @@ public class GoodJpaRepository implements GoodRepository{
             return true;
         }
     }
+
+    @Override
+    public Boolean existGoodItm(String goodNo) {
+        GoodItm goodItm = em.find(GoodItm.class, goodNo);
+        if (goodItm == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     @Override
     public List<GoodReview> findRvByNo(String goodNo) {
