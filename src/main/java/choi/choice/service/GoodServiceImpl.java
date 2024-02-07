@@ -80,6 +80,18 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+       public GoodItm findGoodItmByNo(String goodNo) {
+           try{
+               if(goodRepository.existGoodItm(goodNo)){
+                   return goodRepository.findGoodItmByNo(goodNo);
+               }
+           } catch (Exception e){
+               throw new NullPointerException();
+           }
+           return null;
+       }
+
+    @Override
     public List<Good> findAll(){
         List<Good> goods = goodRepository.findAll(Sort.by(Sort.Direction.DESC, "reg_dt"));
         return goods;

@@ -15,6 +15,8 @@ public interface GoodRepository{
 
     Good findByNo(String goodNo);
 
+    GoodItm findGoodItmByNo(String goodNo);
+
     List<Good> findAll(Sort regDt);
 
     List<GoodReview> findAllReviews(Sort regDt);
@@ -28,6 +30,8 @@ public interface GoodRepository{
     void deleteGoodItmByNo(String goodNo);
 
     Boolean existGood(String goodNo);
+
+    Boolean existGoodItm(String goodNo);
 
     List<GoodReview> findRvByNo(String goodNo);
 

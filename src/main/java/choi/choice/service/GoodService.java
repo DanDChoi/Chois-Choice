@@ -8,7 +8,9 @@ import java.util.List;
 public interface GoodService {
 
     void add(Good good, HttpServletRequest request);
-    Good findByNo(String id);
+    Good findByNo(String goodNo);
+
+    GoodItm findGoodItmByNo(String goodNo);
 
     List<Good> findAll();
 
