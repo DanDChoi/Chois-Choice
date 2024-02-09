@@ -4,6 +4,7 @@ import choi.choice.domain.Evt;
 import choi.choice.domain.Good;
 import choi.choice.repository.EventRepository;
 import choi.choice.service.EventService;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class EventController {
 
     private final EventService eventService;
     private final EventRepository eventRepository;
+    private final SessionManager sessionManager;
 
     @GetMapping("/addForm")
        public String createEvtForm() {
@@ -42,7 +44,11 @@ public class EventController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void evtUpdate(@ModelAttribute Evt evt, HttpServletRequest request) {
+        String loginId = sessionManager.getSession(request).getMbrId();
 
+        evt.setUdterId(loginId);
+
+        eventService.updateEvt(evt);
     }
 
 }
