@@ -51,8 +51,8 @@ public class EventJpaRepository implements EventRepository{
                 ",e.evtDscr = :evtDscr " +
                 ",e.evtBegDt = :evtBegDt " +
                 ",e.evtEndDt = :evtEndDt " +
-                ",e.replyUseYn = replyUseYn " +
-                ",e.evtStatCd = evtStatCd " +
+                ",e.replyUseYn = :replyUseYn " +
+                ",e.evtStatCd = :evtStatCd " +
                 "where e.evtNo = :evtNo";
 
         Evt updateEvt = em.createQuery(query, Evt.class)
@@ -64,7 +64,6 @@ public class EventJpaRepository implements EventRepository{
                 .setParameter("evtStatCd", evt.getEvtStatCd())
                 .setParameter("evtNo", evt.getEvtNo())
                 .getSingleResult();
-        }
     }
 
     @Override
