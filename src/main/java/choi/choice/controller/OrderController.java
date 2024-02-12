@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -55,6 +52,17 @@ public class OrderController {
     @GetMapping("/find")
     public Ord findOrdByOrdNo(String ordNo) {
         return orderService.findOne(ordNo);
+    }
+
+    @RequestMapping(value = "/detail", method = RequestMethod.POST)
+    public String ordDetail(@ModelAttribute String ordNo, Model model, HttpServletRequest request) {
+        Ord ord = orderService.findOne(ordNo);
+        List<OrdGood> ordGoods = orderService.findOrdGoods(ordNo);
+
+        model.addAttribute("ord", ord);
+        model.addAttribute("ordGoods", ordGoods);
+
+        return "/detail/" + ordNo;
     }
 
     @GetMapping("/clmForm")
