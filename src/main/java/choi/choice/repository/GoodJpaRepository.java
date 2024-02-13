@@ -34,11 +34,9 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void saveGoodHist(Good good, String histNo) {
-        String query = "insert into GoodHist" +
-                "(goodNo, goodNm, goodHistNo, histDt, saleBegDt, saleEndDt, colorNm, colorCd, regtrId, regDt, udterID, udtDt)"+
-                "values (" +
-                ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt" +
-                ")";
+        String query = "insert into GoodHist " +
+                "(goodNo, goodNm, goodHistNo, histDt, saleBegDt, saleEndDt, colorNm, colorCd, regtrId, regDt, udterID, udtDt) values "+
+                "(:goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt)";
         GoodHist goodHist = em.createQuery(query, GoodHist.class)
                 .setParameter("goodNo", good.getGoodNo())
                 .setParameter("goodNm", good.getGoodNm())
@@ -174,7 +172,7 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void insertGoodHist(GoodHist goodHist) {
-        String query = "insert into GoodHist gh" +
+        String query = "insert into GoodHist gh " +
                 "(" +
                 "gh.goodNo" +
                 ",gh.goodNm" +
