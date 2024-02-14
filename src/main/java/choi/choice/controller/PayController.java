@@ -34,9 +34,15 @@ public class PayController {
     }
 
     @GetMapping("detail")
-    public String detailPay(String payNo, Model model){
-        Pay pay = payService.findPayByPayNo(payNo);
-        model.addAttribute("pay", pay);
+    public String detailPay(String payNo, String ordNo, Model model){
+        if (payNo != null && payNo != "") {
+            Pay pay = payService.findPayByPayNo(payNo);
+            model.addAttribute("pay", pay);
+        }
+        if (ordNo != null && ordNo != "") {
+            Pay pay = payService.findPayByOrdNo(ordNo);
+            model.addAttribute("pay", pay);
+        }
         return "/detail";
     }
 }
