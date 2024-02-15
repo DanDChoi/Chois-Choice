@@ -65,30 +65,4 @@ public class OrderController {
         return "/detail/" + ordNo;
     }
 
-    @GetMapping("/clmForm")
-    public String createClm(Ord ord, OrdGood ordGood, Model model) {
-        Ord findOrd = orderService.findOne(ord.getOrdNo());
-        List<OrdGood> findOrdGoods = orderService.findOrdGoods(ord.getOrdNo());
-
-        model.addAttribute("ord", findOrd);
-        model.addAttribute("ordGoods", findOrdGoods);
-        return "clmForm";
-    }
-
-    @PostMapping("/addClm")
-    public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
-        claimService.createClm(ord, clm, ordGood);
-    }
-
-    @GetMapping("/clmDetail")
-    public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request, Model model) {
-        Clm clmDetail = claimService.findClm(clm.getClmNo());
-        model.addAttribute("clm", clmDetail);
-        return "clmDetail/" + clm.getClmNo();
-    }
-
-    @PostMapping("/editClm")
-    public void editClm(Clm clm, ClmGood clmGood, Model model) {
-        claimService.editClm(clm, clmGood);
-    }
 }
