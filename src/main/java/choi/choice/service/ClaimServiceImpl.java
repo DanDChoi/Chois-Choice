@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -76,5 +77,10 @@ public class ClaimServiceImpl implements ClaimService{
     public void editClm(Clm clm, ClmGood clmGood) {
         clm.setGoodHistNo(clmGood.getGoodHistNo());
         claimRepository.editClm(clm, clmGood);
+    }
+
+    @Override
+    public List<Clm> clmList() {
+        return null;
     }
 }

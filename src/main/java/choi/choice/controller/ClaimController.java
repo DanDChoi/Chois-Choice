@@ -61,4 +61,10 @@ public class ClaimController {
     public void editClm(Clm clm, ClmGood clmGood, Model model) {
         claimService.editClm(clm, clmGood);
     }
+
+    @GetMapping("/list")
+    public List<Clm> clmList() {
+        List<Clm> clmList = claimService.clmList();
+        return clmList;
+    }
 }
