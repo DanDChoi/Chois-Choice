@@ -75,12 +75,13 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public void editClm(Clm clm, ClmGood clmGood) {
-        clm.setGoodHistNo(clmGood.getGoodHistNo());
+        clmGood.setGoodHistNo(clmGood.getGoodHistNo());
         claimRepository.editClm(clm, clmGood);
     }
 
     @Override
-    public List<Clm> clmList() {
-        return null;
+    public List<Clm> clmListByMbrNo(String mbrNo) {
+        List<Clm> clms = claimRepository.clmListByMbrNo(mbrNo);
+        return clms;
     }
 }
