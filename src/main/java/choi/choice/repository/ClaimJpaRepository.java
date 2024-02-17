@@ -4,6 +4,7 @@ import choi.choice.domain.Clm;
 import choi.choice.domain.ClmGood;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ClaimJpaRepository implements ClaimRepository {
 
@@ -48,5 +49,14 @@ public class ClaimJpaRepository implements ClaimRepository {
                 .setParameter("clmNo", clmGood.getClmNo())
                 .setParameter("udterId", "admin")
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Clm> clmListByMbrNo(String mbrNo) {
+        String query = "select c from Clm c where c.mbrNo = :mbrNo";
+        List<Clm> clms = em.createQuery(query, Clm.class)
+                .setParameter("mbrNo", mbrNo)
+                .getResultList();
+        return clms;
     }
 }

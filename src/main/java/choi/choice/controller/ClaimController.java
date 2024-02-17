@@ -63,8 +63,8 @@ public class ClaimController {
     }
 
     @GetMapping("/list")
-    public List<Clm> clmList() {
-        List<Clm> clmList = claimService.clmList();
+    public List<Clm> clmListByMbrNo(String mbrNo) {
+        List<Clm> clmList = claimService.clmListByMbrNo(mbrNo);
         return clmList;
     }
 }
