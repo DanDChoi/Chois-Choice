@@ -27,6 +27,13 @@ public class Clm {
      */
     @Column(name = "clm_tp_cd")
     private String clmTpCd;
+    /**
+     * 클레임 상태 코드
+     * CLM_RECPT
+     * CLM_COMPT
+     */
+    @Column(name = "clm_stat_cd")
+    private String clmStatCd;
     @Column(name = "mbr_no")
     private Long mbrNo;
     @Column(name = "ord_no")
