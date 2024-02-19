@@ -84,4 +84,10 @@ public class ClaimServiceImpl implements ClaimService{
         List<Clm> clms = claimRepository.clmListByMbrNo(mbrNo);
         return clms;
     }
+
+    @Override
+    public List<Clm> clmListByOrdNo(String ordNo) {
+        List<Clm> clms = claimRepository.clmListByOrdNo(ordNo);
+        return clms;
+    }
 }

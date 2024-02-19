@@ -63,8 +63,13 @@ public class ClaimController {
     }
 
     @GetMapping("/list")
-    public List<Clm> clmListByMbrNo(String mbrNo) {
-        List<Clm> clmList = claimService.clmListByMbrNo(mbrNo);
+    public List<Clm> clmListByMbrNo(String mbrNo, String ordNo) {
+        List<Clm> clmList = null;
+        if (mbrNo != null && !mbrNo.equals("")){
+            clmList = claimService.clmListByMbrNo(mbrNo);
+        } else if (ordNo != null && !ordNo.equals("")){
+            clmList = claimService.clmListByOrdNo(ordNo);
+        }
         return clmList;
     }
 }
