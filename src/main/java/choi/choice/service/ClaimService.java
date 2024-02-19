@@ -11,5 +11,7 @@ public interface ClaimService {
 
     void editClm(Clm clm, ClmGood clmGood);
 
-    List<Clm> clmListByMbrNo(String mbrNO);
+    List<Clm> clmListByMbrNo(String mbrNo);
+
+    List<Clm> clmListByOrdNo(String ordNo);
 }

@@ -59,4 +59,13 @@ public class ClaimJpaRepository implements ClaimRepository {
                 .getResultList();
         return clms;
     }
+
+    @Override
+    public List<Clm> clmListByOrdNo(String ordNo) {
+        String query = "select c from Clm c where c.ordNo = :ordNo";
+        List<Clm> clms = em.createQuery(query, Clm.class)
+                .setParameter("ordNo", ordNo)
+                .getResultList();
+        return clms;
+    }
 }
