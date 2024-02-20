@@ -2,10 +2,14 @@ package choi.choice.repository;
 
 import choi.choice.domain.Clm;
 import choi.choice.domain.ClmGood;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
+@Transactional
 public class ClaimJpaRepository implements ClaimRepository {
 
     private EntityManager em;
