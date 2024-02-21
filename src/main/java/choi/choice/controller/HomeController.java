@@ -31,7 +31,7 @@ public class HomeController {
     private final OrderService orderService;
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
 
         log.info("homecontroller 진입");
@@ -44,40 +44,40 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/men")
+    @RequestMapping(value = "/men", method = RequestMethod.GET)
     public String menCate(Model model, HttpServletRequest request) {
         List<Good> menGoods = goodService.findGoodsByCate("men");
         model.addAttribute("menGoods", menGoods);
         return "menList";
     }
 
-    @GetMapping("/women")
+    @RequestMapping(value = "/women", method = RequestMethod.GET)
     public String womenCate(Model model, HttpServletRequest request) {
         List<Good> womenGoods = goodService.findGoodsByCate("women");
         model.addAttribute("menGoods", womenGoods);
         return "womenList";
     }
 
-    @GetMapping("/life")
+    @RequestMapping(value = "/life", method = RequestMethod.GET)
     public String lifeCate(Model model, HttpServletRequest request) {
         List<Good> lifeGoods = goodService.findGoodsByCate("life");
         model.addAttribute("menGoods", lifeGoods);
         return "lifeList";
     }
 
-    @GetMapping("/best")
+    @RequestMapping(value = "/best", method = RequestMethod.GET)
     public String best(Model model, HttpServletRequest request) {
         List<OrdGood> bestGoods = orderService.findBestGoods();
         model.addAttribute("bestGoods", bestGoods);
         return "bestList";
     }
 
-    @GetMapping("/mtm")
+    @RequestMapping(value = "/mtm", method = RequestMethod.GET)
     public String mtm(Model model, HttpServletRequest request) {
         return "mtm";
     }
 
-    @PostMapping("/mtm")
+    @RequestMapping(value = "/mtm", method = RequestMethod.POST)
     public void addMtm(Mbr mbr, Model model, @ModelAttribute CsoMtmInquiry csoMtmInquiry, HttpServletRequest request){
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
