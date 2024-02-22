@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ClaimController {
 
     private final GoodService goodService;
 
-    @GetMapping("/clmForm")
+    @RequestMapping(value = "/clmForm", method = RequestMethod.GET)
     public String createClm(Ord ord, OrdGood ordGood, Model model) {
         Ord findOrd = orderService.findOne(ord.getOrdNo());
         List<OrdGood> findOrdGoods = orderService.findOrdGoods(ord.getOrdNo());
@@ -45,24 +46,24 @@ public class ClaimController {
         return "clmForm";
     }
 
-    @PostMapping("/addClm")
+    @RequestMapping(value = "/addClm", method = RequestMethod.POST)
     public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
-        claimService.createClm(ord, clm, ordGood);
+        claimService.createClm(ord, clm, ordGood, request);
     }
 
-    @GetMapping("/clmDetail")
+    @RequestMapping(value = "/clmDetail", method = RequestMethod.GET)
     public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request, Model model) {
         Clm clmDetail = claimService.findClm(clm.getClmNo());
         model.addAttribute("clm", clmDetail);
         return "clmDetail/" + clm.getClmNo();
     }
 
-    @PostMapping("/editClm")
+    @RequestMapping(value = "/editClm", method = RequestMethod.POST)
     public void editClm(Clm clm, ClmGood clmGood, Model model) {
         claimService.editClm(clm, clmGood);
     }
 
-    @GetMapping("/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Clm> clmListByMbrNo(String mbrNo, String ordNo) {
         List<Clm> clmList = null;
         if (mbrNo != null && !mbrNo.equals("")){
