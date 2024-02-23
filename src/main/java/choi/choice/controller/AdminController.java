@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class AdminController {
     private final PayService payService;
     private final CouponService couponService;
 
-    @GetMapping("/page")
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
     public String adminPage(HttpServletRequest request, Model model) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         if (mbrId.equals("admin")) {
@@ -38,7 +35,7 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/mbrList")
+    @RequestMapping(value = "/mbrList", method = RequestMethod.GET)
     public String adminMbrList(HttpServletRequest request, Model model) {
         List<Mbr> mbrs = memberService.findAll();
         List<MbrGrd> mbrGrds = new ArrayList<>();
@@ -52,7 +49,7 @@ public class AdminController {
         return "mbrList";
     }
 
-    @GetMapping("/mbrDetail")
+    @RequestMapping(value = "/mbrDetail", method = RequestMethod.GET)
     public String adminMbrDetail(HttpServletRequest request, Model model, String mbrId) {
         Mbr mbr = memberService.findById(mbrId);
 
@@ -61,13 +58,13 @@ public class AdminController {
         return "mbrDetail/" + mbrId;
     }
 
-    @PostMapping("/mbrUpdate")
+    @RequestMapping(value = "/mbrUpdate", method = RequestMethod.POST)
     public void adminMbrUpdate(HttpServletRequest request, String mbrId) {
         Mbr mbr = memberService.findById(mbrId);
         memberService.updateMbr(mbr);
     }
 
-    @GetMapping("/goodsList")
+    @RequestMapping(value = "/goodsList", method = RequestMethod.GET)
     public String adminGoodsList(HttpServletRequest request, Model model) {
         List<Good> goods = goodService.findAll();
 
@@ -76,19 +73,19 @@ public class AdminController {
         return "goodsList";
     }
 
-    @GetMapping("/goodDetail")
+    @RequestMapping(value = "/goodDetail", method = RequestMethod.GET)
     public String adminGoodDetail(HttpServletRequest request, Model model, String goodNo) {
         Good good = goodService.findByNo(goodNo);
         model.addAttribute("good", good);
         return "goodDetail/" + goodNo;
     }
 
-    @PostMapping("/goodUpdate")
+    @RequestMapping(value = "/goodUpdate", method = RequestMethod.POST)
     public void adminGoodUpdate(@RequestBody Good good, HttpServletRequest request) {
         goodService.updateGood(good);
     }
 
-    @GetMapping("/evtList")
+    @RequestMapping(value = "/evtList", method = RequestMethod.GET)
     public String adminEvtList(HttpServletRequest request, Model model) {
         List<Evt> evts = eventService.findAll();
 
@@ -97,7 +94,7 @@ public class AdminController {
         return "evtList";
     }
 
-    @GetMapping("/evtDetail")
+    @RequestMapping(value = "/evtDetail", method = RequestMethod.GET)
     public String adminEvtDetail(HttpServletRequest request, Model model, String evtNo) {
         Evt evt = eventService.findEvtByNo(evtNo);
 
@@ -106,12 +103,12 @@ public class AdminController {
         return "evtDetail/" + evtNo;
     }
 
-    @PostMapping("/evtUpdate")
+    @RequestMapping(value = "/evtUpdate", method = RequestMethod.POST)
     public void adminEvtUpdate(@RequestBody Evt evt, HttpServletRequest request) {
         eventService.updateEvt(evt);
     }
 
-    @GetMapping("/payList")
+    @RequestMapping(value = "/payList", method = RequestMethod.GET)
     public String adminPayList(HttpServletRequest request, Model model) {
         List<Pay> pays = payService.findPays();
 
@@ -120,7 +117,7 @@ public class AdminController {
         return "payList";
     }
 
-    @GetMapping("/payDetail")
+    @RequestMapping(value = "/payDetail", method = RequestMethod.GET)
     public String adminPayDetail(HttpServletRequest request, Model model, String payNo) {
         Pay pay = payService.findPayByPayNo(payNo);
 
@@ -129,7 +126,7 @@ public class AdminController {
         return "payDetail/" + payNo;
     }
 
-    @GetMapping("/cpnList")
+    @RequestMapping(value = "/cpnList", method = RequestMethod.GET)
     public String adminCpnList(HttpServletRequest request, Model model) {
         String period = "0";
         List<Cpn> cpns = couponService.validCpns(period);
@@ -139,7 +136,7 @@ public class AdminController {
         return "cpnList";
     }
 
-    @GetMapping("/cpnDetail")
+    @RequestMapping(value = "/cpnDetail", method = RequestMethod.GET)
     public String adminCpnDetail(HttpServletRequest request, Model model, String cpnNo) {
         Cpn cpn = couponService.findCpnByNo(cpnNo);
 
@@ -148,7 +145,7 @@ public class AdminController {
         return "cpnDetail/" + cpnNo;
     }
 
-    @PostMapping("/cpnUpdate")
+    @RequestMapping(value = "/cpnUpdate", method = RequestMethod.POST)
     public void adminCpnUpdate(HttpServletRequest request, Cpn cpn) {
         String loginId = sessionManager.getSession(request).getMbrId();
 
@@ -156,7 +153,7 @@ public class AdminController {
 
         couponService.updateCpn(cpn, request);
     }
-    @GetMapping("/reviews")
+    @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public String adminReviews(HttpServletRequest request, Model model) {
         List<GoodReview> reviews = goodService.findAllReviews();
 
@@ -165,7 +162,7 @@ public class AdminController {
         return "reviews";
     }
 
-    @GetMapping("/reviewDetail")
+    @RequestMapping(value = "/reviewDetail", method = RequestMethod.GET)
     public String adminReviewDetail(HttpServletRequest request, Model model, String goodNo) {
         List<GoodReview> reviews = goodService.findRvByNo(goodNo);
 
@@ -174,12 +171,12 @@ public class AdminController {
         return "reviewDetail/" + goodNo;
     }
 
-    @PostMapping("/reviewUpdate")
+    @RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
     public void adminReviewUpdate(HttpServletRequest request, GoodReview review) {
         goodService.updateReview(review);
     }
 
-    @GetMapping("/reviewDelete")
+    @RequestMapping(value = "/reviewDelete", method = RequestMethod.GET)
     public String admindReviewDelete(HttpServletRequest request, Model model, String goodNo) {
         goodService.deleteReview(goodNo);
         return "reviews";
