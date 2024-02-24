@@ -23,18 +23,18 @@ public class EventController {
     private final EventRepository eventRepository;
     private final SessionManager sessionManager;
 
-    @GetMapping("/addForm")
+    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
        public String createEvtForm() {
            return "evt/createForm";
        }
 
-   @PostMapping("/create")
+   @RequestMapping(value = "/creat", method = RequestMethod.POST)
    public String createEvt(@ModelAttribute Evt evt, HttpServletRequest request) {
        eventService.createEvt(evt, request);
        return "ok";
    }
 
-    @PostMapping("/detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.POST)
     public String evtDetail(String evtNo, Model model, HttpServletRequest request) {
         Evt evt = eventService.findEvtByNo(evtNo);
         model.addAttribute("evt", evt);
