@@ -39,28 +39,27 @@ public class MbrController {
     private final OrderService orderService;
     private final GoodService goodService;
     private final GoodRepository goodRepository;
-
     private final SessionManager sessionManager;
 
     //회원가입
-    @GetMapping("/register")
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
         return "register";
     }
 
-    @PostMapping(value = "/register/add")
+    @RequestMapping(value = "/register/add", method = RequestMethod.POST)
     public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
         memberService.register(mbr);
         return "redirect:/";
     }
 
-    @GetMapping("/loginForm")
+    @RequestMapping(value = "/loginForm", method = RequestMethod.GET)
     public String loginForm() {
         log.info("login form entered");
         return "login";
     }
 
-    @PostMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, Model model) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         if (bindingResult.hasErrors()) {
@@ -92,7 +91,7 @@ public class MbrController {
         return "redirect:/";
     }
 
-    @GetMapping("/logout")
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -102,7 +101,7 @@ public class MbrController {
         return "redirect:/";
     }
 
-    @GetMapping("/adminPage")
+    @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
     public String adminPage(HttpServletRequest request) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
@@ -119,7 +118,7 @@ public class MbrController {
 //    public String findId(){
 //        return "theme/findId";
 //    }
-    @GetMapping("/userProfile")
+    @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
     public String profile(Model model, String id, HttpServletRequest request){
         HttpSession session = request.getSession();
 
@@ -134,7 +133,7 @@ public class MbrController {
         return "user-profile";
     }
 
-    @GetMapping("/ordList")
+    @RequestMapping(value = "/ordList", method = RequestMethod.GET)
     public String ordList(Model model, Mbr mbr) {
         List<Ord> allOrds = orderService.findOrdsByMbrNo(mbr.getMbrId());
         List<Ord> cnclOrds = new ArrayList<>();
@@ -150,7 +149,7 @@ public class MbrController {
         return "ord-list";
     }
 
-    @GetMapping("/cpnList")
+    @RequestMapping(value = "/cpnList", method = RequestMethod.GET)
     public String cpnList(Model model, Mbr mbr){
         List<MbrCpn> cpns = mbrRepository.mbrIsuCpn(mbr.getMbrNo());
         model.addAttribute("mbr", mbr);
@@ -158,7 +157,7 @@ public class MbrController {
         return "user-cpnList";
     }
 
-    @GetMapping("/reviewList")
+    @RequestMapping(value = "/reviewList", method = RequestMethod.GET)
     public String reviewList(Model model, Mbr mbr) {
         List<GoodReview> reviews = memberService.findAllReviews(mbr.getMbrNo());
         model.addAttribute("reviews", reviews);
@@ -179,7 +178,7 @@ public class MbrController {
         return "/bsk";
     }
 
-    @GetMapping(value = "/bukmkList")
+    @RequestMapping(value = "/bukmkList", method = RequestMethod.GET)
     public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
         int bukmkCnt = goodRepository.getBukmkCnt(mbr);
         List<Good> bukmkGoods = goodService.findMbrBukmkGoods(mbr);
