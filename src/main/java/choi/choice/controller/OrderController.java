@@ -31,7 +31,7 @@ public class OrderController {
     private final GoodService goodService;
 
 
-    @GetMapping("")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String ordForm(Good good, Model model, HttpServletRequest request) {
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
@@ -44,12 +44,12 @@ public class OrderController {
         return "store";
     }
 
-    @PostMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
         orderService.createOrd(ord, ordGood, good, request);
     }
 
-    @GetMapping("/find")
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
     public Ord findOrdByOrdNo(String ordNo) {
         return orderService.findOne(ordNo);
     }
