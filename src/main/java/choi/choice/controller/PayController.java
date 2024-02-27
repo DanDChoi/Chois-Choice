@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,18 +23,18 @@ public class PayController {
     private final PayService payService;
     private final PayRepository payRepository;
 
-    @PostMapping("add")
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public String addPayPost(Pay pay, HttpServletRequest request) {
         payService.createPay(pay, request);
         return "ok";
     }
 
-    @GetMapping("eliminate")
+    @RequestMapping(value = "eliminate", method = RequestMethod.GET)
     public void eliminatePay(String payNo) {
         payService.deletePay(payNo);
     }
 
-    @GetMapping("detail")
+    @RequestMapping(value = "detail", method = RequestMethod.GET)
     public String detailPay(String payNo, String ordNo, Model model){
         if (payNo != null && payNo != "") {
             Pay pay = payService.findPayByPayNo(payNo);
