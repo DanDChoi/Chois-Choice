@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -30,25 +27,25 @@ public class ProductsController {
     private final SessionManager sessionManager;
     private final MemberService memberService;
 
-    @GetMapping("create")
+    @RequestMapping (value="create", method = RequestMethod.GET)
     public String createGoodForm() {
         return "good/createForm";
     }
 
-    @PostMapping("create/add")
+    @RequestMapping(value = "create/add", method = RequestMethod.POST)
     public String createGood(@ModelAttribute Good good, HttpServletRequest request) {
         goodService.add(good, request);
         return "ok";
     }
 
-    @GetMapping("search")
+    @RequestMapping(value = "search", method = RequestMethod.GET)
     public String searchGood(String goodNo) {
         goodService.findByNo(goodNo);
         goodService.findGoodItmByNo(goodNo);
         return "ok";
     }
 
-    @GetMapping("delete")
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
     public void deleteGood(String goodNo) {
         GoodHist goodHist = null;
         Good good = goodService.findByNo(goodNo);
@@ -66,7 +63,7 @@ public class ProductsController {
         goodService.deleteGoodItmByNo(goodNo);
     }
 
-    @GetMapping("detail")
+    @RequestMapping(value = "detail", method = RequestMethod.GET)
     public String detailGood(String goodNo, Model model) {
         Good good = goodService.findByNo(goodNo);
         String period = "0";
@@ -107,12 +104,12 @@ public class ProductsController {
         return "good/detail?goodNo=" + goodNo;
     }
 
-    @GetMapping(value = "/update")
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String updateGoodForm(@ModelAttribute Good good, HttpServletRequest request, Model model) {
         return "good/detail?goodNo=" + good.getGoodNo() + "&mode=edit";
     }
 
-    @PostMapping(value = "/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void updateGood(@ModelAttribute Good good, HttpServletRequest request) {
         String loginId = sessionManager.getSession(request).getMbrId();
 
@@ -121,7 +118,7 @@ public class ProductsController {
         goodService.updateGood(good);
     }
 
-    @PostMapping(value = "/addBukmk")
+    @RequestMapping(value = "/addBukmk", method = RequestMethod.POST)
     public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
