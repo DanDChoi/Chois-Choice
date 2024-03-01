@@ -9,7 +9,7 @@ public interface BasketRepository {
 
     void add(Bsk bsk);
 
-    void delete(String bskNo);
+    void deleteBskGood(String goodNo);
 
     void deleteAll(String mbrNo);
 
