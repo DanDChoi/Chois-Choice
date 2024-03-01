@@ -40,8 +40,8 @@ public class BasketServiceImpl implements BasketService{
     }
 
     @Override
-    public void delete(String bskNo) {
-        basketRepository.delete(bskNo);
+    public void deleteBskGood(String goodNo) {
+        basketRepository.deleteBskGood(goodNo);
     }
 
     @Override

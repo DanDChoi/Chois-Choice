@@ -9,7 +9,7 @@ public interface BasketService {
 
     void add(Bsk bsk, HttpServletRequest request);
 
-    void delete(String bskNo);
+    void deleteBskGood(String goodNo);
 
     List<Bsk> findAll(HttpServletRequest request);
 }
