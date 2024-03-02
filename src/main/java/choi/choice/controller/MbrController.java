@@ -38,6 +38,7 @@ public class MbrController {
     private final LoginService loginService;
     private final OrderService orderService;
     private final GoodService goodService;
+    private final CouponService couponService;
     private final GoodRepository goodRepository;
     private final SessionManager sessionManager;
 
@@ -128,8 +129,12 @@ public class MbrController {
 
         Mbr mbr = mbrRepository.findById(id);
         List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrId());
+        //mbr Cpn List
+//        List<Cpn> cpns = couponService.
+        List<Good> bskGoods = goodService.findBskGoods(mbr.getMbrNo());
         model.addAttribute("mbr", mbr);
         model.addAttribute("ords", ords);
+        model.addAttribute("bskGoods", bskGoods);
         return "user-profile";
     }
 
