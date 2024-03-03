@@ -36,7 +36,7 @@ public class OrderController {
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
         Good ordGood = goodService.findByNo(good.getGoodNo());
-        List<Cpn> mbrCpn = orderService.findAllCpn(mbr.getMbrId());
+        List<Cpn> mbrCpn = orderService.findAllCpn(mbr.getMbrNo());
 
         model.addAttribute("ordGood", ordGood);
         model.addAttribute("mbr", mbr);

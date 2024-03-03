@@ -12,7 +12,7 @@ public interface ClaimService {
 
     void editClm(Clm clm, ClmGood clmGood);
 
-    List<Clm> clmListByMbrNo(String mbrNo);
+    List<Clm> clmListByMbrNo(Long mbrNo);
 
     List<Clm> clmListByOrdNo(String ordNo);
 }

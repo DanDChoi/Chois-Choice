@@ -128,19 +128,19 @@ public class MbrController {
         }
 
         Mbr mbr = mbrRepository.findById(id);
-        List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrId());
-        //mbr Cpn List
-//        List<Cpn> cpns = couponService.
+        List<Ord> ords = orderService.findOrdsByMbrNo(mbr.getMbrNo());
+        List<Cpn> cpns = couponService.mbrCpnList(mbr.getMbrNo());
         List<Good> bskGoods = goodService.findBskGoods(mbr.getMbrNo());
         model.addAttribute("mbr", mbr);
         model.addAttribute("ords", ords);
+        model.addAttribute("cpns", cpns);
         model.addAttribute("bskGoods", bskGoods);
         return "user-profile";
     }
 
     @RequestMapping(value = "/ordList", method = RequestMethod.GET)
     public String ordList(Model model, Mbr mbr) {
-        List<Ord> allOrds = orderService.findOrdsByMbrNo(mbr.getMbrId());
+        List<Ord> allOrds = orderService.findOrdsByMbrNo(mbr.getMbrNo());
         List<Ord> cnclOrds = new ArrayList<>();
 
         for (int i = 0; i < allOrds.size(); i++) {

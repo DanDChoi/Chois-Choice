@@ -64,7 +64,7 @@ public class ClaimController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Clm> clmListByMbrNo(String mbrNo, String ordNo) {
+    public List<Clm> clmListByMbrNo(Long mbrNo, String ordNo) {
         List<Clm> clmList = null;
         if (mbrNo != null && !mbrNo.equals("")){
             clmList = claimService.clmListByMbrNo(mbrNo);

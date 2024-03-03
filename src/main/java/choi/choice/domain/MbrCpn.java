@@ -21,7 +21,7 @@ public class MbrCpn {
     @Column(name = "cpn_no", unique = true)
     private String cpnNo;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "cpn_tp_cd")
     private String cpnTpCd;
     @Column(name = "cpn_dc_rate")

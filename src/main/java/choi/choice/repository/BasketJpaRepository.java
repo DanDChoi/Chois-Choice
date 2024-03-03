@@ -34,7 +34,7 @@ public class BasketJpaRepository implements BasketRepository{
     }
 
     @Override
-    public void deleteAll(String mbrNo) {
+    public void deleteAll(Long mbrNo) {
         String deleteQuery = "delete from Bsk b where b.mbrNo = :mbrNo";
 
         em.createQuery(deleteQuery, Bsk.class)

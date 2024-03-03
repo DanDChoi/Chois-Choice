@@ -20,7 +20,7 @@ public class MbrBukmk {
     @Column(name = "bukmk_sn", unique = true)
     private String bukmkSn;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "good_no")
     private String goodNo;
     @Column(name = "regtr_id")
