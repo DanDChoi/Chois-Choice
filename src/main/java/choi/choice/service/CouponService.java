@@ -21,4 +21,6 @@ public interface CouponService {
 
     void executeCpn(String cpnNo);
 
+    List<Cpn> mbrCpnList(Long mbrNo);
+
 }

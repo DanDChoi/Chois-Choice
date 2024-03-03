@@ -26,4 +26,6 @@ public interface CouponRepository {
     CpnHist findMaxCpnTurnHistCpn(String cpnNo);
 
     void updateCpnHist(CpnHist cpnHist);
+
+    List<Cpn> mbrCpnList(Long mbrNo);
 }

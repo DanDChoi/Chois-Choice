@@ -56,7 +56,7 @@ public class ClaimJpaRepository implements ClaimRepository {
     }
 
     @Override
-    public List<Clm> clmListByMbrNo(String mbrNo) {
+    public List<Clm> clmListByMbrNo(Long mbrNo) {
         String query = "select c from Clm c where c.mbrNo = :mbrNo";
         List<Clm> clms = em.createQuery(query, Clm.class)
                 .setParameter("mbrNo", mbrNo)

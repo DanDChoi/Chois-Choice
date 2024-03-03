@@ -94,12 +94,12 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<Cpn> findAllCpn(String mbrNo) {
+    public List<Cpn> findAllCpn(Long mbrNo) {
         return null;
     }
 
     @Override
-    public List<Ord> findOrdsByMbrNo(String mbrNo) {
+    public List<Ord> findOrdsByMbrNo(Long mbrNo) {
         return orderRepository.findOrdsByMbrNo(mbrNo);
     }
 
@@ -112,5 +112,6 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public List<OrdGood> findOrdGoods(String ordNo) {
         List<OrdGood> ordGoods = orderRepository.findOrdGoods(ordNo);
+        return ordGoods;
     }
 }

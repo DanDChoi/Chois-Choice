@@ -75,7 +75,7 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public List<Ord> findOrdsByMbrNo(String mbrNo) {
+    public List<Ord> findOrdsByMbrNo(Long mbrNo) {
         String query = "select o from Ord o where o.mbrNo = :mbrNo";
 
         List<Ord> ords = em.createQuery(query, Ord.class)

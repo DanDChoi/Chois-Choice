@@ -21,7 +21,7 @@ public class GoodReview {
     @Column(name = "review_sn", unique = true)
     private String reviewSn;
     @Column(name = "mbr_no")
-    private String mbrNo;
+    private Long mbrNo;
     @Column(name = "good_no")
     private String goodNo;
     @Column(name = "good_review_turn")

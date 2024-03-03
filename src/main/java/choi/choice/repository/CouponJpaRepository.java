@@ -117,4 +117,15 @@ public class CouponJpaRepository implements CouponRepository{
                 .setParameter("histEndDt", cpnHist.getHistEndDt())
                 .getSingleResult();
     }
+
+    @Override
+    public List<Cpn> mbrCpnList(Long mbrNo) {
+        String query = "select c from Cpn c " +
+                "join MbrCpn mc on c.cpnNo = mc.cpnNo " +
+                "where mc.mbrNo = :mbrNo";
+        List<Cpn> mbrCpns = em.createQuery(query, Cpn.class)
+                .setParameter("mbrNo", mbrNo)
+                .getResultList();
+        return mbrCpns;
+    }
 }

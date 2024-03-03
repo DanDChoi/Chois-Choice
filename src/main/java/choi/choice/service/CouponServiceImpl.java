@@ -129,4 +129,9 @@ public class CouponServiceImpl implements CouponService{
     public void executeCpn(String cpnNo) {
         couponRepository.executeCpn(cpnNo);
     }
+
+    @Override
+    public List<Cpn> mbrCpnList(Long mbrNo) {
+        return couponRepository.mbrCpnList(mbrNo);
+    }
 }

@@ -13,8 +13,8 @@ public interface OrderService {
     List<Ord> findAll();
     void deleteOrd(String ordNo);
 
-    List<Cpn> findAllCpn(String mbrNo);
-    List<Ord> findOrdsByMbrNo(String mbrNo);
+    List<Cpn> findAllCpn(Long mbrNo);
+    List<Ord> findOrdsByMbrNo(Long mbrNo);
 
     List<OrdGood> findBestGoods();
 

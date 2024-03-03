@@ -23,7 +23,7 @@ public interface OrderRepository {
 
     List<Ord> findDrctOrd(String status);
 
-    List<Ord> findOrdsByMbrNo(String mbrNo);
+    List<Ord> findOrdsByMbrNo(Long mbrNo);
 
     List<OrdGood> findBestGoods();
 
