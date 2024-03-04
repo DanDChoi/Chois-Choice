@@ -20,14 +20,14 @@ public class MbrHist {
 
     @Column(name = "mbr_no")
     private Long mbrNo;
+    @Id
+    @NotNull
     @Column(name = "mbr_id")
     private String mbrId;
     @Column(name = "mbr_Nm")
     private String mbrNm;
     @Column(name = "mbr_sex")
     private String mbrSex;
-    @Id
-    @NotNull
     @Column(name = "mbr_email", unique = true)
     private String mbrEmail;
     @Column(name = "mbr_pwd")
