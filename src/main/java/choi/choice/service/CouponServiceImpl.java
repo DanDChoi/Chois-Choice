@@ -57,14 +57,7 @@ public class CouponServiceImpl implements CouponService{
 
         Date endDt = c1.getTime();
 
-        //이전 히스토리용 EndDt
         Calendar c2 = Calendar.getInstance();
-        c2.set(Calendar.SECOND, -1);
-
-        Date prevEndDt = c2.getTime();
-        CpnHist prevCpnHist = couponRepository.findMaxCpnTurnHistCpn(cpn.getCpnNo());
-        prevCpnHist.setHistEndDt(prevEndDt);
-        couponRepository.updateCpnHist(prevCpnHist);
 
         c2.set(Calendar.SECOND, 1);
         Date newBegDt = c2.getTime();
@@ -123,6 +116,15 @@ public class CouponServiceImpl implements CouponService{
         cpnHist.setHistEndDt(endDt);
 
         couponRepository.addCpnHist(cpnHist);
+
+        //이전 히스토리용 EndDt
+        Calendar c2 = Calendar.getInstance();
+        c2.set(Calendar.SECOND, -1);
+
+        Date prevEndDt = c2.getTime();
+        CpnHist prevCpnHist = couponRepository.findMaxCpnTurnHistCpn(cpn.getCpnNo());
+        prevCpnHist.setHistEndDt(prevEndDt);
+        couponRepository.updateCpnHist(prevCpnHist);
     }
 
     @Override
