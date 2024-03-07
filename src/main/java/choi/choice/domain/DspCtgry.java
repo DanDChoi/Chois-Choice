@@ -8,39 +8,36 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "std_ctgry")
+@Table(name = "dsp_ctgry")
 @Getter
 @Setter
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StdCtgry {
+public class DspCtgry {
 
     @Id
-    @Column(name = "std_ctgry_no", unique = true)
-    private String stdCtgryNo;
+    @Column(name = "dsp_ctgry_no")
+    private String dspCtgryNo;
 
-    @Column(name = "upper_std_ctgry_no")
-    private String upperStdCtgryNo;
+    @Column(name = "upper_dsp_ctgry_no")
+    private String upperDspCtgryNo;
 
-    @Column(name = "std_ctgry_nm")
-    private String stdCtgryNm;
+    @Column(name="dsp_ctgry_nm")
+    private String dspCtgryNm;
 
-    @Column(name = "use_yn")
-    private String useYn;
-
-    @Column(name = "delete_yn")
-    private String deleteYn;
+    @Column(name="ctgry_dpth_no")
+    private Integer ctgryDpthNo;
 
     @Column(name = "leaf_ctgry_yn")
     private String leafCtgryYn;
 
-    @Column(name = "prdlst_grp_cd")
-    private String prdlstGrpCd;
+    @Column(name = "dsp_yn")
+    private String dspYn;
 
-    @Column(name = "god_evl_grp_cd")
-    private String godEvlGrpCd;
+    @Column(name = "delete_yn")
+    private String deleteYn;
 
     @Column(name = "reg_dt")
     private java.util.Date regDt;
