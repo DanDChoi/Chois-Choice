@@ -26,6 +26,10 @@ public class GoodHist {
     private String goodHistNo;
     @Column(name = "hist_dt")
     private java.util.Date histDt;
+    @Column(name = "good_prc")
+    private String goodPrc;
+    @Column(name = "std_ctgry_no")
+    private String stdCtgryNo;
     @Column(name = "sale_beg_date")
     private String saleBegDate;
     @Column(name = "sale_end_date")
