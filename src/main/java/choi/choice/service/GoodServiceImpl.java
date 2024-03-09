@@ -152,6 +152,7 @@ public class GoodServiceImpl implements GoodService{
         GoodHist goodHist = null;
         goodHist.setGoodHistNo(nextSeq);
         goodHist.setGoodNm(good.getGoodNm());
+        goodHist.setStdCtgryNo(good.getStdCtgryNo());
         goodHist.setGoodNo(good.getGoodNo());
         goodHist.setSaleBegDate(good.getSaleBegDate());
         goodHist.setSaleEndDate(good.getSaleEndDate());
