@@ -34,6 +34,8 @@ public class GoodHist {
     private String saleBegDate;
     @Column(name = "sale_end_date")
     private String saleEndDate;
+    @Column(name = "dlv_plc_no")
+    private Integer dlvPlcNo;
     @Column(name = "color_nm")
     private String colorNm;
     @Column(name = "color_cd")
