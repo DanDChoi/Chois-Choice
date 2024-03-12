@@ -47,6 +47,7 @@ public class OrderServiceImpl implements OrderService{
             ordGood.setOrdGoodTurn(i+1);
             ordGood.setGoodNo(good.getGoodNo());
             ordGood.setGoodNm(good.getGoodNm());
+            ordGood.setStdCtgryNo(good.getStdCtgryNo());
             ordGood.setGoodHistNo(ordGood.getGoodHistNo());
             ordGood.setRegtrId(regtr);
             ordGood.setRegDt(date);

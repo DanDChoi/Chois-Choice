@@ -28,6 +28,8 @@ public class OrdGood {
     private String goodHistNo;
     @Column(name = "good_nm")
     private String goodNm;
+    @Column(name = "std_ctgry_no")
+    private String stdCtgryNo;
     @Column(name = "sale_prc")
     private String salePrc;
     @Column(name = "regtr_id")
