@@ -63,4 +63,9 @@ public class PayServiceImpl implements PayService{
     public void addClmPay(Pay pay, String originPayNo) {
         payRepository.addClmPay(pay, originPayNo);
     }
+
+    @Override
+    public void editPay(String payNo) {
+        payRepository.editPay(payNo);
+    }
 }

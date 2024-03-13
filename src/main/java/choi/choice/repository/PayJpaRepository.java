@@ -63,4 +63,9 @@ public class PayJpaRepository implements PayRepository {
                 .setParameter("udtDt", pay.getUdtDt())
                 .getSingleResult();
     }
+
+    @Override
+    public void editPay(String payNo) {
+        //TODO
+    }
 }
