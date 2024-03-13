@@ -18,4 +18,6 @@ public interface PayService {
     void deletePay(String payNo);
 
     void addClmPay(Pay pay, String originPayNo);
+
+    void editPay(String payNo);
 }
