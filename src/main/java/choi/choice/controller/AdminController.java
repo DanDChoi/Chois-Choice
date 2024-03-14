@@ -181,4 +181,10 @@ public class AdminController {
         goodService.deleteReview(goodNo);
         return "reviews";
     }
+
+    @RequestMapping(value = "/stdCtgry/list", method = RequestMethod.GET)
+    public String stdCtgryList(HttpServletRequest request, Model model) {
+
+        return "stdCtgry/list";
+    }
 }
