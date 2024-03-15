@@ -1,5 +1,6 @@
 package choi.choice.service;
 
+import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,21 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public List<StdCtgry> stdCtgryList() {
+        return null;
+    }
+
+    @Override
+    public void addStdCtgry() {
+
+    }
+
+    @Override
+    public void addDspCtgry() {
+
+    }
+
+    @Override
+    public List<DspCtgry> dspCtgryList() {
         return null;
     }
 }
