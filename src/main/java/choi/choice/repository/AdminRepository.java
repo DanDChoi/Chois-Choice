@@ -1,19 +1,11 @@
-package choi.choice.service;
+package choi.choice.repository;
 
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 
-import java.util.List;
-
-public interface AdminService {
+public interface AdminRepository {
 
     void addStdCtgry(StdCtgry stdCtgry);
 
     void addDspCtgry(DspCtgry dspCtgry);
-
-    List<StdCtgry> stdCtgryList();
-
-    List<DspCtgry> dspCtgryList();
-
-
 }
