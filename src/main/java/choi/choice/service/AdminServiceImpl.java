@@ -17,11 +17,6 @@ public class AdminServiceImpl implements AdminService{
     private final AdminRepository adminRepository;
 
     @Override
-    public List<StdCtgry> stdCtgryList() {
-        return null;
-    }
-
-    @Override
     public void addStdCtgry(StdCtgry stdCtgry) {
         adminRepository.addStdCtgry(stdCtgry);
     }
@@ -32,7 +27,12 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public List<StdCtgry> stdCtgryList() {
+        return adminRepository.stdCtgryList();
+    }
+
+    @Override
     public List<DspCtgry> dspCtgryList() {
-        return null;
+        return adminRepository.dspCtgryList();
     }
 }
