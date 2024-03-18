@@ -24,6 +24,7 @@ public class AdminController {
     private final EventService eventService;
     private final PayService payService;
     private final CouponService couponService;
+    private final AdminService adminService;
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public String adminPage(HttpServletRequest request, Model model) {
@@ -184,7 +185,17 @@ public class AdminController {
 
     @RequestMapping(value = "/stdCtgry/list", method = RequestMethod.GET)
     public String stdCtgryList(HttpServletRequest request, Model model) {
+        List<StdCtgry> stdCtgries = adminService.stdCtgryList();
 
+        model.addAttribute("stdCtgries", stdCtgries);
         return "stdCtgry/list";
+    }
+
+    @RequestMapping(value = "/dspCtgry/list", method = RequestMethod.GET)
+    public String dspCtgryList(HttpServletRequest request, Model model) {
+        List<DspCtgry> dspCtgries = adminService.dspCtgryList();
+
+        model.addAttribute("dspCtgries", dspCtgries);
+        return "dspCtgry/list";
     }
 }
