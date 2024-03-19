@@ -198,4 +198,9 @@ public class AdminController {
         model.addAttribute("dspCtgries", dspCtgries);
         return "dspCtgry/list";
     }
+
+    @RequestMapping(value = "/stdCtgry/delete", method = RequestMethod.POST)
+    public void stdCtgryDelete(String stdCtgryNo) {
+        adminService.stdCtgryDelete(stdCtgryNo);
+    }
 }

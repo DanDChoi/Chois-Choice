@@ -15,5 +15,6 @@ public interface AdminService {
 
     List<DspCtgry> dspCtgryList();
 
+    void stdCtgryDelete(String stdCtgryNo);
 
 }
