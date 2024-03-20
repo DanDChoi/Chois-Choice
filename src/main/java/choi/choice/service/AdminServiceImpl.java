@@ -38,6 +38,6 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void stdCtgryDelete(String stdCtgryNo) {
-        //TODO
+        adminRepository.stdCtgryDelete(stdCtgryNo);
     }
 }

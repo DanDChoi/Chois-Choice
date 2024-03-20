@@ -43,4 +43,10 @@ public class AdminJpaRepository implements  AdminRepository{
                 .getResultList();
         return dspCtgries;
     }
+
+    @Override
+    public void stdCtgryDelete(String stdCtgryNo) {
+        StdCtgry stdCtgry = em.find(StdCtgry.class, stdCtgryNo);
+        em.remove(stdCtgry);
+    }
 }
