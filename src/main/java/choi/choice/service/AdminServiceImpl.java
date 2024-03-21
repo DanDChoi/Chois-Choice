@@ -40,4 +40,9 @@ public class AdminServiceImpl implements AdminService{
     public void stdCtgryDelete(String stdCtgryNo) {
         adminRepository.stdCtgryDelete(stdCtgryNo);
     }
+
+    @Override
+    public void dspCtgryDelete(String dspCtgryNo) {
+        adminRepository.dspCtgryDelete(dspCtgryNo);
+    }
 }

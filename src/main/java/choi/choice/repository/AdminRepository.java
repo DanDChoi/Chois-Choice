@@ -16,4 +16,6 @@ public interface AdminRepository {
     List<DspCtgry> dspCtgryList();
 
     void stdCtgryDelete(String stdCtgryNo);
+
+    void dspCtgryDelete(String dspCtgryNo);
 }
