@@ -17,4 +17,5 @@ public interface AdminService {
 
     void stdCtgryDelete(String stdCtgryNo);
 
+    void dspCtgryDelete(String dspCtgryNo);
 }

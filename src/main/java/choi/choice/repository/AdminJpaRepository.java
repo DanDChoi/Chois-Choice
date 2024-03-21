@@ -49,4 +49,10 @@ public class AdminJpaRepository implements  AdminRepository{
         StdCtgry stdCtgry = em.find(StdCtgry.class, stdCtgryNo);
         em.remove(stdCtgry);
     }
+
+    @Override
+    public void dspCtgryDelete(String dspCtgryNo) {
+        DspCtgry dspCtgry = em.find(DspCtgry.class, dspCtgryNo);
+        em.remove(dspCtgry);
+    }
 }
