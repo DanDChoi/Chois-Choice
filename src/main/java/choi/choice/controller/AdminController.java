@@ -203,4 +203,16 @@ public class AdminController {
     public void stdCtgryDelete(String stdCtgryNo) {
         adminService.stdCtgryDelete(stdCtgryNo);
     }
+
+    @RequestMapping(value = "/stdCtgry/addForm", method = RequestMethod.GET)
+    public String stdCtgryAddForm() {
+        return "stdCtgry/addForm";
+    }
+
+    @RequestMapping(value = "/dspCtgry/addForm", method = RequestMethod.GET)
+    public String dspCtgryAddForm() {
+        return "dspCtgry/addForm";
+    }
+
+
 }
