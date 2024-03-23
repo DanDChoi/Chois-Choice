@@ -214,5 +214,16 @@ public class AdminController {
         return "dspCtgry/addForm";
     }
 
+    @RequestMapping(value = "/stdCtgry/add", method = RequestMethod.POST)
+    public void AddstdCtgry(StdCtgry stdCtgry) {
+        adminService.addStdCtgry(stdCtgry);
+    }
+
+    @RequestMapping(value = "/stdCtgry/add", method = RequestMethod.POST)
+    public void AddDspCtgry(DspCtgry dspCtgry) {
+        adminService.addDspCtgry(dspCtgry);
+    }
+
+
 
 }
