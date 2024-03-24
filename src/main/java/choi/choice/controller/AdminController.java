@@ -204,6 +204,11 @@ public class AdminController {
         adminService.stdCtgryDelete(stdCtgryNo);
     }
 
+    @RequestMapping(value = "/dspCtgry/delete", method = RequestMethod.POST)
+    public void dspCtgryDelete(String dspCtgryNo) {
+        adminService.dspCtgryDelete(dspCtgryNo);
+    }
+
     @RequestMapping(value = "/stdCtgry/addForm", method = RequestMethod.GET)
     public String stdCtgryAddForm() {
         return "stdCtgry/addForm";
@@ -219,11 +224,14 @@ public class AdminController {
         adminService.addStdCtgry(stdCtgry);
     }
 
-    @RequestMapping(value = "/stdCtgry/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/dspCtgry/add", method = RequestMethod.POST)
     public void AddDspCtgry(DspCtgry dspCtgry) {
         adminService.addDspCtgry(dspCtgry);
     }
 
-
+    @RequestMapping(value = "/stdCtgry/update", method = RequestMethod.POST)
+    public void updateStdCtgry(StdCtgry stdCtgry) {
+        adminService.updateStdCtgry(stdCtgry);
+    }
 
 }
