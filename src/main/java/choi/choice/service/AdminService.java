@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface AdminService {
@@ -19,5 +20,7 @@ public interface AdminService {
 
     void dspCtgryDelete(String dspCtgryNo);
 
-    void updateStdCtgry(StdCtgry stdCtgry);
+    void updateStdCtgry(StdCtgry stdCtgry, HttpServletRequest request);
+
+    void updateDspCtgry(DspCtgry dspCtgry, HttpServletRequest request);
 }
