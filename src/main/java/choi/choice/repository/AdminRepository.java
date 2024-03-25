@@ -18,4 +18,8 @@ public interface AdminRepository {
     void stdCtgryDelete(String stdCtgryNo);
 
     void dspCtgryDelete(String dspCtgryNo);
+
+    void updateStdCtgry(StdCtgry stdCtgry);
+
+    void updateDspCtgry(DspCtgry dspCtgry);
 }

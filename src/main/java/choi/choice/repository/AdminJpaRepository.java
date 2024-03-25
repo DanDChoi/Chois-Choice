@@ -55,4 +55,14 @@ public class AdminJpaRepository implements  AdminRepository{
         DspCtgry dspCtgry = em.find(DspCtgry.class, dspCtgryNo);
         em.remove(dspCtgry);
     }
+
+    @Override
+    public void updateStdCtgry(StdCtgry stdCtgry) {
+        //TODO
+    }
+
+    @Override
+    public void updateDspCtgry(DspCtgry dspCtgry) {
+
+    }
 }

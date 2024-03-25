@@ -230,8 +230,13 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/stdCtgry/update", method = RequestMethod.POST)
-    public void updateStdCtgry(StdCtgry stdCtgry) {
-        adminService.updateStdCtgry(stdCtgry);
+    public void updateStdCtgry(StdCtgry stdCtgry, HttpServletRequest request) {
+        adminService.updateStdCtgry(stdCtgry, request);
+    }
+
+    @RequestMapping(value = "/dspCtgry/update", method = RequestMethod.POST)
+    public void updateDspCtgry(DspCtgry dspCtgry, HttpServletRequest request) {
+        adminService.updateDspCtgry(dspCtgry, request);
     }
 
 }

@@ -7,6 +7,9 @@ import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -15,6 +18,7 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService{
 
     private final AdminRepository adminRepository;
+    private final SessionManager sessionManager;
 
     @Override
     public void addStdCtgry(StdCtgry stdCtgry) {
@@ -47,7 +51,30 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void updateStdCtgry(StdCtgry stdCtgry) {
-        //TODO
+    public void updateStdCtgry(StdCtgry stdCtgry, HttpServletRequest request) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        format.format(date);
+
+        String udter = sessionManager.getSession(request).getMbrId();
+
+        stdCtgry.setUdtDt(date);
+        stdCtgry.setUdterId(udter);
+
+        adminRepository.updateStdCtgry(stdCtgry);
+    }
+
+    @Override
+    public void updateDspCtgry(DspCtgry dspCtgry, HttpServletRequest request) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        format.format(date);
+
+        String udter = sessionManager.getSession(request).getMbrId();
+
+        dspCtgry.setUdtDt(date);
+        dspCtgry.setUdterId(udter);
+
+        adminRepository.updateDspCtgry(dspCtgry);
     }
 }
