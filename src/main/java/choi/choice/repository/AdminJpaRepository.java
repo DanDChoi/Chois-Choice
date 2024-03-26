@@ -55,10 +55,29 @@ public class AdminJpaRepository implements  AdminRepository{
         DspCtgry dspCtgry = em.find(DspCtgry.class, dspCtgryNo);
         em.remove(dspCtgry);
     }
-
     @Override
     public void updateStdCtgry(StdCtgry stdCtgry) {
-        //TODO
+        String query = "update StdCtgry sc " +
+                "set sc.stdCtgryNm = :stdCtgryNm " +
+                ", sc.useYn = :useYn " +
+                ", sc.deleteYn = :deleteYn " +
+                ", sc.leafCtgryYn = :leafCtgryYn " +
+                ", sc.prdlstGrpCd = :prdlstGrpCd " +
+                ", sc.godEvlGrpCd = :godEvlGrpCd " +
+                ", sc.udtDt = :udtDt " +
+                ", sc.udterId = :udterId " +
+                "where sc.stdCtgryNo = :stdCtgryNo";
+        StdCtgry updateStdCtgry = em.createQuery(query, StdCtgry.class)
+                .setParameter("stdCtgryNm", stdCtgry.getStdCtgryNm())
+                .setParameter("useYn", stdCtgry.getUseYn())
+                .setParameter("deleteYn", stdCtgry.getDeleteYn())
+                .setParameter("leafCtgryYn", stdCtgry.getLeafCtgryYn())
+                .setParameter("prdlstGrpCd", stdCtgry.getPrdlstGrpCd())
+                .setParameter("godEvlGrpCd", stdCtgry.getGodEvlGrpCd())
+                .setParameter("udtDt", stdCtgry.getUdtDt())
+                .setParameter("udterId", stdCtgry.getUdterId())
+                .getSingleResult();
+
     }
 
     @Override
