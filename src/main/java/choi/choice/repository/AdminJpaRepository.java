@@ -82,6 +82,23 @@ public class AdminJpaRepository implements  AdminRepository{
 
     @Override
     public void updateDspCtgry(DspCtgry dspCtgry) {
-
+        String query = "update DspCtgry dc " +
+                        "set dc.dspCtgryNm = :dspCtgryNm " +
+                        ", dc.ctgryDpthNo = :ctgryDpthNo " +
+                        ", dc.dspYn = :dspYn " +
+                        ", dc.deleteYn = :deleteYn " +
+                        ", dc.leafCtgryYn = :leafCtgryYn " +
+                        ", dc.udtDt = :udtDt " +
+                        ", dc.udterId = :udterId " +
+                        "where dc.dspCtgryNo = :dspCtgryNo";
+        DspCtgry updateDspCtgry = em.createQuery(query, DspCtgry.class)
+                .setParameter("dspCtgryNm", dspCtgry.getDspCtgryNm())
+                .setParameter("ctgryDpthNo", dspCtgry.getDspCtgryNo())
+                .setParameter("dspYn", dspCtgry.getDspYn())
+                .setParameter("deleteYn", dspCtgry.getDeleteYn())
+                .setParameter("udtDt", dspCtgry.getUdtDt())
+                .setParameter("udterId", dspCtgry.getUdterId())
+                .setParameter("dspCtgryNo", dspCtgry.getDspCtgryNo())
+                .getSingleResult();
     }
 }
