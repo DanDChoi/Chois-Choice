@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.DspCtgry;
+import choi.choice.domain.StdDspCtgryCnnc;
 import choi.choice.domain.StdCtgry;
 import choi.choice.repository.AdminRepository;
 import groovy.util.logging.Slf4j;
@@ -76,5 +77,11 @@ public class AdminServiceImpl implements AdminService{
         dspCtgry.setUdterId(udter);
 
         adminRepository.updateDspCtgry(dspCtgry);
+    }
+
+    @Override
+    public void cnncStdDspCtgry(StdCtgry stdCtgry, List<DspCtgry> dspCtgry, HttpServletRequest request) {
+        StdDspCtgryCnnc stdDspCtgryCnnc = null;
+
     }
 }

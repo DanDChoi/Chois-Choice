@@ -23,4 +23,6 @@ public interface AdminService {
     void updateStdCtgry(StdCtgry stdCtgry, HttpServletRequest request);
 
     void updateDspCtgry(DspCtgry dspCtgry, HttpServletRequest request);
+
+    void cnncStdDspCtgry(StdCtgry stdCtgry, List<DspCtgry> dspCtgry, HttpServletRequest request);
 }
