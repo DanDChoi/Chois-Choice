@@ -15,14 +15,14 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class DspStdCtgryCnnc {
+public class StdDspCtgryCnnc {
 
     @Id
-    @Column(name = "dsp_ctgry_no")
-    private String dspCtgryNo;
-
     @Column(name = "std_ctgry_no")
     private String stdCtgryNo;
+
+    @Column(name = "dsp_ctgry_no")
+    private String dspCtgryNo;
 
     @Column(name = "use_yn")
     private String useYn;
