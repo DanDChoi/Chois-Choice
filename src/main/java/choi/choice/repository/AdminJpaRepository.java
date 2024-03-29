@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
+import choi.choice.domain.StdDspCtgryCnnc;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -100,5 +101,10 @@ public class AdminJpaRepository implements  AdminRepository{
                 .setParameter("udterId", dspCtgry.getUdterId())
                 .setParameter("dspCtgryNo", dspCtgry.getDspCtgryNo())
                 .getSingleResult();
+    }
+
+    @Override
+    public void addStdDspCtgryCnnc(StdDspCtgryCnnc stdDspCtgryCnnc) {
+        em.persist(stdDspCtgryCnnc);
     }
 }

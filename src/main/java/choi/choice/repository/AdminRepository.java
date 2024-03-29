@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
+import choi.choice.domain.StdDspCtgryCnnc;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface AdminRepository {
     void updateStdCtgry(StdCtgry stdCtgry);
 
     void updateDspCtgry(DspCtgry dspCtgry);
+
+    void addStdDspCtgryCnnc(StdDspCtgryCnnc stdDspCtgryCnnc);
 }

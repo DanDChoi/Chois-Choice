@@ -82,6 +82,24 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void cnncStdDspCtgry(StdCtgry stdCtgry, List<DspCtgry> dspCtgry, HttpServletRequest request) {
         StdDspCtgryCnnc stdDspCtgryCnnc = null;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        format.format(date);
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        if (dspCtgry.size() > 0) {
+            for (int i=0; i< dspCtgry.size(); i++) {
+                stdDspCtgryCnnc.setDspCtgryNo(dspCtgry.get(i).getDspCtgryNo());
+                stdDspCtgryCnnc.setStdCtgryNo(stdCtgry.getStdCtgryNo());
+                stdDspCtgryCnnc.setUseYn("Y");
+                stdDspCtgryCnnc.setRegtrId(loginId);
+                stdDspCtgryCnnc.setUdterId(loginId);
+                stdDspCtgryCnnc.setRegDt(date);
+                stdDspCtgryCnnc.setUdtDt(date);
+
+                adminRepository.addStdDspCtgryCnnc(stdDspCtgryCnnc);
+            }
+         }
 
     }
 }
