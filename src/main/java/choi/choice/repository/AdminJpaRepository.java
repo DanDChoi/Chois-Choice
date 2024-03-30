@@ -107,4 +107,16 @@ public class AdminJpaRepository implements  AdminRepository{
     public void addStdDspCtgryCnnc(StdDspCtgryCnnc stdDspCtgryCnnc) {
         em.persist(stdDspCtgryCnnc);
     }
+
+    @Override
+    public int stdDspCtgryDupChk(String stdCtgryNo, String dspCtgryNo) {
+        String query = "SELECT count(1) FROM StdDspCtgryCnnc sdcc " +
+                "WHERE sdcc.stdCtgryNo = :stdCtgryNo " +
+                "AND sdcc.dspCtgryNo = :dspCtgryNo";
+        int count = em.createQuery(query, Integer.class)
+                .setParameter("stdCtgryNo", stdCtgryNo)
+                .setParameter("dspCtgryNo", dspCtgryNo)
+                .getSingleResult();
+        return count;
+    }
 }

@@ -89,15 +89,23 @@ public class AdminServiceImpl implements AdminService{
 
         if (dspCtgry.size() > 0) {
             for (int i=0; i< dspCtgry.size(); i++) {
-                stdDspCtgryCnnc.setDspCtgryNo(dspCtgry.get(i).getDspCtgryNo());
-                stdDspCtgryCnnc.setStdCtgryNo(stdCtgry.getStdCtgryNo());
-                stdDspCtgryCnnc.setUseYn("Y");
-                stdDspCtgryCnnc.setRegtrId(loginId);
-                stdDspCtgryCnnc.setUdterId(loginId);
-                stdDspCtgryCnnc.setRegDt(date);
-                stdDspCtgryCnnc.setUdtDt(date);
+                //중복체크
+                int dupCnt = adminRepository.stdDspCtgryDupChk(stdCtgry.getStdCtgryNo(), dspCtgry.get(i).getDspCtgryNo());
 
-                adminRepository.addStdDspCtgryCnnc(stdDspCtgryCnnc);
+                if(dupCnt > 0) {
+                    //TODO ERROR
+                    return;
+                } else {
+                    stdDspCtgryCnnc.setDspCtgryNo(dspCtgry.get(i).getDspCtgryNo());
+                    stdDspCtgryCnnc.setStdCtgryNo(stdCtgry.getStdCtgryNo());
+                    stdDspCtgryCnnc.setUseYn("Y");
+                    stdDspCtgryCnnc.setRegtrId(loginId);
+                    stdDspCtgryCnnc.setUdterId(loginId);
+                    stdDspCtgryCnnc.setRegDt(date);
+                    stdDspCtgryCnnc.setUdtDt(date);
+
+                    adminRepository.addStdDspCtgryCnnc(stdDspCtgryCnnc);
+                }
             }
          }
 
