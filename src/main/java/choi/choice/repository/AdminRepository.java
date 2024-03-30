@@ -25,4 +25,6 @@ public interface AdminRepository {
     void updateDspCtgry(DspCtgry dspCtgry);
 
     void addStdDspCtgryCnnc(StdDspCtgryCnnc stdDspCtgryCnnc);
+
+    int stdDspCtgryDupChk(String stdCtgryNo, String dspCtgryNo);
 }
