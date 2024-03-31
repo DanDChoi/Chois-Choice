@@ -81,6 +81,8 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void cnncStdDspCtgry(StdCtgry stdCtgry, List<DspCtgry> dspCtgry, HttpServletRequest request) {
+
+        String msg = "";
         StdDspCtgryCnnc stdDspCtgryCnnc = null;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -92,10 +94,7 @@ public class AdminServiceImpl implements AdminService{
                 //중복체크
                 int dupCnt = adminRepository.stdDspCtgryDupChk(stdCtgry.getStdCtgryNo(), dspCtgry.get(i).getDspCtgryNo());
 
-                if(dupCnt > 0) {
-                    //TODO ERROR
-                    return;
-                } else {
+                if(dupCnt == 0) {
                     stdDspCtgryCnnc.setDspCtgryNo(dspCtgry.get(i).getDspCtgryNo());
                     stdDspCtgryCnnc.setStdCtgryNo(stdCtgry.getStdCtgryNo());
                     stdDspCtgryCnnc.setUseYn("Y");
