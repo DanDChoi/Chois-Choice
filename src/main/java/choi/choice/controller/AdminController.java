@@ -239,4 +239,8 @@ public class AdminController {
         adminService.updateDspCtgry(dspCtgry, request);
     }
 
+    @RequestMapping(value = "/StdDspCtgryCnnc", method = RequestMethod.POST)
+    public void stdDspCtgryCnnc(StdCtgry stdCtgry, List<DspCtgry> dspCtgryList, HttpServletRequest request) {
+        adminService.cnncStdDspCtgry(stdCtgry, dspCtgryList, request);
+    }
 }
