@@ -239,8 +239,13 @@ public class AdminController {
         adminService.updateDspCtgry(dspCtgry, request);
     }
 
-    @RequestMapping(value = "/StdDspCtgryCnnc", method = RequestMethod.POST)
+    @RequestMapping(value = "/stdDspCtgryCnnc", method = RequestMethod.POST)
     public void stdDspCtgryCnnc(StdCtgry stdCtgry, List<DspCtgry> dspCtgryList, HttpServletRequest request) {
         adminService.cnncStdDspCtgry(stdCtgry, dspCtgryList, request);
+    }
+
+    @RequestMapping(value = "/stdDspCtgrtCnncDelete", method = RequestMethod.POST)
+    public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
+        adminService.stdDspCtgrtCnncDelete(stdDspCtgryCnnc, stdCtgry, dspCtgry);
     }
 }
