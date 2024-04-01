@@ -119,4 +119,9 @@ public class AdminJpaRepository implements  AdminRepository{
                 .getSingleResult();
         return count;
     }
+
+    @Override
+    public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
+        //TODO
+    }
 }

@@ -109,4 +109,9 @@ public class AdminServiceImpl implements AdminService{
          }
 
     }
+
+    @Override
+    public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
+        adminRepository.stdDspCtgrtCnncDelete(stdDspCtgryCnnc, stdCtgry, dspCtgry);
+    }
 }
