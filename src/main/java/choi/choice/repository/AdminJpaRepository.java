@@ -122,6 +122,12 @@ public class AdminJpaRepository implements  AdminRepository{
 
     @Override
     public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
-        //TODO
+        String query = "DELETE FROM StdDspCtgryCnnc sdcc " +
+                "WHERE sdcc.stdCtgryNo = :stdCtgryNo " +
+                "AND sdcc.dspCtgryNo = :dspCtgryNo";
+        em.createQuery(query)
+                .setParameter("stdCtgryNo", stdCtgry.getStdCtgryNo())
+                .setParameter("dspCtgryNo", dspCtgry.getDspCtgryNo())
+                .getSingleResult();
     }
 }
