@@ -19,5 +19,5 @@ public interface PayService {
 
     void addClmPay(Pay pay, String originPayNo);
 
-    void editPay(String payNo);
+    void editPay(String payNo, Pay pay);
 }

@@ -65,7 +65,7 @@ public class PayServiceImpl implements PayService{
     }
 
     @Override
-    public void editPay(String payNo) {
-        payRepository.editPay(payNo);
+    public void editPay(String payNo, Pay pay) {
+        payRepository.editPay(payNo, pay);
     }
 }
