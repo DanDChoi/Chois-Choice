@@ -65,7 +65,16 @@ public class PayJpaRepository implements PayRepository {
     }
 
     @Override
-    public void editPay(String payNo) {
-        //TODO
+    public void editPay(String payNo, Pay pay) {
+        String query = "UPDATE Pay p SET " +
+                "p.payMnCd = :payMnCd" +
+                ", p.udtDt = :udtDt " +
+                ", p.udterId = :udterId " +
+                "WHERE p.payNo = :payNo";
+        em.createQuery(query)
+                .setParameter("payMnCd", pay.getPayMnCd())
+                .setParameter("udtDt", pay.getUdtDt())
+                .setParameter("udterId", pay.getUdterId())
+                .getSingleResult();
     }
 }
