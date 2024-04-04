@@ -23,18 +23,18 @@ public class PayController {
     private final PayService payService;
     private final PayRepository payRepository;
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addPayPost(Pay pay, HttpServletRequest request) {
         payService.createPay(pay, request);
         return "ok";
     }
 
-    @RequestMapping(value = "eliminate", method = RequestMethod.GET)
+    @RequestMapping(value = "/eliminate", method = RequestMethod.GET)
     public void eliminatePay(String payNo) {
         payService.deletePay(payNo);
     }
 
-    @RequestMapping(value = "detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detailPay(String payNo, String ordNo, Model model){
         if (payNo != null && payNo != "") {
             Pay pay = payService.findPayByPayNo(payNo);
@@ -44,6 +44,12 @@ public class PayController {
             Pay pay = payService.findPayByOrdNo(ordNo);
             model.addAttribute("pay", pay);
         }
-        return "/detail";
+        return "/detail/"+payNo;
+    }
+
+    @RequestMapping(value = "/updatePay", method = RequestMethod.POST)
+    public String updatePay(String payNo, Pay pay) {
+        payService.editPay(payNo, pay);
+        return "/detail/"+payNo;
     }
 }
