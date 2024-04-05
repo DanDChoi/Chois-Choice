@@ -3,6 +3,7 @@ package choi.choice.controller;
 import choi.choice.domain.Pay;
 import choi.choice.repository.PayRepository;
 import choi.choice.service.PayService;
+import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ public class PayController {
 
     private final PayService payService;
     private final PayRepository payRepository;
+    private final SessionManager sm;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addPayPost(Pay pay, HttpServletRequest request) {
@@ -48,7 +50,11 @@ public class PayController {
     }
 
     @RequestMapping(value = "/updatePay", method = RequestMethod.POST)
-    public String updatePay(String payNo, Pay pay) {
+    public String updatePay(String payNo, Pay pay, HttpServletRequest request) {
+        String loginId = sm.getSession(request).getMbrId();
+
+        pay.setUdterId(loginId);
+
         payService.editPay(payNo, pay);
         return "/detail/"+payNo;
     }
