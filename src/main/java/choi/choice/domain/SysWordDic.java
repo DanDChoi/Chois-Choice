@@ -22,11 +22,17 @@ public class SysWordDic {
     @Column(name = "word_nm")
     private String wordNm;
 
-    @Column(name = "dscr")
-    private String dscr;
+    @Column(name = "eng_abrv_nm")
+    private String engAbrvNm;
 
-    @Column(name = "kor_nm")
-    private String korNm;
+    @Column(name = "eng_dscr")
+    private String engDscr;
+
+    @Column(name = "kor_dscr")
+    private String korDscr;
+
+    @Column(name = "use_yn")
+    private String useYn;
 
     @Column(name = "regtr_id")
     private String regtrId;
