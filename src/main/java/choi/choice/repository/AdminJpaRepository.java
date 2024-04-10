@@ -3,6 +3,7 @@ package choi.choice.repository;
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 import choi.choice.domain.StdDspCtgryCnnc;
+import choi.choice.domain.SysWordDic;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -129,5 +130,13 @@ public class AdminJpaRepository implements  AdminRepository{
                 .setParameter("stdCtgryNo", stdCtgry.getStdCtgryNo())
                 .setParameter("dspCtgryNo", dspCtgry.getDspCtgryNo())
                 .getSingleResult();
+    }
+
+    @Override
+    public List<SysWordDic> getSysWordDicList() {
+        String query = "SELECT swd FROM SysWordDic swd";
+        List<SysWordDic> list = em.createQuery(query, SysWordDic.class)
+                .getResultList();
+        return list;
     }
 }

@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdDspCtgryCnnc;
 import choi.choice.domain.StdCtgry;
+import choi.choice.domain.SysWordDic;
 import choi.choice.repository.AdminRepository;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
@@ -113,5 +114,10 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
         adminRepository.stdDspCtgrtCnncDelete(stdDspCtgryCnnc, stdCtgry, dspCtgry);
+    }
+
+    @Override
+    public List<SysWordDic> getSysWordDicList() {
+        return adminRepository.getSysWordDicList();
     }
 }
