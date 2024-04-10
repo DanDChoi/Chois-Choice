@@ -3,6 +3,7 @@ package choi.choice.repository;
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 import choi.choice.domain.StdDspCtgryCnnc;
+import choi.choice.domain.SysWordDic;
 
 import java.util.List;
 
@@ -29,4 +30,6 @@ public interface AdminRepository {
     int stdDspCtgryDupChk(String stdCtgryNo, String dspCtgryNo);
 
     void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry);
+
+    List<SysWordDic> getSysWordDicList();
 }

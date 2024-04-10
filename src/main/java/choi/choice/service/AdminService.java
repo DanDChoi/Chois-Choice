@@ -3,6 +3,7 @@ package choi.choice.service;
 import choi.choice.domain.DspCtgry;
 import choi.choice.domain.StdCtgry;
 import choi.choice.domain.StdDspCtgryCnnc;
+import choi.choice.domain.SysWordDic;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -28,4 +29,6 @@ public interface AdminService {
     void cnncStdDspCtgry(StdCtgry stdCtgry, List<DspCtgry> dspCtgry, HttpServletRequest request);
 
     void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry);
+
+    List<SysWordDic> getSysWordDicList();
 }

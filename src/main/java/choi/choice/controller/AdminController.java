@@ -248,4 +248,15 @@ public class AdminController {
     public void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry) {
         adminService.stdDspCtgrtCnncDelete(stdDspCtgryCnnc, stdCtgry, dspCtgry);
     }
+
+    @RequestMapping(value = "/sysWordDicListPage", method = RequestMethod.GET)
+    public String sysWordDicListPage(){
+        return "/sysWordDicList";
+    }
+
+    @RequestMapping(value = "/sysWordDicList", method = RequestMethod.GET)
+    public List<SysWordDic> sysWordDicList() {
+        List<SysWordDic> list = adminService.getSysWordDicList();
+        return list;
+    }
 }
