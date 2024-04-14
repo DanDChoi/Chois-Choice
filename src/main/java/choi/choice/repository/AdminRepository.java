@@ -1,9 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.DspCtgry;
-import choi.choice.domain.StdCtgry;
-import choi.choice.domain.StdDspCtgryCnnc;
-import choi.choice.domain.SysWordDic;
+import choi.choice.domain.*;
 
 import java.util.List;
 
@@ -32,4 +29,6 @@ public interface AdminRepository {
     void stdDspCtgrtCnncDelete(StdDspCtgryCnnc stdDspCtgryCnnc, StdCtgry stdCtgry, DspCtgry dspCtgry);
 
     List<SysWordDic> getSysWordDicList();
+
+    void addSysCd(SysCd sysCd);
 }

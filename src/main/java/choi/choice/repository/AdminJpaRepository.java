@@ -1,9 +1,6 @@
 package choi.choice.repository;
 
-import choi.choice.domain.DspCtgry;
-import choi.choice.domain.StdCtgry;
-import choi.choice.domain.StdDspCtgryCnnc;
-import choi.choice.domain.SysWordDic;
+import choi.choice.domain.*;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -138,5 +135,10 @@ public class AdminJpaRepository implements  AdminRepository{
         List<SysWordDic> list = em.createQuery(query, SysWordDic.class)
                 .getResultList();
         return list;
+    }
+
+    @Override
+    public void addSysCd(SysCd sysCd) {
+        em.persist(sysCd);
     }
 }
