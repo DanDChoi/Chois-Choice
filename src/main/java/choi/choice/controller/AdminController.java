@@ -154,6 +154,7 @@ public class AdminController {
 
         couponService.updateCpn(cpn, request);
     }
+
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public String adminReviews(HttpServletRequest request, Model model) {
         List<GoodReview> reviews = goodService.findAllReviews();
@@ -250,7 +251,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/sysWordDicListPage", method = RequestMethod.GET)
-    public String sysWordDicListPage(){
+    public String sysWordDicListPage() {
         return "/sysWordDicList";
     }
 
@@ -258,5 +259,17 @@ public class AdminController {
     public List<SysWordDic> sysWordDicList() {
         List<SysWordDic> list = adminService.getSysWordDicList();
         return list;
+    }
+
+    @RequestMapping(value = "/sysCdAddForm", method = RequestMethod.GET)
+    public String sysCdAddForm() {
+        return "/sysCdAddForm";
+    }
+
+    @RequestMapping(value = "/addSysCd", method = RequestMethod.POST)
+    public String addSysCd(SysCd sysCd, HttpServletRequest request) {
+        adminService.addSysCd(sysCd, request);
+        //TODO return page
+        return "";
     }
 }
