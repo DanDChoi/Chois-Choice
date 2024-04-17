@@ -269,7 +269,12 @@ public class AdminController {
     @RequestMapping(value = "/addSysCd", method = RequestMethod.POST)
     public String addSysCd(SysCd sysCd, HttpServletRequest request) {
         adminService.addSysCd(sysCd, request);
-        //TODO return page
-        return "";
+        return "/sysCdList";
+    }
+
+    @RequestMapping(value = "/sysCd", method = RequestMethod.GET)
+    public String sysCdDetail(SysCd sysCd, HttpServletRequest request) {
+        //TODO
+        return "/sysCd/"+sysCd.getCd()+"/detail";
     }
 }
