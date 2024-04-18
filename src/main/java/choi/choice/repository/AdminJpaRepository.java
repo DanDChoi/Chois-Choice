@@ -141,4 +141,14 @@ public class AdminJpaRepository implements  AdminRepository{
     public void addSysCd(SysCd sysCd) {
         em.persist(sysCd);
     }
+
+    @Override
+    public SysCd getSysCdDetail(String cd) {
+        String query = "SELECT sc FROM SysCd sc " +
+                "WHERE sc.cd = :cd";
+        SysCd sysCd = em.createQuery(query, SysCd.class)
+                .setParameter("cd", cd)
+                .getSingleResult();
+        return sysCd;
+    }
 }

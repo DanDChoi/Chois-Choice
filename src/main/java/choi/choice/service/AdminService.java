@@ -30,4 +30,6 @@ public interface AdminService {
     List<SysWordDic> getSysWordDicList();
 
     void addSysCd(SysCd sysCd, HttpServletRequest request);
+
+    SysCd getSysCdDetail(String cd);
 }

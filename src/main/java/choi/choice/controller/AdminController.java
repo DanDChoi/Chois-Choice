@@ -273,8 +273,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/sysCd", method = RequestMethod.GET)
-    public String sysCdDetail(SysCd sysCd, HttpServletRequest request) {
-        //TODO
+    public String sysCdDetail(SysCd sysCd, Model model, HttpServletRequest request) {
+        SysCd sysCdDetail = adminService.getSysCdDetail(sysCd.getCd());
+
+        model.addAttribute("sysCdDetail", sysCdDetail);
         return "/sysCd/"+sysCd.getCd()+"/detail";
     }
 }
