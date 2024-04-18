@@ -132,4 +132,9 @@ public class AdminServiceImpl implements AdminService{
 
         adminRepository.addSysCd(sysCd);
     }
+
+    @Override
+    public SysCd getSysCdDetail(String cd) {
+        return adminRepository.getSysCdDetail(cd);
+    }
 }

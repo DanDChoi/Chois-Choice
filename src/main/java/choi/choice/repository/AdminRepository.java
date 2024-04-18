@@ -31,4 +31,6 @@ public interface AdminRepository {
     List<SysWordDic> getSysWordDicList();
 
     void addSysCd(SysCd sysCd);
+
+    SysCd getSysCdDetail(String cd);
 }
