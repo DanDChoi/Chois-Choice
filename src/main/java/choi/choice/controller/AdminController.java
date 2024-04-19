@@ -279,4 +279,14 @@ public class AdminController {
         model.addAttribute("sysCdDetail", sysCdDetail);
         return "/sysCd/"+sysCd.getCd()+"/detail";
     }
+
+    @RequestMapping(value = "/sysCd/update", method = RequestMethod.POST)
+    public void sysCdUpdate(SysCd sysCd, HttpServletRequest request) {
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        sysCd.setRegtrId(loginId);
+        sysCd.setUdterId(loginId);
+
+        adminService.sysCdUpdate(sysCd);
+    }
 }
