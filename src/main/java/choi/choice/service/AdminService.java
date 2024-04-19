@@ -32,4 +32,6 @@ public interface AdminService {
     void addSysCd(SysCd sysCd, HttpServletRequest request);
 
     SysCd getSysCdDetail(String cd);
+
+    void sysCdUpdate(SysCd sysCd);
 }

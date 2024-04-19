@@ -137,4 +137,9 @@ public class AdminServiceImpl implements AdminService{
     public SysCd getSysCdDetail(String cd) {
         return adminRepository.getSysCdDetail(cd);
     }
+
+    @Override
+    public void sysCdUpdate(SysCd sysCd) {
+        //TODO update Repo
+    }
 }
