@@ -22,7 +22,7 @@ public class SysCd {
     private String cd; //ex MALL_MBR
 
     @Column(name = "cd_nm")
-    private String cd_nm; //ex 몰 회원
+    private String cdNm; //ex 몰 회원
 
     @Column(name = "regtr_id")
     private String regtrId;

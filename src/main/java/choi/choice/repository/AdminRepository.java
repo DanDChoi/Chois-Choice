@@ -33,4 +33,6 @@ public interface AdminRepository {
     void addSysCd(SysCd sysCd);
 
     SysCd getSysCdDetail(String cd);
+
+    void sysCdUpdate(SysCd sysCd);
 }

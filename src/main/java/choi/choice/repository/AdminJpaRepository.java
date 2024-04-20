@@ -151,4 +151,18 @@ public class AdminJpaRepository implements  AdminRepository{
                 .getSingleResult();
         return sysCd;
     }
+
+    @Override
+    public void sysCdUpdate(SysCd sysCd) {
+        String query = "UPDATE SysCd sc " +
+                "SET sc.cdNm = :cdNm " +
+                ",sc.udterId = :udterId " +
+                ",sc.udtDt = :udtDt " +
+                "WHERE sc.cd = :cd";
+        SysCd updateSysCd = em.createQuery(query, SysCd.class)
+                .setParameter("cdNm", sysCd.getCdNm())
+                .setParameter("udterId", sysCd.getUdterId())
+                .setParameter("udtDt", sysCd.getUdtDt())
+                .getSingleResult();
+    }
 }

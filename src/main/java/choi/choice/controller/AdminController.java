@@ -282,11 +282,7 @@ public class AdminController {
 
     @RequestMapping(value = "/sysCd/update", method = RequestMethod.POST)
     public void sysCdUpdate(SysCd sysCd, HttpServletRequest request) {
-        String loginId = sessionManager.getSession(request).getMbrId();
 
-        sysCd.setRegtrId(loginId);
-        sysCd.setUdterId(loginId);
-
-        adminService.sysCdUpdate(sysCd);
+        adminService.sysCdUpdate(sysCd, request);
     }
 }
