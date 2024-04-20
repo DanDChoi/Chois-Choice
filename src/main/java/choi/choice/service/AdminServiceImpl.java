@@ -139,7 +139,17 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void sysCdUpdate(SysCd sysCd) {
-        //TODO update Repo
+    public void sysCdUpdate(SysCd sysCd, HttpServletRequest request) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        format.format(date);
+        String loginId = sessionManager.getSession(request).getMbrId();
+
+        sysCd.setRegtrId(loginId);
+        sysCd.setUdterId(loginId);
+        sysCd.setRegDt(date);
+        sysCd.setUdtDt(date);
+
+        adminRepository.sysCdUpdate(sysCd);
     }
 }
