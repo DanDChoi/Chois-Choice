@@ -75,6 +75,19 @@ public class OrderServiceImpl implements OrderService{
 
         orderRepository.addPay(pay);
 
+        LgsDlv lgsDlv = null;
+
+        lgsDlv.setOrdNo(ordNo);
+        lgsDlv.setDlvPlcNo(good.getDlvPlcNo());
+        lgsDlv.setDlvPcupspTurn("1");
+        lgsDlv.setDlvTurn("1");
+        lgsDlv.setRegtrId(regtr);
+        lgsDlv.setRegDt(date);
+        lgsDlv.setUdterId(regtr);
+        lgsDlv.setUdtDt(date);
+
+        //TODO lgsDlv Repo
+
     }
 
     @Override
