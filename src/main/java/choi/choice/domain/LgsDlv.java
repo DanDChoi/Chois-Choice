@@ -30,8 +30,8 @@ public class LgsDlv {
     private String dlvTurn;
 
     @Id
-    @Column(name = "dmstc_dlv_cst_plc_sn")
-    private String dmstcDlvCstPlcSn;
+    @Column(name = "dlvPlcNo")
+    private Integer dlvPlcNo;
 
     @Column(name = "reg_dt")
     private java.util.Date regDt;
