@@ -13,6 +13,8 @@ public interface OrderRepository {
 
     void addPay(Pay pay);
 
+    void addLgsDlv(LgsDlv lgsDlv);
+
     Ord findOne(String ordNo);
 
     List<Ord> findAll(Sort regDt);
