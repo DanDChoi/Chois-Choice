@@ -87,6 +87,7 @@ public class OrderServiceImpl implements OrderService{
         lgsDlv.setUdtDt(date);
 
         //TODO lgsDlv Repo
+        orderRepository.addLgsDlv(lgsDlv);
 
     }
 

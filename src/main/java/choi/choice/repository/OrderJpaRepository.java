@@ -35,6 +35,11 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
+    public void addLgsDlv(LgsDlv lgsDlv) {
+        em.persist(lgsDlv);
+    }
+
+    @Override
     public Ord findOne(String ordNo) {
         Ord ord = em.find(Ord.class, ordNo);
         em.persist(ord);
