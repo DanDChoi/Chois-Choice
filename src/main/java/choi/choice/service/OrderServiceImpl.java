@@ -86,9 +86,21 @@ public class OrderServiceImpl implements OrderService{
         lgsDlv.setUdterId(regtr);
         lgsDlv.setUdtDt(date);
 
-        //TODO lgsDlv Repo
         orderRepository.addLgsDlv(lgsDlv);
 
+        LgsDlivyDrctGood lgsDlivyDrctGood = null;
+
+        lgsDlivyDrctGood.setOrdNo(ordNo);
+        lgsDlivyDrctGood.setOrdGoodTurn("1");
+        lgsDlivyDrctGood.setDlivyDrctTgtYn("Y");
+        lgsDlivyDrctGood.setDlivyDrctYn("N");
+        lgsDlivyDrctGood.setDlivyDrctTpCd("ORD");
+        lgsDlivyDrctGood.setRegtrId(regtr);
+        lgsDlivyDrctGood.setRegDt(date);
+        lgsDlivyDrctGood.setUdterId(regtr);
+        lgsDlivyDrctGood.setUdtDt(date);
+
+        //TODO repo
     }
 
     @Override

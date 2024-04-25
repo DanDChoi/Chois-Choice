@@ -20,6 +20,7 @@ public class Clm {
     @Id
     @Column(name = "clm_no", unique = true)
     private String clmNo;
+
     /**
      * 클레임 유형 코드
      * EXCHG
@@ -27,6 +28,7 @@ public class Clm {
      */
     @Column(name = "clm_tp_cd")
     private String clmTpCd;
+
     /**
      * 클레임 상태 코드
      * CLM_RECPT
@@ -34,18 +36,26 @@ public class Clm {
      */
     @Column(name = "clm_stat_cd")
     private String clmStatCd;
+
     @Column(name = "mbr_no")
     private Long mbrNo;
+
     @Column(name = "ord_no")
     private String ordNo;
+
     @Column(name = "god_no")
     private String godNo;
+
     @Column(name = "regtr_id")
     private String regtrId;
+
     @Column(name = "reg_dt")
     private java.util.Date regDt;
+
     @Column(name = "udter_id")
     private String udterId;
+
     @Column(name = "udt_dt")
     private java.util.Date udtDt;
+
 }
