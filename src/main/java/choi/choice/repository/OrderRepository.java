@@ -15,6 +15,8 @@ public interface OrderRepository {
 
     void addLgsDlv(LgsDlv lgsDlv);
 
+    void addLgsDlivyDrctGood(LgsDlivyDrctGood lgsDlivyDrctGood);
+
     Ord findOne(String ordNo);
 
     List<Ord> findAll(Sort regDt);
@@ -28,7 +30,6 @@ public interface OrderRepository {
     List<Ord> findOrdsByMbrNo(Long mbrNo);
 
     List<OrdGood> findBestGoods();
-
 
     List<OrdGood> findOrdGoods(String ordNo);
 }

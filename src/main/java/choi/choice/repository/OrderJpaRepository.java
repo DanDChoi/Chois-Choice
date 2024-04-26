@@ -40,6 +40,11 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
+    public void addLgsDlivyDrctGood(LgsDlivyDrctGood lgsDlivyDrctGood) {
+        em.persist(lgsDlivyDrctGood);
+    }
+
+    @Override
     public Ord findOne(String ordNo) {
         Ord ord = em.find(Ord.class, ordNo);
         em.persist(ord);
