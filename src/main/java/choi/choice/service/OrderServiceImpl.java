@@ -100,7 +100,7 @@ public class OrderServiceImpl implements OrderService{
         lgsDlivyDrctGood.setUdterId(regtr);
         lgsDlivyDrctGood.setUdtDt(date);
 
-        //TODO repo
+        orderRepository.addLgsDlivyDrctGood(lgsDlivyDrctGood);
     }
 
     @Override
