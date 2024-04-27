@@ -88,19 +88,24 @@ public class OrderServiceImpl implements OrderService{
 
         orderRepository.addLgsDlv(lgsDlv);
 
-        LgsDlivyDrctGood lgsDlivyDrctGood = null;
+        List<LgsDlivyDrctGood> lgsDlivyDrctGoods = new ArrayList<>();
 
-        lgsDlivyDrctGood.setOrdNo(ordNo);
-        lgsDlivyDrctGood.setOrdGoodTurn("1");
-        lgsDlivyDrctGood.setDlivyDrctTgtYn("Y");
-        lgsDlivyDrctGood.setDlivyDrctYn("N");
-        lgsDlivyDrctGood.setDlivyDrctTpCd("ORD");
-        lgsDlivyDrctGood.setRegtrId(regtr);
-        lgsDlivyDrctGood.setRegDt(date);
-        lgsDlivyDrctGood.setUdterId(regtr);
-        lgsDlivyDrctGood.setUdtDt(date);
+        for (int i = 0; i < ordGoods.size(); i++) {
+            lgsDlivyDrctGoods.get(i).setOrdNo(ordNo);
+            lgsDlivyDrctGoods.get(i).setOrdGoodTurn(i+1);
+            lgsDlivyDrctGoods.get(i).setDlivyDrctTgtYn("Y");
+            lgsDlivyDrctGoods.get(i).setDlivyDrctYn("N");
+            lgsDlivyDrctGoods.get(i).setDlivyDrctTpCd("ORD");
+            lgsDlivyDrctGoods.get(i).setRegtrId(regtr);
+            lgsDlivyDrctGoods.get(i).setRegDt(date);
+            lgsDlivyDrctGoods.get(i).setUdterId(regtr);
+            lgsDlivyDrctGoods.get(i).setUdtDt(date);
 
-        orderRepository.addLgsDlivyDrctGood(lgsDlivyDrctGood);
+            orderRepository.addLgsDlivyDrctGood(lgsDlivyDrctGoods.get(i));
+
+        }
+
+
     }
 
     @Override
