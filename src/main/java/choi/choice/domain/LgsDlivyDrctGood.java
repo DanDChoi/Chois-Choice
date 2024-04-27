@@ -25,7 +25,7 @@ public class LgsDlivyDrctGood {
     private String ordNo;
 
     @Column(name = "ord_good_turn")
-    private String ordGoodTurn;
+    private int ordGoodTurn;
 
     @Column(name = "dlv_pcupsp_turn") //배송 수거지 순번
     private String dlvPcupspTurn;
