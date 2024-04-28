@@ -32,6 +32,8 @@ public class OrdGood {
     private String stdCtgryNo;
     @Column(name = "sale_prc")
     private String salePrc;
+    @Column(name = "dlv_plc_no")
+    private Integer dlvPlcNo;
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")

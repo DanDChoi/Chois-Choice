@@ -90,6 +90,7 @@ public class OrderServiceImpl implements OrderService{
 
         List<LgsDlivyDrctGood> lgsDlivyDrctGoods = new ArrayList<>();
 
+        //TODO dlv_plc_no가 같으면 1행으로 넣어야함
         for (int i = 0; i < ordGoods.size(); i++) {
             lgsDlivyDrctGoods.get(i).setOrdNo(ordNo);
             lgsDlivyDrctGoods.get(i).setOrdGoodTurn(i+1);
