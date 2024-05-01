@@ -65,4 +65,9 @@ public class OrderController {
         return "/detail/" + ordNo;
     }
 
+    @RequestMapping(value = "/refund.json", method = RequestMethod.POST)
+    public void refundApply(String ordNo, HttpServletRequest request) {
+        //TODO addRefund
+    }
+
 }
