@@ -2,6 +2,7 @@ package choi.choice.repository;
 
 
 import choi.choice.domain.Evt;
+import choi.choice.domain.EvtPrize;
 import choi.choice.domain.EvtReply;
 import org.springframework.data.domain.Sort;
 
@@ -11,6 +12,8 @@ public interface EventRepository{
     List<Evt> findAll(Sort regDt);
 
     void createEvt(Evt evt);
+
+    void createEvtPrize(EvtPrize evtPrize);
 
     void createEvtReply(EvtReply evtReply);
 

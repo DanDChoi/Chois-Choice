@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Evt;
+import choi.choice.domain.EvtPrize;
 import choi.choice.domain.EvtReply;
 import choi.choice.domain.GoodReview;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class EventJpaRepository implements EventRepository{
     @Override
     public void createEvt(Evt evt) {
         em.persist(evt);
+    }
+
+    @Override
+    public void createEvtPrize(EvtPrize evtPrize) {
+        em.persist(evtPrize);
     }
 
     @Override

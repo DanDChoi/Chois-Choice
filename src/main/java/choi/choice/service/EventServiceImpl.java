@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Evt;
+import choi.choice.domain.EvtPrize;
 import choi.choice.domain.EvtReply;
 import choi.choice.repository.EventRepository;
 import lombok.AllArgsConstructor;
@@ -39,6 +40,19 @@ public class EventServiceImpl implements EventService {
         evt.setUdterId(regtr);
 
         eventRepository.createEvt(evt);
+
+        EvtPrize evtPrize = null;
+
+        int evtPrizeSn = Integer.parseInt(format.format(date) + timeMillis);
+        evtPrize.setEvtNo(evtNo);
+        evtPrize.setEvtPartcptnSn(evtPrizeSn);
+        evtPrize.setRegtrId(regtr);
+        evtPrize.setRegDt(date);
+        evtPrize.setUdterId(regtr);
+        evtPrize.setUdtDt(date);
+
+        eventRepository.createEvtPrize(evtPrize);
+
     }
 
     @Override
