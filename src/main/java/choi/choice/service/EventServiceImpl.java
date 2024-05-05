@@ -25,7 +25,7 @@ public class EventServiceImpl implements EventService {
     private final SessionManager sessionManager;
 
     @Override
-    public void createEvt(@ModelAttribute Evt evt, HttpServletRequest request) {
+    public void createEvt(@ModelAttribute Evt evt, List<EvtPrize> evtPrizes, HttpServletRequest request) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
@@ -41,17 +41,23 @@ public class EventServiceImpl implements EventService {
 
         eventRepository.createEvt(evt);
 
-        EvtPrize evtPrize = null;
+        if (evtPrizes.size() > 0) {
+            for (int i = 0; i < evtPrizes.size(); i++) {
+                EvtPrize evtPrize = null;
+                int evtPrizeSn = Integer.parseInt(format.format(date) + timeMillis) + i;
 
-        int evtPrizeSn = Integer.parseInt(format.format(date) + timeMillis);
-        evtPrize.setEvtNo(evtNo);
-        evtPrize.setEvtPartcptnSn(evtPrizeSn);
-        evtPrize.setRegtrId(regtr);
-        evtPrize.setRegDt(date);
-        evtPrize.setUdterId(regtr);
-        evtPrize.setUdtDt(date);
+                evtPrize.setEvtNo(evtNo);
+                evtPrize.setEvtPartcptnSn(evtPrizeSn);
+                evtPrize.setRegtrId(regtr);
+                evtPrize.setRegDt(date);
+                evtPrize.setUdterId(regtr);
+                evtPrize.setUdtDt(date);
 
-        eventRepository.createEvtPrize(evtPrize);
+                eventRepository.createEvtPrize(evtPrize);
+            }
+        }
+
+
 
     }
 

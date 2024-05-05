@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.Evt;
+import choi.choice.domain.EvtPrize;
 import choi.choice.domain.Good;
 import choi.choice.repository.EventRepository;
 import choi.choice.service.EventService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -29,8 +31,8 @@ public class EventController {
        }
 
    @RequestMapping(value = "/creat", method = RequestMethod.POST)
-   public String createEvt(@ModelAttribute Evt evt, HttpServletRequest request) {
-       eventService.createEvt(evt, request);
+   public String createEvt(@ModelAttribute Evt evt, List<EvtPrize> evtPrizes, HttpServletRequest request) {
+       eventService.createEvt(evt, evtPrizes, request);
        return "ok";
    }
 
