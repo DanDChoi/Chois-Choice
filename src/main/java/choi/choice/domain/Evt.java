@@ -28,6 +28,8 @@ public class Evt {
     private String evtStatCd;
     @Column(name = "evt_tp_cd")
     private String evtTpCd;
+    @Column(name = "evt_prize_yn")
+    private String evtPrizeYn;
     @Column(name = "evt_beg_dt")
     private java.util.Date evtBegDt;
     @Column(name = "evt_end_dt")

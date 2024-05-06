@@ -41,7 +41,7 @@ public class EventServiceImpl implements EventService {
 
         eventRepository.createEvt(evt);
 
-        if (evtPrizes.size() > 0) {
+        if (evt.getEvtPrizeYn().equals("Y")) {
             for (int i = 0; i < evtPrizes.size(); i++) {
                 EvtPrize evtPrize = null;
                 int evtPrizeSn = Integer.parseInt(format.format(date) + timeMillis) + i;
