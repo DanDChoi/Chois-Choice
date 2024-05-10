@@ -2,10 +2,7 @@ package choi.choice.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ord_good")
@@ -17,11 +14,8 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrdGood {
 
-    @Id
-    @Column(name = "ord_no", unique = true)
-    private String ordNo;
-    @Column(name = "good_no")
-    private String goodNo;
+    @EmbeddedId
+    private OrdGodPK ordGodPK;
     @Column(name = "ord_good_turn")
     private int ordGoodTurn;
     @Column(name = "good_hist_no")
