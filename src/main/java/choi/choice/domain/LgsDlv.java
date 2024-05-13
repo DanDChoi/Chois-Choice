@@ -2,10 +2,7 @@ package choi.choice.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "lgs_dlv")
@@ -17,21 +14,8 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LgsDlv {
 
-    @Id
-    @Column(name = "ord_no")
-    private String ordNo;
-
-    @Id
-    @Column(name = "dlv_pcupsp_turn")
-    private String dlvPcupspTurn;
-
-    @Id
-    @Column(name = "dlv_turn")
-    private String dlvTurn;
-
-    @Id
-    @Column(name = "dlvPlcNo")
-    private Integer dlvPlcNo;
+    @EmbeddedId
+    private LgsDlvPK lgsDlvPK;
 
     @Column(name = "reg_dt")
     private java.util.Date regDt;
