@@ -2,10 +2,7 @@ package choi.choice.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "good_itm_hist")
@@ -16,11 +13,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class GoodItmHist {
-    @Id
-    @Column(name = "good_itm_no", unique = true)
-    private String goodItmNo;
-    @Column(name = "good_itm_hist_no")
-    private String goodItmHistNo;
+    @EmbeddedId
+    private GoodItmHistPK goodItmHistPK;
     @Column(name = "good_no")
     private String goodNo;
     @Column(name = "good_nm")
