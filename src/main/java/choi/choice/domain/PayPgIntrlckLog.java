@@ -14,7 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PayPgIntrlckLog {
 
-    // TODO PK 없는 JPA 엔티티 만들기
+    @Id
+    private Long payPgIntrlckLogId; //ID를 위한 의미없는 칼럼
 
     @Column(name = "log_dt")
     private java.util.Date logDt;

@@ -8,38 +8,36 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bsk")
+@Table(name = "bsk_good")
 @Getter
 @Setter
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Bsk {
+public class BskGood {
 
     @Id
-    @Column(name = "bsk_no", unique = true)
+    @Column(name = "bsk_seq")
+    private Long bskSeq;
+
+    @Column(name = "bsk_no")
     private String bskNo;
 
-    /**
-     * 장바구니 유형코드
-     * BSK : 장바구니 / DIRT : 바로구매
-     */
-    @Column(name = "bsk_tp_cd")
-    private String bskTpCd;
+    @Column(name = "good_turn")
+    private int goodTurn;
 
-    @Column(name = "mbr_no")
-    private Long mbrNo;
+    @Column(name = "good_no")
+    private String goodNo;
 
-    /**
-     * 회원 구분코드
-     * MBR : 회원 / NMBR : 비회원
-     */
-    @Column(name = "mbr_sect_cd")
-    private String mbrSectCd;
+    @Column(name = "itm_no")
+    private String itmNo;
 
-    @Column(name = "session_id")
-    private String sessionId;
+    @Column(name = "itm_qty")
+    private int itmQty;
+
+    @Column(name = "bsk_reg_dt")
+    private java.util.Date bskRegDt;
 
     @Column(name = "regtr_id")
     private String regtrId;
