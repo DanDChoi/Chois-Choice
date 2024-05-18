@@ -17,6 +17,9 @@ public class OrdGood {
     @EmbeddedId
     private OrdGodPK ordGodPK;
 
+    @Column(name = "good_no")
+    private String goodNo;
+
     @Column(name = "good_hist_no")
     private String goodHistNo;
 
