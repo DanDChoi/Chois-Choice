@@ -71,8 +71,8 @@ public class ClaimServiceImpl implements ClaimService{
 
         ClmWrhsGood clmWrhsGood = null;
 
-//        clmWrhsGood.setClmWrhsGoodPK(clm.getClmNo(),);
-//        clmWrhsGood.;
+        clmWrhsGood.setClmWrhsGoodPK(new ClmWrhsGoodPK(clm.getClmNo(), '1'));
+
 
         claimRepository.addClm(clm, clmGood);
     }
