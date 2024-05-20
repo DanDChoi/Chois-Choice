@@ -21,7 +21,7 @@ public class ClaimServiceImpl implements ClaimService{
     private final SessionManager sessionManager;
 
     @Override
-    public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
+    public void createClm(Ord ord, Clm clm, OrdGood ordGood, LgsDlivyDrctGood lgsDlivyDrctGood, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
@@ -60,8 +60,7 @@ public class ClaimServiceImpl implements ClaimService{
 
         ClmGood clmGood = null;
 
-//        clmGood.setClmGoodTurn(ordGood.getOrdGoodTurn());
-//        clmGood.setClmNo(clmNo);
+        clmGood.setClmGoodPK(new ClmGoodPK(clm.getClmNo(), lgsDlivyDrctGood.getOrdGoodTurn()));
         clmGood.setGoodNm(ordGood.getGoodNm());
         clmGood.setGoodHistNo(ordGood.getGoodHistNo());
         clmGood.setRegtrId(regtr);
@@ -71,7 +70,9 @@ public class ClaimServiceImpl implements ClaimService{
 
         ClmWrhsGood clmWrhsGood = null;
 
-        clmWrhsGood.setClmWrhsGoodPK(new ClmWrhsGoodPK(clm.getClmNo(), '1'));
+        clmWrhsGood.setClmWrhsGoodPK(new ClmWrhsGoodPK(clm.getClmNo(), lgsDlivyDrctGood.getOrdGoodTurn()));
+        clmWrhsGood.setGoodNo(ordGood.getGoodNo());
+        clmWrhsGood.setGoodNm(ordGood.getGoodNm());
 
 
         claimRepository.addClm(clm, clmGood);

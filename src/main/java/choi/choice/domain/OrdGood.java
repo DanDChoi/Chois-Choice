@@ -26,6 +26,12 @@ public class OrdGood {
     @Column(name = "good_nm")
     private String goodNm;
 
+    @Column(name = "itm_no")
+    private String itmNo;
+
+    @Column(name = "itm_hist_no")
+    private int itmHistNo;
+
     @Column(name = "std_ctgry_no")
     private String stdCtgryNo;
 
