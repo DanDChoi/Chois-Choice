@@ -1,9 +1,6 @@
 package choi.choice.controller;
 
-import choi.choice.domain.Clm;
-import choi.choice.domain.ClmGood;
-import choi.choice.domain.Ord;
-import choi.choice.domain.OrdGood;
+import choi.choice.domain.*;
 import choi.choice.repository.OrderRepository;
 import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
@@ -47,8 +44,8 @@ public class ClaimController {
     }
 
     @RequestMapping(value = "/addClm", method = RequestMethod.POST)
-    public void createClm(Ord ord, Clm clm, OrdGood ordGood, HttpServletRequest request) {
-        claimService.createClm(ord, clm, ordGood, request);
+    public void createClm(Ord ord, Clm clm, OrdGood ordGood, LgsDlivyDrctGood lgsDlivyDrctGood, HttpServletRequest request) {
+        claimService.createClm(ord, clm, ordGood, lgsDlivyDrctGood, request);
     }
 
     @RequestMapping(value = "/clmDetail", method = RequestMethod.GET)
