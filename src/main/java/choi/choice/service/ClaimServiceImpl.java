@@ -73,7 +73,13 @@ public class ClaimServiceImpl implements ClaimService{
         clmWrhsGood.setClmWrhsGoodPK(new ClmWrhsGoodPK(clm.getClmNo(), lgsDlivyDrctGood.getOrdGoodTurn()));
         clmWrhsGood.setGoodNo(ordGood.getGoodNo());
         clmWrhsGood.setGoodNm(ordGood.getGoodNm());
-
+        clmWrhsGood.setGoodHistTurn(Integer.parseInt(ordGood.getGoodHistNo()));
+        clmWrhsGood.setItmHistTurn(ordGood.getItmHistNo());
+        clmWrhsGood.setSalePrc(ordGood.getSalePrc());
+        clmWrhsGood.setUdterId(regtr);
+        clmWrhsGood.setUdtDt(date);
+        clmWrhsGood.setRegtrId(regtr);
+        clmWrhsGood.setRegDt(date);
 
         claimRepository.addClm(clm, clmGood);
     }
