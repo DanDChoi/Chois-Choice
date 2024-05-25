@@ -10,13 +10,13 @@ public class OrdGodPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String ordNo;
-    private String ordGodTurn;
+    private int ordGodTurn;
 
     public OrdGodPK(){
 
     }
 
-    public OrdGodPK(String ordNo, String ordGodTurn) {
+    public OrdGodPK(String ordNo, int ordGodTurn) {
         this.ordNo = ordNo;
         this.ordGodTurn = ordGodTurn;
     }
@@ -33,7 +33,7 @@ public class OrdGodPK implements Serializable {
 
         OrdGodPK ordGodPK = (OrdGodPK) obj;
 
-        if (this.ordNo.equals(ordGodPK.ordNo) && this.ordGodTurn.equals(ordGodPK.ordGodTurn)) {
+        if (this.ordNo.equals(ordGodPK.ordNo) && this.ordGodTurn == ordGodPK.ordGodTurn) {
             return true;
         }
         return false;

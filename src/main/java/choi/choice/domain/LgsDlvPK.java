@@ -11,15 +11,15 @@ public class LgsDlvPK implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private String ordNo;
-    private String dlvPcupspTurn;
-    private String dlvTurn;
+    private Integer dlvPcupspTurn;
+    private Integer dlvTurn;
     private Integer dlvPlcNo;
 
     public LgsDlvPK() {
 
     }
 
-    public LgsDlvPK(String ordNo, String dlvPcupspTurn, String dlvTurn, Integer dlvPlcNo) {
+    public LgsDlvPK(String ordNo, Integer dlvPcupspTurn, Integer dlvTurn, Integer dlvPlcNo) {
         this.ordNo = ordNo;
         this.dlvPcupspTurn = dlvPcupspTurn;
         this.dlvTurn = dlvTurn;
@@ -39,8 +39,8 @@ public class LgsDlvPK implements Serializable{
         LgsDlvPK lgsDlvPK = (LgsDlvPK) obj;
 
         if (this.ordNo.equals(lgsDlvPK.ordNo)
-        && this.dlvPcupspTurn.equals(lgsDlvPK.dlvPcupspTurn)
-        && this.dlvTurn.equals(lgsDlvPK.dlvTurn)
+        && this.dlvPcupspTurn == lgsDlvPK.dlvPcupspTurn
+        && this.dlvTurn == lgsDlvPK.dlvTurn
         && this.dlvPlcNo == lgsDlvPK.dlvPlcNo) {
             return true;
         }
