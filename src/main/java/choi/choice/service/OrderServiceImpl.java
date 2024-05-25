@@ -43,8 +43,7 @@ public class OrderServiceImpl implements OrderService{
         List<OrdGood> ordGoods = new ArrayList<>();
 
         for (int i = 0; i < ordGoods.size(); i++) {
-            ordGood.setOrdNo(ordNo);
-            ordGood.setOrdGoodTurn(i+1);
+            ordGood.setOrdGodPK(new OrdGodPK(ordNo, i+1));
             ordGood.setGoodNo(good.getGoodNo());
             ordGood.setGoodNm(good.getGoodNm());
             ordGood.setStdCtgryNo(good.getStdCtgryNo());
@@ -77,16 +76,18 @@ public class OrderServiceImpl implements OrderService{
 
         LgsDlv lgsDlv = null;
 
-        lgsDlv.setOrdNo(ordNo);
-        lgsDlv.setDlvPlcNo(good.getDlvPlcNo());
-        lgsDlv.setDlvPcupspTurn("1");
-        lgsDlv.setDlvTurn("1");
+        lgsDlv.setLgsDlvPK(new LgsDlvPK(ordNo, good.getDlvPlcNo(), 1, 1));
         lgsDlv.setRegtrId(regtr);
         lgsDlv.setRegDt(date);
         lgsDlv.setUdterId(regtr);
         lgsDlv.setUdtDt(date);
 
         orderRepository.addLgsDlv(lgsDlv);
+
+        LgsDlvsp lgsDlvsp = null;
+
+        lgsDlvsp.setLgsDlvspPK(new LgsDlvspPK(ordNo, 1));
+        //TODO lgsDlvsp Data
 
         List<LgsDlivyDrctGood> lgsDlivyDrctGoods = new ArrayList<>();
 
