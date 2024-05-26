@@ -87,7 +87,17 @@ public class OrderServiceImpl implements OrderService{
         LgsDlvsp lgsDlvsp = null;
 
         lgsDlvsp.setLgsDlvspPK(new LgsDlvspPK(ordNo, 1));
-        //TODO lgsDlvsp Data
+        lgsDlvsp.setDvlPcupspSectCd("ORD");
+        lgsDlvsp.setAddrseNm(ord.getCstmNm());
+        lgsDlvsp.setAddrsePostNo(ord.getPostNo());
+        lgsDlvsp.setAddrseBaseAddr(ord.getBaseAddr());
+        lgsDlvsp.setAddrseDetailAddr(ord.getDetailAddr());
+        lgsDlvsp.setRegtrId(regtr);
+        lgsDlvsp.setRegDt(date);
+        lgsDlvsp.setUdterId(regtr);
+        lgsDlvsp.setUdtDt(date);
+
+        orderRepository.addLgsDlvsp(lgsDlvsp);
 
         List<LgsDlivyDrctGood> lgsDlivyDrctGoods = new ArrayList<>();
 

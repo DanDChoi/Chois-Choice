@@ -15,6 +15,8 @@ public interface OrderRepository {
 
     void addLgsDlv(LgsDlv lgsDlv);
 
+    void addLgsDlvsp(LgsDlvsp lgsDlvsp);
+
     void addLgsDlivyDrctGood(LgsDlivyDrctGood lgsDlivyDrctGood);
 
     Ord findOne(String ordNo);
