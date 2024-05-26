@@ -40,6 +40,11 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
+    public void addLgsDlvsp(LgsDlvsp lgsDlvsp) {
+        em.persist(lgsDlvsp);
+    }
+
+    @Override
     public void addLgsDlivyDrctGood(LgsDlivyDrctGood lgsDlivyDrctGood) {
         em.persist(lgsDlivyDrctGood);
     }
