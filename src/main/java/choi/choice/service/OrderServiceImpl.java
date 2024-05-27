@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService{
     private final PayService payService;
 
     @Override
-    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
@@ -83,8 +83,6 @@ public class OrderServiceImpl implements OrderService{
         lgsDlv.setUdtDt(date);
 
         orderRepository.addLgsDlv(lgsDlv);
-
-        LgsDlvsp lgsDlvsp = null;
 
         lgsDlvsp.setLgsDlvspPK(new LgsDlvspPK(ordNo, 1));
         lgsDlvsp.setDvlPcupspSectCd("ORD");
