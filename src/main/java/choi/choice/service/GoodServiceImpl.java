@@ -47,7 +47,19 @@ public class GoodServiceImpl implements GoodService{
         good.setUdterId(regtr);
         good.setSaleEndDate("2999-12-31");
 
-        goodRepository.save(good);
+        GoodImg goodImg = null;
+
+        goodImg.setGoodNo(goodNo);
+        goodImg.setImgTpCd("IMG");
+        goodImg.setImgTurn(1);
+//        goodImg.setImgUrl();
+        goodImg.setImgUseYn("Y");
+        goodImg.setRegtrId(good.getRegtrId());
+        goodImg.setRegDt(good.getRegDt());
+        goodImg.setUdterId(good.getUdterId());
+        goodImg.setUdtDt(good.getUdtDt());
+
+        goodRepository.save(good, goodImg);
 
         GoodItm goodItm = null;
 
@@ -118,7 +130,7 @@ public class GoodServiceImpl implements GoodService{
     public void deleteByNo(String goodNo, GoodHist goodHist){
 
         String histNo = goodRepository.getGoodHistSeq(goodNo);
-        goodHist.setGoodHistNo(histNo);
+        goodHist.setGoodHistPK(new GoodHistPK(goodNo, Integer.parseInt(histNo)));
         goodRepository.insertGoodHist(goodHist);
         goodRepository.deleteByNo(goodNo);
     }
@@ -150,10 +162,9 @@ public class GoodServiceImpl implements GoodService{
         int maxSeq = Integer.parseInt(goodRepository.getGoodHistSeq(good.getGoodNo()));
         String nextSeq = String.valueOf(maxSeq + 1);
         GoodHist goodHist = null;
-        goodHist.setGoodHistNo(nextSeq);
+        goodHist.setGoodHistPK(new GoodHistPK(good.getGoodNo(), Integer.parseInt(nextSeq)));
         goodHist.setGoodNm(good.getGoodNm());
         goodHist.setStdCtgryNo(good.getStdCtgryNo());
-        goodHist.setGoodNo(good.getGoodNo());
         goodHist.setSaleBegDate(good.getSaleBegDate());
         goodHist.setSaleEndDate(good.getSaleEndDate());
         goodHist.setColorNm(good.getColorNm());
