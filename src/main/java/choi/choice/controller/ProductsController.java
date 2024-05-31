@@ -33,8 +33,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "create/add", method = RequestMethod.POST)
-    public String createGood(@ModelAttribute Good good, HttpServletRequest request) {
-        goodService.add(good, request);
+    public String createGood(@ModelAttribute GoodExtend goodExtend, HttpServletRequest request) {
+        goodService.add(goodExtend, request);
         return "ok";
     }
 

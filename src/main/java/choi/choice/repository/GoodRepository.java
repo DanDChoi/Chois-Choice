@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GoodRepository{
 
-    void save(Good good, GoodImg goodImg);
+    void save(GoodExtend goodExtend);
 
     void saveItm(GoodItm goodItm);
 

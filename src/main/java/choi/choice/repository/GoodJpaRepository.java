@@ -23,9 +23,9 @@ public class GoodJpaRepository implements GoodRepository{
     }
 
     @Override
-    public void save(Good good, GoodImg goodImg) {
-        em.persist(good);
-        em.persist(goodImg);
+    public void save(GoodExtend goodExtend) {
+        em.persist(goodExtend.getGood());
+        em.persist(goodExtend.getGoodImgList());
     }
 
     @Override
