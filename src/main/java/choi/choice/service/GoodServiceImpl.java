@@ -29,7 +29,7 @@ public class GoodServiceImpl implements GoodService{
     private final MemberService memberService;
 
     @Override
-    public void add(@ModelAttribute Good good, HttpServletRequest request) {
+    public void add(@ModelAttribute GoodExtend goodExtend, HttpServletRequest request) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -39,27 +39,28 @@ public class GoodServiceImpl implements GoodService{
 
         String regtr = sessionManager.getSession(request).getMbrId();
 
-        good.setGoodNo(goodNo);
-        good.setSaleBegDate(format.format(date));
-        good.setRegDt(date);
-        good.setRegtrId(regtr);
-        good.setUdtDt(date);
-        good.setUdterId(regtr);
-        good.setSaleEndDate("2999-12-31");
+        goodExtend.getGood().setGoodNo(goodNo);
+        goodExtend.getGood().setSaleBegDate(format.format(date));
+        goodExtend.getGood().setRegDt(date);
+        goodExtend.getGood().setRegtrId(regtr);
+        goodExtend.getGood().setUdtDt(date);
+        goodExtend.getGood().setUdterId(regtr);
+        goodExtend.getGood().setSaleEndDate("2999-12-31");
 
-        GoodImg goodImg = null;
+        for (int i = 0; i < goodExtend.getGoodImgList().size(); i++) {
+            goodExtend.getGoodImgList().get(i).setGoodNo(goodNo);
+            goodExtend.getGoodImgList().get(i).setImgTpCd("IMG");
+            goodExtend.getGoodImgList().get(i).setImgTurn(i);
+//        goodExtend.getGoodImgList().get(i).setImgUrl();
+            goodExtend.getGoodImgList().get(i).setImgUseYn("Y");
+            goodExtend.getGoodImgList().get(i).setRegtrId(goodExtend.getGood().getRegtrId());
+            goodExtend.getGoodImgList().get(i).setRegDt(goodExtend.getGood().getRegDt());
+            goodExtend.getGoodImgList().get(i).setUdterId(goodExtend.getGood().getUdterId());
+            goodExtend.getGoodImgList().get(i).setUdtDt(goodExtend.getGood().getUdtDt());
+        }
 
-        goodImg.setGoodNo(goodNo);
-        goodImg.setImgTpCd("IMG");
-        goodImg.setImgTurn(1);
-//        goodImg.setImgUrl();
-        goodImg.setImgUseYn("Y");
-        goodImg.setRegtrId(good.getRegtrId());
-        goodImg.setRegDt(good.getRegDt());
-        goodImg.setUdterId(good.getUdterId());
-        goodImg.setUdtDt(good.getUdtDt());
 
-        goodRepository.save(good, goodImg);
+        goodRepository.save(goodExtend);
 
         GoodItm goodItm = null;
 

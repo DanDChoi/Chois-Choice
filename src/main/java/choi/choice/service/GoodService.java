@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GoodService {
 
-    void add(Good good, HttpServletRequest request);
+    void add(GoodExtend goodExtend, HttpServletRequest request);
     Good findByNo(String goodNo);
 
     GoodItm findGoodItmByNo(String goodNo);
