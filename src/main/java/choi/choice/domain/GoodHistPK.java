@@ -1,10 +1,13 @@
 package choi.choice.domain;
 
+import lombok.Getter;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
 public class GoodHistPK implements Serializable {
 
     private static final long serialVersionUID = 1L;

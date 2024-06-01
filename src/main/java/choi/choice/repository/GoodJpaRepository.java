@@ -147,7 +147,7 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public List<Good> findGoodsByCate(String cate) {
-        String query = "select g from Good g where 1=1 and g.category = :cate";
+        String query = "select g from Good g where 1=1 and g.stdCtgryNo = :cate";
         List<Good> goods = em.createQuery(query, Good.class)
                 .setParameter("cate", cate)
                 .getResultList();
@@ -156,7 +156,7 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public List<Good> findBskGoods(Long mbrNo) {
-        String query = "select g from Bsk b join Good g on b.goodNo = g.goodNo where 1=1 and b.mbrNo = :mbrNo";
+        String query = "select g from BskGood bg join Good g on bg.goodNo = g.goodNo join Bsk b on b.bskNo = bg.bskNo where 1=1 and b.mbrNo = :mbrNo";
         List<Good> bskGoods = em.createQuery(query, Good.class)
                 .setParameter("mbrNo", mbrNo)
                 .getResultList();
@@ -165,7 +165,7 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void deleteBskGood(String goodNo) {
-        String query = "delete Bsk b where b.goodNo = :goodNo";
+        String query = "delete BskGood b where b.goodNo = :goodNo";
         Bsk bsk = em.createQuery(query, Bsk.class)
                 .setParameter("goodNo", goodNo)
                 .getSingleResult();
@@ -192,9 +192,9 @@ public class GoodJpaRepository implements GoodRepository{
                 "(" +
                 ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
         GoodHist goodHist1 = em.createQuery(query, GoodHist.class)
-                .setParameter("goodNo", goodHist.getGoodNo())
+                .setParameter("goodNo", goodHist.getGoodHistPK().getGoodNo())
                 .setParameter("goodNm", goodHist.getGoodNm())
-                .setParameter("goodHistNo", goodHist.getGoodHistNo())
+                .setParameter("goodHistNo", goodHist.getGoodHistPK().getGoodHistNo())
                 .setParameter("saleBegDt", goodHist.getSaleBegDate())
                 .setParameter("saleEndDt", goodHist.getSaleEndDate())
                 .setParameter("colorNm", goodHist.getColorNm())
