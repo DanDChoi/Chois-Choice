@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.CsoMtmInq;
 import choi.choice.domain.CsoMtmInquiry;
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
@@ -78,22 +79,22 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/mtm", method = RequestMethod.POST)
-    public void addMtm(Mbr mbr, Model model, @ModelAttribute CsoMtmInquiry csoMtmInquiry, HttpServletRequest request){
+    public void addMtm(Mbr mbr, Model model, @ModelAttribute CsoMtmInq csoMtmInq, HttpServletRequest request){
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
         String csoSn = format.format(date) + timeMillis;
         String loginId = sessionManager.getSession(request).getMbrId();
 
-        csoMtmInquiry.setMbrNo(mbr.getMbrNo());
-        csoMtmInquiry.setMtmSn(csoSn);
-        csoMtmInquiry.setMtmAnswerYn("N");
-        csoMtmInquiry.setInquiryAddDt(date);
-        csoMtmInquiry.setRegtrId(loginId);
-        csoMtmInquiry.setRegDt(date);
-        csoMtmInquiry.setUdterId(loginId);
-        csoMtmInquiry.setUdtDt(date);
+        csoMtmInq.setMbrNo(mbr.getMbrNo());
+        csoMtmInq.setMtmSn(csoSn);
+        csoMtmInq.setAnsStatCd("N");
+        csoMtmInq.setInqDt(date);
+        csoMtmInq.setRegtrId(loginId);
+        csoMtmInq.setRegDt(date);
+        csoMtmInq.setUdterId(loginId);
+        csoMtmInq.setUdtDt(date);
 
-        memberService.addMtm(mbr, csoMtmInquiry, request);
+        memberService.addMtm(mbr, csoMtmInq, request);
     }
 }

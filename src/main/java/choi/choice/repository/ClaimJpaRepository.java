@@ -39,7 +39,7 @@ public class ClaimJpaRepository implements ClaimRepository {
                 ", udterId = :udterId" +
                 ", udtDt = NOW()";
         String clmGoodQuery = "update ClmGood cg " +
-                "set cg.clmNo = :clmNo" +
+                "set cg.clmGoodPK.clmNo = :clmNo" +
                 ", udterId = :udterId" +
                 ", udtDt = NOW()";
 
@@ -50,7 +50,7 @@ public class ClaimJpaRepository implements ClaimRepository {
                 .getSingleResult();
 
         ClmGood editClmGood = em.createQuery(clmGoodQuery, ClmGood.class)
-                .setParameter("clmNo", clmGood.getClmNo())
+                .setParameter("clmNo", clmGood.getClmGoodPK().getClmNo())
                 .setParameter("udterId", "admin")
                 .getSingleResult();
     }

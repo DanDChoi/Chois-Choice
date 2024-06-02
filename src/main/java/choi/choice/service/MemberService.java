@@ -19,6 +19,6 @@ public interface MemberService {
 
     void updateMbr(Mbr mbr);
 
-    void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request);
+    void addMtm(Mbr mbr, CsoMtmInq csoMtmInq, HttpServletRequest request);
 
 }

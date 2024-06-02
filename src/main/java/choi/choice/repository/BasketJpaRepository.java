@@ -1,6 +1,7 @@
 package choi.choice.repository;
 
 import choi.choice.domain.Bsk;
+import choi.choice.domain.BskGood;
 import choi.choice.domain.Mbr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -27,8 +28,8 @@ public class BasketJpaRepository implements BasketRepository{
 
     @Override
     public void deleteBskGood(String goodNo) {
-        String query = "delete from Bsk b where b.goodNo = :goodNo";
-        em.createQuery(query, Bsk.class)
+        String query = "delete from BskGood b where b.goodNo = :goodNo";
+        em.createQuery(query, BskGood.class)
                 .setParameter("goodNo", goodNo)
                 .getSingleResult();
     }

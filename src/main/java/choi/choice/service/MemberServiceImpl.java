@@ -131,8 +131,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry, HttpServletRequest request) {
-        mbrRepository.addMtm(mbr, csoMtmInquiry);
+    public void addMtm(Mbr mbr, CsoMtmInq csoMtmInq, HttpServletRequest request) {
+        mbrRepository.addMtm(mbr, csoMtmInq);
     }
 }
 

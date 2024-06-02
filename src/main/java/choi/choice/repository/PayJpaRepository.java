@@ -49,8 +49,8 @@ public class PayJpaRepository implements PayRepository {
     @Override
     public void addClmPay(Pay pay, String originPayNo) {
         String query = "INSERT INTO Pay " +
-                "(payNo, payMnCd, payDt, payAmt, ordNo, regtrId, regDt, udterId, udtDt)" +
-                "VALUES" +
+                "(payNo, payMnCd, payDt, payAmt, ordNo, regtrId, regDt, udterId, udtDt) " +
+                "VALUES " +
                 "(:payNo, :payMnCd, :payDt, :payAmt, :ordNo, :regtrId, :regDt, :udterId, :udtDt)";
         Pay clmPay = em.createQuery(query, Pay.class)
                 .setParameter("payNo", pay.getPayNo())

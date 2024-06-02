@@ -1,9 +1,14 @@
 package choi.choice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
+@Setter
 public class CpnHistPK {
 
     private static final long serialVersionUID = 1L;
