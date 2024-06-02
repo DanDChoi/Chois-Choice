@@ -228,7 +228,7 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public String getGoodHistSeq(String goodNo) {
-        String query = "select max(gh.goodHistNo) from GoodHist gh where gh.goodNo = :goodNo order by gh.goodHistNo desc limit 1";
+        String query = "select max(gh.goodHistPK.goodHistNo) from GoodHist gh where gh.goodHistPK.goodNo = :goodNo order by gh.goodHistPK.goodHistNo desc limit 1";
         String goodHistSeq = String.valueOf(em.createQuery(query, Good.class)
                 .setParameter("goodNo", goodNo)
                 .getSingleResult());
@@ -246,13 +246,13 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public int addBukmk(Good good, Mbr mbr, int bukmkSn) {
-        String query = "insert into MbrBukmk mb values (:bukmkSn, :mbrNo, :goodNo, :regtrId, now(), :udterId, now())";
+        String query = "INSERT INTO MbrBukmk (bukmkSn, mbrNo, goodNo, regtrId, regDt, udterId, udtDt) VALUES (1, 2, 3, 4, now(), 5, now())";
         MbrBukmk mbrBukmk = em.createQuery(query, MbrBukmk.class)
-                .setParameter("bukmkSn", bukmkSn)
-                .setParameter("mbrNo",mbr.getMbrNo())
-                .setParameter("goodNo", good.getGoodNo())
-                .setParameter("regtrId",mbr.getMbrId())
-                .setParameter("udterId",mbr.getMbrId())
+                .setParameter(1, bukmkSn)
+                .setParameter(2,mbr.getMbrNo())
+                .setParameter(3, good.getGoodNo())
+                .setParameter(4,mbr.getMbrId())
+                .setParameter(5,mbr.getMbrId())
                 .getSingleResult();
 
         return getBukmkCnt(mbr);

@@ -36,16 +36,16 @@ public class MbrJpaRepository implements MbrRepository {
         em.persist(mbrGrd);
     }
 
-    @Override
-    public void saveGrdHist(MbrGrdHist mbrGrdHist) {
-        em.persist(mbrGrdHist);
-    }
+//    @Override
+//    public void saveGrdHist(MbrGrdHist mbrGrdHist) {
+//        em.persist(mbrGrdHist);
+//    }
 
     @Override
     public void updateMbr(Mbr mbr) {
         String query = "UPDATE Mbr m " +
                 "SET m.mbrPwd = :mbrPwd" +
-                ", m.mobilNo = :mobilNo" +
+                ", m.mobilNo = :mobilNo " +
                 "WHERE m.mbrNo = :mbrNo";
         Mbr updateMbr = em.createQuery(query, Mbr.class)
                 .setParameter("mbrPwd", mbr.getMbrPwd())
@@ -133,7 +133,7 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
-    public void addMtm(Mbr mbr, CsoMtmInquiry csoMtmInquiry) {
-       em.persist(CsoMtmInquiry.class);
+    public void addMtm(Mbr mbr, CsoMtmInq csoMtmInq) {
+       em.persist(CsoMtmInq.class);
     }
 }

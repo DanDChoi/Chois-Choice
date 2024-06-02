@@ -1,10 +1,15 @@
 package choi.choice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
+@Setter
 public class LgsDlvspPK implements Serializable {
 
     private static final Long serialVersionUID = 1L;
