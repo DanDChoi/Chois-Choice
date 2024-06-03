@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -70,10 +71,43 @@ public class MemberServiceImpl implements MemberService{
             mbrHist.setMbrEmail(mbr.getMbrEmail());
             mbrRepository.saveMbrHist(mbrHist);
 
-            MbrGrd mbrGrd = new MbrGrd(no, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            cal.add(Calendar.MONTH, -1);
+            Date acmsltSmonBegDt = cal.getTime();
+
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(Calendar.DAY_OF_MONTH, 1);
+            cal2.add(Calendar.DAY_OF_MONTH, -1);
+            Date acmsltSmonEndDt = cal.getTime();
+
+            Calendar cal3 = Calendar.getInstance();
+            cal3.set(Calendar.DAY_OF_MONTH, 1);
+            Date grdBegDt = cal.getTime();
+
+            Calendar cal4 = Calendar.getInstance();
+            cal4.set(Calendar.DAY_OF_MONTH, 1);
+            cal4.add(Calendar.MONTH, 1);
+            cal4.add(Calendar.DAY_OF_MONTH, 1);
+            cal4.add(Calendar.DAY_OF_MONTH, -1);
+            Date grdEndDt = cal.getTime();
+
+            MbrGrd mbrGrd = new MbrGrd(
+                    no
+                    , "WELCOME"
+                    , date
+                    , grdBegDt
+                    , grdEndDt
+                    , acmsltSmonBegDt
+                    , acmsltSmonEndDt
+                    , "SYSADMIN"
+                    , date
+                    , "SYSADMIN"
+                    , date
+            );
             mbrRepository.saveGrd(mbrGrd);
-            MbrGrdHist mbrGrdHist = new MbrGrdHist(no, date, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
-            mbrRepository.saveGrdHist(mbrGrdHist);
+//            MbrGrdHist mbrGrdHist = new MbrGrdHist(no, date, "WELCOME", format.format(date), "2999-12-31", "SYSADMIN", date, "SYSADMIN", date);
+//            mbrRepository.saveGrdHist(mbrGrdHist);
 //        }
     }
 

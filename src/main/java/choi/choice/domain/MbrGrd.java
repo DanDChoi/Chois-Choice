@@ -29,9 +29,9 @@ public class MbrGrd {
     @Column(name = "grd_end_dt")
     private java.util.Date grdEndDt; //등급종료일
     @Column(name = "acmslt_smon_beg_dt")
-    private java.util.Date acmsltSmonBegDT; //집계시작일
+    private java.util.Date acmsltSmonBegDt; //집계시작일
     @Column(name = "acmslt_smon_end_dt")
-    private java.util.Date acmsltSmonEndDT; //집계종료일
+    private java.util.Date acmsltSmonEndDt; //집계종료일
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")
