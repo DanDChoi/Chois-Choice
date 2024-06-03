@@ -66,18 +66,18 @@ public class GoodServiceImpl implements GoodService{
 
         goodItm.setGoodNo(goodNo);
         goodItm.setGoodItmNo(goodItmNo);
-        goodItm.setGoodNm(good.getGoodNm());
-        goodItm.setSaleBegDate(good.getSaleBegDate());
-        goodItm.setSaleEndDate(good.getSaleEndDate());
-        goodItm.setRegDt(good.getRegDt());
-        goodItm.setRegtrId(good.getRegtrId());
-        goodItm.setUdtDt(good.getUdtDt());
-        goodItm.setUdterId(good.getUdterId());
+        goodItm.setGoodNm(goodExtend.getGood().getGoodNm());
+        goodItm.setSaleBegDate(goodExtend.getGood().getSaleBegDate());
+        goodItm.setSaleEndDate(goodExtend.getGood().getSaleEndDate());
+        goodItm.setRegDt(goodExtend.getGood().getRegDt());
+        goodItm.setRegtrId(goodExtend.getGood().getRegtrId());
+        goodItm.setUdtDt(goodExtend.getGood().getUdtDt());
+        goodItm.setUdterId(goodExtend.getGood().getUdterId());
 
         goodRepository.saveItm(goodItm);
 
         String histNo = "1";
-        goodRepository.saveGoodHist(good, histNo);
+        goodRepository.saveGoodHist(goodExtend.getGood(), histNo);
     }
 
     @Override
