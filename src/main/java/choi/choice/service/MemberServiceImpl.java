@@ -71,26 +71,10 @@ public class MemberServiceImpl implements MemberService{
             mbrHist.setMbrEmail(mbr.getMbrEmail());
             mbrRepository.saveMbrHist(mbrHist);
 
-            Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.DAY_OF_MONTH, 1);
-            cal.add(Calendar.MONTH, -1);
-            Date acmsltSmonBegDt = cal.getTime();
-
-            Calendar cal2 = Calendar.getInstance();
-            cal2.set(Calendar.DAY_OF_MONTH, 1);
-            cal2.add(Calendar.DAY_OF_MONTH, -1);
-            Date acmsltSmonEndDt = cal.getTime();
-
-            Calendar cal3 = Calendar.getInstance();
-            cal3.set(Calendar.DAY_OF_MONTH, 1);
-            Date grdBegDt = cal.getTime();
-
-            Calendar cal4 = Calendar.getInstance();
-            cal4.set(Calendar.DAY_OF_MONTH, 1);
-            cal4.add(Calendar.MONTH, 1);
-            cal4.add(Calendar.DAY_OF_MONTH, 1);
-            cal4.add(Calendar.DAY_OF_MONTH, -1);
-            Date grdEndDt = cal.getTime();
+            Date acmsltSmonBegDt = getFirstDayOfMonth(-1);
+            Date acmsltSmonEndDt = getLastDayOfPreviousMonth();
+            Date grdBegDt = getFirstDayOfMonth(0);
+            Date grdEndDt = getLastDayOfMonth(0);
 
             MbrGrd mbrGrd = new MbrGrd(
                     no
@@ -167,6 +151,29 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void addMtm(Mbr mbr, CsoMtmInq csoMtmInq, HttpServletRequest request) {
         mbrRepository.addMtm(mbr, csoMtmInq);
+    }
+
+    public static Date getFirstDayOfMonth(int offsetMonth) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.MONTH, offsetMonth);
+        return cal.getTime();
+    }
+
+    public static Date getLastDayOfPreviousMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        return cal.getTime();
+    }
+
+    public static Date getLastDayOfMonth(int offsetMonth) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.MONTH, offsetMonth);
+        cal.add(Calendar.MONTH, 1);
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        return cal.getTime();
     }
 }
 
