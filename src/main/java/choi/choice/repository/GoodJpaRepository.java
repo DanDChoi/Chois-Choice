@@ -36,14 +36,13 @@ public class GoodJpaRepository implements GoodRepository{
     @Override
     public void saveGoodHist(Good good, String histNo) {
         String query = "insert into GoodHist " +
-                "(goodNo, goodNm, goodHistNo, histDt, saleBegDt, saleEndDt, colorNm, colorCd, regtrId, regDt, udterID, udtDt) values "+
-                "(:goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt)";
+                "(goodHistPK, goodNm, histDt, saleBegDate, saleEndDate, colorNm, colorCd, regtrId, regDt, udterId, udtDt) values "+
+                "(:goodHistPK, :goodNm, NOW(), :saleBegDate, :saleEndDate, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt)";
         GoodHist goodHist = em.createQuery(query, GoodHist.class)
-                .setParameter("goodNo", good.getGoodNo())
+                .setParameter("goodHistPK", new GoodHistPK(good.getGoodNo(), +1))
                 .setParameter("goodNm", good.getGoodNm())
-                .setParameter("goodHistNo", histNo)
-                .setParameter("saleBegDt", good.getSaleBegDate())
-                .setParameter("saleEndDt", good.getSaleEndDate())
+                .setParameter("saleBegDate", good.getSaleBegDate())
+                .setParameter("saleEndDate", good.getSaleEndDate())
                 .setParameter("colorNm", good.getColorNm())
                 .setParameter("colorCd", good.getColorCd())
                 .setParameter("regtrId", good.getRegtrId())

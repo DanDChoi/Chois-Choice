@@ -26,10 +26,10 @@ public class MbrJpaRepository implements MbrRepository {
         em.persist(mbr);
     }
 
-    @Override
-    public void saveMbrHist(MbrHist mbrHist) {
-        em.persist(mbrHist);
-    }
+//    @Override
+//    public void saveMbrHist(MbrHist mbrHist) {
+//        em.persist(mbrHist);
+//    }
 
     @Override
     public void saveGrd(MbrGrd mbrGrd) {
