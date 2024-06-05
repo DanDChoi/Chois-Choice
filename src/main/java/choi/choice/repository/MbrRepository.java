@@ -10,10 +10,10 @@ public interface MbrRepository {
 
     void save(Mbr mbr);
 
-    void saveMbrHist(MbrHist mbrHist);
+//    void saveMbrHist(MbrHist mbrHist);
     void saveGrd(MbrGrd mbrGrd);
 
-    void saveGrdHist(MbrGrdHist mbrGrdHist);
+//    void saveGrdHist(MbrGrdHist mbrGrdHist);
 
     void updateMbr(Mbr mbr);
     Mbr findById(String id);
