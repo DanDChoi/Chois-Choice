@@ -8,24 +8,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "sys_cd")
+@Table(name = "sys_grp_cd")
 @Getter
 @Setter
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SysCd {
+public class SysGrpCd {
 
     @Id
-    @Column(name = "cd")
-    private String cd; //ex MALL_MBR
+    @Column(name = "sysGrpCd")
+    private String sysGrpCd;
 
-    @Column(name = "cd_grp_cd")
-    private String cdGrpCd;
-
-    @Column(name = "cd_nm")
-    private String cdNm; //ex 몰 회원
+    @Column(name = "sysGrpCdNm")
+    private String sysGrpCdNm;
 
     @Column(name = "regtr_id")
     private String regtrId;
