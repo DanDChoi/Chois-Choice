@@ -81,7 +81,7 @@ public class ClaimServiceImpl implements ClaimService{
         clmWrhsGood.setRegtrId(regtr);
         clmWrhsGood.setRegDt(date);
 
-        claimRepository.addClm(clm, clmGood);
+        claimRepository.addClm(clm, clmGood, clmWrhsGood);
     }
 
     @Override
