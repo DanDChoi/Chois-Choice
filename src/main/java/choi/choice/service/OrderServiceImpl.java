@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
         List<OrdGood> ordGoods = new ArrayList<>();
 
         for (int i = 0; i < ordGoods.size(); i++) {
-            ordGood.setOrdGodPK(new OrdGodPK(ordNo, i+1));
+            ordGood.setOrdGoodPK(new OrdGoodPK(ordNo, i+1));
             ordGood.setGoodNo(good.getGoodNo());
             ordGood.setGoodNm(good.getGoodNm());
             ordGood.setStdCtgryNo(good.getStdCtgryNo());

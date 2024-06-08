@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class OrdGood {
 
     @EmbeddedId
-    private OrdGodPK ordGodPK;
+    private OrdGoodPK ordGoodPK;
 
     @Column(name = "good_no")
     private String goodNo;

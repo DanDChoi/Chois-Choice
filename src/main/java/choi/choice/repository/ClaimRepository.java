@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ClaimRepository {
 
-    void addClm(Clm clm, ClmGood clmGood, ClmWrhsGood clmWrhsGood);
+    void addClm(Clm clm, ClmGood clmGood, ClmWrhsGood clmWrhsGood, LgsRtrvlDrctGood lgsRtrvlDrctGood);
     Clm findClm(String clmNo);
 
     void editClm(Clm clm, ClmGood clmGood);

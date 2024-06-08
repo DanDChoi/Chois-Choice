@@ -3,6 +3,7 @@ package choi.choice.repository;
 import choi.choice.domain.Clm;
 import choi.choice.domain.ClmGood;
 import choi.choice.domain.ClmWrhsGood;
+import choi.choice.domain.LgsRtrvlDrctGood;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -16,10 +17,11 @@ public class ClaimJpaRepository implements ClaimRepository {
     private EntityManager em;
 
     @Override
-    public void addClm(Clm clm, ClmGood clmGood, ClmWrhsGood clmWrhsGood) {
+    public void addClm(Clm clm, ClmGood clmGood, ClmWrhsGood clmWrhsGood, LgsRtrvlDrctGood lgsRtrvlDrctGood) {
       em.persist(clm);
       em.persist(clmGood);
       em.persist(clmWrhsGood);
+      em.persist(lgsRtrvlDrctGood);
     }
 
     @Override
