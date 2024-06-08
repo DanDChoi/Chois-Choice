@@ -1,22 +1,27 @@
 package choi.choice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class OrdGodPK implements Serializable {
+@Getter
+@Setter
+public class OrdGoodPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String ordNo;
     private int ordGodTurn;
 
-    public OrdGodPK(){
+    public OrdGoodPK(){
 
     }
 
-    public OrdGodPK(String ordNo, int ordGodTurn) {
+    public OrdGoodPK(String ordNo, int ordGodTurn) {
         this.ordNo = ordNo;
         this.ordGodTurn = ordGodTurn;
     }
@@ -31,9 +36,9 @@ public class OrdGodPK implements Serializable {
             return false;
         }
 
-        OrdGodPK ordGodPK = (OrdGodPK) obj;
+        OrdGoodPK ordGoodPK = (OrdGoodPK) obj;
 
-        if (this.ordNo.equals(ordGodPK.ordNo) && this.ordGodTurn == ordGodPK.ordGodTurn) {
+        if (this.ordNo.equals(ordGoodPK.ordNo) && this.ordGodTurn == ordGoodPK.ordGodTurn) {
             return true;
         }
         return false;
