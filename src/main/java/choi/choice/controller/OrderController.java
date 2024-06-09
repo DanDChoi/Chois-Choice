@@ -45,8 +45,8 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, HttpServletRequest request) {
-        orderService.createOrd(ord, ordGood, good, request);
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, HttpServletRequest request) {
+        orderService.createOrd(ord, ordGood, good, lgsDlvsp, request);
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
