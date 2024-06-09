@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    void createOrd(Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp,HttpServletRequest request);
+    void createOrd(Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, HttpServletRequest request);
 
     Ord findOne(String ordNo);
     List<Ord> findAll();

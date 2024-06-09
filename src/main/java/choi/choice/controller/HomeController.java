@@ -1,7 +1,6 @@
 package choi.choice.controller;
 
 import choi.choice.domain.CsoMtmInq;
-import choi.choice.domain.CsoMtmInquiry;
 import choi.choice.domain.Good;
 import choi.choice.domain.Mbr;
 import choi.choice.domain.OrdGood;
