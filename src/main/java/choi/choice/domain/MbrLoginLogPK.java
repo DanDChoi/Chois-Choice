@@ -1,16 +1,21 @@
 package choi.choice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
+@Getter
+@Setter
 public class MbrLoginLogPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String mbrNo;
+    private Long mbrNo;
 
     /**
      * LOGIN / LOGOUT / LOGIN_FAILR
@@ -23,7 +28,7 @@ public class MbrLoginLogPK implements Serializable {
 
     }
 
-    public MbrLoginLogPK(String mbrNo, String mbrLoginCd, Date logOccurDt) {
+    public MbrLoginLogPK(Long mbrNo, String mbrLoginCd, Date logOccurDt) {
         this.mbrNo = mbrNo;
         this.mbrLoginCd = mbrLoginCd;
         this.logOccurDt = logOccurDt;
@@ -42,7 +47,7 @@ public class MbrLoginLogPK implements Serializable {
 
         MbrLoginLogPK mbrLoginLogPK = (MbrLoginLogPK) obj;
 
-        if (this.mbrNo.equals(mbrLoginLogPK.mbrNo) && this.mbrLoginCd.equals(mbrLoginLogPK.mbrLoginCd) || this.logOccurDt == mbrLoginLogPK.logOccurDt) {
+        if (this.mbrNo == mbrLoginLogPK.mbrNo && this.mbrLoginCd.equals(mbrLoginLogPK.mbrLoginCd) || this.logOccurDt == mbrLoginLogPK.logOccurDt) {
             return true;
         }
 

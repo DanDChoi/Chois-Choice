@@ -1,6 +1,7 @@
 package choi.choice.service;
 
 import choi.choice.domain.Mbr;
+import choi.choice.domain.MbrLoginLog;
 import choi.choice.repository.MbrRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +30,19 @@ public class LoginServiceImpl implements LoginService{
         if (!findMbr.getMbrPwd().equals(pwd)) {
             return false;
         }
+
+        MbrLoginLog mbrLoginLog = null;
+        Date date = new Date();
+
+        mbrLoginLog.getMbrLoginLogPK().setMbrLoginCd("LOGIN");
+        mbrLoginLog.getMbrLoginLogPK().setMbrNo(mbr.getMbrNo());
+        mbrLoginLog.getMbrLoginLogPK().setLogOccurDt(date);
+//        mbrLoginLog.setLoginNationCd();
+//        mbrLoginLog.setLoginIp();
+//        mbrLoginLog.setDvcCd();
+
+        mbrRepository.saveMbrLoginLog(mbrLoginLog);
+
         return true;
     }
 
