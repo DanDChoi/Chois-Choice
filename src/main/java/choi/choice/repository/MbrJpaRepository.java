@@ -136,4 +136,9 @@ public class MbrJpaRepository implements MbrRepository {
     public void addMtm(Mbr mbr, CsoMtmInq csoMtmInq) {
        em.persist(CsoMtmInq.class);
     }
+
+    @Override
+    public void saveMbrLoginLog(MbrLoginLog mbrLoginLog) {
+        em.persist(mbrLoginLog);
+    }
 }

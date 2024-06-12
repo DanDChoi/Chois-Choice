@@ -34,4 +34,6 @@ public interface MbrRepository {
     List<GoodReview> findAllReviews(Long mbrNo);
 
     void addMtm(Mbr mbr, CsoMtmInq csoMtmInq);
+
+    void saveMbrLoginLog(MbrLoginLog mbrLoginLog);
 }
