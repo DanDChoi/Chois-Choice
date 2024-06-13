@@ -8,5 +8,10 @@ import java.security.NoSuchAlgorithmException;
 public interface LoginService {
 
     boolean login(Mbr mbr) throws NoSuchAlgorithmException;
+
     void logout(HttpServletRequest request);
+
+    void addLoginFailrCount(Mbr mbr);
+
+    Integer getLoginFailrCount(Mbr mbr);
 }

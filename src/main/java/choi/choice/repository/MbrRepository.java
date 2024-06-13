@@ -36,4 +36,8 @@ public interface MbrRepository {
     void addMtm(Mbr mbr, CsoMtmInq csoMtmInq);
 
     void saveMbrLoginLog(MbrLoginLog mbrLoginLog);
+
+    void addLoginFailrCount(Mbr mbr);
+
+    Integer getLoginFailrCount(Mbr mbr);
 }
