@@ -24,6 +24,18 @@ public class Mbr {
     private String mbrId;
     @Column(name = "mbr_Nm")
     private String mbrNm;
+    /**
+     * ACT / DRMNCY / SECSN
+     */
+    @Column(name = "mbr_stat_cd")
+    private String mbrStatCd;
+    /**
+     * NMBR / MALL_MBR
+     */
+    @Column(name = "mbr_tp_cd")
+    private String mbrTpCd;
+    @Column(name = "mbr_login_last_failr_count")
+    private Integer mbrLoginLastFailrCount;
     @Column(name = "mbr_sex")
     private String mbrSex;
     @Column(name = "mbr_email", unique = true)
@@ -42,8 +54,6 @@ public class Mbr {
     private String mbrBrthdy;
     @Column(name = "join_date")
     private String joinDate;
-    @Column(name = "mbr_stat_cd")
-    private String mbrStatCd;
     @Column(name = "regtr_id")
     private String regtrId;
     @Column(name = "reg_dt")

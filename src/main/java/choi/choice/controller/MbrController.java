@@ -66,8 +66,17 @@ public class MbrController {
         if (bindingResult.hasErrors()) {
             return "login";
         }
+
+        int loginFailrCount = loginService.getLoginFailrCount(mbr);
+
+        if(loginFailrCount >= 5) {
+            bindingResult.reject("LoginFail", "로그인 5회 실패하여 로그인 할 수 없습니다. 관리자에게 문의하세요");
+            log.info("로그인 횟수 초과 실패");
+            return "login";
+        }
         log.info("loginService login ={}", loginService.login(mbr));
         if (!loginService.login(mbr)) {
+            loginService.addLoginFailrCount(mbr);
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
             return "login";

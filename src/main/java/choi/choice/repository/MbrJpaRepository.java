@@ -141,4 +141,27 @@ public class MbrJpaRepository implements MbrRepository {
     public void saveMbrLoginLog(MbrLoginLog mbrLoginLog) {
         em.persist(mbrLoginLog);
     }
+
+    @Override
+    public void addLoginFailrCount(Mbr mbr) {
+        String query = "update Mbr m set" +
+                " m.mbrLoginLastFailrCount = (select m1.mbrLoginLastFailrCount + 1 from Mbr m1 where m1.mbrNo = :mbrNo)" +
+                " , m.udterId = :udterId" +
+                " , m.udtDt = :udtDt" +
+                " where m.mbrNo = :mbrNo";
+        Mbr updatedMbr = em.createQuery(query, Mbr.class)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getSingleResult();
+    }
+
+    @Override
+    public Integer getLoginFailrCount(Mbr mbr) {
+        String query = "select m.mbrLoginLastFailrCount from Mbr m where m.mbrNo = :mbrNo";
+
+        Integer loginFailrCount = em.createQuery(query, Mbr.class)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getSingleResult().getMbrLoginLastFailrCount();
+
+        return loginFailrCount;
+    }
 }
