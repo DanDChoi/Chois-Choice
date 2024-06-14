@@ -147,10 +147,11 @@ public class MbrJpaRepository implements MbrRepository {
         String query = "update Mbr m set" +
                 " m.mbrLoginLastFailrCount = (select m1.mbrLoginLastFailrCount + 1 from Mbr m1 where m1.mbrNo = :mbrNo)" +
                 " , m.udterId = :udterId" +
-                " , m.udtDt = :udtDt" +
+                " , m.udtDt = NOW()" +
                 " where m.mbrNo = :mbrNo";
         Mbr updatedMbr = em.createQuery(query, Mbr.class)
                 .setParameter("mbrNo", mbr.getMbrNo())
+                .setParameter("udterId", mbr.getMbrNo())
                 .getSingleResult();
     }
 
@@ -163,5 +164,18 @@ public class MbrJpaRepository implements MbrRepository {
                 .getSingleResult().getMbrLoginLastFailrCount();
 
         return loginFailrCount;
+    }
+
+    @Override
+    public void loginFailrCountReset(Mbr mbr, Integer count) {
+        String query = "update Mbr m set m.mbrLoginLastFailrCount = :count" +
+                " , m.udterId = :mbrNo" +
+                " , m.udtDt = NOW()" +
+                " where m.mbrNo = :mbrNo";
+
+        em.createQuery(query, Mbr.class)
+                .setParameter("count", count)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getSingleResult();
     }
 }

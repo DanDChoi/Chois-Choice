@@ -14,4 +14,6 @@ public interface LoginService {
     void addLoginFailrCount(Mbr mbr);
 
     Integer getLoginFailrCount(Mbr mbr);
+
+    void loginFailrCountReset(Mbr mbr, Integer count);
 }
