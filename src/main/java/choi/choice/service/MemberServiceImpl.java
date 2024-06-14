@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService{
             mbrHist.setUdtDt(date);
             mbrHist.setJoinDate(format.format(date));
             mbrHist.setMbrEmail(mbr.getMbrEmail());
-            mbrRepository.saveMbrHist(mbrHist);
+//            mbrRepository.saveMbrHist(mbrHist);
 
             Date acmsltSmonBegDt = getFirstDayOfMonth(-1);
             Date acmsltSmonEndDt = getLastDayOfPreviousMonth();

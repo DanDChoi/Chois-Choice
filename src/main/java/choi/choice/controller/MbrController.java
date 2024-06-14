@@ -74,13 +74,18 @@ public class MbrController {
             log.info("로그인 횟수 초과 실패");
             return "login";
         }
+
         log.info("loginService login ={}", loginService.login(mbr));
+
         if (!loginService.login(mbr)) {
             loginService.addLoginFailrCount(mbr);
             bindingResult.reject("LoginFail", "이메일과 비밀번호가 맞지 않습니다");
             log.info("로그인실패");
             return "login";
         }
+
+        //로그인 실패횟수 초기화
+        loginService.loginFailrCountReset(mbr, 0);
 
         Mbr findMbr = memberService.findByEmail(mbr.getMbrEmail());
         MbrGrd findMbrGrd = memberService.findGrdByNo(findMbr.getMbrNo());

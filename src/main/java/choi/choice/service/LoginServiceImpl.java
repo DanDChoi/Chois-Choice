@@ -61,6 +61,11 @@ public class LoginServiceImpl implements LoginService{
         return mbrRepository.getLoginFailrCount(mbr);
     }
 
+    @Override
+    public void loginFailrCountReset(Mbr mbr, Integer count) {
+        mbrRepository.loginFailrCountReset(mbr, count);
+    }
+
     public String encrypt(String text) throws NoSuchAlgorithmException {
            MessageDigest md = MessageDigest.getInstance("SHA-256");
            md.update(text.getBytes());
