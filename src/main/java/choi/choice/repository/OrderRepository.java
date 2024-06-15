@@ -34,4 +34,6 @@ public interface OrderRepository {
     List<OrdGood> findBestGoods();
 
     List<OrdGood> findOrdGoods(String ordNo);
+
+    Pay findPayByOrdNo(String ordNo);
 }

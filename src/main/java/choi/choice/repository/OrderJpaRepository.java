@@ -117,5 +117,15 @@ public class OrderJpaRepository implements OrderRepository{
 
         return ordGoods;
     }
+
+    @Override
+    public Pay findPayByOrdNo(String ordNo) {
+        String query = "select p from Pay p where p.ordNo = :ordNo";
+
+        Pay pay = em.createQuery(query, Pay.class)
+                .setParameter("ordNo", ordNo)
+                .getSingleResult();
+        return pay;
+    }
 }
 
