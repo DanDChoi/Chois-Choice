@@ -164,7 +164,7 @@ public class MbrController {
         }
         model.addAttribute("mbr", mbr);
         model.addAttribute("allOrds", allOrds);
-        model.addAttribute("cncleOrds", cnclOrds);
+        model.addAttribute("cnclOrds", cnclOrds);
         return "ord-list";
     }
 

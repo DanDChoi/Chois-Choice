@@ -67,7 +67,12 @@ public class OrderController {
 
     @RequestMapping(value = "/refund.json", method = RequestMethod.POST)
     public void refundApply(String ordNo, HttpServletRequest request) {
-        //TODO addRefund
+
+        Pay pay = orderService.findPayByOrdNo(ordNo);
+
+        PayRfd payRfd = null;
+        payRfd.setPayNo(pay.getPayNo());
+        //TODO
     }
 
 }
