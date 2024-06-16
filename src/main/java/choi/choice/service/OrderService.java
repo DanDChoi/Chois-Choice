@@ -22,4 +22,6 @@ public interface OrderService {
     List<OrdGood> findOrdGoods(String ordNo);
 
     Pay findPayByOrdNo(String ordNo);
+
+    List<PayRfd> findPayRfdByPayNo(String payNo);
 }

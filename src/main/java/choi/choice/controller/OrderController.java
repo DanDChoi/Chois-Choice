@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -69,10 +70,23 @@ public class OrderController {
     public void refundApply(String ordNo, HttpServletRequest request) {
 
         Pay pay = orderService.findPayByOrdNo(ordNo);
+        List<PayRfd> existRfd = orderService.findPayRfdByPayNo(pay.getPayNo());
+        int maxRfdTurn = 0;
+        Date date = new Date();
 
         PayRfd payRfd = null;
         payRfd.setPayNo(pay.getPayNo());
-        //TODO
+        if (existRfd.size() > 0) {
+            for (int i = 0; i < existRfd.size(); i++) {
+                if (existRfd.get(i).getRfdTurn() > maxRfdTurn) {
+                    maxRfdTurn = existRfd.get(i).getRfdTurn();
+                }
+            }
+            payRfd.setRfdTurn(maxRfdTurn + 1);
+        } else {
+            payRfd.setRfdTurn(1);
+        }
+        payRfd.setRfdRequstDt(date);
     }
 
 }

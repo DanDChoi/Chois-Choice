@@ -161,4 +161,9 @@ public class OrderServiceImpl implements OrderService{
     public Pay findPayByOrdNo(String ordNo) {
         return orderRepository.findPayByOrdNo(ordNo);
     }
+
+    @Override
+    public List<PayRfd> findPayRfdByPayNo(String payNo) {
+        return orderRepository.findPayRfdByPayNo(payNo);
+    }
 }
