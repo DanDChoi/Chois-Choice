@@ -153,6 +153,11 @@ public class MemberServiceImpl implements MemberService{
         mbrRepository.addMtm(mbr, csoMtmInq);
     }
 
+    @Override
+    public MbrBlcklst findBlcklstByNo(Long mbrNo) {
+        return mbrRepository.findBlcklstByNo(mbrNo);
+    }
+
     public static Date getFirstDayOfMonth(int offsetMonth) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH, 1);
