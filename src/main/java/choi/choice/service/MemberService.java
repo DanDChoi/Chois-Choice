@@ -16,6 +16,7 @@ public interface MemberService {
     List<Mbr> findAll();
     List<MbrCpn> findMbrCpns(Long mbrNo);
     List<GoodReview> findAllReviews(Long mbrNo);
+    MbrBlcklst findBlcklstByNo(Long mbrNo);
 
     void updateMbr(Mbr mbr);
 

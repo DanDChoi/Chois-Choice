@@ -46,7 +46,13 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, HttpServletRequest request) {
+    public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, Mbr mbr, HttpServletRequest request) {
+        MbrBlcklst mbrBlcklst = memberService.findBlcklstByNo(mbr.getMbrNo());
+
+        if(mbrBlcklst.getBlcklstTpCd().equals("ORD_IMPS")) {
+            log.error("주문할 수 없는 블랙리스트 회원");
+            return;
+        }
         orderService.createOrd(ord, ordGood, good, lgsDlvsp, request);
     }
 

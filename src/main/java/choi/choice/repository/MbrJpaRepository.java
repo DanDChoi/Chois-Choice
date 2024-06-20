@@ -138,6 +138,17 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
+    public MbrBlcklst findBlcklstByNo(String mbrNo) {
+        String query = "select mb from MbrBlcklst mb where mb.mbrNo = :mbrNo";
+
+        MbrBlcklst mbrBlcklst = em.createQuery(query, MbrBlcklst.class)
+                .setParameter("mbrNo", mbrNo)
+                .getSingleResult();
+
+        return mbrBlcklst;
+    }
+
+    @Override
     public void saveMbrLoginLog(MbrLoginLog mbrLoginLog) {
         em.persist(mbrLoginLog);
     }
