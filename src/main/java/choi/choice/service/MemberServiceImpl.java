@@ -154,6 +154,11 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public void addBlcklst(Mbr mbr) {
+        mbrRepository.addAdminBlcklst(mbr);
+    }
+
+    @Override
     public MbrBlcklst findBlcklstByNo(Long mbrNo) {
         return mbrRepository.findBlcklstByNo(mbrNo);
     }

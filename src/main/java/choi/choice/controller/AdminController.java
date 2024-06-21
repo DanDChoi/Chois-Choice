@@ -65,6 +65,12 @@ public class AdminController {
         memberService.updateMbr(mbr);
     }
 
+    @RequestMapping(value = "/addBlcklst", method = RequestMethod.POST)
+    public void adminAddBlcklst(HttpServletRequest request, String mbrId) {
+        Mbr mbr = memberService.findById(mbrId);
+        memberService.addBlcklst(mbr);
+    }
+
     @RequestMapping(value = "/goodsList", method = RequestMethod.GET)
     public String adminGoodsList(HttpServletRequest request, Model model) {
         List<Good> goods = goodService.findAll();

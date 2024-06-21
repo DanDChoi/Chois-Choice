@@ -22,4 +22,6 @@ public interface MemberService {
 
     void addMtm(Mbr mbr, CsoMtmInq csoMtmInq, HttpServletRequest request);
 
+    void addBlcklst(Mbr mbr);
+
 }
