@@ -35,6 +35,8 @@ public interface MbrRepository {
 
     void addMtm(Mbr mbr, CsoMtmInq csoMtmInq);
 
+    void addAdminBlcklst(Mbr mbr);
+
     MbrBlcklst findBlcklstByNo(String mbrNo);
 
     void saveMbrLoginLog(MbrLoginLog mbrLoginLog);

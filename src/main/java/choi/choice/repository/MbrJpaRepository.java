@@ -138,6 +138,11 @@ public class MbrJpaRepository implements MbrRepository {
     }
 
     @Override
+    public void addAdminBlcklst(Mbr mbr) {
+        //TODO addBlcklst
+    }
+
+    @Override
     public MbrBlcklst findBlcklstByNo(String mbrNo) {
         String query = "select mb from MbrBlcklst mb where mb.mbrNo = :mbrNo";
 
