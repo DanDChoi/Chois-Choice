@@ -41,11 +41,14 @@ public class AdminController {
         List<Mbr> mbrs = memberService.findAll();
         List<MbrGrd> mbrGrds = new ArrayList<>();
 
+        int mbrCnt = mbrs.size();
+
         for (int i = 0; i < mbrs.size(); i++) {
             mbrGrds.add(memberService.findGrdByNo(mbrs.get(i).getMbrNo()));
         }
 
         model.addAttribute("mbrs", mbrs);
+        model.addAttribute("mbrCnt", mbrCnt);
         model.addAttribute("mbrGrds", mbrGrds);
         return "mbrList";
     }
@@ -69,6 +72,12 @@ public class AdminController {
     public void adminAddBlcklst(HttpServletRequest request, String mbrId) {
         Mbr mbr = memberService.findById(mbrId);
         memberService.addBlcklst(mbr);
+    }
+
+    @RequestMapping(value = "/removeBlcklst", method = RequestMethod.POST)
+    public void adminRemoveBlcklst(HttpServletRequest request, String mbrId) {
+        Mbr mbr = memberService.findById(mbrId);
+        memberService.removeBlcklst(mbr);
     }
 
     @RequestMapping(value = "/goodsList", method = RequestMethod.GET)

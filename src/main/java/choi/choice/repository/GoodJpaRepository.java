@@ -172,28 +172,28 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public void insertGoodHist(GoodHist goodHist) {
-        String query = "insert into GoodHist gh " +
+        GoodHistPK goodHistPK = new GoodHistPK();
+        goodHistPK.setGoodHistNo(goodHistPK.getGoodHistNo());
+        goodHistPK.setGoodNo(goodHistPK.getGoodNo());
+        String query = "insert into GoodHist " +
                 "(" +
-                "gh.goodNo" +
-                ",gh.goodNm" +
-                ",gh.goodHistNo" +
-                ",gh.histDt" +
-                ",gh.saleBegDt" +
-                ",gh.saleEndDt" +
-                ",gh.colorNm" +
-                ",gh.colorCd" +
-                ",gh.regtrId" +
-                ",gh.regDt" +
-                ",gh.udterId" +
-                ",gh.udtDt" +
+                "goodHistPK" +
+                ",goodNm" +
+                ",histDt" +
+                ",saleBegDate" +
+                ",saleEndDate" +
+                ",colorNm" +
+                ",colorCd" +
+                ",regtrId" +
+                ",regDt" +
+                ",udterId" +
+                ",udtDt" +
                 ")" +
                 "values" +
-                "(" +
-                ":goodNo, :goodNm, :goodHistNo, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt";
+                "(:goodHistPK, :goodNm, NOW(), :saleBegDt, :saleEndDt, :colorNm, :colorCd, :regtrId, :regDt, :udterId, :udtDt)";
         GoodHist goodHist1 = em.createQuery(query, GoodHist.class)
-                .setParameter("goodNo", goodHist.getGoodHistPK().getGoodNo())
+                .setParameter("goodHistPK", goodHistPK)
                 .setParameter("goodNm", goodHist.getGoodNm())
-                .setParameter("goodHistNo", goodHist.getGoodHistPK().getGoodHistNo())
                 .setParameter("saleBegDt", goodHist.getSaleBegDate())
                 .setParameter("saleEndDt", goodHist.getSaleEndDate())
                 .setParameter("colorNm", goodHist.getColorNm())
@@ -245,13 +245,13 @@ public class GoodJpaRepository implements GoodRepository{
 
     @Override
     public int addBukmk(Good good, Mbr mbr, int bukmkSn) {
-        String query = "INSERT INTO MbrBukmk (bukmkSn, mbrNo, goodNo, regtrId, regDt, udterId, udtDt) VALUES (1, 2, 3, 4, now(), 5, now())";
+        String query = "INSERT INTO MbrBukmk (bukmkSn, mbrNo, goodNo, regtrId, regDt, udterId, udtDt) VALUES (:bukmkSn, :mbrNo, :goodNo, :regtrId, now(), :udterId, now())";
         MbrBukmk mbrBukmk = em.createQuery(query, MbrBukmk.class)
-                .setParameter(1, bukmkSn)
-                .setParameter(2,mbr.getMbrNo())
-                .setParameter(3, good.getGoodNo())
-                .setParameter(4,mbr.getMbrId())
-                .setParameter(5,mbr.getMbrId())
+                .setParameter("bukmkSn", bukmkSn)
+                .setParameter("mbrNo",mbr.getMbrNo())
+                .setParameter("goodNo", good.getGoodNo())
+                .setParameter("regtrId",mbr.getMbrId())
+                .setParameter("udterId",mbr.getMbrId())
                 .getSingleResult();
 
         return getBukmkCnt(mbr);
