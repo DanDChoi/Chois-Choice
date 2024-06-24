@@ -139,7 +139,22 @@ public class MbrJpaRepository implements MbrRepository {
 
     @Override
     public void addAdminBlcklst(Mbr mbr) {
-        //TODO addBlcklst
+        String query = "insert into MbrBlcklst (mbrNo, blcklstTurn, blcklstBegDt, blcklstEndDt, blcklstSectCd, blcklstResnCont, blcklstTpCd, regDt, regtrId, udtDt, udterId)" +
+                " values (:mbrNo, :blcklstTurn, NOW(), '2999-12-31', :blcklstSectCd, :blcklstResnCont, :blcklstTpCd, NOW(), :regtrId, NOW(), :udterId)";
+        em.createQuery(query, MbrBlcklst.class)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .setParameter("blcklstTurn", 1)
+                .setParameter("blcklstSectCd", "REG")
+                .setParameter("blcklstResnCont", "admin reg")
+                .setParameter("blcklstTpCd", "ORD_IMPS")
+                .setParameter("regtrId", "admin")
+                .setParameter("udterId", "admin")
+                .getSingleResult();
+    }
+
+    @Override
+    public void removeAdminBlcklst(Mbr mbr) {
+        //TODO
     }
 
     @Override

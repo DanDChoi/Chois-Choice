@@ -159,8 +159,13 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public void removeBlcklst(Mbr mbr) {
+        mbrRepository.removeAdminBlcklst(mbr);
+    }
+
+    @Override
     public MbrBlcklst findBlcklstByNo(Long mbrNo) {
-        return mbrRepository.findBlcklstByNo(mbrNo);
+        return mbrRepository.findBlcklstByNo(String.valueOf(mbrNo));
     }
 
     public static Date getFirstDayOfMonth(int offsetMonth) {
