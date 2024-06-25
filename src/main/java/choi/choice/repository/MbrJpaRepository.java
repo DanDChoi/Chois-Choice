@@ -154,7 +154,10 @@ public class MbrJpaRepository implements MbrRepository {
 
     @Override
     public void removeAdminBlcklst(Mbr mbr) {
-        //TODO
+        String query = "delete from MbrBlcklst where mbrNo = :mbrNo";
+        em.createQuery(query, MbrBlcklst.class)
+                .setParameter("mbrNo", mbr.getMbrNo())
+                .getSingleResult();
     }
 
     @Override
