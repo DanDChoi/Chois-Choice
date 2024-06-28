@@ -80,6 +80,15 @@ public class AdminController {
         memberService.removeBlcklst(mbr);
     }
 
+    @RequestMapping(value = "/blcklstList", method = RequestMethod.GET)
+    public String adminBlcklstList(HttpServletRequest request, Model model) {
+        List<Mbr> blcklst = memberService.findBlcklstList();
+
+        model.addAttribute("blcklst", blcklst);
+
+        return "blcklstList";
+    }
+
     @RequestMapping(value = "/goodsList", method = RequestMethod.GET)
     public String adminGoodsList(HttpServletRequest request, Model model) {
         List<Good> goods = goodService.findAll();

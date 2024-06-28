@@ -25,4 +25,6 @@ public interface MemberService {
     void addBlcklst(Mbr mbr);
 
     void removeBlcklst(Mbr mbr);
+
+    List<Mbr> findBlcklstList();
 }
