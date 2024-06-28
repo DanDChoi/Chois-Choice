@@ -13,10 +13,7 @@ import javax.transaction.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -161,6 +158,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void removeBlcklst(Mbr mbr) {
         mbrRepository.removeAdminBlcklst(mbr);
+    }
+
+    @Override
+    public List<Mbr> findBlcklstList() {
+        return mbrRepository.findBlcklstList();
     }
 
     @Override

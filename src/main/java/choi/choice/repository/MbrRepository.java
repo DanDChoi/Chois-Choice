@@ -39,6 +39,8 @@ public interface MbrRepository {
 
     void removeAdminBlcklst(Mbr mbr);
 
+    List<Mbr> findBlcklstList();
+
     MbrBlcklst findBlcklstByNo(String mbrNo);
 
     void saveMbrLoginLog(MbrLoginLog mbrLoginLog);

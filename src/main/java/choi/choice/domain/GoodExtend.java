@@ -15,6 +15,8 @@ public class GoodExtend {
 
     private Good good;
 
+    private List<GoodItm> goodItms;
+
     private List<GoodImg> goodImgList;
 
 }

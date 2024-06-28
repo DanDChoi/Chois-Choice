@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -158,6 +159,18 @@ public class MbrJpaRepository implements MbrRepository {
         em.createQuery(query, MbrBlcklst.class)
                 .setParameter("mbrNo", mbr.getMbrNo())
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Mbr> findBlcklstList() {
+        String query = "select m from Mbr m " +
+                "join MbrBlcklst mb on m.mbrNo = mb.mbrNo " +
+                "where mb.blcklstSectCd = 'REG'";
+
+        List<Mbr> blcklst = em.createQuery(query, Mbr.class)
+                .getResultList();
+
+        return blcklst;
     }
 
     @Override
