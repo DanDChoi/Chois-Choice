@@ -39,6 +39,12 @@ public class BskGood {
     @Column(name = "bsk_reg_dt")
     private java.util.Date bskRegDt;
 
+    @Column(name = "mcode")
+    private String mcode;
+
+    @Column(name = "mcode_detail")
+    private String mcodeDetail;
+
     @Column(name = "regtr_id")
     private String regtrId;
 
