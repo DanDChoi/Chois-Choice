@@ -41,6 +41,12 @@ public class OrdGood {
     @Column(name = "dlv_plc_no")
     private Integer dlvPlcNo;
 
+    @Column(name = "mcode")
+    private String mcode;
+
+    @Column(name = "mcode_detail")
+    private String mcodeDetail;
+
     @Column(name = "regtr_id")
     private String regtrId;
 
