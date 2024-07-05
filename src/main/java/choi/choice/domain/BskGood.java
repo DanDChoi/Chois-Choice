@@ -25,7 +25,7 @@ public class BskGood {
     private String bskNo;
 
     @Column(name = "good_turn")
-    private int goodTurn;
+    private Integer goodTurn;
 
     @Column(name = "good_no")
     private String goodNo;
@@ -34,7 +34,7 @@ public class BskGood {
     private String itmNo;
 
     @Column(name = "itm_qty")
-    private int itmQty;
+    private Integer itmQty;
 
     @Column(name = "bsk_reg_dt")
     private java.util.Date bskRegDt;

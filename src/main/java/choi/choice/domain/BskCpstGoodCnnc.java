@@ -10,16 +10,16 @@ public class BskCpstGoodCnnc {
     private String bskNo;
 
     @Column(name = "good_turn")
-    private int goodTurn;
+    private Integer goodTurn;
 
     @Column(name = "cpst_good_turn")
-    private int cpstGoodTurn;
+    private Integer cpstGoodTurn;
 
     @Column(name = "pkage_good_tp_cd")
     private String pkageGoodTpCd;
 
     @Column(name = "cpst_good_qty")
-    private int cpstGoodQty;
+    private Integer cpstGoodQty;
 
     @Column(name = "sort_seq")
     private int sortSeq;

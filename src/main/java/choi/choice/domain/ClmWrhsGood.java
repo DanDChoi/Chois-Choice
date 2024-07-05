@@ -42,10 +42,10 @@ public class ClmWrhsGood {
     private String itmNo;
 
     @Column(name = "good_hist_turn")
-    private int goodHistTurn;
+    private Integer goodHistTurn;
 
     @Column(name = "itm_hist_turn")
-    private int itmHistTurn;
+    private Integer itmHistTurn;
 
     @Column(name = "good_nm")
     private String goodNm;

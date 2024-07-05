@@ -62,7 +62,7 @@ public class AdminJpaRepository implements  AdminRepository{
                 ", sc.deleteYn = :deleteYn " +
                 ", sc.leafCtgryYn = :leafCtgryYn " +
                 ", sc.prdlstGrpCd = :prdlstGrpCd " +
-                ", sc.godEvlGrpCd = :godEvlGrpCd " +
+                ", sc.goodEvlGrpCd = :goodEvlGrpCd " +
                 ", sc.udtDt = :udtDt " +
                 ", sc.udterId = :udterId " +
                 "where sc.stdCtgryNo = :stdCtgryNo";
@@ -72,7 +72,7 @@ public class AdminJpaRepository implements  AdminRepository{
                 .setParameter("deleteYn", stdCtgry.getDeleteYn())
                 .setParameter("leafCtgryYn", stdCtgry.getLeafCtgryYn())
                 .setParameter("prdlstGrpCd", stdCtgry.getPrdlstGrpCd())
-                .setParameter("godEvlGrpCd", stdCtgry.getGodEvlGrpCd())
+                .setParameter("goodEvlGrpCd", stdCtgry.getGoodEvlGrpCd())
                 .setParameter("udtDt", stdCtgry.getUdtDt())
                 .setParameter("udterId", stdCtgry.getUdterId())
                 .getSingleResult();

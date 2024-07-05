@@ -15,7 +15,7 @@ public class GoodHistPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String goodNo;
-    private int goodHistNo;
+    private Integer goodHistNo;
 
     public GoodHistPK() {
 

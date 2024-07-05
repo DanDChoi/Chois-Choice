@@ -22,7 +22,7 @@ public class GoodReviewLike {
     private String goodNo;
 
     @Column(name = "good_evl_turn", unique = true)
-    private int goodEvlTurn;
+    private Integer goodEvlTurn;
 
     @Column(name = "mbrNo")
     private Long mbrNo;

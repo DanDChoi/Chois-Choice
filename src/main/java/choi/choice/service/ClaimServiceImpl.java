@@ -50,7 +50,7 @@ public class ClaimServiceImpl implements ClaimService{
         payService.addClmPay(refndPay, OriginPay.getPayNo());
 
         clm.setClmNo(clmNo);
-        clm.setGodNo(ordGood.getGoodNo());
+        clm.setGoodNo(ordGood.getGoodNo());
         clm.setOrdNo(ord.getOrdNo());
         clm.setMbrNo(ord.getMbrNo());
         clm.setRegtrId(regtr);
@@ -86,7 +86,7 @@ public class ClaimServiceImpl implements ClaimService{
         lgsRtrvlDrctGood.setClmNo(clmNo);
         lgsRtrvlDrctGood.setOrdNo(ord.getOrdNo());
         lgsRtrvlDrctGood.setRtrvlDrctGoodNo(ordGood.getGoodNo());
-        lgsRtrvlDrctGood.setClmWrhsGoodTurn(ordGood.getOrdGoodPK().getOrdGodTurn());
+        lgsRtrvlDrctGood.setClmWrhsGoodTurn(ordGood.getOrdGoodPK().getOrdGoodTurn());
 
         claimRepository.addClm(clm, clmGood, clmWrhsGood, lgsRtrvlDrctGood);
     }

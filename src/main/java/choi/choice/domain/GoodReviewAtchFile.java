@@ -23,7 +23,7 @@ public class GoodReviewAtchFile {
 
     @Id
     @Column(name = "good_evl_turn")
-    private int goodEvlTurn;
+    private Integer goodEvlTurn;
 
     @Id
     @Column(name = "atch_file_turn")

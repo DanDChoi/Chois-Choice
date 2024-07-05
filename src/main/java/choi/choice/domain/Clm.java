@@ -43,8 +43,8 @@ public class Clm {
     @Column(name = "ord_no")
     private String ordNo;
 
-    @Column(name = "god_no")
-    private String godNo;
+    @Column(name = "good_no")
+    private String goodNo;
 
     @Column(name = "regtr_id")
     private String regtrId;
