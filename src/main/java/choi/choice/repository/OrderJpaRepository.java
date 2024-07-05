@@ -25,7 +25,7 @@ public class OrderJpaRepository implements OrderRepository{
     }
 
     @Override
-    public void addOrdGod(OrdGood ordGood) {
+    public void addOrdGood(OrdGood ordGood) {
         em.persist(ordGood);
     }
 
@@ -109,7 +109,7 @@ public class OrderJpaRepository implements OrderRepository{
 
     @Override
     public List<OrdGood> findOrdGoods(String ordNo) {
-        String query = "select og from OrdGood og where og.ordGodPK.ordNo = :ordNo";
+        String query = "select og from OrdGood og where og.ordGoodPK.ordNo = :ordNo";
 
         List<OrdGood> ordGoods = em.createQuery(query, OrdGood.class)
                 .setParameter("ordNo", ordNo)

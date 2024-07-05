@@ -39,8 +39,8 @@ public class StdCtgry {
     @Column(name = "prdlst_grp_cd")
     private String prdlstGrpCd;
 
-    @Column(name = "god_evl_grp_cd")
-    private String godEvlGrpCd;
+    @Column(name = "good_evl_grp_cd")
+    private String goodEvlGrpCd;
 
     @Column(name = "reg_dt")
     private java.util.Date regDt;

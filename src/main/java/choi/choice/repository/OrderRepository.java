@@ -9,7 +9,7 @@ public interface OrderRepository {
 
     void addOrd(Ord ord);
 
-    void addOrdGod(OrdGood ordGood);
+    void addOrdGood(OrdGood ordGood);
 
     void addPay(Pay pay);
 

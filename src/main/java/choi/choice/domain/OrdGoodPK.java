@@ -15,15 +15,15 @@ public class OrdGoodPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String ordNo;
-    private int ordGodTurn;
+    private int ordGoodTurn;
 
     public OrdGoodPK(){
 
     }
 
-    public OrdGoodPK(String ordNo, int ordGodTurn) {
+    public OrdGoodPK(String ordNo, int ordGoodTurn) {
         this.ordNo = ordNo;
-        this.ordGodTurn = ordGodTurn;
+        this.ordGoodTurn = ordGoodTurn;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class OrdGoodPK implements Serializable {
 
         OrdGoodPK ordGoodPK = (OrdGoodPK) obj;
 
-        if (this.ordNo.equals(ordGoodPK.ordNo) && this.ordGodTurn == ordGoodPK.ordGodTurn) {
+        if (this.ordNo.equals(ordGoodPK.ordNo) && this.ordGoodTurn == ordGoodPK.ordGoodTurn) {
             return true;
         }
         return false;
@@ -46,6 +46,6 @@ public class OrdGoodPK implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ordNo, ordGodTurn);
+        return Objects.hash(ordNo, ordGoodTurn);
     }
 }
