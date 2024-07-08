@@ -23,13 +23,13 @@ public class EvtApplcn {
      */
     @Id
     @Column(name = "evt_partcptn_sn")
-    private int evtPartcptnSn;
+    private Integer evtPartcptnSn;
 
     @Column(name = "evt_no")
     private String evtNo;
 
     @Column(name = "free_gift_turn")
-    private int freeGiftTurn;
+    private Integer freeGiftTurn;
 
     /**
      * 응모회원 구분코드

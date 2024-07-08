@@ -28,16 +28,16 @@ public class LgsRtrvlDrctGood {
     private String clmNo;
 
     @Column(name = "clm_wrhs_good_turn")
-    private int clmWrhsGoodTurn;
+    private Integer clmWrhsGoodTurn;
 
     @Column(name = "dlivy_drct_good_no")
     private String dlivyDrctGoodNo;
 
     @Column(name = "dlv_pcupsp_turn")
-    private int dlvPcupspTurn;
+    private Integer dlvPcupspTurn;
 
     @Column(name = "dlv_turn")
-    private int dlvTurn;
+    private Integer dlvTurn;
 
     @Column(name = "rtrvl_drct_tgt_yn")
     private String rtrvlDrctTgtYn;

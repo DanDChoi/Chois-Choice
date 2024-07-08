@@ -16,7 +16,7 @@ public class MbrBnef {
 
     @Id
     @Column(name = "bnef_sn")
-    private int bnefSn;
+    private Integer bnefSn;
 
     /**
      * 등급 : GRD

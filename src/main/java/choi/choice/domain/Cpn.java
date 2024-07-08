@@ -23,9 +23,9 @@ public class Cpn {
     @Column(name = "cpn_tp_cd")
     private String cpnTpCd;
     @Column(name = "cpn_dc_rate")
-    private int cpnDcRate;
+    private Integer cpnDcRate;
     @Column(name = "cpn_dc_amt")
-    private int cpnDcAmt;
+    private Integer cpnDcAmt;
     @Column(name = "cpn_beg_dt")
     private java.util.Date cpnBegDt;
     @Column(name = "cpn_end_dt")

@@ -30,7 +30,7 @@ public class OrdGood {
     private String itmNo;
 
     @Column(name = "itm_hist_no")
-    private int itmHistNo;
+    private Integer itmHistNo;
 
     @Column(name = "std_ctgry_no")
     private String stdCtgryNo;

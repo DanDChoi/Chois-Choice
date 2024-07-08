@@ -10,13 +10,13 @@ public class ClmWrhsGoodPK implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     private String clmNo;
-    private int clmWrhsGoodTurn;
+    private Integer clmWrhsGoodTurn;
 
     public ClmWrhsGoodPK() {
 
     }
 
-    public ClmWrhsGoodPK(String clmNo, int clmWrhsGoodTurn) {
+    public ClmWrhsGoodPK(String clmNo, Integer clmWrhsGoodTurn) {
         this.clmNo = clmNo;
         this.clmWrhsGoodTurn = clmWrhsGoodTurn;
     }

@@ -15,11 +15,11 @@ public class CpnHistPK {
 
     private String cpnNo;
 
-    private int cpnHistNo;
+    private Integer cpnHistNo;
     public CpnHistPK() {
     }
 
-    public CpnHistPK(String cpnNo, int cpnHistNo) {
+    public CpnHistPK(String cpnNo, Integer cpnHistNo) {
         this.cpnNo = cpnNo;
         this.cpnHistNo = cpnHistNo;
     }

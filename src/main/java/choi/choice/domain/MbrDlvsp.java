@@ -23,7 +23,7 @@ public class MbrDlvsp {
     private Long mbrNo;
 
     @Column(name = "dlv_adbuk_turn") //배송주소록순번
-    private int dlvAdbukTurn;
+    private Integer dlvAdbukTurn;
 
     @Column(name = "adbuk_nm")
     private String adbukNm;

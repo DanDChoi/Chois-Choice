@@ -61,13 +61,13 @@ public class MbrWebpntHist {
     private String ordNo;
 
     @Column(name = "ord_good_turn")
-    private int ordGoodTurn;
+    private Integer ordGoodTurn;
 
     @Column(name = "clm_no")
     private String clmNo;
 
     @Column(name = "clm_good_turn")
-    private int clmGoodTurn;
+    private Integer clmGoodTurn;
 
     @Column(name = "evt_no")
     private String evtNo;

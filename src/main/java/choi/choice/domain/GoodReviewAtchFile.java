@@ -27,7 +27,7 @@ public class GoodReviewAtchFile {
 
     @Id
     @Column(name = "atch_file_turn")
-    private int atchFileTurn;
+    private Integer atchFileTurn;
 
     /**
      * IMG 이미지, MOVI 동영상

@@ -22,7 +22,7 @@ public class CsoMtmInqAns {
     private String mtmSn;
 
     @Column(name = "mtm_inq_ans_turn")
-    private int mtmInqAnsTurn;
+    private Integer mtmInqAnsTurn;
 
     @Column(name = "ans_sj")
     private String ansSj;

@@ -22,7 +22,7 @@ public class GoodImg {
     private String goodNo;
 
     /**
-     * THNAIL : 섬네일 / GOD_MODEL_INFO : 상품모델정보
+     * THNAIL : 섬네일 / GOOD_MODEL_INFO : 상품모델정보
      */
     @Column(name = "img_tp_cd")
     private String imgTpCd;
