@@ -22,7 +22,7 @@ public class CpnHist {
     private String cpnNo;
     @Id
     @Column(name = "cpn_hist_turn", unique = true)
-    private int cpnHistTurn;
+    private Integer cpnHistTurn;
     @Id
     @Column(name = "hist_end_dt", unique = true)
     private java.util.Date histEndDt;
@@ -31,9 +31,9 @@ public class CpnHist {
     @Column(name = "cpn_tp_cd")
     private String cpnTpCd;
     @Column(name = "cpn_dc_rate")
-    private int cpnDcRate;
+    private Integer cpnDcRate;
     @Column(name = "cpn_dc_amt")
-    private int cpnDcAmt;
+    private Integer cpnDcAmt;
     @Column(name = "cpn_beg_dt")
     private java.util.Date cpnBegDt;
     @Column(name = "cpn_end_dt")

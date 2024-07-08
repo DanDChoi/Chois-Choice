@@ -21,7 +21,7 @@ public class MbrBukmk {
     private String bukmkSn;
 
     /**
-     * 북마크유형 GOD / EVT
+     * 북마크유형 GOOD / EVT
      */
     @Column(name = "bukmk_tp_cd")
     private String bukmkTpCd;

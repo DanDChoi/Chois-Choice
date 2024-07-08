@@ -16,7 +16,7 @@ public class LgsDlvspHist {
 
     @Id
     @Column(name = "hist_turn")
-    private int histTurn;
+    private Integer histTurn;
 
     @EmbeddedId
     private LgsDlvspPK lgsDlvspPK;

@@ -15,7 +15,7 @@ public class OrdGoodPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String ordNo;
-    private int ordGoodTurn;
+    private Integer ordGoodTurn;
 
     public OrdGoodPK(){
 

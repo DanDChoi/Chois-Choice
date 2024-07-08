@@ -24,10 +24,10 @@ public class ClmWrhsGood {
     private String ordNo;
 
     @Column(name = "ord_good_turn")
-    private int ordGoodTurn;
+    private Integer ordGoodTurn;
 
     @Column(name = "dlv_pcupsp_turn")
-    private int dlvPcupspTurn;
+    private Integer dlvPcupspTurn;
 
     @Column(name = "clm_resn_cd")
     private String clmResnCd;
@@ -57,10 +57,10 @@ public class ClmWrhsGood {
     private String comId;
 
     @Column(name = "dlv_plc_no")
-    private int dlvPlcNo;
+    private Integer dlvPlcNo;
 
     @Column(name = "clm_qty")
-    private int clmQty;
+    private Integer clmQty;
 
     @Column(name = "sale_prc")
     private String salePrc;

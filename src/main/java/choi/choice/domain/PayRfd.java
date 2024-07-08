@@ -22,7 +22,7 @@ public class PayRfd {
     private String payNo;
 
     @Column(name = "rfd_turn")
-    private int rfdTurn;
+    private Integer rfdTurn;
 
     @Column(name = "rfd_stat_cd")
     private String rfdStatCd;

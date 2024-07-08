@@ -15,7 +15,7 @@ public class LgsDlvspPK implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     private String ordNo;
-    private int dlvPcupspTurn;
+    private Integer dlvPcupspTurn;
 
     public LgsDlvspPK() {
 

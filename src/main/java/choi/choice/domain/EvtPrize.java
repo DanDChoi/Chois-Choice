@@ -19,13 +19,13 @@ public class EvtPrize {
 
     @Id
     @Column(name = "evt_partcptn_sn")
-    private int evtPartcptnSn;
+    private Integer evtPartcptnSn;
 
     @Column(name = "prize_turn")
-    private int prizeTurn;
+    private Integer prizeTurn;
 
     @Column(name = "prize_rank")
-    private int prizeRank;
+    private Integer prizeRank;
 
     @Column(name = "evt_no")
     private String evtNo;
