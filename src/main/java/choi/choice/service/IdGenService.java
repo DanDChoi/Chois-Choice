@@ -1,8 +1,14 @@
 package choi.choice.service;
 
 import choi.choice.domain.SystemPK;
+import choi.choice.framework.data.SequenceData;
+import choi.choice.framework.enums.DatabaseType;
+import com.fasterxml.uuid.Generators;
+import com.fasterxml.uuid.impl.RandomBasedGenerator;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
