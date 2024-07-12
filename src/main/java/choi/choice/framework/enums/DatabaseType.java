@@ -1,5 +1,5 @@
 package choi.choice.framework.enums;
 
-public class DatabaseType {
+public enum DatabaseType {
     ORACLE, MYSQL;
 }
