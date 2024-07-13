@@ -7,6 +7,7 @@ import choi.choice.framework.data.WhereCondition;
 import choi.choice.framework.data.mobile.MobileDevice;
 import choi.choice.framework.enums.DatabaseType;
 import choi.choice.framework.exception.NotFindConfigException;
+import choi.choice.framework.exception.NotSupportedException;
 import choi.choice.framework.utils.JsonUtil;
 import choi.choice.framework.utils.SecureCode;
 import com.fasterxml.uuid.Generators;
