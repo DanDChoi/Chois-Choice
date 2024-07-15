@@ -68,6 +68,12 @@ public class IdGenService {
    	@Value("${base.device}")
    	private String device;
 
+	/**
+	 * 기본 언어
+	 */
+	@Value("${base.lang}")
+	private String lang;
+
     /**
    	 * UUID Version4 (Random Number)를 생성 후 '-'이 제거된 uuid를 리턴 한다. <br/>
    	 * <p/>
