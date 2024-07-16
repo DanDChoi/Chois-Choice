@@ -4,6 +4,7 @@ import choi.choice.domain.SystemPK;
 import choi.choice.framework.commons.LocaleService;
 import choi.choice.framework.data.SequenceData;
 import choi.choice.framework.data.WhereCondition;
+import choi.choice.framework.data.mobile.LiteDeviceResolver;
 import choi.choice.framework.data.mobile.MobileDevice;
 import choi.choice.framework.enums.DatabaseType;
 import choi.choice.framework.exception.NotFindConfigException;
@@ -16,8 +17,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -73,6 +77,9 @@ public class IdGenService {
 	 */
 	@Value("${base.lang}")
 	private String lang;
+
+	@Autowired
+	LiteDeviceResolver deviceResolver;
 
     /**
    	 * UUID Version4 (Random Number)를 생성 후 '-'이 제거된 uuid를 리턴 한다. <br/>
