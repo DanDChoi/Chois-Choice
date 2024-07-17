@@ -17,6 +17,9 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MbrBlcklst {
 
+    private String mallId;
+    private String langCd;
+    private String dvcCd;
     @Id
     @Column(name = "mbr_no")
     private Long mbrNo;

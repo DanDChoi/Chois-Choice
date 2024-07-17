@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MbrBnef {
 
+    private String mallId;
+    private String langCd;
+    private String dvcCd;
+
     @Id
     @Column(name = "bnef_sn")
     private Integer bnefSn;
