@@ -18,6 +18,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MbrHist {
 
+    private String mallId;
+    private String langCd;
+    private String dvcCd;
     @Column(name = "mbr_no")
     private Long mbrNo;
     @Id

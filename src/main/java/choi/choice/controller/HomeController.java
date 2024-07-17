@@ -1,14 +1,8 @@
 package choi.choice.controller;
 
-import choi.choice.domain.CsoMtmInq;
-import choi.choice.domain.Good;
-import choi.choice.domain.Mbr;
-import choi.choice.domain.OrdGood;
+import choi.choice.domain.*;
 import choi.choice.repository.MbrRepository;
-import choi.choice.service.GoodService;
-import choi.choice.service.MemberService;
-import choi.choice.service.OrderService;
-import choi.choice.service.SessionManager;
+import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -30,6 +24,7 @@ public class HomeController {
     private final GoodService goodService;
     private final OrderService orderService;
     private final MemberService memberService;
+    private IdGenService idgenService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
