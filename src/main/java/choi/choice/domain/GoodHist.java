@@ -14,6 +14,10 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class GoodHist {
 
+    private String mallId;
+    private String langCd;
+    private String dvcCd;
+
     @EmbeddedId
     private GoodHistPK goodHistPK;
     @Column(name = "good_nm")

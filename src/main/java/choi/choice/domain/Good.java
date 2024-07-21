@@ -17,6 +17,10 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Good {
 
+    private String mallId;
+    private String langCd;
+    private String dvcCd;
+
     @Id
     @Column(name = "good_no", unique = true)
     private String goodNo;

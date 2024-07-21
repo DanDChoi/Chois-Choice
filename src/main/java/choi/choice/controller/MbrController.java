@@ -41,6 +41,7 @@ public class MbrController {
     private final CouponService couponService;
     private final GoodRepository goodRepository;
     private final SessionManager sessionManager;
+    private IdGenService idGenService;
 
     //회원가입
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -63,6 +64,7 @@ public class MbrController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, Model model) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         if (bindingResult.hasErrors()) {
             return "login";
         }
