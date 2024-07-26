@@ -5,3 +5,8 @@ Key,Description,common,local,prod
 base.device,기본 디바이스 코드,PC,,
 base.device.mobile,,iphone|ipod|ipad|blackberry|android|windows ce|lg|mot|samsung|sonyericsson,,
 base.device.mobile_app,,wizwid_aos_app|wizwid_ios_app,,
+##########################################,,,,
+# 암호화키,,,,
+##########################################,,,,
+base.crypto.key,2016.10.15 OPEN,apppush,,
+##########################################,,,,
