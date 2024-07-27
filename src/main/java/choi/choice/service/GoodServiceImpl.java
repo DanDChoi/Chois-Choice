@@ -160,10 +160,13 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void updateGood(Good good) {
-        int maxSeq = Integer.parseInt(goodRepository.getGoodHistSeq(good.getGoodNo()));
-        String nextSeq = String.valueOf(maxSeq + 1);
+        int maxSeq = 1;
+        maxSeq = Integer.parseInt(goodRepository.getGoodHistSeq(good.getGoodNo()));
+        if (maxSeq > 1) {
+            maxSeq++;
+        }
         GoodHist goodHist = null;
-        goodHist.setGoodHistPK(new GoodHistPK(good.getGoodNo(), Integer.parseInt(nextSeq)));
+        goodHist.setGoodHistPK(new GoodHistPK(good.getGoodNo(), maxSeq));
         goodHist.setGoodNm(good.getGoodNm());
         goodHist.setStdCtgryNo(good.getStdCtgryNo());
         goodHist.setSaleBegDate(good.getSaleBegDate());
