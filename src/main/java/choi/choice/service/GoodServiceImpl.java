@@ -160,6 +160,9 @@ public class GoodServiceImpl implements GoodService{
 
     @Override
     public void updateGood(Good good) {
+
+        Date date = new Date();
+
         int maxSeq = 1;
         maxSeq = Integer.parseInt(goodRepository.getGoodHistSeq(good.getGoodNo()));
         if (maxSeq > 1) {
@@ -167,6 +170,7 @@ public class GoodServiceImpl implements GoodService{
         }
         GoodHist goodHist = null;
         goodHist.setGoodHistPK(new GoodHistPK(good.getGoodNo(), maxSeq));
+        goodHist.setHistDt(date);
         goodHist.setGoodNm(good.getGoodNm());
         goodHist.setStdCtgryNo(good.getStdCtgryNo());
         goodHist.setSaleBegDate(good.getSaleBegDate());
