@@ -1,7 +1,6 @@
 package choi.choice.framework.utils;
 
 import org.apache.commons.codec.Charsets;
-import org.apache.commons.codec.binary.BaseNCodec;
 
 import java.math.BigInteger;
 
