@@ -2,17 +2,17 @@ package choi.choice.controller;
 
 import choi.choice.domain.*;
 import choi.choice.repository.GoodRepository;
-import choi.choice.service.CouponService;
-import choi.choice.service.GoodService;
-import choi.choice.service.MemberService;
-import choi.choice.service.SessionManager;
+import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -26,6 +26,7 @@ public class ProductsController {
     private final GoodRepository goodRepository;
     private final SessionManager sessionManager;
     private final MemberService memberService;
+    private IdGenService idGenService;
 
     @RequestMapping (value="create", method = RequestMethod.GET)
     public String createGoodForm() {
@@ -125,6 +126,21 @@ public class ProductsController {
         Mbr mbr = memberService.findById(loginId);
 
         goodService.addBukmk(good, mbr);
+    }
+
+    @RequestMapping(value = "/insertGoodsReviewAction", method = RequestMethod.POST)
+    public void insertGoodsReviewAction(MultipartHttpServletRequest request, Model model, @RequestParam(value = "file", required = false) MultipartFile[] files) throws Exception {
+        SystemPK pk = idGenService.getAutoGeneratorSystemPK(request);
+
+        List<MultipartFile> multipartFiles = null;
+        if (files != null && files.length > 0) {
+           multipartFiles = Arrays.asList(files);
+        }
+
+        OrdGood ordGood = null;
+
+        //TODO
+//        insertMyGoodsReview
     }
 
 }
