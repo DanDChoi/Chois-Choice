@@ -129,8 +129,15 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/insertGoodsReviewAction", method = RequestMethod.POST)
-    public void insertGoodsReviewAction(MultipartHttpServletRequest request, Model model, @RequestParam(value = "file", required = false) MultipartFile[] files) throws Exception {
+    public void insertGoodsReviewAction(MultipartHttpServletRequest request, Model model, MemberOrdGodFoDTO dto, @RequestParam(value = "file", required = false) MultipartFile[] files) throws Exception {
         SystemPK pk = idGenService.getAutoGeneratorSystemPK(request);
+        //TODO securityUserDetail DTO 생성
+//        SecurityUserDetail
+//        dto.setMbr()
+        dto.setMallId(pk.getMall());
+        dto.getGoodReview().setMbrNo(dto.getMbr().getMbrNo());
+        dto.getGoodReview().setGoodNo(dto.getGoodNo());
+        dto.getGoodReview().setBestYn("N");
 
         List<MultipartFile> multipartFiles = null;
         if (files != null && files.length > 0) {
