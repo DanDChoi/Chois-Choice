@@ -1,7 +1,14 @@
 package choi.choice.service;
 
 import choi.choice.framework.cloud.CloudFileSystemInterface;
+import choi.choice.framework.commons.ConfigService;
+import choi.choice.framework.commons.StringService;
+import choi.choice.framework.exception.NotSupportedUploadFileException;
+import choi.choice.framework.utils.SecureCode;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
