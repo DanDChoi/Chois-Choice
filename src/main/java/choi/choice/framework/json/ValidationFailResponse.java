@@ -1,5 +1,6 @@
 package choi.choice.framework.json;
 
+import choi.choice.framework.responsecode.ResponseCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public class ValidationFailResponse extends JsendResponse {
+public class ValidationFailResponse extends JSendResponse {
     String message;
     String code;
     Map<String, Set<String>> data = new HashMap<>();
