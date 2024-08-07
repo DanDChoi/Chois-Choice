@@ -18,7 +18,7 @@ public class JSendResponse {
     public static ResponseEntity<? extends JSendResponse> success() {return ResponseEntity.ok(new SuccessResponse());}
 
     public static ResponseEntity<? extends JSendResponse> success(Object data) {
-        return ResponseEntity.ok(new SuccessResponse(data));
+        return ResponseEntity.ok(new SuccessResponseWithData(data));
     }
 
     public static ResponseEntity<? extends JSendResponse> fail(Object data) {
