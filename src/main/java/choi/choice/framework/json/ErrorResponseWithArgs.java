@@ -1,5 +1,6 @@
 package choi.choice.framework.json;
 
+import choi.choice.framework.exception.ResponseException;
 import choi.choice.framework.responsecode.ResponseCode;
 import lombok.Getter;
 import lombok.Setter;
