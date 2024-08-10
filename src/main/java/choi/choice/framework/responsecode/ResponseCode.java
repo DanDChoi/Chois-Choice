@@ -1,5 +1,7 @@
 package choi.choice.framework.responsecode;
 
+import choi.choice.framework.exception.ResponseException;
+
 public interface ResponseCode {
 
     ResponseType getType();
