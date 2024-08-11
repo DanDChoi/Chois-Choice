@@ -1,6 +1,7 @@
 package choi.choice.framework.responsecode;
 
 import choi.choice.framework.exception.ResponseException;
+import choi.choice.framework.systems.BusinessType;
 
 public interface ResponseCode {
 
