@@ -26,6 +26,8 @@ public class Good {
     private String goodNo;
     @Column(name = "good_nm")
     private String goodNm;
+    @Column(name = "com_good_no")
+    private String comGoodNo;
     @Column(name = "good_prc")
     private String goodPrc;
     @Column(name = "std_ctgry_no")
