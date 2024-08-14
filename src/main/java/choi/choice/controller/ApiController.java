@@ -2,13 +2,13 @@ package choi.choice.controller;
 
 import choi.choice.result.ProductResult;
 import choi.choice.service.GoodService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +20,12 @@ public class ApiController {
     @Autowired
     private GoodService goodService;
 
-    public ProductResult insertProductPartmal(){
+    @RequestMapping(value = "/Product-Add", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    @ApiOperation(value = "상품등록")
+    public ProductResult insertProductPartmal(@RequestHeader(value = "KEY", required = true)
+                                              @Parameter(in = ParameterIn.HEADER, name = "KEY") String key, HttpServletRequest request) throws Exception {
         return null;
     }
 }
