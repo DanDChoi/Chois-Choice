@@ -1,11 +1,21 @@
 package choi.choice.framework.json;
 
+import choi.choice.framework.data.mobile.LiteDeviceResolver;
+import choi.choice.framework.data.mobile.MobileDevice;
+import choi.choice.framework.spring.ApplicationContextProvider;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.Environment;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Slf4j
@@ -44,5 +54,46 @@ public class CdnUrlSerializer extends StdSerializer<String> implements Contextua
             return;
         }
 
+        ApplicationContext ctx = ApplicationContextProvider.getContext();
+        Environment env = ctx.getEnvironment();
+        LiteDeviceResolver ldr = ctx.getBean(LiteDeviceResolver.class);
+
+    }
+
+    private String checkImgType(String path, LiteDeviceResolver ldr) {
+        boolean useWebp = false;
+
+        if (path == null || path.length() == 0) {
+            return path;
+        }
+
+        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes instanceof ServletRequestAttributes) {
+            HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+
+            String userAgent = StringUtils.defaultString(request.getHeader("User-Agent"), "").toLowerCase();
+            String httpAccept = StringUtils.defaultString(request.getHeader("Accept"), "").toLowerCase();
+
+            if (httpAccept.contains("image/webp")) {
+                useWebp = true;
+            } else {
+                MobileDevice device = ldr.resolveDevice(request);
+                if (device.isMobile()) {
+                    useWebp = true;
+                }
+
+                if (!device.isMobile() && StringUtils.isNotEmpty(userAgent) && userAgent.indexOf("chrome") != -1) {
+                    useWebp = true;
+                }
+            }
+        }
+
+        if (useWebp) {
+            if (path.endsWith(".jpg") || path.endsWith(".png")) {
+                return path.substring(0, (path.length() -4)) + ".webp";
+            }
+        }
+
+        return path;
     }
 }
