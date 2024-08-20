@@ -47,6 +47,8 @@ public class CdnUrlSerializer extends StdSerializer<String> implements Contextua
         return new CdnUrlSerializer(this.mapper, true, cdnUrl.value());
     }
 
+    
+
     @Override
     public void serialize(String value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         if (!useCdnUrl) {
@@ -57,6 +59,29 @@ public class CdnUrlSerializer extends StdSerializer<String> implements Contextua
         ApplicationContext ctx = ApplicationContextProvider.getContext();
         Environment env = ctx.getEnvironment();
         LiteDeviceResolver ldr = ctx.getBean(LiteDeviceResolver.class);
+
+        if (CdnUrl.BucketType.IMG_CONTENT == this.bucketType) {
+            value = checkImgType(value, ldr);
+            gen.writeString(env.getProperty("url.content") + value);
+        } else if (CdnUrl.BucketType.IMG_PRODUCT == this.bucketType) {
+            value = checkImgType(value, ldr);
+            gen.writeString(env.getProperty("url.image") + value);
+        } else if (CdnUrl.BucketType.ATTACH_PUBLIC == this.bucketType) {
+            gen.writeString(env.getProperty("url.attach.public") + value);
+        } else if (CdnUrl.BucketType.ATTACH_PRIVATE == this.bucketType) {
+            gen.writeString(value);
+        } else if (CdnUrl.BucketType.MEDIA_PUBLIC == this.bucketType) {
+            String s3Name = "s3://" + env.getProperty("base.s3.media.convert.products.bucket");
+            String httpsName = "http://" + env.getProperty("base.mediaconvert.domain");
+            if (value.startsWith(s3Name)) {
+                String path = value.substring(s3Name.length());
+                gen.writeString(httpsName + path);
+            } else {
+                gen.writeString(value);
+            }
+        } else {
+            log.warn("invalid CdnUrl.BucketType:{}, print nothing", this.bucketType);
+        }
 
     }
 
