@@ -1,7 +1,10 @@
 package choi.choice.controller;
 
+import choi.choice.domain.ProductSDO;
+import choi.choice.domain.SystemPK;
 import choi.choice.result.ProductResult;
 import choi.choice.service.GoodService;
+import choi.choice.service.IdGenService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,7 +28,9 @@ public class ApiController {
     @ResponseBody
     @ApiOperation(value = "상품등록")
     public ProductResult insertProductPartmal(@RequestHeader(value = "KEY", required = true)
-                                              @Parameter(in = ParameterIn.HEADER, name = "KEY") String key, HttpServletRequest request) throws Exception {
+                                              @Parameter(in = ParameterIn.HEADER, name = "KEY") String key,
+                                              @RequestBody ProductSDO productSDO, HttpServletRequest request) throws Exception {
+
         return null;
     }
 }
