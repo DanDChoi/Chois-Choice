@@ -55,4 +55,8 @@ public class ProductSDO implements Serializable {
     @JsonProperty("CVR_PRC")
     @ApiModelProperty( name = "정상판매가", example = "50000", required=true)
     private java.math.BigDecimal cvrPrc;
+
+    @JsonProperty("SALE_PRC")
+    @ApiModelProperty(example = "50000", required = true)
+    private java.math.BigDecimal salePrc;
 }
