@@ -7,11 +7,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Alias("productResult")
 @NoArgsConstructor
-public class ProductResult {
+public class ProductResult extends CommonResult implements Serializable {
 
     private static final long serialVersionUID = -7921634883716589201L;
 
