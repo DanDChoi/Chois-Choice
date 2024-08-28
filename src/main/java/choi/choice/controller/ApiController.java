@@ -1,5 +1,6 @@
 package choi.choice.controller;
 
+import choi.choice.domain.InterfaceHistory;
 import choi.choice.domain.ProductSDO;
 import choi.choice.domain.SystemPK;
 import choi.choice.result.ProductResult;
@@ -23,13 +24,25 @@ public class ApiController {
     @Autowired
     private GoodService goodService;
 
+    private IdGenService idGenService;
+
     @RequestMapping(value = "/Product-Add", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @ApiOperation(value = "상품등록")
-    public ProductResult insertProductPartmal(@RequestHeader(value = "KEY", required = true)
+    public ProductResult insertProduct(@RequestHeader(value = "KEY", required = true)
                                               @Parameter(in = ParameterIn.HEADER, name = "KEY") String key,
                                               @RequestBody ProductSDO productSDO, HttpServletRequest request) throws Exception {
+
+        ProductResult productResult = new ProductResult();
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+        InterfaceHistory interfaceHistory = null;
+
+        try {
+//            interfaceHistory.setCallClassId();
+        } catch (Exception e) {
+
+        }
 
         return null;
     }
