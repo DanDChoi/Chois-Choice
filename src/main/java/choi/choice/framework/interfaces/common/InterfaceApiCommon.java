@@ -2,6 +2,7 @@ package choi.choice.framework.interfaces.common;
 
 import choi.choice.framework.adapter.AdapterHeader;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
