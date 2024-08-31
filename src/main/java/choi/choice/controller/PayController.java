@@ -1,7 +1,9 @@
 package choi.choice.controller;
 
 import choi.choice.domain.Pay;
+import choi.choice.domain.SystemPK;
 import choi.choice.repository.PayRepository;
+import choi.choice.service.IdGenService;
 import choi.choice.service.PayService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +26,11 @@ public class PayController {
     private final PayService payService;
     private final PayRepository payRepository;
     private final SessionManager sm;
+    IdGenService idGenService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addPayPost(Pay pay, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         payService.createPay(pay, request);
         return "ok";
     }
@@ -51,6 +55,7 @@ public class PayController {
 
     @RequestMapping(value = "/updatePay", method = RequestMethod.POST)
     public String updatePay(String payNo, Pay pay, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         String loginId = sm.getSession(request).getMbrId();
 
         pay.setUdterId(loginId);
