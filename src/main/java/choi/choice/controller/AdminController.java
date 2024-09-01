@@ -25,6 +25,7 @@ public class AdminController {
     private final PayService payService;
     private final CouponService couponService;
     private final AdminService adminService;
+    private IdGenService idGenService;
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public String adminPage(HttpServletRequest request, Model model) {
@@ -38,6 +39,8 @@ public class AdminController {
 
     @RequestMapping(value = "/mbrList", method = RequestMethod.GET)
     public String adminMbrList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Mbr> mbrs = memberService.findAll();
         List<MbrGrd> mbrGrds = new ArrayList<>();
 
@@ -55,6 +58,8 @@ public class AdminController {
 
     @RequestMapping(value = "/mbrDetail", method = RequestMethod.GET)
     public String adminMbrDetail(HttpServletRequest request, Model model, String mbrId) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Mbr mbr = memberService.findById(mbrId);
 
         model.addAttribute("mbr", mbr);
@@ -70,18 +75,24 @@ public class AdminController {
 
     @RequestMapping(value = "/addBlcklst", method = RequestMethod.POST)
     public void adminAddBlcklst(HttpServletRequest request, String mbrId) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Mbr mbr = memberService.findById(mbrId);
         memberService.addBlcklst(mbr);
     }
 
     @RequestMapping(value = "/removeBlcklst", method = RequestMethod.POST)
     public void adminRemoveBlcklst(HttpServletRequest request, String mbrId) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Mbr mbr = memberService.findById(mbrId);
         memberService.removeBlcklst(mbr);
     }
 
     @RequestMapping(value = "/blcklstList", method = RequestMethod.GET)
     public String adminBlcklstList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Mbr> blcklst = memberService.findBlcklstList();
 
         model.addAttribute("blcklst", blcklst);
@@ -91,6 +102,8 @@ public class AdminController {
 
     @RequestMapping(value = "/goodsList", method = RequestMethod.GET)
     public String adminGoodsList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Good> goods = goodService.findAll();
 
         model.addAttribute("goods", goods);
@@ -100,6 +113,8 @@ public class AdminController {
 
     @RequestMapping(value = "/goodDetail", method = RequestMethod.GET)
     public String adminGoodDetail(HttpServletRequest request, Model model, String goodNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Good good = goodService.findByNo(goodNo);
         model.addAttribute("good", good);
         return "goodDetail/" + goodNo;
@@ -112,6 +127,8 @@ public class AdminController {
 
     @RequestMapping(value = "/evtList", method = RequestMethod.GET)
     public String adminEvtList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Evt> evts = eventService.findAll();
 
         model.addAttribute("evts", evts);
@@ -121,6 +138,8 @@ public class AdminController {
 
     @RequestMapping(value = "/evtDetail", method = RequestMethod.GET)
     public String adminEvtDetail(HttpServletRequest request, Model model, String evtNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Evt evt = eventService.findEvtByNo(evtNo);
 
         model.addAttribute("evt", evt);
@@ -135,6 +154,8 @@ public class AdminController {
 
     @RequestMapping(value = "/payList", method = RequestMethod.GET)
     public String adminPayList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Pay> pays = payService.findPays();
 
         model.addAttribute("pays", pays);
@@ -144,6 +165,8 @@ public class AdminController {
 
     @RequestMapping(value = "/payDetail", method = RequestMethod.GET)
     public String adminPayDetail(HttpServletRequest request, Model model, String payNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Pay pay = payService.findPayByPayNo(payNo);
 
         model.addAttribute("pay", pay);
@@ -153,6 +176,8 @@ public class AdminController {
 
     @RequestMapping(value = "/cpnList", method = RequestMethod.GET)
     public String adminCpnList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         String period = "0";
         List<Cpn> cpns = couponService.validCpns(period);
 
@@ -163,6 +188,8 @@ public class AdminController {
 
     @RequestMapping(value = "/cpnDetail", method = RequestMethod.GET)
     public String adminCpnDetail(HttpServletRequest request, Model model, String cpnNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         Cpn cpn = couponService.findCpnByNo(cpnNo);
 
         model.addAttribute("cpn", cpn);
@@ -172,6 +199,8 @@ public class AdminController {
 
     @RequestMapping(value = "/cpnUpdate", method = RequestMethod.POST)
     public void adminCpnUpdate(HttpServletRequest request, Cpn cpn) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         String loginId = sessionManager.getSession(request).getMbrId();
 
         cpn.setUdterId(loginId);
@@ -181,6 +210,8 @@ public class AdminController {
 
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public String adminReviews(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<GoodReview> reviews = goodService.findAllReviews();
 
         model.addAttribute("reviews", reviews);
@@ -190,6 +221,8 @@ public class AdminController {
 
     @RequestMapping(value = "/reviewDetail", method = RequestMethod.GET)
     public String adminReviewDetail(HttpServletRequest request, Model model, String goodNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<GoodReview> reviews = goodService.findRvByNo(goodNo);
 
         model.addAttribute("review", reviews);
@@ -204,12 +237,16 @@ public class AdminController {
 
     @RequestMapping(value = "/reviewDelete", method = RequestMethod.GET)
     public String admindReviewDelete(HttpServletRequest request, Model model, String goodNo) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         goodService.deleteReview(goodNo);
         return "reviews";
     }
 
     @RequestMapping(value = "/stdCtgry/list", method = RequestMethod.GET)
     public String stdCtgryList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<StdCtgry> stdCtgries = adminService.stdCtgryList();
 
         model.addAttribute("stdCtgries", stdCtgries);
@@ -218,6 +255,8 @@ public class AdminController {
 
     @RequestMapping(value = "/dspCtgry/list", method = RequestMethod.GET)
     public String dspCtgryList(HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<DspCtgry> dspCtgries = adminService.dspCtgryList();
 
         model.addAttribute("dspCtgries", dspCtgries);
