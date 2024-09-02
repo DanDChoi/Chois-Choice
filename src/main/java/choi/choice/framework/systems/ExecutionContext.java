@@ -51,6 +51,8 @@ public class ExecutionContext {
     public static final String X_HEADER_MDC_CALLER_MEMBER_ID = "X-MDC-CALLER-MEMBER-ID";
     public static final String X_HEADER_MDC_CALLER_ORDER_NUMBER = "X-MDC-CALLER-ORDER-NUMBER";
 
+    static ThreadLocal<RequestInfo> requestInfo = new ThreadLocal<>();
+
     public static RequestInfo currentRequestInfo() {
    		return requestInfo.get();
    	}
