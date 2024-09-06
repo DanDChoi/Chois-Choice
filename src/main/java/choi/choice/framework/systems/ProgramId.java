@@ -11,12 +11,14 @@ public class ProgramId {
 
     public static String from(HandlerMethod hm) {
         synchronized (idCache) {
-            return idCache.get(hm);
+            if (idCache.containsKey(hm)) {
+                return idCache.get(hm);
+            }
+            Method 메소드 = hm.getMethod();
+            String id = from(메소드);
+            idCache.put(hm, id);
+            return id;
         }
-        Method 메소드 = hm.getMethod();
-        String id = from(메소드);
-        idCache.put(hm, id);
-        return id;
     }
 
     public static String from(Class<?> clazz) {
