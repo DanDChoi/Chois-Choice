@@ -110,6 +110,8 @@ public class MbrController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
@@ -120,6 +122,8 @@ public class MbrController {
 
     @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
     public String adminPage(HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
 
@@ -137,6 +141,7 @@ public class MbrController {
 //    }
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
     public String profile(Model model, String id, HttpServletRequest request){
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         HttpSession session = request.getSession();
 
         if (session.getAttribute("loginMbr") == null) {
@@ -188,6 +193,7 @@ public class MbrController {
 
     @RequestMapping(value = "/addGoodReview.popup", method = RequestMethod.GET)
     public String addGoodReviewPop (MultipartHttpServletRequest request, Model model, GoodReview review) throws Exception{
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         return "/addGoodReviewForm";
     }
 
@@ -201,6 +207,7 @@ public class MbrController {
 
     @RequestMapping(value = "/bukmkList", method = RequestMethod.GET)
     public String bukmkList(Model model, Mbr mbr, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         int bukmkCnt = goodRepository.getBukmkCnt(mbr);
         List<Good> bukmkGoods = goodService.findMbrBukmkGoods(mbr);
 
