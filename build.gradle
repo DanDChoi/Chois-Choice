@@ -40,6 +40,7 @@ dependencies {
 	implementation 'io.swagger.core.v3:swagger-jaxrs2:2.1.13'
 	implementation 'commons-io:commons-io:2.6'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+	implementation 'commons-lang:commons-lang:2.6'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
