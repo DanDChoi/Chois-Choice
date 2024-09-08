@@ -1,8 +1,10 @@
 package choi.choice.framework.systems;
 
+import choi.choice.framework.utils.RemoteAddrUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 @Setter
 @NoArgsConstructor
 public class RequestInfo {
+	String[] APPS = {"IOS_APP", "AOS_APP"};
    	public static final String USER_TRACKING_ID_COOKIE_KEY = "UTID";
    	public static final String WISELOG_TRACKING_ID_COOKIE_KEY = "PCID";
    	static final int TRACKING_ID_EXPIRE_SECONDS = Integer.MAX_VALUE;
