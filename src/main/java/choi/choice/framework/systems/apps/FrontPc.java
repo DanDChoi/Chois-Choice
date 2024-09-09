@@ -1,5 +1,6 @@
-package choi.choice.framework.systems;
+package choi.choice.framework.systems.apps;
 
+import choi.choice.framework.systems.SiteType;
 import org.springframework.context.annotation.Profile;
 
 import java.lang.annotation.ElementType;
