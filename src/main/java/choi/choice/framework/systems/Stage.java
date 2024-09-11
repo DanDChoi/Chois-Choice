@@ -1,7 +1,7 @@
 package choi.choice.framework.systems;
 
 import lombok.Getter;
-import org.apache.ibatis.mapping.Environment;
+import org.springframework.core.env.Environment;
 
 public enum Stage {
 	LOCAL("L", "local"),
