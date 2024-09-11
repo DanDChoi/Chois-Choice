@@ -6,13 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
 @Slf4j
-public class ApplicationType {
+public enum ApplicationType {
 
     FRONT_PC			  (FrontPc.SYMBOL, FrontPc.PROFILE_NAME, FrontPc.MALL_ID, FrontPc.SITE_TYPE),
     FRONT_MOBILE		  (FrontMobile.SYMBOL, FrontMobile.PROFILE_NAME, FrontMobile.MALL_ID, FrontMobile.SITE_TYPE),
     BACK_OFFICE     	      (BackOffice.SYMBOL, BackOffice.PROFILE_NAME),
-//    PARTNER_OFFICE		      (PartnerOffice.SYMBOL, 			PartnerOffice.PROFILE_NAME),
-//    CUSTOMER_SERVICE          (CustomerService.SYMBOL, 			CustomerService.PROFILE_NAME),
+    PARTNER_OFFICE		      (PartnerOffice.SYMBOL, 			PartnerOffice.PROFILE_NAME),
+    CUSTOMER_SERVICE          (CustomerService.SYMBOL, 			CustomerService.PROFILE_NAME),
     INTERFACES			      (InterfaceServer.SYMBOL, InterfaceServer.PROFILE_NAME),
     API			      		  (APIServer.SYMBOL, APIServer.PROFILE_NAME),
     BATCH				      (Batch.SYMBOL, 					Batch.PROFILE_NAME),
@@ -55,9 +55,9 @@ public class ApplicationType {
         String systemId = env.getProperty("system.id");
         ApplicationType appType = ApplicationType.findBySystemId(systemId);
 
-//        if (appType == ApplicationType.BACK_OFFICE && "po".equals(env.getProperty("boenvtype"))) {
-//            appType = ApplicationType.PARTNER_OFFICE;
-//        }
+        if (appType == ApplicationType.BACK_OFFICE && "po".equals(env.getProperty("boenvtype"))) {
+            appType = ApplicationType.PARTNER_OFFICE;
+        }
         log.info("Application Type: {}", appType);
         return appType;
     }
