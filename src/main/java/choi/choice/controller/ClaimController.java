@@ -33,6 +33,8 @@ public class ClaimController {
 
     private final GoodService goodService;
 
+    private IdGenService idGenService;
+
     @RequestMapping(value = "/clmForm", method = RequestMethod.GET)
     public String createClm(Ord ord, OrdGood ordGood, Model model) {
         Ord findOrd = orderService.findOne(ord.getOrdNo());
@@ -50,6 +52,7 @@ public class ClaimController {
 
     @RequestMapping(value = "/clmDetail", method = RequestMethod.GET)
     public String clmDetail(Ord ord, ClmGood clmGood, Clm clm, HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         Clm clmDetail = claimService.findClm(clm.getClmNo());
         model.addAttribute("clm", clmDetail);
         return "clmDetail/" + clm.getClmNo();

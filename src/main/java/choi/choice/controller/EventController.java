@@ -3,8 +3,10 @@ package choi.choice.controller;
 import choi.choice.domain.Evt;
 import choi.choice.domain.EvtPrize;
 import choi.choice.domain.Good;
+import choi.choice.domain.SystemPK;
 import choi.choice.repository.EventRepository;
 import choi.choice.service.EventService;
+import choi.choice.service.IdGenService;
 import choi.choice.service.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,7 @@ public class EventController {
     private final EventService eventService;
     private final EventRepository eventRepository;
     private final SessionManager sessionManager;
+    private IdGenService idGenService;
 
     @RequestMapping(value = "/addForm", method = RequestMethod.GET)
        public String createEvtForm() {
@@ -38,6 +41,7 @@ public class EventController {
 
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
     public String evtDetail(String evtNo, Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         Evt evt = eventService.findEvtByNo(evtNo);
         model.addAttribute("evt", evt);
 
