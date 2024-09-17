@@ -35,6 +35,7 @@ public class ProductsController {
 
     @RequestMapping(value = "create/add", method = RequestMethod.POST)
     public String createGood(@ModelAttribute GoodExtend goodExtend, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         goodService.add(goodExtend, request);
         return "ok";
     }
@@ -107,11 +108,13 @@ public class ProductsController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String updateGoodForm(@ModelAttribute Good good, HttpServletRequest request, Model model) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         return "good/detail?goodNo=" + good.getGoodNo() + "&mode=edit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void updateGood(@ModelAttribute Good good, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         String loginId = sessionManager.getSession(request).getMbrId();
 
         good.setUdterId(loginId);
@@ -121,6 +124,7 @@ public class ProductsController {
 
     @RequestMapping(value = "/addBukmk", method = RequestMethod.POST)
     public void addBukmk(@ModelAttribute String goodNo, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         Good good = goodService.findByNo(goodNo);
         String loginId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(loginId);
