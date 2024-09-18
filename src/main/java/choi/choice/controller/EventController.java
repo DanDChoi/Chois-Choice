@@ -35,6 +35,7 @@ public class EventController {
 
    @RequestMapping(value = "/creat", method = RequestMethod.POST)
    public String createEvt(@ModelAttribute Evt evt, List<EvtPrize> evtPrizes, HttpServletRequest request) {
+       SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
        eventService.createEvt(evt, evtPrizes, request);
        return "ok";
    }
@@ -50,6 +51,7 @@ public class EventController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void evtUpdate(@ModelAttribute Evt evt, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         String loginId = sessionManager.getSession(request).getMbrId();
 
         evt.setUdterId(loginId);
