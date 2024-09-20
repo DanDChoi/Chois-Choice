@@ -24,10 +24,11 @@ public class HomeController {
     private final GoodService goodService;
     private final OrderService orderService;
     private final MemberService memberService;
-    private IdGenService idgenService;
+    private IdGenService idGenService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
 
         log.info("homecontroller 진입");
         if (loginMember == null) {
@@ -41,6 +42,8 @@ public class HomeController {
 
     @RequestMapping(value = "/men", method = RequestMethod.GET)
     public String menCate(Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Good> menGoods = goodService.findGoodsByCate("men");
         model.addAttribute("menGoods", menGoods);
         return "menList";
@@ -48,6 +51,8 @@ public class HomeController {
 
     @RequestMapping(value = "/women", method = RequestMethod.GET)
     public String womenCate(Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Good> womenGoods = goodService.findGoodsByCate("women");
         model.addAttribute("menGoods", womenGoods);
         return "womenList";
@@ -55,6 +60,8 @@ public class HomeController {
 
     @RequestMapping(value = "/life", method = RequestMethod.GET)
     public String lifeCate(Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<Good> lifeGoods = goodService.findGoodsByCate("life");
         model.addAttribute("menGoods", lifeGoods);
         return "lifeList";
@@ -62,6 +69,8 @@ public class HomeController {
 
     @RequestMapping(value = "/best", method = RequestMethod.GET)
     public String best(Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         List<OrdGood> bestGoods = orderService.findBestGoods();
         model.addAttribute("bestGoods", bestGoods);
         return "bestList";
@@ -74,6 +83,8 @@ public class HomeController {
 
     @RequestMapping(value = "/mtm", method = RequestMethod.POST)
     public void addMtm(Mbr mbr, Model model, @ModelAttribute CsoMtmInq csoMtmInq, HttpServletRequest request){
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
         String timeMillis = Long.toString(System.currentTimeMillis()).substring(0, 6);
