@@ -31,9 +31,13 @@ public class OrderController {
 
     private final GoodService goodService;
 
+    IdGenService idGenService;
+
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String ordForm(Good good, Model model, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         String mbrId = sessionManager.getSession(request).getMbrId();
         Mbr mbr = memberService.findById(mbrId);
         Good ordGood = goodService.findByNo(good.getGoodNo());
@@ -47,6 +51,7 @@ public class OrderController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, Mbr mbr, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         MbrBlcklst mbrBlcklst = memberService.findBlcklstByNo(mbr.getMbrNo());
 
         if(mbrBlcklst.getBlcklstTpCd().equals("ORD_IMPS")) {
@@ -74,6 +79,7 @@ public class OrderController {
 
     @RequestMapping(value = "/refund.json", method = RequestMethod.POST)
     public void refundApply(String ordNo, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
 
         Pay pay = orderService.findPayByOrdNo(ordNo);
         List<PayRfd> existRfd = orderService.findPayRfdByPayNo(pay.getPayNo());
