@@ -15,9 +15,6 @@ import java.util.Map;
 
 /**
  * 요청 실행에 대한 문맥 정보를 SLF4j의 MDC에 추가한다.
- *
- * @author Plgrim
- *
  */
 @Component
 @Slf4j
