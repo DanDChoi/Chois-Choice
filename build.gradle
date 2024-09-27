@@ -36,6 +36,7 @@ dependencies {
 	implementation 'commons-codec:commons-codec:1.17.1'
 	implementation 'org.owasp.encoder:encoder:1.2.2'
 	implementation 'org.apache.commons:commons-lang3:3.0'
+	implementation 'org.apache.commons:commons-collections4:4.4'
 	implementation 'io.swagger:swagger-annotations:1.5.20'
 	implementation 'io.swagger.core.v3:swagger-jaxrs2:2.1.13'
 	implementation 'commons-io:commons-io:2.6'
