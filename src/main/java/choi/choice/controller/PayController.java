@@ -41,7 +41,9 @@ public class PayController {
     }
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public String detailPay(String payNo, String ordNo, Model model){
+    public String detailPay(String payNo, String ordNo, Model model, HttpServletRequest request){
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         if (payNo != null && payNo != "") {
             Pay pay = payService.findPayByPayNo(payNo);
             model.addAttribute("pay", pay);
