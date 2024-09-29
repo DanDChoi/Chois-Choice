@@ -50,7 +50,8 @@ public class MbrController {
     }
 
     @RequestMapping(value = "/register/add", method = RequestMethod.POST)
-    public String mbrJoin(@ModelAttribute Mbr mbr) throws NoSuchAlgorithmException {
+    public String mbrJoin(@ModelAttribute Mbr mbr, HttpServletRequest request) throws NoSuchAlgorithmException {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         memberService.register(mbr);
         return "redirect:/";
     }
