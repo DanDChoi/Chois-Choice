@@ -1,13 +1,16 @@
 package choi.choice.service;
 
 import choi.choice.domain.*;
+import choi.choice.framework.utils.JsonUtil;
 import choi.choice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +18,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OrderServiceImpl implements OrderService{
 
     private final MemberService memberService;
@@ -24,6 +28,11 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public void createOrd(@ModelAttribute Ord ord, OrdGood ordGood, Good good, LgsDlvsp lgsDlvsp, HttpServletRequest request) {
+
+        HttpSession session = IOService.getCurrentRequest().getSession();
+
+        Ord ordDTO = (Ord)session.getAttribute("ORDER_DATA");
+        log.info("OrdDTO : {}", JsonUtil.marshallingJson(ordDTO));
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
