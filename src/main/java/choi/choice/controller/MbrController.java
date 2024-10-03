@@ -66,6 +66,7 @@ public class MbrController {
     public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response, Model model) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+        sessionManager.createSession(mbr,response);
         if (bindingResult.hasErrors()) {
             return "login";
         }
