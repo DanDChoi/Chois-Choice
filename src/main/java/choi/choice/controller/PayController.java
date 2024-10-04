@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Controller
@@ -36,7 +37,9 @@ public class PayController {
     }
 
     @RequestMapping(value = "/eliminate", method = RequestMethod.GET)
-    public void eliminatePay(String payNo) {
+    public void eliminatePay(String payNo, HttpServletRequest request) {
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
         payService.deletePay(payNo);
     }
 
@@ -56,7 +59,7 @@ public class PayController {
     }
 
     @RequestMapping(value = "/updatePay", method = RequestMethod.POST)
-    public String updatePay(String payNo, Pay pay, HttpServletRequest request) {
+    public String updatePay(String payNo, Pay pay, HttpServletRequest request, HttpServletResponse response) {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         String loginId = sm.getSession(request).getMbrId();
 
