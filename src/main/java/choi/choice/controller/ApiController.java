@@ -46,4 +46,25 @@ public class ApiController {
 
         return null;
     }
+
+    @RequestMapping(value = "/Product-Update", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    @ApiOperation(value = "상품수정")
+    public ProductResult updateProduct(@RequestHeader(value = "KEY", required = true)
+                                       @Parameter(in = ParameterIn.HEADER, name = "KEY") String key,
+                                       @RequestBody ProductSDO productSDO, HttpServletRequest request) throws Exception {
+
+        ProductResult productResult = new ProductResult();
+        SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+        InterfaceHistory interfaceHistory = null;
+
+        try {
+//            interfaceHistory.setCallClassId();
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    }
 }
