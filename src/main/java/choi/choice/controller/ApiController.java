@@ -39,7 +39,7 @@ public class ApiController {
         InterfaceHistory interfaceHistory = null;
 
         try {
-//            interfaceHistory.setCallClassId();
+            interfaceHistory.setCallClassId(request.getParameter(ParameterIn.HEADER.toString()));
         } catch (Exception e) {
 
         }
