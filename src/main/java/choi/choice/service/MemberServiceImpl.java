@@ -170,6 +170,11 @@ public class MemberServiceImpl implements MemberService{
         return mbrRepository.findBlcklstByNo(String.valueOf(mbrNo));
     }
 
+    @Override
+    public void insertMbrLoginLog(MbrLoginLog mbrLoginLog) {
+
+    }
+
     public static Date getFirstDayOfMonth(int offsetMonth) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH, 1);
