@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.*;
+import choi.choice.framework.utils.CookieUtil;
 import choi.choice.repository.GoodRepository;
 import choi.choice.repository.MbrRepository;
 import choi.choice.repository.OrderRepository;
@@ -119,7 +120,7 @@ public class MbrController {
         if (session != null) {
             session.invalidate();
         }
-
+        CookieUtil.deleteCookie(response, "SESSION");
         return "redirect:/";
     }
 
