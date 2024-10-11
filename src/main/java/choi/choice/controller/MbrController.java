@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.*;
+import choi.choice.framework.commons.StringService;
 import choi.choice.framework.utils.CookieUtil;
 import choi.choice.repository.GoodRepository;
 import choi.choice.repository.MbrRepository;
@@ -138,11 +139,26 @@ public class MbrController {
 
         return "admin-page";
     }
-//
-//    @GetMapping("findId")
-//    public String findId(){
-//        return "theme/findId";
-//    }
+
+    @RequestMapping(value = "findId", method = {RequestMethod.GET, RequestMethod.POST})
+    public String findIdView(HttpServletRequest request, Model model, Mbr mbr){
+        String mbrNo = (String)request.getSession().getAttribute("MBR_NO");
+        if (StringService.isNotEmpty(mbrNo)) {
+            mbr = (Mbr)request.getSession().getAttribute("MBR_CERT_RESULT");
+        }
+
+        request.getSession().removeAttribute("MBR_NO");
+        request.getSession().removeAttribute("MBR_CERT_RESULT");
+
+        if(StringService.isEmail(mbr.getMbrNm()) || StringService.isEmail(mbr.getMobilNo())) {
+            return "member/searchMbrId";
+        } else {
+            SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+        }
+        //TODO
+
+        return "theme/findId";
+    }
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
     public String profile(Model model, String id, HttpServletRequest request){
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
