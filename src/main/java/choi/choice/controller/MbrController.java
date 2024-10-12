@@ -100,6 +100,7 @@ public class MbrController {
         log.info("findMbr = {}", findMbr.toString());
         HttpSession session = request.getSession();
 
+        session.setAttribute("MBR_NO", mbr.getMbrNo());
         session.setAttribute("loginMember", findMbr);
         model.addAttribute("mbr", findMbr);
         model.addAttribute("mbrGrd", findMbrGrd);
@@ -118,6 +119,10 @@ public class MbrController {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
 
         HttpSession session = request.getSession(false);
+        String mbrNo = (String)session.getAttribute("MBR_NO");
+        if (StringService.isNotEmpty(mbrNo)) {
+            session.removeAttribute("MBR_NO");
+        }
         if (session != null) {
             session.invalidate();
         }
