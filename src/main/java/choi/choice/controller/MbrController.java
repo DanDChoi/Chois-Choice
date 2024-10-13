@@ -170,6 +170,7 @@ public class MbrController {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("loginMbr") == null) {
+            model.addAttribute("message", "PERMISSION_DENIED");
             return "redirect:/";
         }
 
