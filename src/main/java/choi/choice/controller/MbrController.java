@@ -11,8 +11,10 @@ import com.mysql.cj.Session;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -117,6 +119,21 @@ public class MbrController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
+
+        boolean isAutoLogin = false;
+        String pw = "";
+        pw = request.getParameter("password");
+        if (!isAutoLogin) {
+            if (StringUtils.isBlank(pw)) {
+                throw new UsernameNotFoundException("Given user pw is empty");
+            }
+        }
+
+        if (!isAutoLogin) {
+            pw = idGenService.generateSHA256(pw);
+        }
+        Mbr mbr = null;
+        mbr.setMbrPwd(pw);
 
         HttpSession session = request.getSession(false);
         String mbrNo = (String)session.getAttribute("MBR_NO");
