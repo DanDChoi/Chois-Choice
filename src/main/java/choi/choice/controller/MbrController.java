@@ -1,6 +1,7 @@
 package choi.choice.controller;
 
 import choi.choice.domain.*;
+import choi.choice.entities.MbrCrtfc;
 import choi.choice.framework.commons.StringService;
 import choi.choice.framework.utils.CookieUtil;
 import choi.choice.repository.GoodRepository;
@@ -122,6 +123,8 @@ public class MbrController {
 
         boolean isAutoLogin = false;
         String pw = "";
+        MbrCrtfc userDetail = null;
+
         pw = request.getParameter("password");
         if (!isAutoLogin) {
             if (StringUtils.isBlank(pw)) {
@@ -129,11 +132,14 @@ public class MbrController {
             }
         }
 
+        // 일반로그인
         if (!isAutoLogin) {
             pw = idGenService.generateSHA256(pw);
         }
         Mbr mbr = null;
         mbr.setMbrPwd(pw);
+
+        request.setAttribute("loginTp", "GNRL");
 
         HttpSession session = request.getSession(false);
         String mbrNo = (String)session.getAttribute("MBR_NO");
