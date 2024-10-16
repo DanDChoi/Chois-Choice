@@ -30,6 +30,14 @@ public class HomeController {
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
 
+        String userAgent = request.getHeader("user-agent");
+
+        if (userAgent.contains("app")) {
+            systemPK.setApp("Y");
+        } else {
+            systemPK.setApp("N");
+        }
+
         log.info("homecontroller 진입");
         if (loginMember == null) {
             log.info("loginMember If 진입 ={} ", loginMember);
