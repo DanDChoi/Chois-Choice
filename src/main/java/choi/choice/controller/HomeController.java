@@ -5,6 +5,8 @@ import choi.choice.repository.MbrRepository;
 import choi.choice.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +28,30 @@ public class HomeController {
     private final MemberService memberService;
     private IdGenService idGenService;
 
+    @Value("${base.device.mobile")
+    private String mobileDevice;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@SessionAttribute(value = "loginMember", required = false) Mbr loginMember, Model model, HttpServletRequest request) {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
 
-        String userAgent = request.getHeader("user-agent");
+        String userAgent = request.getHeader("user-agent").toLowerCase();
+        String[] deviceStr = StringUtils.split(mobileDevice, "|");
+        boolean isPc = true;
+        String returnUrl = "";
+
+        for (String mobile : deviceStr) {
+            if (userAgent.contains(mobile)) {
+                isPc = false;
+                break;
+            }
+        }
+
+        if (isPc) {
+//            returnUrl = URL생성필요
+        } else {
+//            returnUrl =
+        }
 
         if (userAgent.contains("app")) {
             systemPK.setApp("Y");
