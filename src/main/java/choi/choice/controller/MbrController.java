@@ -68,7 +68,7 @@ public class MbrController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response, Model model) throws NoSuchAlgorithmException {
+    public String login(@ModelAttribute Mbr mbr, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response, Model model, String userId) throws NoSuchAlgorithmException {
         log.info("login post={}", mbr.getMbrEmail());
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
         sessionManager.createSession(mbr,response);
@@ -92,6 +92,27 @@ public class MbrController {
             log.info("로그인실패");
             return "login";
         }
+
+        boolean isAutoLogin = false;
+        String pw = "";
+        MbrCrtfc userDetail = null;
+
+        pw = request.getParameter("password");
+        if (!isAutoLogin) {
+            if (StringUtils.isBlank(pw)) {
+                throw new UsernameNotFoundException("Given user pw is empty");
+            }
+        }
+
+        // 일반로그인
+        if (!isAutoLogin) {
+            pw = idGenService.generateSHA256(pw);
+        }
+        Mbr loginMbr = null;
+        loginMbr.setMbrPwd(pw);
+        loginMbr.setMbrId(userId);
+
+        request.setAttribute("loginTp", "GNRL");
 
         //로그인 실패횟수 초기화
         loginService.loginFailrCountReset(mbr, 0);
@@ -120,26 +141,6 @@ public class MbrController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         SystemPK systemPK = idGenService.getAutoGeneratorSystemPK(request);
-
-        boolean isAutoLogin = false;
-        String pw = "";
-        MbrCrtfc userDetail = null;
-
-        pw = request.getParameter("password");
-        if (!isAutoLogin) {
-            if (StringUtils.isBlank(pw)) {
-                throw new UsernameNotFoundException("Given user pw is empty");
-            }
-        }
-
-        // 일반로그인
-        if (!isAutoLogin) {
-            pw = idGenService.generateSHA256(pw);
-        }
-        Mbr mbr = null;
-        mbr.setMbrPwd(pw);
-
-        request.setAttribute("loginTp", "GNRL");
 
         HttpSession session = request.getSession(false);
         String mbrNo = (String)session.getAttribute("MBR_NO");
